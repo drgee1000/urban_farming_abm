@@ -2,9 +2,8 @@ package repastcity3.agent;
 
 import java.util.List;
 
-import com.vividsolutions.jts.geom.Coordinate;
-
-import repastcity3.environment.Building;
+import repastcity3.environment.Farm;
+import repastcity3.environment.Food;
 import repastcity3.environment.Residential;
 
 /**
@@ -72,6 +71,7 @@ public interface IAgent {
 	void calculateDis();
 	
 	void calDisDes2Can();
+	
 	
 	
 }
