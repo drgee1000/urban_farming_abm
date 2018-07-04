@@ -4,18 +4,19 @@
 package repastcity3.environment;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
+import com.vividsolutions.jts.geom.Coordinate;
 
 import repastcity3.agent.IAgent;
 import repastcity3.exceptions.NoIdentifierException;
-
-import com.vividsolutions.jts.geom.Coordinate;
 
 /**
  * @author CHAO LUO
  *
  */
-public class Farm implements FixedGeography{
+public class Farm extends FarmableLocation implements FixedGeography{
 	
 /** A list of agents who stay here*/
 	
@@ -36,7 +37,12 @@ public class Farm implements FixedGeography{
 	
 	public Farm() {
 		this.agents = new ArrayList<IAgent>();
+		super.stock = new HashMap<>();
+		Food potato = new Food("potato", "Staple", 15, 10, 800, 0.25, 25);
+		stock.put("Potato", potato);
+		
 	}
+	
 	
 	
 	@Override
@@ -93,6 +99,37 @@ public class Farm implements FixedGeography{
 	@Override
 	public int hashCode() {
 		return this.identifier.hashCode();
+	}
+	
+	public HashMap<String, Food> getStock(){
+		return stock;
+	}
+	
+
+	@Override
+	public void product() {
+		// TODO Auto-generated method stub
+		for (Food food : stock.values()) {
+			if (fund >= 0) {
+				int amount = food.getAmount();
+				double foodCost = food.getProductionCost();
+				int productionAmount = (int) (1 / food.getProductionTime());
+				int availableProductionAmount = (int) (fund / foodCost);
+				int expireAmount = (int) (1 / food.getExpireTime());
+				amount -= expireAmount;
+				if (availableProductionAmount > productionAmount) {
+					amount += productionAmount;
+					fund -= foodCost * productionAmount;
+				} else {
+					amount += availableProductionAmount;
+					fund -= foodCost * availableProductionAmount;
+				}
+
+			} else {
+				// if there is no fund for production, then stop;
+				break;
+			}
+		}
 	}	
 
 

@@ -2,24 +2,24 @@
 package repastcity3.agent;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.lang.Math;
-import repast.simphony.context.Context;
+
 import org.geotools.referencing.datum.DefaultEllipsoid;
-import com.vividsolutions.jts.awt.PointShapeFactory.Point;
+
 import com.vividsolutions.jts.geom.Coordinate;
-import com.vividsolutions.jts.geom.Geometry;
-import repast.simphony.space.gis.Geography;
+
 import repastcity3.environment.Candidate1;
+import repastcity3.environment.Farm;
+import repastcity3.environment.Food;
 import repastcity3.environment.Residential;
 import repastcity3.environment.Restaurant;
 import repastcity3.environment.Route;
 import repastcity3.environment.Shoppingcenter;
-import repastcity3.environment.Farm;
 import repastcity3.environment.Workplace;
 import repastcity3.main.ContextManager;
 
@@ -37,6 +37,7 @@ public class DefaultAgent implements IAgent {
 	private double routedisdev2;
 	private Coordinate origin;
 	private Coordinate destination;
+	private Farm f;
 
 	private boolean goingHome = false; // Whether the agent is going to or from their home
 	private boolean goforEat = false;
@@ -97,9 +98,7 @@ public class DefaultAgent implements IAgent {
 			if(!this.goforEat) {
 				this.goforEat = true;
 				this.goingHome = false;
-				Farm f = ContextManager.FarmContext.getRandomObject();
-				Iterator it = ContextManager.FarmContext.iterator();
-				
+				f = ContextManager.FarmContext.getRandomObject();
 				this.route = new Route(this, ContextManager.FarmProjection.getGeometry(f).getCentroid().getCoordinate(), f);
 				this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
 				this.destination = ContextManager.FarmProjection.getGeometry(f).getCentroid().getCoordinate();
@@ -109,8 +108,10 @@ public class DefaultAgent implements IAgent {
 				this.health--;
 			}else {
 				LOGGER.info("Agent" + this.id + " health before eating is" + this.health);
-				while(this.health<this.healthThreshold)
+				while(this.health<this.healthThreshold) {
+						
 						this.health += 100;
+					}
 				this.goforEat = false;
 				LOGGER.info("Agent" + this.id + " health after eating is" + this.health);
 				this.route = null;
@@ -298,7 +299,6 @@ public class DefaultAgent implements IAgent {
 	}
 
 
-
 	/**
 	 * There will be no inter-agent communication so these agents can be executed simulataneously in separate threads.
 	 */
@@ -448,4 +448,5 @@ public class DefaultAgent implements IAgent {
 	public void setHealthThreshold(double healthThreshold) {
 		this.healthThreshold = healthThreshold;
 	}
+
 }
