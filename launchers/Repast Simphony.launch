@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
-<listEntry value="/EV_Virtual_City"/>
+<listEntry value="/urban_farming_abm"/>
 </listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
 <listEntry value="4"/>
@@ -20,7 +20,7 @@
 </listAttribute>
 <booleanAttribute key="org.eclipse.jdt.launching.DEFAULT_CLASSPATH" value="false"/>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="saf.core.runtime.Boot"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="EV_Virtual_City"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="urban_farming_abm"/>
 <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Xss10M -Xmx400M"/>
 <stringAttribute key="org.eclipse.jdt.launching.WORKING_DIRECTORY" value="${eclipse_home}/plugins/repast.simphony.runtime_${REPAST_VERSION}"/>
 </launchConfiguration>
