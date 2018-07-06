@@ -2,34 +2,30 @@ package repastcity3.main;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.util.ArrayList;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 
 public class DataLogger {
-	String name;
-	int id;
-	public DataLogger (String _name, int _id) {
-		this.name = _name;
-		this.id = _id;
-	}
 	public DataLogger () {
-		this.name = "";
-		this.id = 0;
 	}
-	public void printData() throws IOException {
-		final String filePath = "./";
+
+	public void printData(ArrayList<String> agentList) throws IOException {
+		System.out.println("start to export data to csv file");
+		final String fileName = "data.csv";
 		final char RecordSeparator = '\n';
 		CSVFormat formator = CSVFormat.DEFAULT.withRecordSeparator(RecordSeparator);
-		FileWriter fileWriter = new FileWriter(filePath);
+		Writer fileWriter = new FileWriter(fileName);
 		CSVPrinter printer = new CSVPrinter(fileWriter, formator);
-
-		DataLogger dl1 = new DataLogger("dl2",342);
-		DataLogger dl2 = new DataLogger("dl2",342);
-		ArrayList<DataLogger> list = new ArrayList<>();
-		list.add(dl1);
-		list.add(dl2);
+		
+		ArrayList<String> list = new ArrayList<>();
+		String x;
+		for (int i = 0; i < agentList.size(); i++) {
+			x = agentList.get(i);
+			list.add((x));
+		}
 		printer.printRecord(list);
 		fileWriter.close();
 		printer.close();

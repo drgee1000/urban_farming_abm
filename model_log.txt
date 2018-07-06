@@ -1,10 +1,10 @@
-Jul 06, 2018 3:18:25 PM repastcity3.main.ContextManager build
+Jul 06, 2018 10:51:26 PM repastcity3.main.ContextManager build
 INFO: Creating agents with the agent definition: 'point:people_600.shp$repastcity3.agent.DefaultAgent'
-Jul 06, 2018 3:18:25 PM repastcity3.agent.AgentFactory createPointAgents
+Jul 06, 2018 10:51:26 PM repastcity3.agent.AgentFactory createPointAgents
 INFO: Have created 300 of type repastcity3.agent.DefaultAgent from file ./data/gis_data/urban_farming/people_600.shp
-Jul 06, 2018 3:18:25 PM repastcity3.agent.AgentFactory createPointAgents
+Jul 06, 2018 10:51:26 PM repastcity3.agent.AgentFactory createPointAgents
 INFO: Have created 600 of type repastcity3.agent.DefaultAgent from file ./data/gis_data/urban_farming/people_600.shp
-Jul 06, 2018 3:18:25 PM repastcity3.main.ContextManager createSchedule
+Jul 06, 2018 10:51:26 PM repastcity3.main.ContextManager createSchedule
 INFO: The multi-threaded scheduler will be used.
-Jul 06, 2018 9:46:09 PM org.geotools.referencing.factory.DeferredAuthorityFactory disposeBackingStore
-INFO: Disposing class org.geotools.referencing.factory.epsg.ThreadedHsqlEpsgFactory backing store
+Jul 06, 2018 10:51:32 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 1.0
