@@ -196,7 +196,8 @@ public class ContextManager implements ContextBuilder<Object> {
 	public static Geography<Substation> substationProjection;
 	
 	
-
+	DataLogger dLogger = new DataLogger();
+	
 	@Override
 	public Context<Object> build(Context<Object> con) {
 
@@ -468,19 +469,14 @@ public class ContextManager implements ContextBuilder<Object> {
 				schedule.schedule(agentStepParams, a, "step");
 			}
 		}
-
 	}
 
 	public void printTicks() {
 		LOGGER.info("Iterations: " + RunEnvironment.getInstance().getCurrentSchedule().getTickCount());
-		DataLogger dLogger = new DataLogger();
-		ArrayList<String> dataString = new ArrayList<>();
-		for(IAgent a: agentContext.getObjects(IAgent.class)) {
-			String s = a.toString();
-			dataString.add(s);
-		}
+		
 		try{
-			dLogger.printData(dataString);
+			dLogger.printData(agentContext.getObjects(IAgent.class));
+			dLogger.printData(FarmContext.getObjects(Farm.class));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
