@@ -484,3 +484,23 @@ java.lang.NullPointerException
 	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
 	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
 	at java.awt.EventDispatchThread.run(Unknown Source)
+FATAL [Thread-6] 2018-07-06 15:18:32,330 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (1.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.CallBackAction.execute(CallBackAction.java:129)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:238)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at repastcity3.main.ContextManager$$FastClassByCGLIB$$56e46008.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.CallBackAction.execute(CallBackAction.java:127)
+	... 6 more
+Caused by: java.lang.Error: Unresolved compilation problem: 
+	DataLogger cannot be resolved to a variable
+
+	at repastcity3.main.ContextManager.printTicks(ContextManager.java:476)
+	... 9 more

@@ -473,6 +473,7 @@ public class ContextManager implements ContextBuilder<Object> {
 
 	public void printTicks() {
 		LOGGER.info("Iterations: " + RunEnvironment.getInstance().getCurrentSchedule().getTickCount());
+		DataLogger = new DataLogger();
 	}
 	
 	
