@@ -15,7 +15,6 @@ import com.vividsolutions.jts.geom.Coordinate;
 
 import repastcity3.environment.Candidate1;
 import repastcity3.environment.Farm;
-import repastcity3.environment.Food;
 import repastcity3.environment.Residential;
 import repastcity3.environment.Restaurant;
 import repastcity3.environment.Route;
