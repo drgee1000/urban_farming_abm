@@ -105,6 +105,11 @@ public class Farm extends FarmableLocation implements FixedGeography{
 		return stock;
 	}
 	
+	public void setStock(String name,int sales) {
+		Food f = stock.get(name);
+		f.setAmount(f.getAmount()-sales);
+		stock.put(name, f);
+	}
 
 	@Override
 	public void product() {
