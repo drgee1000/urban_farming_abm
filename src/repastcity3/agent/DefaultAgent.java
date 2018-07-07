@@ -29,7 +29,7 @@ public class DefaultAgent implements IAgent {
 
 	private Residential home; // Where the agent lives
 	private Route route; // An object to move the agent around the world
-	//private Route routeogn;
+
 	private Route routedev1;
 	private Route routedev2;
 	private double routedisogn;
@@ -37,12 +37,14 @@ public class DefaultAgent implements IAgent {
 	private double routedisdev2;
 	private Coordinate origin;
 	private Coordinate destination;
-	private Farm f;
-
+	private Farm farm;
+	
 	private boolean goingHome = false; // Whether the agent is going to or from their home
 	private boolean goforEat = false;
 	private double health = 200;
 	private double healthThreshold = 100;
+	private double caloryConsumption = 1;
+	private double caloryProduction;
 	
 	private static int uniqueID = 0;
 	private final static double p1 = 0.272;
@@ -57,7 +59,7 @@ public class DefaultAgent implements IAgent {
 	private double thredis = 2; // In kilometer; 
 	private int id;
 	private int type;
-	private int travelPurpose;
+	
 	private int income;
 	
 	
@@ -71,19 +73,16 @@ public class DefaultAgent implements IAgent {
 		double generator1 = Math.random();
 		if (generator1 > 0 && generator1 < p1){
 			type = 1; // Workplace
-			travelPurpose = 5;
+	
 		} else if (generator1 > p1 && generator1 < (p1 + p2)){
 			type = 2; //Shopping center
-			travelPurpose = 0;
+			
 		} else if (generator1 > (p1 + p2) && generator1 < (p1 + p2 + p3)){
 			type = 3; // Restaurant
-			travelPurpose = 0;
-		} /*else if (generator1 > (p1 + p2 + p3) && generator1 < (p1 + p2 + p3 + p4)){
-			type = 4; // Restaurant
-			travelPurpose = 0;
-		}*/else {
+			
+		} else {
 			type = 4;
-			travelPurpose = -5;
+			
 		}
 		Random generator2 = new Random(new Date().getTime());
 		income = generator2.nextInt(9) + 1;
@@ -98,19 +97,25 @@ public class DefaultAgent implements IAgent {
 			if(!this.goforEat) {
 				this.goforEat = true;
 				this.goingHome = false;
-				f = ContextManager.FarmContext.getRandomObject();
-				this.route = new Route(this, ContextManager.FarmProjection.getGeometry(f).getCentroid().getCoordinate(), f);
+				farm = ContextManager.FarmContext.getRandomObject();
+				this.route = new Route(this, ContextManager.FarmProjection.getGeometry(farm).getCentroid().getCoordinate(), farm);
 				this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
-				this.destination = ContextManager.FarmProjection.getGeometry(f).getCentroid().getCoordinate();
+				this.destination = ContextManager.FarmProjection.getGeometry(farm).getCentroid().getCoordinate();
 			}
 		   if(!this.route.atDestination()) {
 				this.route.travel();
-				this.health--;
+				this.health = this.health - caloryConsumption;
 			}else {
 				LOGGER.info("Agent" + this.id + " health before eating is" + this.health);
+				HashMap<String, Food> stock = farm.getStock();
+				String[] names = stock.keySet().toArray(new String[0]);
+				Random random = new Random();
+				
+				
 				while(this.health<this.healthThreshold) {
-						
-						this.health += 100;
+						String name = names[random.nextInt(names.length)];
+						Food food = stock.get(name);
+						this.buy(farm,food,1);
 					}
 				this.goforEat = false;
 				LOGGER.info("Agent" + this.id + " health after eating is" + this.health);
@@ -293,7 +298,7 @@ public class DefaultAgent implements IAgent {
 			break;
 		}*/
 		}
-			this.health -= 2;
+			this.health -= this.health - caloryConsumption;
 		}
 
 	}
@@ -405,11 +410,7 @@ public class DefaultAgent implements IAgent {
 		return distances[iden];
 	}	
 	
-	@Override
-	public int getTralPurp() {
-		return travelPurpose;
-	}
-
+	
 	@Override
 	public int getIncome() {
 		return income;
@@ -433,6 +434,13 @@ public class DefaultAgent implements IAgent {
 		
 	}
 	
+	public double getCaloryConsumption() {
+		return caloryConsumption;
+	}
+	
+	public double getCaloryProduction() {
+		return caloryProduction;
+	}
 	public double getHealth() {
 		return this.health;
 	}
@@ -448,5 +456,13 @@ public class DefaultAgent implements IAgent {
 	public void setHealthThreshold(double healthThreshold) {
 		this.healthThreshold = healthThreshold;
 	}
-
+	
+	public void buy(Farm farm, Food food, int sales) {
+		String name = food.getName();
+		if(food.getAmount() > sales) {
+			farm.setStock(name, sales);
+			this.caloryProduction = food.getCalory();
+			this.health = this.health + this.caloryProduction;
+		}
+	}
 }

@@ -62,8 +62,6 @@ public interface IAgent {
 	
 	double returnDis(String id);
 	
-	int getTralPurp();
-	
 	int getIncome();
 	
 	int isDes(String id);
@@ -72,6 +70,6 @@ public interface IAgent {
 	
 	void calDisDes2Can();
 	
-	
+	void buy(Farm farm, Food food, int amount);
 	
 }
