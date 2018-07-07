@@ -1,16 +1,2678 @@
-Jul 06, 2018 11:26:08 PM repastcity3.main.ContextManager build
+Jul 07, 2018 5:01:11 PM repastcity3.main.ContextManager build
 INFO: Creating agents with the agent definition: 'point:people_600.shp$repastcity3.agent.DefaultAgent'
-Jul 06, 2018 11:26:08 PM repastcity3.agent.AgentFactory createPointAgents
+Jul 07, 2018 5:01:11 PM repastcity3.agent.AgentFactory createPointAgents
 INFO: Have created 300 of type repastcity3.agent.DefaultAgent from file ./data/gis_data/urban_farming/people_600.shp
-Jul 06, 2018 11:26:08 PM repastcity3.agent.AgentFactory createPointAgents
+Jul 07, 2018 5:01:11 PM repastcity3.agent.AgentFactory createPointAgents
 INFO: Have created 600 of type repastcity3.agent.DefaultAgent from file ./data/gis_data/urban_farming/people_600.shp
-Jul 06, 2018 11:26:08 PM repastcity3.main.ContextManager createSchedule
+Jul 07, 2018 5:01:11 PM repastcity3.main.ContextManager createSchedule
 INFO: The multi-threaded scheduler will be used.
-Jul 06, 2018 11:26:15 PM repastcity3.main.ContextManager printTicks
+Jul 07, 2018 5:01:22 PM repastcity3.main.ContextManager printTicks
 INFO: Iterations: 1.0
-Jul 06, 2018 11:26:19 PM repastcity3.main.ContextManager printTicks
+Jul 07, 2018 5:01:24 PM repastcity3.main.ContextManager printTicks
 INFO: Iterations: 11.0
-Jul 06, 2018 11:26:21 PM repastcity3.main.ContextManager printTicks
+Jul 07, 2018 5:01:25 PM repastcity3.main.ContextManager printTicks
 INFO: Iterations: 21.0
-Jul 06, 2018 11:26:29 PM repastcity3.main.ContextManager printTicks
+Jul 07, 2018 5:01:26 PM repastcity3.main.ContextManager printTicks
 INFO: Iterations: 31.0
+Jul 07, 2018 5:01:27 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 41.0
+Jul 07, 2018 5:01:28 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 51.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent438 health before eating is95.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent438 health after eating is195.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent224 health before eating is94.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent224 health after eating is194.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent2 health before eating is94.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent2 health after eating is194.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent492 health before eating is94.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent492 health after eating is194.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent165 health before eating is93.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent165 health after eating is193.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent416 health before eating is93.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent416 health after eating is193.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent457 health before eating is92.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent457 health after eating is192.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent76 health before eating is92.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent76 health after eating is192.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent459 health before eating is92.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent459 health after eating is192.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent447 health before eating is91.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent447 health after eating is191.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent429 health before eating is91.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent429 health after eating is191.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent186 health before eating is90.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent186 health after eating is190.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent116 health before eating is89.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent116 health after eating is189.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent257 health before eating is89.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent257 health after eating is189.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent526 health before eating is89.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent526 health after eating is189.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent3 health before eating is89.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent3 health after eating is189.0
+Jul 07, 2018 5:01:38 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 61.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent144 health before eating is88.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent144 health after eating is188.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent458 health before eating is88.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent458 health after eating is188.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent342 health before eating is88.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent342 health after eating is188.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent598 health before eating is87.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent598 health after eating is187.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent18 health before eating is87.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent18 health after eating is187.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent436 health before eating is87.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent436 health after eating is187.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent139 health before eating is87.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent139 health after eating is187.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent193 health before eating is87.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent193 health after eating is187.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent122 health before eating is86.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent122 health after eating is186.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent173 health before eating is86.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent173 health after eating is186.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent380 health before eating is86.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent380 health after eating is186.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent112 health before eating is86.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent112 health after eating is186.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent359 health before eating is86.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent359 health after eating is186.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent495 health before eating is86.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent495 health after eating is186.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent102 health before eating is86.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent102 health after eating is186.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent425 health before eating is86.0
+Jul 07, 2018 5:01:38 PM repastcity3.agent.DefaultAgent step
+INFO: Agent425 health after eating is186.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent162 health before eating is85.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent162 health after eating is185.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent583 health before eating is85.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent583 health after eating is185.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent274 health before eating is85.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent274 health after eating is185.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent397 health before eating is85.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent397 health after eating is185.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent475 health before eating is85.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent475 health after eating is185.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent421 health before eating is85.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent421 health after eating is185.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent330 health before eating is85.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent330 health after eating is185.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent471 health before eating is85.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent471 health after eating is185.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent108 health before eating is85.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent108 health after eating is185.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent560 health before eating is85.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent560 health after eating is185.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent589 health before eating is85.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent589 health after eating is185.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent105 health before eating is85.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent105 health after eating is185.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent201 health before eating is85.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent201 health after eating is185.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent558 health before eating is85.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent558 health after eating is185.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent444 health before eating is84.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent444 health after eating is184.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent180 health before eating is84.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent180 health after eating is184.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent241 health before eating is84.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent241 health after eating is184.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent217 health before eating is84.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent217 health after eating is184.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent336 health before eating is84.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent364 health before eating is84.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent336 health after eating is184.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent364 health after eating is184.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent455 health before eating is84.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent455 health after eating is184.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent555 health before eating is84.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent555 health after eating is184.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent268 health before eating is84.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent268 health after eating is184.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent103 health before eating is84.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent103 health after eating is184.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent253 health before eating is83.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent305 health before eating is83.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent253 health after eating is183.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent305 health after eating is183.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent164 health before eating is83.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent164 health after eating is183.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent373 health before eating is83.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent373 health after eating is183.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent587 health before eating is83.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent587 health after eating is183.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent289 health before eating is83.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent289 health after eating is183.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent33 health before eating is83.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent33 health after eating is183.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent297 health before eating is83.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent297 health after eating is183.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent256 health before eating is83.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent256 health after eating is183.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent269 health before eating is83.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent269 health after eating is183.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent422 health before eating is83.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent422 health after eating is183.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent32 health before eating is83.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent32 health after eating is183.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent17 health before eating is83.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent17 health after eating is183.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent205 health before eating is83.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent205 health after eating is183.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent485 health before eating is83.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent485 health after eating is183.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent565 health before eating is82.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent565 health after eating is182.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent484 health before eating is82.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent484 health after eating is182.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent271 health before eating is82.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent271 health after eating is182.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent498 health before eating is82.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent498 health after eating is182.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent166 health before eating is82.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent166 health after eating is182.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent300 health before eating is82.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent300 health after eating is182.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent125 health before eating is82.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent147 health before eating is82.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent125 health after eating is182.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent147 health after eating is182.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent479 health before eating is82.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent479 health after eating is182.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent9 health before eating is82.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent9 health after eating is182.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent243 health before eating is82.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent243 health after eating is182.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent574 health before eating is82.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent574 health after eating is182.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent216 health before eating is81.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent216 health after eating is181.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent427 health before eating is81.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent427 health after eating is181.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent136 health before eating is81.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent136 health after eating is181.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent92 health before eating is81.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent92 health after eating is181.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent181 health before eating is81.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent181 health after eating is181.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent323 health before eating is81.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent323 health after eating is181.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent252 health before eating is81.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent252 health after eating is181.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent430 health before eating is81.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent430 health after eating is181.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent10 health before eating is81.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent10 health after eating is181.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent248 health before eating is81.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent248 health after eating is181.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent488 health before eating is81.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent170 health before eating is81.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent488 health after eating is181.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent170 health after eating is181.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent394 health before eating is81.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent394 health after eating is181.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent134 health before eating is81.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent510 health before eating is81.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent134 health after eating is181.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent510 health after eating is181.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent507 health before eating is81.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent507 health after eating is181.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent43 health before eating is81.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent43 health after eating is181.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent246 health before eating is81.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent246 health after eating is181.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent448 health before eating is81.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent448 health after eating is181.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent61 health before eating is80.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent61 health after eating is180.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent83 health before eating is80.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent83 health after eating is180.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent135 health before eating is80.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent135 health after eating is180.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent39 health before eating is80.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent39 health after eating is180.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent464 health before eating is80.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent464 health after eating is180.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent376 health before eating is80.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent376 health after eating is180.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent322 health before eating is80.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent322 health after eating is180.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent389 health before eating is80.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent389 health after eating is180.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent549 health before eating is80.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent549 health after eating is180.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent113 health before eating is80.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent113 health after eating is180.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent188 health before eating is80.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent188 health after eating is180.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent152 health before eating is79.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent152 health after eating is179.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent31 health before eating is79.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent31 health after eating is179.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent5 health before eating is79.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent5 health after eating is179.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent312 health before eating is79.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent312 health after eating is179.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent261 health before eating is79.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent261 health after eating is179.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent179 health before eating is79.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent179 health after eating is179.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent106 health before eating is79.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent106 health after eating is179.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent159 health before eating is79.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent159 health after eating is179.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent48 health before eating is79.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent48 health after eating is179.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent595 health before eating is79.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent595 health after eating is179.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent505 health before eating is79.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent505 health after eating is179.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent493 health before eating is79.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent493 health after eating is179.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent212 health before eating is79.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent212 health after eating is179.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent420 health before eating is79.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent420 health after eating is179.0
+Jul 07, 2018 5:01:39 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 71.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent571 health before eating is78.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent571 health after eating is178.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent441 health before eating is78.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent441 health after eating is178.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent229 health before eating is78.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent229 health after eating is178.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent324 health before eating is78.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent324 health after eating is178.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent381 health before eating is78.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent381 health after eating is178.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent88 health before eating is78.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent88 health after eating is178.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent41 health before eating is78.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent41 health after eating is178.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent326 health before eating is78.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent326 health after eating is178.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent533 health before eating is78.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent533 health after eating is178.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent528 health before eating is78.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent528 health after eating is178.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent13 health before eating is78.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent13 health after eating is178.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent24 health before eating is78.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent24 health after eating is178.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent577 health before eating is78.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent577 health after eating is178.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent388 health before eating is78.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent388 health after eating is178.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent597 health before eating is78.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent597 health after eating is178.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent413 health before eating is78.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent413 health after eating is178.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent131 health before eating is78.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent131 health after eating is178.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent77 health before eating is77.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent77 health after eating is177.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent339 health before eating is77.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent428 health before eating is77.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent339 health after eating is177.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent428 health after eating is177.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent233 health before eating is77.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent233 health after eating is177.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent184 health before eating is77.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent184 health after eating is177.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent240 health before eating is77.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent240 health after eating is177.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent69 health before eating is77.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent69 health after eating is177.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent95 health before eating is77.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent95 health after eating is177.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent298 health before eating is77.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent298 health after eating is177.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent403 health before eating is77.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent403 health after eating is177.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent264 health before eating is77.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent264 health after eating is177.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent89 health before eating is77.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent89 health after eating is177.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent65 health before eating is77.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent65 health after eating is177.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent353 health before eating is76.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent353 health after eating is176.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent456 health before eating is76.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent456 health after eating is176.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent554 health before eating is76.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent554 health after eating is176.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent340 health before eating is76.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent340 health after eating is176.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent163 health before eating is76.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent163 health after eating is176.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent350 health before eating is76.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent350 health after eating is176.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent244 health before eating is76.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent244 health after eating is176.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent80 health before eating is76.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent80 health after eating is176.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent52 health before eating is76.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent52 health after eating is176.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent331 health before eating is76.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent331 health after eating is176.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent311 health before eating is76.0
+Jul 07, 2018 5:01:39 PM repastcity3.agent.DefaultAgent step
+INFO: Agent311 health after eating is176.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent169 health before eating is76.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent169 health after eating is176.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent390 health before eating is76.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent390 health after eating is176.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent291 health before eating is75.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent291 health after eating is175.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent30 health before eating is75.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent30 health after eating is175.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent237 health before eating is75.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent71 health before eating is75.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent71 health after eating is175.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent237 health after eating is175.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent521 health before eating is75.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent521 health after eating is175.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent432 health before eating is75.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent432 health after eating is175.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent352 health before eating is75.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent352 health after eating is175.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent191 health before eating is75.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent191 health after eating is175.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent47 health before eating is75.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent47 health after eating is175.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent445 health before eating is75.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent445 health after eating is175.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent213 health before eating is75.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent213 health after eating is175.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent299 health before eating is74.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent299 health after eating is174.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent107 health before eating is74.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent107 health after eating is174.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent450 health before eating is74.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent450 health after eating is174.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent536 health before eating is74.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent536 health after eating is174.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent132 health before eating is74.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent132 health after eating is174.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent176 health before eating is74.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent176 health after eating is174.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent226 health before eating is74.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent226 health after eating is174.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent325 health before eating is74.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent325 health after eating is174.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent418 health before eating is74.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent418 health after eating is174.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent375 health before eating is74.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent375 health after eating is174.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent525 health before eating is74.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent525 health after eating is174.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent210 health before eating is74.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent210 health after eating is174.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent579 health before eating is74.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent579 health after eating is174.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent523 health before eating is74.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent523 health after eating is174.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent320 health before eating is74.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent320 health after eating is174.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent499 health before eating is73.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent401 health before eating is73.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent401 health after eating is173.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent499 health after eating is173.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent529 health before eating is73.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent529 health after eating is173.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent87 health before eating is73.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent87 health after eating is173.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent117 health before eating is73.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent117 health after eating is173.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent199 health before eating is73.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent199 health after eating is173.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent130 health before eating is73.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent130 health after eating is173.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent460 health before eating is73.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent460 health after eating is173.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent550 health before eating is73.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent550 health after eating is173.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent398 health before eating is73.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent398 health after eating is173.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent346 health before eating is73.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent346 health after eating is173.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent546 health before eating is73.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent546 health after eating is173.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent501 health before eating is73.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent501 health after eating is173.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent553 health before eating is73.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent553 health after eating is173.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent542 health before eating is73.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent542 health after eating is173.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent557 health before eating is73.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent557 health after eating is173.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent504 health before eating is72.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent504 health after eating is172.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent307 health before eating is72.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent307 health after eating is172.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent143 health before eating is72.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent143 health after eating is172.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent168 health before eating is72.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent168 health after eating is172.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent431 health before eating is72.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent431 health after eating is172.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent468 health before eating is72.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent468 health after eating is172.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent250 health before eating is72.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent250 health after eating is172.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent347 health before eating is72.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent221 health before eating is72.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent347 health after eating is172.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent221 health after eating is172.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent109 health before eating is72.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent109 health after eating is172.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent28 health before eating is72.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent28 health after eating is172.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent321 health before eating is72.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent321 health after eating is172.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent467 health before eating is72.0
+Jul 07, 2018 5:01:40 PM repastcity3.agent.DefaultAgent step
+INFO: Agent467 health after eating is172.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent220 health before eating is71.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent220 health after eating is171.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent338 health before eating is71.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent338 health after eating is171.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent400 health before eating is71.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent400 health after eating is171.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent452 health before eating is71.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent452 health after eating is171.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent355 health before eating is71.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent355 health after eating is171.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent508 health before eating is71.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent508 health after eating is171.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent276 health before eating is71.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent276 health after eating is171.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent314 health before eating is71.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent314 health after eating is171.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent27 health before eating is71.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent27 health after eating is171.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent562 health before eating is71.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent562 health after eating is171.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent545 health before eating is71.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent545 health after eating is171.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent453 health before eating is71.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent453 health after eating is171.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent118 health before eating is71.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent118 health after eating is171.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent354 health before eating is71.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent354 health after eating is171.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent295 health before eating is71.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent295 health after eating is171.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent195 health before eating is70.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent195 health after eating is170.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent303 health before eating is70.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent303 health after eating is170.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent259 health before eating is70.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent259 health after eating is170.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1 health before eating is70.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1 health after eating is170.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent119 health before eating is70.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent514 health before eating is70.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent119 health after eating is170.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent514 health after eating is170.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent64 health before eating is70.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent64 health after eating is170.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent91 health before eating is70.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent91 health after eating is170.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent349 health before eating is70.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent349 health after eating is170.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent35 health before eating is69.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent35 health after eating is169.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent482 health before eating is69.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent482 health after eating is169.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent547 health before eating is69.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent547 health after eating is169.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent472 health before eating is69.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent472 health after eating is169.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent470 health before eating is69.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent470 health after eating is169.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent22 health before eating is69.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent22 health after eating is169.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent230 health before eating is69.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent230 health after eating is169.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent63 health before eating is69.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent63 health after eating is169.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent57 health before eating is69.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent57 health after eating is169.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent369 health before eating is69.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent369 health after eating is169.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent55 health before eating is69.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent55 health after eating is169.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent518 health before eating is69.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent518 health after eating is169.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent192 health before eating is69.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent192 health after eating is169.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent228 health before eating is69.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent228 health after eating is169.0
+Jul 07, 2018 5:04:56 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 81.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent318 health before eating is68.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent318 health after eating is168.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent594 health before eating is68.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent594 health after eating is168.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent99 health before eating is68.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent99 health after eating is168.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent60 health before eating is68.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent60 health after eating is168.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent156 health before eating is68.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent156 health after eating is168.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent393 health before eating is68.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent393 health after eating is168.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent568 health before eating is68.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent568 health after eating is168.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent308 health before eating is68.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent308 health after eating is168.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent74 health before eating is68.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent74 health after eating is168.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent175 health before eating is67.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent175 health after eating is167.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent82 health before eating is67.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent82 health after eating is167.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent21 health before eating is67.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent21 health after eating is167.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent225 health before eating is67.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent225 health after eating is167.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent294 health before eating is67.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent294 health after eating is167.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent477 health before eating is67.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent477 health after eating is167.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent185 health before eating is67.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent185 health after eating is167.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent371 health before eating is67.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent371 health after eating is167.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent362 health before eating is67.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent362 health after eating is167.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent93 health before eating is67.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent93 health after eating is167.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent395 health before eating is67.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent395 health after eating is167.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent538 health before eating is67.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent538 health after eating is167.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent263 health before eating is67.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent263 health after eating is167.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent78 health before eating is67.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent78 health after eating is167.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent556 health before eating is66.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent556 health after eating is166.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent287 health before eating is66.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent287 health after eating is166.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent40 health before eating is66.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent40 health after eating is166.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent384 health before eating is66.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent384 health after eating is166.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent177 health before eating is66.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent177 health after eating is166.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent34 health before eating is66.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent34 health after eating is166.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent451 health before eating is66.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent451 health after eating is166.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent424 health before eating is66.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent424 health after eating is166.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent351 health before eating is66.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent351 health after eating is166.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent98 health before eating is66.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent98 health after eating is166.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent53 health before eating is66.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent53 health after eating is166.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent341 health before eating is65.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent51 health before eating is65.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent341 health after eating is165.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent537 health before eating is65.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent51 health after eating is165.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent537 health after eating is165.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent379 health before eating is65.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent379 health after eating is165.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent8 health before eating is65.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent8 health after eating is165.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent97 health before eating is65.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent97 health after eating is165.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent382 health before eating is65.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent382 health after eating is165.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent84 health before eating is65.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent84 health after eating is165.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent206 health before eating is65.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent206 health after eating is165.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent437 health before eating is65.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent437 health after eating is165.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent333 health before eating is65.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent333 health after eating is165.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent203 health before eating is65.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent203 health after eating is165.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent548 health before eating is65.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent476 health before eating is65.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent548 health after eating is165.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent476 health after eating is165.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent149 health before eating is65.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent149 health after eating is165.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent496 health before eating is65.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent496 health after eating is165.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent198 health before eating is65.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent183 health before eating is65.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent198 health after eating is165.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent183 health after eating is165.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent197 health before eating is65.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent197 health after eating is165.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent153 health before eating is65.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent153 health after eating is165.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent564 health before eating is65.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent564 health after eating is165.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent121 health before eating is65.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent121 health after eating is165.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent551 health before eating is65.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent551 health after eating is165.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent50 health before eating is65.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent50 health after eating is165.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent374 health before eating is65.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent374 health after eating is165.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent126 health before eating is65.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent126 health after eating is165.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent309 health before eating is65.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent309 health after eating is165.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent592 health before eating is65.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent592 health after eating is165.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent512 health before eating is64.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent512 health after eating is164.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent239 health before eating is64.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent239 health after eating is164.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent277 health before eating is64.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent277 health after eating is164.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent483 health before eating is64.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent483 health after eating is164.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent138 health before eating is64.0
+Jul 07, 2018 5:04:56 PM repastcity3.agent.DefaultAgent step
+INFO: Agent138 health after eating is164.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent500 health before eating is64.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent500 health after eating is164.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent334 health before eating is64.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent334 health after eating is164.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent465 health before eating is64.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent465 health after eating is164.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent37 health before eating is64.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent37 health after eating is164.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent151 health before eating is64.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent280 health before eating is64.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent151 health after eating is164.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent280 health after eating is164.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent231 health before eating is64.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent231 health after eating is164.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent463 health before eating is64.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent463 health after eating is164.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent262 health before eating is63.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent262 health after eating is163.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent196 health before eating is63.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent196 health after eating is163.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent227 health before eating is63.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent227 health after eating is163.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent405 health before eating is63.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent405 health after eating is163.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent497 health before eating is63.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent497 health after eating is163.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent490 health before eating is63.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent490 health after eating is163.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent154 health before eating is63.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent154 health after eating is163.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent590 health before eating is63.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent590 health after eating is163.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent110 health before eating is63.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent110 health after eating is163.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent54 health before eating is63.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent54 health after eating is163.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent387 health before eating is63.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent387 health after eating is163.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent150 health before eating is63.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent150 health after eating is163.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent344 health before eating is63.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent344 health after eating is163.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent372 health before eating is63.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent372 health after eating is163.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent319 health before eating is63.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent319 health after eating is163.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent573 health before eating is63.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent573 health after eating is163.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent439 health before eating is62.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent439 health after eating is162.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent12 health before eating is62.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent12 health after eating is162.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent410 health before eating is62.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent410 health after eating is162.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent365 health before eating is62.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent365 health after eating is162.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent26 health before eating is62.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent26 health after eating is162.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent171 health before eating is62.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent171 health after eating is162.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent570 health before eating is62.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent570 health after eating is162.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent146 health before eating is62.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent146 health after eating is162.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent345 health before eating is61.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent345 health after eating is161.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent563 health before eating is61.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent563 health after eating is161.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent522 health before eating is61.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent522 health after eating is161.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent409 health before eating is61.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent409 health after eating is161.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent449 health before eating is61.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent449 health after eating is161.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent46 health before eating is61.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent46 health after eating is161.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent94 health before eating is61.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent94 health after eating is161.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent200 health before eating is61.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent200 health after eating is161.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent190 health before eating is61.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent190 health after eating is161.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent284 health before eating is61.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent284 health after eating is161.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent358 health before eating is61.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent358 health after eating is161.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent29 health before eating is61.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent29 health after eating is161.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent251 health before eating is61.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent251 health after eating is161.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent235 health before eating is61.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent235 health after eating is161.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent454 health before eating is61.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent454 health after eating is161.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent219 health before eating is60.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent219 health after eating is160.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent599 health before eating is60.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent599 health after eating is160.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent114 health before eating is60.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent114 health after eating is160.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent487 health before eating is60.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent348 health before eating is60.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent487 health after eating is160.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent348 health after eating is160.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent591 health before eating is60.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent591 health after eating is160.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent73 health before eating is60.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent73 health after eating is160.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent115 health before eating is60.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent115 health after eating is160.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent209 health before eating is60.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent209 health after eating is160.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent316 health before eating is60.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent316 health after eating is160.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent161 health before eating is60.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent161 health after eating is160.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent494 health before eating is60.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent494 health after eating is160.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent356 health before eating is60.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent356 health after eating is160.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent370 health before eating is60.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent370 health after eating is160.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent411 health before eating is60.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent411 health after eating is160.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent383 health before eating is60.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent383 health after eating is160.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent540 health before eating is60.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent540 health after eating is160.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent544 health before eating is60.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent544 health after eating is160.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent189 health before eating is60.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent189 health after eating is160.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent506 health before eating is60.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent506 health after eating is160.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent543 health before eating is59.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent543 health after eating is159.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent172 health before eating is59.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent172 health after eating is159.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent474 health before eating is59.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent474 health after eating is159.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent90 health before eating is59.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent90 health after eating is159.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent585 health before eating is59.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent585 health after eating is159.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent167 health before eating is59.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent167 health after eating is159.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent236 health before eating is59.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent236 health after eating is159.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent44 health before eating is59.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent44 health after eating is159.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent301 health before eating is59.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent301 health after eating is159.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent255 health before eating is59.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent255 health after eating is159.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent75 health before eating is59.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent75 health after eating is159.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent14 health before eating is59.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent14 health after eating is159.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent310 health before eating is59.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent310 health after eating is159.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent49 health before eating is59.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent49 health after eating is159.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent4 health before eating is59.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent4 health after eating is159.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent7 health before eating is59.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent7 health after eating is159.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent561 health before eating is59.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent561 health after eating is159.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent572 health before eating is59.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent572 health after eating is159.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent258 health before eating is59.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent258 health after eating is159.0
+Jul 07, 2018 5:04:57 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 91.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent194 health before eating is58.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent194 health after eating is158.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent566 health before eating is58.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent566 health after eating is158.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent267 health before eating is58.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent267 health after eating is158.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent282 health before eating is58.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent282 health after eating is158.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent478 health before eating is58.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent478 health after eating is158.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent386 health before eating is58.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent386 health after eating is158.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent245 health before eating is58.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent245 health after eating is158.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent155 health before eating is58.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent155 health after eating is158.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent426 health before eating is57.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent426 health after eating is157.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent23 health before eating is57.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent23 health after eating is157.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent596 health before eating is57.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent596 health after eating is157.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent214 health before eating is57.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent214 health after eating is157.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent593 health before eating is57.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent593 health after eating is157.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent419 health before eating is57.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent419 health after eating is157.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent491 health before eating is57.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent491 health after eating is157.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent129 health before eating is57.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent129 health after eating is157.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent443 health before eating is57.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent443 health after eating is157.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent584 health before eating is57.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent584 health after eating is157.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent315 health before eating is57.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent315 health after eating is157.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent480 health before eating is57.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent480 health after eating is157.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent249 health before eating is57.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent249 health after eating is157.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent215 health before eating is57.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent215 health after eating is157.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent535 health before eating is57.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent535 health after eating is157.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent541 health before eating is57.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent575 health before eating is57.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent541 health after eating is157.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent575 health after eating is157.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent569 health before eating is57.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent569 health after eating is157.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent128 health before eating is57.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent128 health after eating is157.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent502 health before eating is57.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent502 health after eating is157.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent385 health before eating is56.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent385 health after eating is156.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent25 health before eating is56.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent25 health after eating is156.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent511 health before eating is56.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent511 health after eating is156.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent391 health before eating is56.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent391 health after eating is156.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent433 health before eating is56.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent433 health after eating is156.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent296 health before eating is56.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent296 health after eating is156.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent392 health before eating is56.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent392 health after eating is156.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent582 health before eating is56.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent582 health after eating is156.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent461 health before eating is56.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent461 health after eating is156.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent62 health before eating is56.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent62 health after eating is156.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent278 health before eating is56.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent278 health after eating is156.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent402 health before eating is56.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent402 health after eating is156.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent377 health before eating is56.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent377 health after eating is156.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent281 health before eating is56.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent281 health after eating is156.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent133 health before eating is55.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent133 health after eating is155.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent211 health before eating is55.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent211 health after eating is155.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent446 health before eating is55.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent446 health after eating is155.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent466 health before eating is55.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent466 health after eating is155.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent588 health before eating is55.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent588 health after eating is155.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent520 health before eating is55.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent520 health after eating is155.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent101 health before eating is55.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent101 health after eating is155.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent363 health before eating is55.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent363 health after eating is155.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent516 health before eating is55.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent516 health after eating is155.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent100 health before eating is55.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent100 health after eating is155.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent368 health before eating is54.0
+Jul 07, 2018 5:04:57 PM repastcity3.agent.DefaultAgent step
+INFO: Agent368 health after eating is154.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent423 health before eating is54.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent423 health after eating is154.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent415 health before eating is54.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent415 health after eating is154.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent127 health before eating is54.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent127 health after eating is154.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent208 health before eating is54.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent208 health after eating is154.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent275 health before eating is54.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent275 health after eating is154.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent145 health before eating is54.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent145 health after eating is154.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent56 health before eating is54.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent56 health after eating is154.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent302 health before eating is54.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent302 health after eating is154.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent204 health before eating is54.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent204 health after eating is154.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent158 health before eating is54.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent158 health after eating is154.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent11 health before eating is54.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent11 health after eating is154.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent148 health before eating is54.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent148 health after eating is154.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent202 health before eating is53.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent202 health after eating is153.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent327 health before eating is53.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent327 health after eating is153.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent417 health before eating is53.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent417 health after eating is153.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent36 health before eating is53.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent36 health after eating is153.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent178 health before eating is53.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent178 health after eating is153.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent222 health before eating is53.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent222 health after eating is153.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent328 health before eating is53.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent328 health after eating is153.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent407 health before eating is53.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent407 health after eating is153.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent223 health before eating is53.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent223 health after eating is153.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent96 health before eating is53.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent96 health after eating is153.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent329 health before eating is53.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent329 health after eating is153.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent531 health before eating is53.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent531 health after eating is153.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent435 health before eating is52.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent435 health after eating is152.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent412 health before eating is52.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent412 health after eating is152.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent283 health before eating is52.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent283 health after eating is152.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent434 health before eating is52.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent434 health after eating is152.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent527 health before eating is52.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent527 health after eating is152.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent85 health before eating is52.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent85 health after eating is152.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent361 health before eating is52.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent361 health after eating is152.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent70 health before eating is52.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent70 health after eating is152.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent187 health before eating is52.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent187 health after eating is152.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent406 health before eating is52.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent406 health after eating is152.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent16 health before eating is52.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent16 health after eating is152.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent79 health before eating is52.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent79 health after eating is152.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent469 health before eating is51.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent469 health after eating is151.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent234 health before eating is51.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent234 health after eating is151.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent509 health before eating is51.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent509 health after eating is151.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent532 health before eating is51.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent532 health after eating is151.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent559 health before eating is51.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent559 health after eating is151.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent238 health before eating is51.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent238 health after eating is151.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent442 health before eating is51.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent442 health after eating is151.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent260 health before eating is51.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent260 health after eating is151.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent67 health before eating is51.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent67 health after eating is151.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent396 health before eating is51.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent396 health after eating is151.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent86 health before eating is51.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent86 health after eating is151.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent378 health before eating is51.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent378 health after eating is151.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent286 health before eating is51.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent286 health after eating is151.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent586 health before eating is51.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent586 health after eating is151.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent408 health before eating is51.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent408 health after eating is151.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent242 health before eating is51.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent242 health after eating is151.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent534 health before eating is51.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent534 health after eating is151.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent367 health before eating is50.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent367 health after eating is150.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent273 health before eating is50.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent273 health after eating is150.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent486 health before eating is50.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent486 health after eating is150.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent357 health before eating is50.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent357 health after eating is150.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent290 health before eating is50.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent290 health after eating is150.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent440 health before eating is50.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent440 health after eating is150.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent576 health before eating is50.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent576 health after eating is150.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent270 health before eating is50.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent270 health after eating is150.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent552 health before eating is49.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent552 health after eating is149.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent489 health before eating is49.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent489 health after eating is149.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent254 health before eating is49.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent254 health after eating is149.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent293 health before eating is49.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent293 health after eating is149.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent285 health before eating is49.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent285 health after eating is149.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent72 health before eating is49.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent72 health after eating is149.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent68 health before eating is49.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent68 health after eating is149.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent306 health before eating is49.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent306 health after eating is149.0
+Jul 07, 2018 5:04:58 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 101.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent111 health before eating is48.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent111 health after eating is148.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent581 health before eating is48.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent581 health after eating is148.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent524 health before eating is48.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent524 health after eating is148.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent481 health before eating is47.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent481 health after eating is147.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent123 health before eating is47.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent123 health after eating is147.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent140 health before eating is47.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent140 health after eating is147.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent45 health before eating is47.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent45 health after eating is147.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent232 health before eating is46.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent232 health after eating is146.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent104 health before eating is46.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent104 health after eating is146.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent38 health before eating is46.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent38 health after eating is146.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent567 health before eating is46.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent567 health after eating is146.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent6 health before eating is46.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent6 health after eating is146.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent66 health before eating is46.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent66 health after eating is146.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent462 health before eating is46.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent462 health after eating is146.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent519 health before eating is46.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent519 health after eating is146.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent335 health before eating is46.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent335 health after eating is146.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent304 health before eating is46.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent304 health after eating is146.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent160 health before eating is45.0
+Jul 07, 2018 5:04:58 PM repastcity3.agent.DefaultAgent step
+INFO: Agent160 health after eating is145.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent337 health before eating is45.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent337 health after eating is145.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent141 health before eating is45.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent141 health after eating is145.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent266 health before eating is45.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent266 health after eating is145.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent513 health before eating is45.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent513 health after eating is145.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent182 health before eating is44.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent182 health after eating is144.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent218 health before eating is44.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent218 health after eating is144.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent332 health before eating is44.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent332 health after eating is144.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent580 health before eating is44.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent580 health after eating is144.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent174 health before eating is44.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent174 health after eating is144.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent42 health before eating is44.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent42 health after eating is144.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent247 health before eating is44.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent247 health after eating is144.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent517 health before eating is43.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent517 health after eating is143.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent81 health before eating is43.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent81 health after eating is143.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent157 health before eating is43.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent157 health after eating is143.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent272 health before eating is42.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent272 health after eating is142.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent317 health before eating is42.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent317 health after eating is142.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent399 health before eating is42.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent399 health after eating is142.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent515 health before eating is41.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent515 health after eating is141.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent530 health before eating is41.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent530 health after eating is141.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent360 health before eating is41.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent360 health after eating is141.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent19 health before eating is40.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent19 health after eating is140.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent414 health before eating is40.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent414 health after eating is140.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent58 health before eating is40.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent58 health after eating is140.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent473 health before eating is40.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent473 health after eating is140.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent539 health before eating is40.0
+Jul 07, 2018 5:04:59 PM repastcity3.agent.DefaultAgent step
+INFO: Agent539 health after eating is140.0
+Jul 07, 2018 5:04:59 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 111.0
+Jul 07, 2018 5:08:33 PM repastcity3.main.ContextManager build
+INFO: Creating agents with the agent definition: 'point:people_600.shp$repastcity3.agent.DefaultAgent'
+Jul 07, 2018 5:08:33 PM repastcity3.agent.AgentFactory createPointAgents
+INFO: Have created 300 of type repastcity3.agent.DefaultAgent from file ./data/gis_data/urban_farming/people_600.shp
+Jul 07, 2018 5:08:33 PM repastcity3.agent.AgentFactory createPointAgents
+INFO: Have created 600 of type repastcity3.agent.DefaultAgent from file ./data/gis_data/urban_farming/people_600.shp
+Jul 07, 2018 5:08:33 PM repastcity3.main.ContextManager createSchedule
+INFO: The multi-threaded scheduler will be used.
+Jul 07, 2018 5:08:36 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 1.0
+Jul 07, 2018 5:08:41 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 11.0
+Jul 07, 2018 5:08:42 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 21.0
+Jul 07, 2018 5:08:43 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 31.0
+Jul 07, 2018 5:08:44 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 41.0
+Jul 07, 2018 5:08:45 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 51.0
+Jul 07, 2018 5:08:46 PM repastcity3.agent.DefaultAgent step
+INFO: Agent785 health before eating is96.0
+Jul 07, 2018 5:08:46 PM repastcity3.agent.DefaultAgent step
+INFO: Agent785 health after eating is196.0
+Jul 07, 2018 5:08:46 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1079 health before eating is95.0
+Jul 07, 2018 5:08:46 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1079 health after eating is195.0
+Jul 07, 2018 5:08:46 PM repastcity3.agent.DefaultAgent step
+INFO: Agent731 health before eating is95.0
+Jul 07, 2018 5:08:46 PM repastcity3.agent.DefaultAgent step
+INFO: Agent731 health after eating is195.0
+Jul 07, 2018 5:08:46 PM repastcity3.agent.DefaultAgent step
+INFO: Agent879 health before eating is95.0
+Jul 07, 2018 5:08:46 PM repastcity3.agent.DefaultAgent step
+INFO: Agent879 health after eating is195.0
+Jul 07, 2018 5:08:46 PM repastcity3.agent.DefaultAgent step
+INFO: Agent770 health before eating is94.0
+Jul 07, 2018 5:08:46 PM repastcity3.agent.DefaultAgent step
+INFO: Agent770 health after eating is194.0
+Jul 07, 2018 5:08:46 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1198 health before eating is94.0
+Jul 07, 2018 5:08:46 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1198 health after eating is194.0
+Jul 07, 2018 5:08:46 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1018 health before eating is94.0
+Jul 07, 2018 5:08:46 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1018 health after eating is194.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent621 health before eating is94.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent621 health after eating is194.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent619 health before eating is94.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent619 health after eating is194.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent672 health before eating is92.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent672 health after eating is192.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent735 health before eating is92.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent735 health after eating is192.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1128 health before eating is91.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1128 health after eating is191.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1020 health before eating is91.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1020 health after eating is191.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent609 health before eating is91.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent609 health after eating is191.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent932 health before eating is91.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1019 health before eating is91.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent932 health after eating is191.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1019 health after eating is191.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1063 health before eating is91.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1063 health after eating is191.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent918 health before eating is91.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent918 health after eating is191.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent865 health before eating is90.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent865 health after eating is190.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1161 health before eating is90.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1161 health after eating is190.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1086 health before eating is90.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1086 health after eating is190.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent846 health before eating is89.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent846 health after eating is189.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent849 health before eating is89.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent849 health after eating is189.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent615 health before eating is89.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent615 health after eating is189.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent746 health before eating is89.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent746 health after eating is189.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent718 health before eating is89.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent718 health after eating is189.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent668 health before eating is89.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent668 health after eating is189.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent741 health before eating is89.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent741 health after eating is189.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent780 health before eating is89.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent780 health after eating is189.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent919 health before eating is89.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent919 health after eating is189.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent999 health before eating is89.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent999 health after eating is189.0
+Jul 07, 2018 5:08:47 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 61.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent610 health before eating is88.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent610 health after eating is188.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1073 health before eating is88.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1073 health after eating is188.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent705 health before eating is88.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent705 health after eating is188.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent987 health before eating is88.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent987 health after eating is188.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1166 health before eating is88.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1166 health after eating is188.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent962 health before eating is88.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent962 health after eating is188.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1053 health before eating is88.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1053 health after eating is188.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1124 health before eating is87.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1124 health after eating is187.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent953 health before eating is87.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent953 health after eating is187.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1126 health before eating is87.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1126 health after eating is187.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent651 health before eating is87.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent651 health after eating is187.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent742 health before eating is87.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent742 health after eating is187.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1145 health before eating is87.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1145 health after eating is187.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent753 health before eating is87.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent753 health after eating is187.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1155 health before eating is87.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1155 health after eating is187.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent776 health before eating is87.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent776 health after eating is187.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent892 health before eating is87.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent892 health after eating is187.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent754 health before eating is87.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent754 health after eating is187.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1048 health before eating is87.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1048 health after eating is187.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent744 health before eating is86.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent744 health after eating is186.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1001 health before eating is86.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1001 health after eating is186.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1117 health before eating is86.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1117 health after eating is186.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent756 health before eating is86.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent756 health after eating is186.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent920 health before eating is86.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent920 health after eating is186.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent764 health before eating is86.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent900 health before eating is86.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent764 health after eating is186.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent900 health after eating is186.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1189 health before eating is85.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1189 health after eating is185.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent745 health before eating is85.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent745 health after eating is185.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent878 health before eating is85.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent878 health after eating is185.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1106 health before eating is85.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1106 health after eating is185.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent963 health before eating is85.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent963 health after eating is185.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent725 health before eating is85.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent725 health after eating is185.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent876 health before eating is85.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent876 health after eating is185.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent943 health before eating is85.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent943 health after eating is185.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1072 health before eating is85.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1072 health after eating is185.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1103 health before eating is84.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1103 health after eating is184.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent881 health before eating is84.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent881 health after eating is184.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent787 health before eating is84.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent787 health after eating is184.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent995 health before eating is84.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent995 health after eating is184.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent698 health before eating is84.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent698 health after eating is184.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1147 health before eating is84.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1147 health after eating is184.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent834 health before eating is84.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent834 health after eating is184.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1180 health before eating is84.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent1180 health after eating is184.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent888 health before eating is84.0
+Jul 07, 2018 5:08:47 PM repastcity3.agent.DefaultAgent step
+INFO: Agent888 health after eating is184.0
