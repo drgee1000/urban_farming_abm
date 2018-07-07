@@ -47,23 +47,15 @@
       <int>3</int>
     </entry>
     <entry>
-      <string>./data/gis_data/ev_city/workplace.shp</string>
-      <int>6</int>
-    </entry>
-    <entry>
-      <string>./data/gis_data/ev_city/Farm.shp</string>
-      <int>7</int>
-    </entry>
-    <entry>
       <string>repastcity3.agent.AgentFactory</string>
       <int>4</int>
     </entry>
     <entry>
-      <string>./data/gis_data/ev_city/roads_dangle_free_ordered.shp</string>
-      <int>10</int>
+      <string>./data/gis_data/urban_farming/shoppingcenter.shp</string>
+      <int>9</int>
     </entry>
     <entry>
-      <string>./data/gis_data/ev_city/residential.shp</string>
+      <string>./data/gis_data/urban_farming/residential.shp</string>
       <int>12</int>
     </entry>
     <entry>
@@ -71,20 +63,28 @@
       <int>2</int>
     </entry>
     <entry>
-      <string>./data/gis_data/ev_city/candidate1_2.shp</string>
-      <int>8</int>
+      <string>./data/gis_data/urban_farming/Farm.shp</string>
+      <int>7</int>
     </entry>
     <entry>
-      <string>./data/gis_data/ev_city/shoppingcenter.shp</string>
-      <int>9</int>
+      <string>./data/gis_data/urban_farming/workplace.shp</string>
+      <int>6</int>
+    </entry>
+    <entry>
+      <string>./data/gis_data/urban_farming/roads_dangle_free_ordered.shp</string>
+      <int>10</int>
     </entry>
     <entry>
       <string>repastcity3.agent.DefaultAgent</string>
       <int>5</int>
     </entry>
     <entry>
-      <string>./data/gis_data/ev_city/restaurant.shp</string>
+      <string>./data/gis_data/urban_farming/restaurant.shp</string>
       <int>11</int>
+    </entry>
+    <entry>
+      <string>./data/gis_data/urban_farming/candidate1_2.shp</string>
+      <int>8</int>
     </entry>
     <entry>
       <string>repastcity3.agent.BurglarThread</string>
@@ -116,32 +116,32 @@
       <string>class repast.simphony.visualization.gis.DisplayGIS.SHP_FILE_STYLE_PROP</string>
       <map>
         <entry>
-          <string>./data/gis_data/ev_city/workplace.shp</string>
-          <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;sld:UserStyle xmlns=&quot;http://www.opengis.net/sld&quot; xmlns:sld=&quot;http://www.opengis.net/sld&quot; xmlns:gml=&quot;http://www.opengis.net/gml&quot; xmlns:ogc=&quot;http://www.opengis.net/ogc&quot;&gt;&lt;sld:Name&gt;Default Styler&lt;/sld:Name&gt;&lt;sld:FeatureTypeStyle&gt;&lt;sld:Name&gt;name&lt;/sld:Name&gt;&lt;sld:Rule&gt;&lt;sld:PointSymbolizer&gt;&lt;sld:Graphic&gt;&lt;sld:Mark&gt;&lt;sld:Fill&gt;&lt;sld:CssParameter name=&quot;fill&quot;&gt;#0000FF&lt;/sld:CssParameter&gt;&lt;/sld:Fill&gt;&lt;sld:Stroke/&gt;&lt;/sld:Mark&gt;&lt;sld:Size&gt;10.0&lt;/sld:Size&gt;&lt;/sld:Graphic&gt;&lt;/sld:PointSymbolizer&gt;&lt;/sld:Rule&gt;&lt;/sld:FeatureTypeStyle&gt;&lt;/sld:UserStyle&gt;</string>
+          <string>./data/gis_data/urban_farming/residential.shp</string>
+          <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;sld:UserStyle xmlns=&quot;http://www.opengis.net/sld&quot; xmlns:sld=&quot;http://www.opengis.net/sld&quot; xmlns:ogc=&quot;http://www.opengis.net/ogc&quot; xmlns:gml=&quot;http://www.opengis.net/gml&quot;&gt;&lt;sld:Name&gt;Default Styler&lt;/sld:Name&gt;&lt;sld:Title&gt;residential&lt;/sld:Title&gt;&lt;sld:FeatureTypeStyle&gt;&lt;sld:Name&gt;name&lt;/sld:Name&gt;&lt;sld:Title&gt;residential&lt;/sld:Title&gt;&lt;sld:FeatureTypeName&gt;residential&lt;/sld:FeatureTypeName&gt;&lt;sld:Rule&gt;&lt;sld:Title&gt; &lt;/sld:Title&gt;&lt;sld:PointSymbolizer&gt;&lt;sld:Graphic&gt;&lt;sld:Mark&gt;&lt;sld:Fill&gt;&lt;sld:CssParameter name=&quot;fill&quot;&gt;#0000FF&lt;/sld:CssParameter&gt;&lt;/sld:Fill&gt;&lt;sld:Stroke/&gt;&lt;/sld:Mark&gt;&lt;sld:Size&gt;10.0&lt;/sld:Size&gt;&lt;/sld:Graphic&gt;&lt;/sld:PointSymbolizer&gt;&lt;/sld:Rule&gt;&lt;/sld:FeatureTypeStyle&gt;&lt;/sld:UserStyle&gt;</string>
         </entry>
         <entry>
-          <string>./data/gis_data/ev_city/Farm.shp</string>
+          <string>./data/gis_data/urban_farming/Farm.shp</string>
           <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;sld:UserStyle xmlns=&quot;http://www.opengis.net/sld&quot; xmlns:sld=&quot;http://www.opengis.net/sld&quot; xmlns:gml=&quot;http://www.opengis.net/gml&quot; xmlns:ogc=&quot;http://www.opengis.net/ogc&quot;&gt;&lt;sld:Name&gt;Default Styler&lt;/sld:Name&gt;&lt;sld:Title&gt;Farm&lt;/sld:Title&gt;&lt;sld:FeatureTypeStyle&gt;&lt;sld:Name&gt;name&lt;/sld:Name&gt;&lt;sld:Title&gt;Farm&lt;/sld:Title&gt;&lt;sld:FeatureTypeName&gt;Farm&lt;/sld:FeatureTypeName&gt;&lt;sld:Rule&gt;&lt;sld:Title&gt; &lt;/sld:Title&gt;&lt;sld:PointSymbolizer&gt;&lt;sld:Graphic&gt;&lt;sld:Mark&gt;&lt;sld:WellKnownName&gt;circle&lt;/sld:WellKnownName&gt;&lt;sld:Fill&gt;&lt;sld:CssParameter name=&quot;fill&quot;&gt;#006600&lt;/sld:CssParameter&gt;&lt;/sld:Fill&gt;&lt;sld:Stroke/&gt;&lt;/sld:Mark&gt;&lt;sld:Size&gt;20&lt;/sld:Size&gt;&lt;/sld:Graphic&gt;&lt;/sld:PointSymbolizer&gt;&lt;/sld:Rule&gt;&lt;/sld:FeatureTypeStyle&gt;&lt;/sld:UserStyle&gt;</string>
         </entry>
         <entry>
-          <string>./data/gis_data/ev_city/candidate1_2.shp</string>
-          <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;sld:UserStyle xmlns=&quot;http://www.opengis.net/sld&quot; xmlns:sld=&quot;http://www.opengis.net/sld&quot; xmlns:ogc=&quot;http://www.opengis.net/ogc&quot; xmlns:gml=&quot;http://www.opengis.net/gml&quot;&gt;&lt;sld:Name&gt;Default Styler&lt;/sld:Name&gt;&lt;sld:Title&gt;candidate1_2&lt;/sld:Title&gt;&lt;sld:FeatureTypeStyle&gt;&lt;sld:Name&gt;name&lt;/sld:Name&gt;&lt;sld:Title&gt;candidate1_2&lt;/sld:Title&gt;&lt;sld:FeatureTypeName&gt;candidate1_2&lt;/sld:FeatureTypeName&gt;&lt;sld:Rule&gt;&lt;sld:Title&gt; &lt;/sld:Title&gt;&lt;sld:PointSymbolizer&gt;&lt;sld:Graphic&gt;&lt;sld:Mark&gt;&lt;sld:WellKnownName&gt;triangle&lt;/sld:WellKnownName&gt;&lt;sld:Fill&gt;&lt;sld:CssParameter name=&quot;fill&quot;&gt;#FFFF00&lt;/sld:CssParameter&gt;&lt;/sld:Fill&gt;&lt;sld:Stroke/&gt;&lt;/sld:Mark&gt;&lt;sld:Size&gt;12&lt;/sld:Size&gt;&lt;/sld:Graphic&gt;&lt;/sld:PointSymbolizer&gt;&lt;/sld:Rule&gt;&lt;/sld:FeatureTypeStyle&gt;&lt;/sld:UserStyle&gt;</string>
+          <string>./data/gis_data/urban_farming/workplace.shp</string>
+          <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;sld:UserStyle xmlns=&quot;http://www.opengis.net/sld&quot; xmlns:sld=&quot;http://www.opengis.net/sld&quot; xmlns:gml=&quot;http://www.opengis.net/gml&quot; xmlns:ogc=&quot;http://www.opengis.net/ogc&quot;&gt;&lt;sld:Name&gt;Default Styler&lt;/sld:Name&gt;&lt;sld:FeatureTypeStyle&gt;&lt;sld:Name&gt;name&lt;/sld:Name&gt;&lt;sld:Rule&gt;&lt;sld:PointSymbolizer&gt;&lt;sld:Graphic&gt;&lt;sld:Mark&gt;&lt;sld:Fill&gt;&lt;sld:CssParameter name=&quot;fill&quot;&gt;#0000FF&lt;/sld:CssParameter&gt;&lt;/sld:Fill&gt;&lt;sld:Stroke/&gt;&lt;/sld:Mark&gt;&lt;sld:Size&gt;10.0&lt;/sld:Size&gt;&lt;/sld:Graphic&gt;&lt;/sld:PointSymbolizer&gt;&lt;/sld:Rule&gt;&lt;/sld:FeatureTypeStyle&gt;&lt;/sld:UserStyle&gt;</string>
         </entry>
         <entry>
-          <string>./data/gis_data/ev_city/shoppingcenter.shp</string>
-          <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;sld:UserStyle xmlns=&quot;http://www.opengis.net/sld&quot; xmlns:sld=&quot;http://www.opengis.net/sld&quot; xmlns:ogc=&quot;http://www.opengis.net/ogc&quot; xmlns:gml=&quot;http://www.opengis.net/gml&quot;&gt;&lt;sld:Name&gt;Default Styler&lt;/sld:Name&gt;&lt;sld:Title&gt;shoppingcenter&lt;/sld:Title&gt;&lt;sld:FeatureTypeStyle&gt;&lt;sld:Name&gt;name&lt;/sld:Name&gt;&lt;sld:Title&gt;shoppingcenter&lt;/sld:Title&gt;&lt;sld:FeatureTypeName&gt;shoppingcenter&lt;/sld:FeatureTypeName&gt;&lt;sld:Rule&gt;&lt;sld:Title&gt; &lt;/sld:Title&gt;&lt;sld:PointSymbolizer&gt;&lt;sld:Graphic&gt;&lt;sld:Mark&gt;&lt;sld:Fill&gt;&lt;sld:CssParameter name=&quot;fill&quot;&gt;#0000FF&lt;/sld:CssParameter&gt;&lt;/sld:Fill&gt;&lt;sld:Stroke/&gt;&lt;/sld:Mark&gt;&lt;sld:Size&gt;10.0&lt;/sld:Size&gt;&lt;/sld:Graphic&gt;&lt;/sld:PointSymbolizer&gt;&lt;/sld:Rule&gt;&lt;/sld:FeatureTypeStyle&gt;&lt;/sld:UserStyle&gt;</string>
-        </entry>
-        <entry>
-          <string>./data/gis_data/ev_city/roads_dangle_free_ordered.shp</string>
+          <string>./data/gis_data/urban_farming/roads_dangle_free_ordered.shp</string>
           <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;sld:UserStyle xmlns=&quot;http://www.opengis.net/sld&quot; xmlns:sld=&quot;http://www.opengis.net/sld&quot; xmlns:ogc=&quot;http://www.opengis.net/ogc&quot; xmlns:gml=&quot;http://www.opengis.net/gml&quot;&gt;&lt;sld:Name&gt;Default Styler&lt;/sld:Name&gt;&lt;sld:Title/&gt;&lt;sld:FeatureTypeStyle&gt;&lt;sld:Name&gt;name&lt;/sld:Name&gt;&lt;sld:Rule&gt;&lt;sld:LineSymbolizer&gt;&lt;sld:Stroke&gt;&lt;sld:CssParameter name=&quot;stroke&quot;&gt;#FF0000&lt;/sld:CssParameter&gt;&lt;/sld:Stroke&gt;&lt;/sld:LineSymbolizer&gt;&lt;/sld:Rule&gt;&lt;/sld:FeatureTypeStyle&gt;&lt;/sld:UserStyle&gt;</string>
         </entry>
         <entry>
-          <string>./data/gis_data/ev_city/restaurant.shp</string>
+          <string>./data/gis_data/urban_farming/restaurant.shp</string>
           <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;sld:UserStyle xmlns=&quot;http://www.opengis.net/sld&quot; xmlns:sld=&quot;http://www.opengis.net/sld&quot; xmlns:ogc=&quot;http://www.opengis.net/ogc&quot; xmlns:gml=&quot;http://www.opengis.net/gml&quot;&gt;&lt;sld:Name&gt;Default Styler&lt;/sld:Name&gt;&lt;sld:Title&gt;restaurant&lt;/sld:Title&gt;&lt;sld:FeatureTypeStyle&gt;&lt;sld:Name&gt;name&lt;/sld:Name&gt;&lt;sld:Title&gt;restaurant&lt;/sld:Title&gt;&lt;sld:FeatureTypeName&gt;restaurant&lt;/sld:FeatureTypeName&gt;&lt;sld:Rule&gt;&lt;sld:Title&gt; &lt;/sld:Title&gt;&lt;sld:PointSymbolizer&gt;&lt;sld:Graphic&gt;&lt;sld:Mark&gt;&lt;sld:Fill&gt;&lt;sld:CssParameter name=&quot;fill&quot;&gt;#00FF33&lt;/sld:CssParameter&gt;&lt;/sld:Fill&gt;&lt;sld:Stroke/&gt;&lt;/sld:Mark&gt;&lt;sld:Size&gt;10.0&lt;/sld:Size&gt;&lt;/sld:Graphic&gt;&lt;/sld:PointSymbolizer&gt;&lt;/sld:Rule&gt;&lt;/sld:FeatureTypeStyle&gt;&lt;/sld:UserStyle&gt;</string>
         </entry>
         <entry>
-          <string>./data/gis_data/ev_city/residential.shp</string>
-          <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;sld:UserStyle xmlns=&quot;http://www.opengis.net/sld&quot; xmlns:sld=&quot;http://www.opengis.net/sld&quot; xmlns:ogc=&quot;http://www.opengis.net/ogc&quot; xmlns:gml=&quot;http://www.opengis.net/gml&quot;&gt;&lt;sld:Name&gt;Default Styler&lt;/sld:Name&gt;&lt;sld:Title&gt;residential&lt;/sld:Title&gt;&lt;sld:FeatureTypeStyle&gt;&lt;sld:Name&gt;name&lt;/sld:Name&gt;&lt;sld:Title&gt;residential&lt;/sld:Title&gt;&lt;sld:FeatureTypeName&gt;residential&lt;/sld:FeatureTypeName&gt;&lt;sld:Rule&gt;&lt;sld:Title&gt; &lt;/sld:Title&gt;&lt;sld:PointSymbolizer&gt;&lt;sld:Graphic&gt;&lt;sld:Mark&gt;&lt;sld:Fill&gt;&lt;sld:CssParameter name=&quot;fill&quot;&gt;#0000FF&lt;/sld:CssParameter&gt;&lt;/sld:Fill&gt;&lt;sld:Stroke/&gt;&lt;/sld:Mark&gt;&lt;sld:Size&gt;10.0&lt;/sld:Size&gt;&lt;/sld:Graphic&gt;&lt;/sld:PointSymbolizer&gt;&lt;/sld:Rule&gt;&lt;/sld:FeatureTypeStyle&gt;&lt;/sld:UserStyle&gt;</string>
+          <string>./data/gis_data/urban_farming/candidate1_2.shp</string>
+          <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;sld:UserStyle xmlns=&quot;http://www.opengis.net/sld&quot; xmlns:sld=&quot;http://www.opengis.net/sld&quot; xmlns:ogc=&quot;http://www.opengis.net/ogc&quot; xmlns:gml=&quot;http://www.opengis.net/gml&quot;&gt;&lt;sld:Name&gt;Default Styler&lt;/sld:Name&gt;&lt;sld:Title&gt;candidate1_2&lt;/sld:Title&gt;&lt;sld:FeatureTypeStyle&gt;&lt;sld:Name&gt;name&lt;/sld:Name&gt;&lt;sld:Title&gt;candidate1_2&lt;/sld:Title&gt;&lt;sld:FeatureTypeName&gt;candidate1_2&lt;/sld:FeatureTypeName&gt;&lt;sld:Rule&gt;&lt;sld:Title&gt; &lt;/sld:Title&gt;&lt;sld:PointSymbolizer&gt;&lt;sld:Graphic&gt;&lt;sld:Mark&gt;&lt;sld:WellKnownName&gt;triangle&lt;/sld:WellKnownName&gt;&lt;sld:Fill&gt;&lt;sld:CssParameter name=&quot;fill&quot;&gt;#FFFF00&lt;/sld:CssParameter&gt;&lt;/sld:Fill&gt;&lt;sld:Stroke/&gt;&lt;/sld:Mark&gt;&lt;sld:Size&gt;12&lt;/sld:Size&gt;&lt;/sld:Graphic&gt;&lt;/sld:PointSymbolizer&gt;&lt;/sld:Rule&gt;&lt;/sld:FeatureTypeStyle&gt;&lt;/sld:UserStyle&gt;</string>
+        </entry>
+        <entry>
+          <string>./data/gis_data/urban_farming/shoppingcenter.shp</string>
+          <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;sld:UserStyle xmlns=&quot;http://www.opengis.net/sld&quot; xmlns:sld=&quot;http://www.opengis.net/sld&quot; xmlns:ogc=&quot;http://www.opengis.net/ogc&quot; xmlns:gml=&quot;http://www.opengis.net/gml&quot;&gt;&lt;sld:Name&gt;Default Styler&lt;/sld:Name&gt;&lt;sld:Title&gt;shoppingcenter&lt;/sld:Title&gt;&lt;sld:FeatureTypeStyle&gt;&lt;sld:Name&gt;name&lt;/sld:Name&gt;&lt;sld:Title&gt;shoppingcenter&lt;/sld:Title&gt;&lt;sld:FeatureTypeName&gt;shoppingcenter&lt;/sld:FeatureTypeName&gt;&lt;sld:Rule&gt;&lt;sld:Title&gt; &lt;/sld:Title&gt;&lt;sld:PointSymbolizer&gt;&lt;sld:Graphic&gt;&lt;sld:Mark&gt;&lt;sld:Fill&gt;&lt;sld:CssParameter name=&quot;fill&quot;&gt;#0000FF&lt;/sld:CssParameter&gt;&lt;/sld:Fill&gt;&lt;sld:Stroke/&gt;&lt;/sld:Mark&gt;&lt;sld:Size&gt;10.0&lt;/sld:Size&gt;&lt;/sld:Graphic&gt;&lt;/sld:PointSymbolizer&gt;&lt;/sld:Rule&gt;&lt;/sld:FeatureTypeStyle&gt;&lt;/sld:UserStyle&gt;</string>
         </entry>
       </map>
     </entry>
