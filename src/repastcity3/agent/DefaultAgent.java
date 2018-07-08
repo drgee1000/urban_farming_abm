@@ -1,4 +1,3 @@
-
 package repastcity3.agent;
 
 import java.util.Date;
@@ -15,7 +14,7 @@ import com.vividsolutions.jts.geom.Coordinate;
 
 import repastcity3.environment.Candidate1;
 import repastcity3.environment.Farm;
-import repastcity3.environment.Food;
+import repastcity3.environment.food.Food;
 import repastcity3.environment.Residential;
 import repastcity3.environment.Restaurant;
 import repastcity3.environment.Route;
@@ -41,7 +40,8 @@ public class DefaultAgent implements IAgent {
 	
 	private boolean goingHome = false; // Whether the agent is going to or from their home
 	private boolean goforEat = false;
-	private double health = 200;
+	private double defaultHealth = 200;
+	private double health = defaultHealth;
 	private double healthThreshold = 100;
 	private double caloryConsumption = 1;
 	private double caloryProduction;
@@ -107,15 +107,10 @@ public class DefaultAgent implements IAgent {
 				this.health = this.health - caloryConsumption;
 			}else {
 				LOGGER.info("Agent" + this.id + " health before eating is" + this.health);
-				HashMap<String, Food> stock = farm.getStock();
-				String[] names = stock.keySet().toArray(new String[0]);
-				Random random = new Random();
 				
 				
 				while(this.health<this.healthThreshold) {
-						String name = names[random.nextInt(names.length)];
-						Food food = stock.get(name);
-						this.buy(farm,food,1);
+						farm.sell(this);
 					}
 				this.goforEat = false;
 				LOGGER.info("Agent" + this.id + " health after eating is" + this.health);
@@ -129,7 +124,6 @@ public class DefaultAgent implements IAgent {
 		case 1: {
 			
 			if (this.route == null) {
-				//this.goingHome = false;
 				Workplace w = ContextManager.workplaceContext.getRandomObject();
 				
 				this.route = new Route(this, ContextManager.workplaceProjection.getGeometry(w).getCentroid().getCoordinate(), w);
@@ -141,21 +135,8 @@ public class DefaultAgent implements IAgent {
 			if (!this.route.atDestination()) {
 				this.route.travel();
 				} else {
-				
-				/*if (this.goingHome) {
-					this.goingHome = false;
-					Residential R = ContextManager.residentialContext.getRandomObject();
-					this.route = new Route(this, R.getCoords(), R);
-				} else {
-					this.goingHome = true;
-					Farm F = ContextManager.FarmContext.getRandomObject();
-					this.route = new Route(this,F.getCoords(),F);
-				}*/
 					this.route = null;
 					setPurpose();
-				//Residential R = ContextManager.residentialContext.getRandomObject();
-					//this.route = new Route(this, R.getCoords(), R);
-				
 				}
 				break;
 				
@@ -166,8 +147,6 @@ public class DefaultAgent implements IAgent {
 			if (this.route == null) {
 				this.goingHome = false;
 				Shoppingcenter s = ContextManager.shoppingcenterContext.getRandomObject();
-
-				
 				this.route = new Route(this, ContextManager.shoppingcenterProjection.getGeometry(s).getCentroid().getCoordinate(), s);
 				this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
 				this.destination = ContextManager.shoppingcenterProjection.getGeometry(s).getCentroid().getCoordinate();
@@ -180,15 +159,7 @@ public class DefaultAgent implements IAgent {
 				
 				} else {
 				
-				/*if (this.goingHome) {
-					this.goingHome = false;
-					Residential R = ContextManager.residentialContext.getRandomObject();
-					this.route = new Route(this, R.getCoords(), R);
-				}else {
-					this.goingHome = true;
-					Farm F = ContextManager.FarmContext.getRandomObject();
-					this.route = new Route(this,F.getCoords(),F);
-				}*/
+			
 					this.route = null;
 					setPurpose();
 			}
@@ -202,7 +173,6 @@ public class DefaultAgent implements IAgent {
 			if (this.route == null) {
 				this.goingHome = false;
 				Restaurant r = ContextManager.restaurantContext.getRandomObject();
-				
 				this.route = new Route(this, ContextManager.restaurantProjection.getGeometry(r).getCentroid().getCoordinate(), r);
 				this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
 				this.destination = ContextManager.restaurantProjection.getGeometry(r).getCentroid().getCoordinate();
@@ -213,16 +183,6 @@ public class DefaultAgent implements IAgent {
 				this.route.travel();
 				
 				} else {
-				
-				/*if (this.goingHome) {
-					this.goingHome = false;
-					Residential R = ContextManager.residentialContext.getRandomObject();
-					this.route = new Route(this, R.getCoords(), R);
-				} else {
-					this.goingHome = true;
-					Farm F = ContextManager.FarmContext.getRandomObject();
-					this.route = new Route(this,F.getCoords(),F);
-				}*/
 					this.route = null;
 					setPurpose();
 				}
@@ -246,16 +206,6 @@ public class DefaultAgent implements IAgent {
 				this.route.travel();
 				
 				} else {
-				
-				/*if (this.goingHome) {
-					this.goingHome = false;
-					Residential R = ContextManager.residentialContext.getRandomObject();
-					this.route = new Route(this, R.getCoords(), R);
-				} else {
-					this.goingHome = true;
-					Farm F = ContextManager.FarmContext.getRandomObject();
-					this.route = new Route(this,F.getCoords(),F);
-				}*/
 					this.route = null;
 					setPurpose();
 				}
@@ -263,40 +213,6 @@ public class DefaultAgent implements IAgent {
 					break;
 			}
 		
-		/*case 5: {
-			
-			if (this.route == null) {
-				this.goingHome = false;
-				Residential R = ContextManager.residentialContext.getRandomObject();
-				while (R == home) {
-					R = ContextManager.residentialContext.getRandomObject();
-				}
-				
-				this.route = new Route(this, ContextManager.residentialProjection.getGeometry(R).getCentroid().getCoordinate(), R);
-				this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
-				this.destination = ContextManager.residentialProjection.getGeometry(R).getCentroid().getCoordinate();
-			}
-			
-			if (!this.route.atDestination()) {
-				this.route.travel();
-				
-				} else {
-				
-				if (this.goingHome) {
-					this.goingHome = false;
-					Residential R = ContextManager.residentialContext.getRandomObject();
-					this.route = new Route(this, R.getCoords(), R);
-				} else {
-					this.goingHome = true;
-					Farm F = ContextManager.FarmContext.getRandomObject();
-					this.route = new Route(this,F.getCoords(),F);
-				}
-					this.route = null;
-					setPurpose();
-
-			}
-			break;
-		}*/
 		}
 			this.health -= this.health - caloryConsumption;
 		}
@@ -457,12 +373,21 @@ public class DefaultAgent implements IAgent {
 		this.healthThreshold = healthThreshold;
 	}
 	
+	public double getDefaultHealth() {
+		return defaultHealth;
+	}
+	
+	public void setDefaultHealth(double defaultHealth) {
+		this.defaultHealth = defaultHealth;
+	}
 	public void buy(Farm farm, Food food, int sales) {
 		String name = food.getName();
 		if(food.getAmount() > sales) {
-			farm.setStock(name, sales);
+			//farm.setStock(name, sales);
 			this.caloryProduction = food.getCalory();
 			this.health = this.health + this.caloryProduction;
 		}
 	}
+
+	
 }
