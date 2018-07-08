@@ -9,14 +9,11 @@ import java.util.List;
 
 import com.vividsolutions.jts.geom.Coordinate;
 
-import cern.jet.random.Uniform;
-import jdk.nashorn.internal.objects.annotations.Where;
 import repast.simphony.engine.schedule.ScheduledMethod;
-import repast.simphony.random.RandomHelper;
-import repastcity3.agent.DefaultAgent;
 import repastcity3.agent.IAgent;
 import repastcity3.environment.food.Food;
-import repastcity3.environment.food.FoodConvertor;
+import repastcity3.environment.food.FoodOrder;
+import repastcity3.environment.food.Nutrition;
 import repastcity3.exceptions.NoIdentifierException;
 
 /**
@@ -42,7 +39,8 @@ public class Farm extends FarmableLocation implements FixedGeography {
 
 	private Coordinate coords;
 
-	private double count;
+	// amount of food type that are not zero
+	private volatile double count;
 
 	public Farm() {
 		this.agents = new ArrayList<IAgent>();
@@ -52,10 +50,20 @@ public class Farm extends FarmableLocation implements FixedGeography {
 	}
 
 	private void init() {
-		// int foodCount = RandomHelper.getUniform().nextInt();
-		Food potato = new Food("potato", "Staple", 15, 10, 800,0.2, 0.25, 25);
-		stock.add(potato);
-		count += 15;
+		// TODO use more elegant way
+		Food potato = new Food("potato", "Staple", 15, 10, 7, new Nutrition(10, 12, 22, 44, 33, 22), 0.25, 25);
+		Food rise = new Food("rise", "Staple", 10, 12, 10, new Nutrition(44, 0, 0, 10, 0, 0), 0.3, 100);
+		Food cabbage = new Food("cabbage", "vegatable", 12, 23, 17, new Nutrition(10, 3, 0, 10, 15, 5), 0.2, 17);
+		Food beaf = new Food("beaf", "meat", 10, 50, 40, new Nutrition(25, 20, 20, 5, 10, 5), 3, 10);
+		addFood(potato);
+		addFood(rise);
+		addFood(cabbage);
+		addFood(beaf);
+	}
+
+	private void addFood(Food food) {
+		this.stock.add(food);
+		this.count++;
 	}
 
 	@Override
@@ -118,7 +126,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 
 	@ScheduledMethod(start = 0, interval = 1)
 	@Override
-	public void product() {
+	public synchronized void product() {
 		// TODO Auto-generated method stub
 		for (Food food : stock) {
 			if (fund > 0) {
@@ -150,24 +158,16 @@ public class Farm extends FarmableLocation implements FixedGeography {
 		return count > 0;
 	}
 
-	public void sell(DefaultAgent agent) {
-		double health = agent.getDefaultHealth() - agent.getHealth();
-		double nutrition = FoodConvertor.health2nutrition(health);
-		while (nutrition <= 0 && isAvailable()) {
-			// TODO random pick
-			Food food = stock.get(0);
-			double amount = nutrition / food.getNutrition();
-
-			if (food.getAmount() > amount) {
-				food.setAmount(food.getAmount() - amount);
-				agent.setHealth(agent.getDefaultHealth());
-				count -= amount;
-			} else {
-				food.setAmount(0);
-				agent.setHealth(agent.getHealth() + FoodConvertor.nutrition2health(amount * nutrition));
+	public void sell(FoodOrder order) {
+		HashMap<Food, Double> list = order.getList();
+		list.forEach((food, amount) -> {
+			food.setAmount(food.getAmount() - amount);
+			this.fund += amount * food.getPrice();
+			if(food.getAmount()<=0)
+			{
+				this.count--;
 			}
-		}
-
+		});
 	}
 
 }
