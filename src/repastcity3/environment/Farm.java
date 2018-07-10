@@ -153,7 +153,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 	public void sell(DefaultAgent agent) {
 		double health = agent.getDefaultHealth() - agent.getHealth();
 		double nutrition = FoodConvertor.health2nutrition(health);
-		while (nutrition <= 0 && isAvailable()) {
+		while (nutrition >= 0 && isAvailable()) {
 			// TODO random pick
 			Food food = stock.get(0);
 			double amount = nutrition / food.getNutrition();
@@ -169,5 +169,9 @@ public class Farm extends FarmableLocation implements FixedGeography {
 		}
 
 	}
+	
+	/*public boolean sell(DefaultAgent agent, List<Food> foodList) {
+		return true;
+	}*/
 
 }

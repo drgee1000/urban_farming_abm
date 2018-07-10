@@ -1,7 +1,6 @@
 package repastcity3.agent;
 
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
@@ -14,12 +13,12 @@ import com.vividsolutions.jts.geom.Coordinate;
 
 import repastcity3.environment.Candidate1;
 import repastcity3.environment.Farm;
-import repastcity3.environment.food.Food;
 import repastcity3.environment.Residential;
 import repastcity3.environment.Restaurant;
 import repastcity3.environment.Route;
 import repastcity3.environment.Shoppingcenter;
 import repastcity3.environment.Workplace;
+import repastcity3.environment.food.Food;
 import repastcity3.main.ContextManager;
 
 public class DefaultAgent implements IAgent {
@@ -97,6 +96,7 @@ public class DefaultAgent implements IAgent {
 			if(!this.goforEat) {
 				this.goforEat = true;
 				this.goingHome = false;
+				//TO-DO find nearest Farm
 				farm = ContextManager.FarmContext.getRandomObject();
 				this.route = new Route(this, ContextManager.FarmProjection.getGeometry(farm).getCentroid().getCoordinate(), farm);
 				this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
@@ -109,13 +109,18 @@ public class DefaultAgent implements IAgent {
 				LOGGER.info("Agent" + this.id + " health before eating is" + this.health);
 				
 				
-				while(this.health<this.healthThreshold) {
-						farm.sell(this);
+				if(this.health<this.healthThreshold) {
+						List<Food> foodList = this.selectFood(farm);
+						/*boolean success = farm.sell(this, foodList);
+						if(success) {
+							this.goforEat = false;
+							this.route = null;
+							setPurpose();
+						}*/
 					}
-				this.goforEat = false;
+				
 				LOGGER.info("Agent" + this.id + " health after eating is" + this.health);
-				this.route = null;
-				setPurpose();
+				
 				
 			}
 		}
@@ -276,7 +281,6 @@ public class DefaultAgent implements IAgent {
 
 		int i = 0;
 		while (iter.hasNext()) {
-			
 			Candidate1 can = iter.next();
 			//System.out.print("iden is " + can.identifier + "\n" );
 			Coordinate transfer = ContextManager.candidate1Projection.getGeometry(can).getCentroid().getCoordinate();
@@ -387,7 +391,15 @@ public class DefaultAgent implements IAgent {
 			this.caloryProduction = food.getCalory();
 			this.health = this.health + this.caloryProduction;
 		}
+	
 	}
-
+	public List<Food> selectFood(Farm farm) {
+		List<Food> stock= farm.getStock();
+		// TO-DO
+		// sort the list by calory 
+		// choose food by calory
+		// use least money to buy enough food
+		return stock;
+	}
 	
 }
