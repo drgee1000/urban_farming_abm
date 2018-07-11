@@ -157,7 +157,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 	public boolean isAvailable() {
 		return count > 0;
 	}
-
+	
 	public void sell(FoodOrder order) {
 		HashMap<Food, Double> list = order.getList();
 		list.forEach((food, amount) -> {
@@ -169,5 +169,5 @@ public class Farm extends FarmableLocation implements FixedGeography {
 			}
 		});
 	}
-
+	
 }

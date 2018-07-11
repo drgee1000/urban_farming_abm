@@ -69,7 +69,5 @@ public interface IAgent {
 	void calculateDis();
 	
 	void calDisDes2Can();
-	
-	void buy(Farm farm, Food food, int amount);
-	
+
 }
