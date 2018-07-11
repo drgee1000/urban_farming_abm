@@ -1,6 +1,6 @@
 package repastcity3.environment.food;
 
-public class Food {
+public class Food implements Comparable<Food>{
 
 	private String name;
 	private String type;//TODO change to enum
@@ -65,6 +65,9 @@ public class Food {
 	public Nutrition getNutrition() {
 		return nutrition;
 	}
+	public double getCaboHydrate() {
+		return nutrition.carbohydrate;
+	}
 	public void setNutrition(Nutrition nutrition) {
 		this.nutrition = nutrition;
 	}
@@ -80,7 +83,13 @@ public class Food {
 	public void setExpireTime(double expireTime) {
 		this.expireTime = expireTime;
 	}
-	
+	@Override
+	public int compareTo(Food f) {
+		if(this.price >= f.getPrice()) {
+			return 1;
+		}
+		return -1;
+	}
 
 	
 }
