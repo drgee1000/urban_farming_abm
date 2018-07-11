@@ -45,7 +45,8 @@ public class DataLogger {
 		} else if (t instanceof IAgent) {
 			//System.out.println("exporting agent data");
 			String fileName1 = "./Output/agent_calorie_consumption.csv";
-			String fileName2 = "./Output/agent_waste.csv";
+			//String fileName2 = "./Output/agent_waste.csv";
+			String fileName2 = "./Output/agent_health.csv";
 			ArrayList<String> list1 = new ArrayList<>();
 			ArrayList<String> list2 = new ArrayList<>();
 			
@@ -53,9 +54,12 @@ public class DataLogger {
 			for (int i = 0; i < agentList.size(); i++) {
 				x = Double.toString(((DefaultAgent) agentList.get(i)).getCaloryConsumption());
 				list1.add((x));
+				x = Double.toString(((DefaultAgent) agentList.get(i)).getHealth());
+				list2.add(x);
 			}
 			
 			printDataToFile(list1, fileName1);
+			printDataToFile(list2, fileName2);
 		}
 		//System.out.println("start to export data to csv file");
 	}
