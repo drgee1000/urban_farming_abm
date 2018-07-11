@@ -10,6 +10,7 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 
 import repast.simphony.util.collections.IndexedIterable;
+import repastcity3.agent.DefaultAgent;
 import repastcity3.agent.IAgent;
 import repastcity3.environment.Farm;
 import repastcity3.environment.FixedGeography;
@@ -50,7 +51,7 @@ public class DataLogger {
 			
 			String x;
 			for (int i = 0; i < agentList.size(); i++) {
-				x = agentList.get(i).toString();
+				x = Double.toString(((DefaultAgent) agentList.get(i)).getCaloryConsumption());
 				list1.add((x));
 			}
 			

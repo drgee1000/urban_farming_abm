@@ -431,7 +431,7 @@ public class ContextManager implements ContextBuilder<Object> {
 		//schedule.schedule(stop, this, "calculateStation");
 		
 		// Schedule something that outputs ticks every 10 iterations.
-		schedule.schedule(ScheduleParameters.createRepeating(1, 10, ScheduleParameters.LAST_PRIORITY), this,
+		schedule.schedule(ScheduleParameters.createRepeating(1, 1, ScheduleParameters.LAST_PRIORITY), this,
 				"printTicks");
 
 		/*
