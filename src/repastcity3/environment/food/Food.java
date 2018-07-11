@@ -1,31 +1,35 @@
 package repastcity3.environment.food;
 
-public class Food {
+public class Food implements Comparable<Food>{
 
 	private String name;
-	private String type;
+	private String type;//TODO change to enum
 
 	private double amount;
-	private double calory;
+//	private double calory;
 	private double productionCost;
-	private double nutrition;
+	private Nutrition nutrition;
 	private double price;
 	// unit: tick
 	private double productionTime;
 	private double expireTime;
 	
-	public Food(String name, String type, double amount,double price, double calory, double productionCost,
+	public Food(String name, String type, double amount,double price, double productionCost,Nutrition nutrition, 
 			 double productionTime, double expireTime) {
 		super();
 		this.name = name;
 		this.type = type;
 		this.amount = amount;
-		this.calory = calory;
+		this.nutrition=nutrition;
 		this.productionCost = productionCost;
 		this.price = price;
 		this.productionTime = productionTime;
 		this.expireTime = expireTime;
 	}
+	
+	public Food() {
+	}
+
 	public double getPrice() {
 		return price;
 	}
@@ -50,22 +54,21 @@ public class Food {
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
-	public double getCalory() {
-		return calory;
-	}
-	public void setCalory(double calory) {
-		this.calory = calory;
-	}
+
 	public double getProductionCost() {
 		return productionCost;
 	}
 	public void setProductionCost(double productionCost) {
 		this.productionCost = productionCost;
 	}
-	public double getNutrition() {
+
+	public Nutrition getNutrition() {
 		return nutrition;
 	}
-	public void setNutrition(double nutrition) {
+	public double getCaboHydrate() {
+		return nutrition.carbohydrate;
+	}
+	public void setNutrition(Nutrition nutrition) {
 		this.nutrition = nutrition;
 	}
 	public double getProductionTime() {
@@ -80,7 +83,13 @@ public class Food {
 	public void setExpireTime(double expireTime) {
 		this.expireTime = expireTime;
 	}
-	
+	@Override
+	public int compareTo(Food f) {
+		if(this.price >= f.getPrice()) {
+			return 1;
+		}
+		return -1;
+	}
 
 	
 }

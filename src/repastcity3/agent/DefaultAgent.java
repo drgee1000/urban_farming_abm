@@ -1,5 +1,7 @@
 package repastcity3.agent;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -19,6 +21,7 @@ import repastcity3.environment.Route;
 import repastcity3.environment.Shoppingcenter;
 import repastcity3.environment.Workplace;
 import repastcity3.environment.food.Food;
+import repastcity3.environment.food.FoodOrder;
 import repastcity3.main.ContextManager;
 
 public class DefaultAgent implements IAgent {
@@ -36,6 +39,7 @@ public class DefaultAgent implements IAgent {
 	private Coordinate origin;
 	private Coordinate destination;
 	private Farm farm;
+	private int flag; // whether it has got enough food in one farm
 	
 	private boolean goingHome = false; // Whether the agent is going to or from their home
 	private boolean goforEat = false;
@@ -105,18 +109,26 @@ public class DefaultAgent implements IAgent {
 		   if(!this.route.atDestination()) {
 				this.route.travel();
 				this.health = this.health - caloryConsumption;
+			}else if(this.route.atDestination() && flag==0){
+				farm = ContextManager.FarmContext.getRandomObject();
+				this.route = new Route(this, ContextManager.FarmProjection.getGeometry(farm).getCentroid().getCoordinate(), farm);
+				this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
+				this.destination = ContextManager.FarmProjection.getGeometry(farm).getCentroid().getCoordinate();
 			}else {
 				LOGGER.info("Agent" + this.id + " health before eating is" + this.health);
 				
 				
 				if(this.health<this.healthThreshold) {
-						List<Food> foodList = this.selectFood(farm);
-						/*boolean success = farm.sell(this, foodList);
-						if(success) {
+						this.selectFood(farm);
+						if(this.health>this.defaultHealth) {
+							flag = 1;
 							this.goforEat = false;
 							this.route = null;
 							setPurpose();
-						}*/
+						}else {
+							//to-do find farm with most food
+							flag = 0;
+						}
 					}
 				
 				LOGGER.info("Agent" + this.id + " health after eating is" + this.health);
@@ -384,22 +396,24 @@ public class DefaultAgent implements IAgent {
 	public void setDefaultHealth(double defaultHealth) {
 		this.defaultHealth = defaultHealth;
 	}
-	public void buy(Farm farm, Food food, int sales) {
-		String name = food.getName();
-		if(food.getAmount() > sales) {
-			//farm.setStock(name, sales);
-			this.caloryProduction = food.getCalory();
-			this.health = this.health + this.caloryProduction;
-		}
 	
-	}
-	public List<Food> selectFood(Farm farm) {
+	
+	public FoodOrder selectFood(Farm farm) {
 		List<Food> stock= farm.getStock();
-		// TO-DO
-		// sort the list by calory 
-		// choose food by calory
-		// use least money to buy enough food
-		return stock;
+		FoodOrder foodOrder = new FoodOrder();
+		Collections.sort(stock);
+		while(health <= defaultHealth && farm.isAvailable()) {
+			for(Food f : stock) {
+				if(f.getAmount() > 0) {
+					foodOrder.addOrder(f,1);
+					health += f.getCaboHydrate();
+					if(health > defaultHealth)
+						break;
+				}
+			}
+		}
+		return foodOrder;
 	}
+	
 	
 }
