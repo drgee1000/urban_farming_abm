@@ -196,7 +196,7 @@ public class ContextManager implements ContextBuilder<Object> {
 	public static Geography<Substation> substationProjection;
 	
 	
-	DataLogger dLogger = new DataLogger();
+	DataLogger dLogger;
 	
 	@Override
 	public Context<Object> build(Context<Object> con) {
@@ -222,7 +222,7 @@ public class ContextManager implements ContextBuilder<Object> {
 
 		try {
 			
-			
+			dLogger = new DataLogger();
 			// Create the charging station candidate1 (Level 1) - context and geography projection
 			candidate1Context = new Candidate1Context();
 			candidate1Projection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
@@ -380,6 +380,9 @@ public class ContextManager implements ContextBuilder<Object> {
 		} catch (FileNotFoundException e) {
 			LOGGER.log(Level.SEVERE, "Could not find an input shapefile to read objects from.", e);
 			return null;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		// Now create the agents (note that their step methods are scheduled later
@@ -475,6 +478,7 @@ public class ContextManager implements ContextBuilder<Object> {
 		LOGGER.info("Iterations: " + RunEnvironment.getInstance().getCurrentSchedule().getTickCount());
 		
 		try{
+			
 			dLogger.printData(agentContext.getObjects(IAgent.class));
 			dLogger.printData(FarmContext.getObjects(Farm.class));
 		} catch (Exception e) {
