@@ -42,9 +42,9 @@ import repast.simphony.space.graph.Network;
 import repastcity3.agent.AgentFactory;
 import repastcity3.agent.IAgent;
 import repastcity3.agent.ThreadedAgentScheduler;
-import repastcity3.environment.Candidate1;
-import repastcity3.environment.Candidate2;
-import repastcity3.environment.Candidate3;
+//import repastcity3.environment.Candidate1;
+//import repastcity3.environment.Candidate2;
+//import repastcity3.environment.Candidate3;
 import repastcity3.environment.GISFunctions;
 import repastcity3.environment.Junction;
 import repastcity3.environment.NetworkEdgeCreator;
@@ -57,9 +57,6 @@ import repastcity3.environment.Substation;
 import repastcity3.environment.Farm;
 import repastcity3.environment.Workplace;
 import repastcity3.environment.contexts.AgentContext;
-import repastcity3.environment.contexts.Candidate1Context;
-import repastcity3.environment.contexts.Candidate2Context;
-import repastcity3.environment.contexts.Candidate3Context;
 import repastcity3.environment.contexts.JunctionContext;
 import repastcity3.environment.contexts.ResidentialContext;
 import repastcity3.environment.contexts.RestaurantContext;
@@ -88,67 +85,67 @@ public class ContextManager implements ContextBuilder<Object> {
 	
 	public static final double MAX_ITERATIONS = 1000;
 	
-	// Parameters for calculation method
-	private static double[] gamma1 = {0.2, 0.05};
-	private static double[] gamma2 = {0.15, 0.1};
-	private static double[] gamma3 = {-0.2, 0.15};
-	
-	private static double[] beta1 = {-2.5, -0.15, 1, 1, 1, 1};
-	private static double[] beta2 = {-2, -0.13, 1, 1, 1, 1};
-	private static double[] beta3 = {-1.5, -0.11, 1, 1, 1, 1};
-	
-	private static double[] p1 = new double[25]; 
-	private static double[] p2 = new double[25];
-	private static double[] p3 = new double[25];
-	
-	private static double c1 = 0.1;
-	private static double c2 = 0.2;
-	private static double c3 = 0.3;
-	
-	private static double sigma1 = 0.5;
-	private static double sigma2 = 0.5;
-	private static double sigma3 = 0.5;
-	
-	private int numAgent = 600;
-	private int numCan = 16;
-	private int numCandidate_less = 9;
-	private int numItera = 96;
-	private double costTranLine = 55900.6;
-	
-	private double[][] Dis = new double[numAgent][numCan];
-	private int[] Res = new int[numCan];
-	private int[] Shop = new int[numCan];
-	private int[] Super = new int[numCan];
-	private int[] TralPurp = new int[numAgent];
-	private int[] Income = new int[numAgent];
-	private int[][] Des = new int[numAgent][numCan];
-	
-	private double[] q = new double[numAgent];
-	private int[][] index1 = new int[numItera][numCandidate_less];
-	private int[][] index2 = new int[numItera][numCandidate_less];
-	private int[][] index3 = new int[numItera][numCandidate_less];
-	private int[] population = {352711, 352302, 223991, 116360, 229282, 
-						122077, 69346, 185439, 188318};
-	private double energyPer = 6.721; // in MWh per year per person
-	private double[] baseLoad = new double[numCan];
-	
-	
-	private int numCandidate = 16;
-	private double cost_lev1 = 40000;
-	private double cost_lev2 = 150000;
-	private double cost_lev3 = 650000;
-	private double[] cost1 = new double[numCandidate];
-	private double[] cost2 = new double[numCandidate];
-	private double[] cost3 = new double[numCandidate];
-	private double a2 = 0.0128;
-	private double a1 = 17.82;
-	private double a0 = 10.15;
-
-	private double P1 = 0.71;
-	private double P2 = 0.96;
-	private double P3 = 1.83;
-	
-	private double[][] Sum = new double[numItera][3];
+//	// Parameters for calculation method
+//	private static double[] gamma1 = {0.2, 0.05};
+//	private static double[] gamma2 = {0.15, 0.1};
+//	private static double[] gamma3 = {-0.2, 0.15};
+//	
+//	private static double[] beta1 = {-2.5, -0.15, 1, 1, 1, 1};
+//	private static double[] beta2 = {-2, -0.13, 1, 1, 1, 1};
+//	private static double[] beta3 = {-1.5, -0.11, 1, 1, 1, 1};
+//	
+//	private static double[] p1 = new double[25]; 
+//	private static double[] p2 = new double[25];
+//	private static double[] p3 = new double[25];
+//	
+//	private static double c1 = 0.1;
+//	private static double c2 = 0.2;
+//	private static double c3 = 0.3;
+//	
+//	private static double sigma1 = 0.5;
+//	private static double sigma2 = 0.5;
+//	private static double sigma3 = 0.5;
+//	
+//	private int numAgent = 600;
+//	private int numCan = 16;
+//	private int numCandidate_less = 9;
+//	private int numItera = 96;
+//	private double costTranLine = 55900.6;
+//	
+//	private double[][] Dis = new double[numAgent][numCan];
+//	private int[] Res = new int[numCan];
+//	private int[] Shop = new int[numCan];
+//	private int[] Super = new int[numCan];
+//	private int[] TralPurp = new int[numAgent];
+//	private int[] Income = new int[numAgent];
+//	private int[][] Des = new int[numAgent][numCan];
+//	
+//	private double[] q = new double[numAgent];
+//	private int[][] index1 = new int[numItera][numCandidate_less];
+//	private int[][] index2 = new int[numItera][numCandidate_less];
+//	private int[][] index3 = new int[numItera][numCandidate_less];
+//	private int[] population = {352711, 352302, 223991, 116360, 229282, 
+//						122077, 69346, 185439, 188318};
+//	private double energyPer = 6.721; // in MWh per year per person
+//	private double[] baseLoad = new double[numCan];
+//	
+//	
+//	private int numCandidate = 16;
+//	private double cost_lev1 = 40000;
+//	private double cost_lev2 = 150000;
+//	private double cost_lev3 = 650000;
+//	private double[] cost1 = new double[numCandidate];
+//	private double[] cost2 = new double[numCandidate];
+//	private double[] cost3 = new double[numCandidate];
+//	private double a2 = 0.0128;
+//	private double a1 = 17.82;
+//	private double a0 = 10.15;
+//
+//	private double P1 = 0.71;
+//	private double P2 = 0.96;
+//	private double P3 = 1.83;
+//	
+//	private double[][] Sum = new double[numItera][3];
 	
 	/*
 	 * Pointers to contexts and projections (for convenience). Most of these can be made public, but the agent ones
@@ -161,17 +158,17 @@ public class ContextManager implements ContextBuilder<Object> {
 	public static Context<Residential> residentialContext;
 	public static Geography<Residential> residentialProjection;
 	
-	public static Context<Shoppingcenter> shoppingcenterContext;
-	public static Geography<Shoppingcenter> shoppingcenterProjection;
+//	public static Context<Shoppingcenter> shoppingcenterContext;
+//	public static Geography<Shoppingcenter> shoppingcenterProjection;
 	
 	public static Context<Farm> FarmContext;
 	public static Geography<Farm> FarmProjection;
 	
-	public static Context<Workplace> workplaceContext;
-	public static Geography<Workplace> workplaceProjection;
-	
-	public static Context<Restaurant> restaurantContext;
-	public static Geography<Restaurant> restaurantProjection;
+//	public static Context<Workplace> workplaceContext;
+//	public static Geography<Workplace> workplaceProjection;
+//	
+//	public static Context<Restaurant> restaurantContext;
+//	public static Geography<Restaurant> restaurantProjection;
 
 	public static Context<Road> roadContext;
 	public static Geography<Road> roadProjection;
@@ -183,17 +180,9 @@ public class ContextManager implements ContextBuilder<Object> {
 	private static Context<IAgent> agentContext;
 	private static Geography<IAgent> agentGeography;
 	
-	public static Context<Candidate1> candidate1Context;
-	public static Geography<Candidate1> candidate1Projection;
-	
-	public static Context<Candidate2> candidate2Context;
-	public static Geography<Candidate2> candidate2Projection;
-	
-	public static Context<Candidate3> candidate3Context;
-	public static Geography<Candidate3> candidate3Projection;
-	
-	public static Context<Substation> substationContext;
-	public static Geography<Substation> substationProjection;
+
+//	public static Context<Substation> substationContext;
+//	public static Geography<Substation> substationProjection;
 	
 	
 	DataLogger dLogger = new DataLogger();
@@ -221,56 +210,17 @@ public class ContextManager implements ContextBuilder<Object> {
 		LOGGER.log(Level.FINE, "Configuring the environment with data from " + gisDataDir);
 
 		try {
-			
-			
-			// Create the charging station candidate1 (Level 1) - context and geography projection
-			candidate1Context = new Candidate1Context();
-			candidate1Projection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
-					GlobalVars.CONTEXT_NAMES.CANDIDATE1_GEOGRAPHY, candidate1Context,
-					new GeographyParameters<Candidate1>(new SimpleAdder<Candidate1>()));
-			String candidate1File = gisDataDir + getProperty(GlobalVars.Candidate1Shapefile);
-			GISFunctions.readShapefile(Candidate1.class, candidate1File, candidate1Projection, candidate1Context);
-			mainContext.addSubContext(candidate1Context);
-			SpatialIndexManager.createIndex(candidate1Projection, Candidate1.class);
-			LOGGER.log(Level.FINER, "Read " + candidate1Context.getObjects(Candidate1.class).size() + " charging station candidates (Level 1) from "
-					+ candidate1File);
-			
-			// Create the charging station candidate2 (Level 2) - context and geography projection
-			candidate2Context = new Candidate2Context();
-			candidate2Projection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
-					GlobalVars.CONTEXT_NAMES.CANDIDATE2_GEOGRAPHY, candidate2Context,
-					new GeographyParameters<Candidate2>(new SimpleAdder<Candidate2>()));
-			String candidate2File = gisDataDir + getProperty(GlobalVars.Candidate2Shapefile);
-			GISFunctions.readShapefile(Candidate2.class, candidate2File, candidate2Projection, candidate2Context);
-			mainContext.addSubContext(candidate2Context);
-			SpatialIndexManager.createIndex(candidate2Projection, Candidate2.class);
-			LOGGER.log(Level.FINER, "Read " + candidate2Context.getObjects(Candidate2.class).size() + " charging station candidates (Level 2) from "
-					+ candidate2File);
-			
-			// Create the charging station candidate3 (Level 3) - context and geography projection
-			candidate3Context = new Candidate3Context();
-			candidate3Projection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
-					GlobalVars.CONTEXT_NAMES.CANDIDATE3_GEOGRAPHY, candidate3Context,
-					new GeographyParameters<Candidate3>(new SimpleAdder<Candidate3>()));
-			String candidate3File = gisDataDir + getProperty(GlobalVars.Candidate3Shapefile);
-			GISFunctions.readShapefile(Candidate3.class, candidate3File, candidate3Projection, candidate3Context);
-			mainContext.addSubContext(candidate3Context);
-			SpatialIndexManager.createIndex(candidate3Projection, Candidate3.class);
-			LOGGER.log(Level.FINER, "Read " + candidate3Context.getObjects(Candidate3.class).size() + " charging station candidates (Level 3) from "
-					+ candidate3File);
-			
-			
-			// Create the substation - context and geography projection
-			substationContext = new SubstationContext();
-			substationProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
-					GlobalVars.CONTEXT_NAMES.SUBSTATION_GEOGRAPHY, substationContext,
-					new GeographyParameters<Substation>(new SimpleAdder<Substation>()));
-			String substationFile = gisDataDir + getProperty(GlobalVars.SubstationShapefile);
-			GISFunctions.readShapefile(Substation.class, substationFile, substationProjection, substationContext);
-			mainContext.addSubContext(substationContext);
-			SpatialIndexManager.createIndex(substationProjection, Substation.class);
-			LOGGER.log(Level.FINER, "Read " + substationContext.getObjects(Substation.class).size() + " substation "
-					+ substationFile);
+//			// Create the substation - context and geography projection
+//			substationContext = new SubstationContext();
+//			substationProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
+//					GlobalVars.CONTEXT_NAMES.SUBSTATION_GEOGRAPHY, substationContext,
+//					new GeographyParameters<Substation>(new SimpleAdder<Substation>()));
+//			String substationFile = gisDataDir + getProperty(GlobalVars.SubstationShapefile);
+//			GISFunctions.readShapefile(Substation.class, substationFile, substationProjection, substationContext);
+//			mainContext.addSubContext(substationContext);
+//			SpatialIndexManager.createIndex(substationProjection, Substation.class);
+//			LOGGER.log(Level.FINER, "Read " + substationContext.getObjects(Substation.class).size() + " substation "
+//					+ substationFile);
 			
 			// Create the residential - context and geography projection
 			residentialContext = new ResidentialContext();
@@ -285,17 +235,17 @@ public class ContextManager implements ContextBuilder<Object> {
 					+ residentialFile);
 
 			
-			// Create the shoppingcenter - context and geography projection
-			shoppingcenterContext = new ShoppingcenterContext();
-			shoppingcenterProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
-					GlobalVars.CONTEXT_NAMES.SHOPPINGCENTER_GEOGRAPHY, shoppingcenterContext,
-					new GeographyParameters<Shoppingcenter>(new SimpleAdder<Shoppingcenter>()));
-			String shoppingcenterFile = gisDataDir + getProperty(GlobalVars.ShoppingcenterShapefile);
-			GISFunctions.readShapefile(Shoppingcenter.class, shoppingcenterFile, shoppingcenterProjection, shoppingcenterContext);
-			mainContext.addSubContext(shoppingcenterContext);
-			SpatialIndexManager.createIndex(shoppingcenterProjection, Shoppingcenter.class);
-			LOGGER.log(Level.FINER, "Read " + shoppingcenterContext.getObjects(Shoppingcenter.class).size() + " shoppingcenters from "
-					+ shoppingcenterFile);
+//			// Create the shoppingcenter - context and geography projection
+//			shoppingcenterContext = new ShoppingcenterContext();
+//			shoppingcenterProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
+//					GlobalVars.CONTEXT_NAMES.SHOPPINGCENTER_GEOGRAPHY, shoppingcenterContext,
+//					new GeographyParameters<Shoppingcenter>(new SimpleAdder<Shoppingcenter>()));
+//			String shoppingcenterFile = gisDataDir + getProperty(GlobalVars.ShoppingcenterShapefile);
+//			GISFunctions.readShapefile(Shoppingcenter.class, shoppingcenterFile, shoppingcenterProjection, shoppingcenterContext);
+//			mainContext.addSubContext(shoppingcenterContext);
+//			SpatialIndexManager.createIndex(shoppingcenterProjection, Shoppingcenter.class);
+//			LOGGER.log(Level.FINER, "Read " + shoppingcenterContext.getObjects(Shoppingcenter.class).size() + " shoppingcenters from "
+//					+ shoppingcenterFile);
 			
 			
 			// Create the Farm - context and geography projection
@@ -309,30 +259,30 @@ public class ContextManager implements ContextBuilder<Object> {
 			SpatialIndexManager.createIndex(FarmProjection, Farm.class);
 			LOGGER.log(Level.FINER, "Read " + FarmContext.getObjects(Farm.class).size() + " Farms from "
 					+ FarmFile);
-			
-			// Create the workplace - context and geography projection
-			workplaceContext = new WorkplaceContext();
-			workplaceProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
-					GlobalVars.CONTEXT_NAMES.WORKPLACE_GEOGRAPHY, workplaceContext,
-					new GeographyParameters<Workplace>(new SimpleAdder<Workplace>()));
-			String workplaceFile = gisDataDir + getProperty(GlobalVars.WorkplaceShapefile);
-			GISFunctions.readShapefile(Workplace.class, workplaceFile, workplaceProjection, workplaceContext);
-			mainContext.addSubContext(workplaceContext);
-			SpatialIndexManager.createIndex(workplaceProjection, Workplace.class);
-			LOGGER.log(Level.FINER, "Read " + workplaceContext.getObjects(Workplace.class).size() + " workplaces from "
-					+ workplaceFile);
-			
-			// Create the restaurant - context and geography projection
-			restaurantContext = new RestaurantContext();
-			restaurantProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
-					GlobalVars.CONTEXT_NAMES.RESTAURANT_GEOGRAPHY, restaurantContext,
-					new GeographyParameters<Restaurant>(new SimpleAdder<Restaurant>()));
-			String restaurantFile = gisDataDir + getProperty(GlobalVars.RestaurantShapefile);
-			GISFunctions.readShapefile(Restaurant.class, restaurantFile, restaurantProjection, restaurantContext);
-			mainContext.addSubContext(restaurantContext);
-			SpatialIndexManager.createIndex(restaurantProjection, Restaurant.class);
-			LOGGER.log(Level.FINER, "Read " + restaurantContext.getObjects(Restaurant.class).size() + " restaurants from "
-					+ restaurantFile);
+//			
+//			// Create the workplace - context and geography projection
+//			workplaceContext = new WorkplaceContext();
+//			workplaceProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
+//					GlobalVars.CONTEXT_NAMES.WORKPLACE_GEOGRAPHY, workplaceContext,
+//					new GeographyParameters<Workplace>(new SimpleAdder<Workplace>()));
+//			String workplaceFile = gisDataDir + getProperty(GlobalVars.WorkplaceShapefile);
+//			GISFunctions.readShapefile(Workplace.class, workplaceFile, workplaceProjection, workplaceContext);
+//			mainContext.addSubContext(workplaceContext);
+//			SpatialIndexManager.createIndex(workplaceProjection, Workplace.class);
+//			LOGGER.log(Level.FINER, "Read " + workplaceContext.getObjects(Workplace.class).size() + " workplaces from "
+//					+ workplaceFile);
+//			
+//			// Create the restaurant - context and geography projection
+//			restaurantContext = new RestaurantContext();
+//			restaurantProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
+//					GlobalVars.CONTEXT_NAMES.RESTAURANT_GEOGRAPHY, restaurantContext,
+//					new GeographyParameters<Restaurant>(new SimpleAdder<Restaurant>()));
+//			String restaurantFile = gisDataDir + getProperty(GlobalVars.RestaurantShapefile);
+//			GISFunctions.readShapefile(Restaurant.class, restaurantFile, restaurantProjection, restaurantContext);
+//			mainContext.addSubContext(restaurantContext);
+//			SpatialIndexManager.createIndex(restaurantProjection, Restaurant.class);
+//			LOGGER.log(Level.FINER, "Read " + restaurantContext.getObjects(Restaurant.class).size() + " restaurants from "
+//					+ restaurantFile);
 			
 			// Create the Roads - context and geography
 			roadContext = new RoadContext();
