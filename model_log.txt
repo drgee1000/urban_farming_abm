@@ -1,0 +1,26 @@
+Jul 30, 2018 7:57:01 PM repastcity3.main.ContextManager build
+INFO: Creating agents with the agent definition: 'point:people_600.shp$repastcity3.agent.DefaultAgent'
+Jul 30, 2018 7:57:01 PM repastcity3.agent.AgentFactory createPointAgents
+INFO: Have created 300 of type repastcity3.agent.DefaultAgent from file ./data/gis_data/urban_farming/people_600.shp
+Jul 30, 2018 7:57:01 PM repastcity3.agent.AgentFactory createPointAgents
+INFO: Have created 600 of type repastcity3.agent.DefaultAgent from file ./data/gis_data/urban_farming/people_600.shp
+Jul 30, 2018 7:57:01 PM repastcity3.main.ContextManager createSchedule
+INFO: The multi-threaded scheduler will be used.
+Jul 30, 2018 7:57:22 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 1.0
+Jul 30, 2018 7:57:29 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 11.0
+Jul 30, 2018 7:57:34 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 21.0
+Jul 30, 2018 7:57:39 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 31.0
+Jul 30, 2018 7:57:43 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 41.0
+Jul 30, 2018 7:57:49 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 51.0
+Jul 30, 2018 7:57:53 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 61.0
+Jul 30, 2018 7:57:58 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 71.0
+Jul 30, 2018 7:58:03 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 81.0
