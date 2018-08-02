@@ -40,25 +40,18 @@ public class Farm extends FarmableLocation implements FixedGeography {
 	private Coordinate coords;
 
 	// amount of food type that are not zero
-	private volatile double count;
+	private double count;
 
 	public Farm() {
 		this.agents = new ArrayList<IAgent>();
 		super.stock = new ArrayList<Food>();
 		this.count = 0;
-		init();
+		initStock();
 	}
 
-	private void init() {
-		// TODO use more elegant way
-		Food potato = new Food("potato", "Staple", 15, 10, 7, new Nutrition(10, 12, 22, 44, 33, 22), 0.25, 25);
-		Food rise = new Food("rise", "Staple", 10, 12, 10, new Nutrition(44, 0, 0, 10, 0, 0), 0.3, 100);
-		Food cabbage = new Food("cabbage", "vegatable", 12, 23, 17, new Nutrition(10, 3, 0, 10, 15, 5), 0.2, 17);
-		Food beaf = new Food("beaf", "meat", 10, 50, 40, new Nutrition(25, 20, 20, 5, 10, 5), 3, 10);
-		addFood(potato);
-		addFood(rise);
-		addFood(cabbage);
-		addFood(beaf);
+	private void initStock() {
+		
+		
 	}
 
 	private void addFood(Food food) {
@@ -127,7 +120,12 @@ public class Farm extends FarmableLocation implements FixedGeography {
 	@ScheduledMethod(start = 0, interval = 1)
 	@Override
 	public synchronized void product() {
-		// TODO Auto-generated method stub
+		/*
+		 * TODO: 
+		 * use strategy for production
+		 * (use preference list)
+		 */
+		
 		for (Food food : stock) {
 			if (fund > 0) {
 				double amount = food.getAmount();
@@ -158,7 +156,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 		return count > 0;
 	}
 	
-	public void sell(FoodOrder order) {
+	public synchronized void sell(FoodOrder order) {
 		HashMap<Food, Double> list = order.getList();
 		list.forEach((food, amount) -> {
 			food.setAmount(food.getAmount() - amount);
