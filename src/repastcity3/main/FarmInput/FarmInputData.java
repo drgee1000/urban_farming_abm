@@ -3,6 +3,7 @@ package repastcity3.main.FarmInput;
 public class FarmInputData {
 	private int area;
 	private int plantsPerSqm;
+	private int productionRate;
 	public FarmInputData() {
 		area = 0;
 		plantsPerSqm = 0;
