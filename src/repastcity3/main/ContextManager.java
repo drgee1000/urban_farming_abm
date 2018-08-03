@@ -222,17 +222,17 @@ public class ContextManager implements ContextBuilder<Object> {
 //			LOGGER.log(Level.FINER, "Read " + substationContext.getObjects(Substation.class).size() + " substation "
 //					+ substationFile);
 			
-			// Create the residential - context and geography projection
-			residentialContext = new ResidentialContext();
-			residentialProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
-					GlobalVars.CONTEXT_NAMES.RESIDENTIAL_GEOGRAPHY, residentialContext,
-					new GeographyParameters<Residential>(new SimpleAdder<Residential>()));
-			String residentialFile = gisDataDir + getProperty(GlobalVars.ResidentialShapefile);
-			GISFunctions.readShapefile(Residential.class, residentialFile, residentialProjection, residentialContext);
-			mainContext.addSubContext(residentialContext);
-			SpatialIndexManager.createIndex(residentialProjection, Residential.class);
-			LOGGER.log(Level.FINER, "Read " + residentialContext.getObjects(Residential.class).size() + " residentials from "
-					+ residentialFile);
+//			// Create the residential - context and geography projection
+//			residentialContext = new ResidentialContext();
+//			residentialProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
+//					GlobalVars.CONTEXT_NAMES.RESIDENTIAL_GEOGRAPHY, residentialContext,
+//					new GeographyParameters<Residential>(new SimpleAdder<Residential>()));
+//			String residentialFile = gisDataDir + getProperty(GlobalVars.ResidentialShapefile);
+//			GISFunctions.readShapefile(Residential.class, residentialFile, residentialProjection, residentialContext);
+//			mainContext.addSubContext(residentialContext);
+//			SpatialIndexManager.createIndex(residentialProjection, Residential.class);
+//			LOGGER.log(Level.FINER, "Read " + residentialContext.getObjects(Residential.class).size() + " residentials from "
+//					+ residentialFile);
 
 			
 //			// Create the shoppingcenter - context and geography projection

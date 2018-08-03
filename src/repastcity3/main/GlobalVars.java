@@ -27,9 +27,6 @@ public abstract class GlobalVars {
 	public static final String CandidateShapefile = "CandidateShapefile";
 	public static final String BuildingsRoadsCoordsCache = "BuildingsRoadsCoordsCache";
 	public static final String BuildingsRoadsCache = "BuildingsRoadsCache";
-	public static final String Candidate1Shapefile = "Candidate1Shapefile";
-	public static final String Candidate2Shapefile = "Candidate2Shapefile";
-	public static final String Candidate3Shapefile = "Candidate3Shapefile";
 	public static final String SubstationShapefile = "SubstationShapefile";
 	
 	
@@ -104,15 +101,6 @@ public abstract class GlobalVars {
 		
 		public static final String RESTAURANT_CONTEXT = "RestaurantContext";
 		public static final String RESTAURANT_GEOGRAPHY = "RestaurantGeography";
-		
-		public static final String CANDIDATE1_CONTEXT = "Candidate1Context";
-		public static final String CANDIDATE1_GEOGRAPHY = "Candidate1Geography";
-		
-		public static final String CANDIDATE2_CONTEXT = "Candidate2Context";
-		public static final String CANDIDATE2_GEOGRAPHY = "Candidate2Geography";
-		
-		public static final String CANDIDATE3_CONTEXT = "Candidate3Context";
-		public static final String CANDIDATE3_GEOGRAPHY = "Candidate3Geography";
 		
 		public static final String Farm_CONTEXT = "FarmContext";
 		public static final String Farm_GEOGRAPHY = "FarmGeography";
