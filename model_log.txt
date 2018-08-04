@@ -1,40 +1,8 @@
-Jul 30, 2018 10:13:54 PM repastcity3.main.ContextManager build
+Aug 04, 2018 10:59:09 AM repastcity3.main.ContextManager build
 INFO: Creating agents with the agent definition: 'point:people_600.shp$repastcity3.agent.DefaultAgent'
-Jul 30, 2018 10:13:54 PM repastcity3.agent.AgentFactory createPointAgents
+Aug 04, 2018 10:59:09 AM repastcity3.agent.AgentFactory createPointAgents
 INFO: Have created 300 of type repastcity3.agent.DefaultAgent from file ./data/gis_data/urban_farming/people_600.shp
-Jul 30, 2018 10:13:54 PM repastcity3.agent.AgentFactory createPointAgents
+Aug 04, 2018 10:59:09 AM repastcity3.agent.AgentFactory createPointAgents
 INFO: Have created 600 of type repastcity3.agent.DefaultAgent from file ./data/gis_data/urban_farming/people_600.shp
-Jul 30, 2018 10:13:54 PM repastcity3.main.ContextManager createSchedule
+Aug 04, 2018 10:59:09 AM repastcity3.main.ContextManager createSchedule
 INFO: The multi-threaded scheduler will be used.
-Jul 30, 2018 10:14:09 PM repastcity3.main.ContextManager printTicks
-INFO: Iterations: 1.0
-Jul 30, 2018 10:14:12 PM repastcity3.main.ContextManager printTicks
-INFO: Iterations: 2.0
-Jul 30, 2018 10:14:12 PM repastcity3.main.ContextManager printTicks
-INFO: Iterations: 3.0
-Jul 30, 2018 10:15:31 PM repastcity3.main.ContextManager printTicks
-INFO: Iterations: 4.0
-Jul 30, 2018 10:15:32 PM repastcity3.main.ContextManager printTicks
-INFO: Iterations: 5.0
-Jul 30, 2018 10:15:32 PM repastcity3.main.ContextManager printTicks
-INFO: Iterations: 6.0
-Jul 30, 2018 10:15:32 PM repastcity3.main.ContextManager printTicks
-INFO: Iterations: 7.0
-Jul 30, 2018 10:15:32 PM repastcity3.main.ContextManager printTicks
-INFO: Iterations: 8.0
-Jul 30, 2018 10:15:32 PM repastcity3.main.ContextManager printTicks
-INFO: Iterations: 9.0
-Jul 30, 2018 10:15:32 PM repastcity3.main.ContextManager printTicks
-INFO: Iterations: 10.0
-Jul 30, 2018 10:15:32 PM repastcity3.main.ContextManager printTicks
-INFO: Iterations: 11.0
-Jul 30, 2018 10:15:32 PM repastcity3.main.ContextManager printTicks
-INFO: Iterations: 12.0
-Jul 30, 2018 10:15:33 PM repastcity3.main.ContextManager printTicks
-INFO: Iterations: 13.0
-Jul 30, 2018 10:15:33 PM repastcity3.main.ContextManager printTicks
-INFO: Iterations: 14.0
-Jul 30, 2018 10:15:33 PM repastcity3.main.ContextManager printTicks
-INFO: Iterations: 15.0
-Jul 30, 2018 11:13:50 PM org.geotools.referencing.factory.DeferredAuthorityFactory disposeBackingStore
-INFO: Disposing class org.geotools.referencing.factory.epsg.ThreadedHsqlEpsgFactory backing store

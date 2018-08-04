@@ -72,6 +72,7 @@ import repastcity3.exceptions.AgentCreationException;
 import repastcity3.exceptions.EnvironmentError;
 import repastcity3.exceptions.NoIdentifierException;
 import repastcity3.exceptions.ParameterNotFoundException;
+import repastcity3.main.FarmIO.DataLogger;
 
 public class ContextManager implements ContextBuilder<Object> {
 
