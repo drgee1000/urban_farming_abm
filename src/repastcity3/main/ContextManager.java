@@ -1,6 +1,8 @@
 
 package repastcity3.main;
 
+import static repastcity3.main.ContextManager.LOGGER;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -76,7 +78,7 @@ public class ContextManager implements ContextBuilder<Object> {
 	 * A logger for this class. Note that there is a static block that is used to
 	 * configure all logging for the model (at the bottom of this file).
 	 */
-	private static Logger LOGGER = Logger.getLogger(ContextManager.class.getName());
+	public static Logger LOGGER = Logger.getLogger(ContextManager.class.getName());
 
 	// Optionally force agent threading off (good for debugging)
 	private static final boolean TURN_OFF_THREADING = false;
@@ -85,67 +87,6 @@ public class ContextManager implements ContextBuilder<Object> {
 
 	public static final double MAX_ITERATIONS = 1000;
 
-	// // Parameters for calculation method
-	// private static double[] gamma1 = {0.2, 0.05};
-	// private static double[] gamma2 = {0.15, 0.1};
-	// private static double[] gamma3 = {-0.2, 0.15};
-	//
-	// private static double[] beta1 = {-2.5, -0.15, 1, 1, 1, 1};
-	// private static double[] beta2 = {-2, -0.13, 1, 1, 1, 1};
-	// private static double[] beta3 = {-1.5, -0.11, 1, 1, 1, 1};
-	//
-	// private static double[] p1 = new double[25];
-	// private static double[] p2 = new double[25];
-	// private static double[] p3 = new double[25];
-	//
-	// private static double c1 = 0.1;
-	// private static double c2 = 0.2;
-	// private static double c3 = 0.3;
-	//
-	// private static double sigma1 = 0.5;
-	// private static double sigma2 = 0.5;
-	// private static double sigma3 = 0.5;
-	//
-	// private int numAgent = 600;
-	// private int numCan = 16;
-	// private int numCandidate_less = 9;
-	// private int numItera = 96;
-	// private double costTranLine = 55900.6;
-	//
-	// private double[][] Dis = new double[numAgent][numCan];
-	// private int[] Res = new int[numCan];
-	// private int[] Shop = new int[numCan];
-	// private int[] Super = new int[numCan];
-	// private int[] TralPurp = new int[numAgent];
-	// private int[] Income = new int[numAgent];
-	// private int[][] Des = new int[numAgent][numCan];
-	//
-	// private double[] q = new double[numAgent];
-	// private int[][] index1 = new int[numItera][numCandidate_less];
-	// private int[][] index2 = new int[numItera][numCandidate_less];
-	// private int[][] index3 = new int[numItera][numCandidate_less];
-	// private int[] population = {352711, 352302, 223991, 116360, 229282,
-	// 122077, 69346, 185439, 188318};
-	// private double energyPer = 6.721; // in MWh per year per person
-	// private double[] baseLoad = new double[numCan];
-	//
-	//
-	// private int numCandidate = 16;
-	// private double cost_lev1 = 40000;
-	// private double cost_lev2 = 150000;
-	// private double cost_lev3 = 650000;
-	// private double[] cost1 = new double[numCandidate];
-	// private double[] cost2 = new double[numCandidate];
-	// private double[] cost3 = new double[numCandidate];
-	// private double a2 = 0.0128;
-	// private double a1 = 17.82;
-	// private double a0 = 10.15;
-	//
-	// private double P1 = 0.71;
-	// private double P2 = 0.96;
-	// private double P3 = 1.83;
-	//
-	// private double[][] Sum = new double[numItera][3];
 
 	/*
 	 * Pointers to contexts and projections (for convenience). Most of these can be
@@ -251,17 +192,16 @@ public class ContextManager implements ContextBuilder<Object> {
 			// road network had been created).
 			SpatialIndexManager.createIndex(junctionGeography, Junction.class);
 
-			// testEnvironment();
+			TestEnv.testEnvironment(mainContext);
 
 		} catch (MalformedURLException e) {
 			LOGGER.log(Level.SEVERE, "", e);
 			return null;
 		}
-		// catch (EnvironmentError e) {
-		// LOGGER.log(Level.SEVERE, "There is an eror with the environment, cannot start
-		// simulation", e);
-		// return null;
-		// }
+		 catch (EnvironmentError e) {
+		 LOGGER.log(Level.SEVERE, "There is an eror with the environment, cannot start simulation", e);
+		 return null;
+		 }
 		catch (NoIdentifierException e) {
 			LOGGER.log(Level.SEVERE, "One of the input buildings had no identifier (this should be read"
 					+ "from the 'identifier' column in an input GIS file)", e);
@@ -465,121 +405,6 @@ public class ContextManager implements ContextBuilder<Object> {
 		} // for
 		return;
 	} // readProperties
-
-	/**
-	 * Check that the environment looks ok
-	 * 
-	 * @throws NoIdentifierException
-	 */
-	private void testEnvironment() throws EnvironmentError, NoIdentifierException {
-
-		LOGGER.log(Level.FINE, "Testing the environment");
-		// Get copies of the contexts/projections from main context
-		// Context<Building> bc = (Context<Building>)
-		// mainContext.getSubContext(GlobalVars.CONTEXT_NAMES.BUILDING_CONTEXT);
-		Context<Residential> rc = (Context<Residential>) mainContext
-				.getSubContext(GlobalVars.CONTEXT_NAMES.RESIDENTIAL_CONTEXT);
-		Context<Workplace> wc = (Context<Workplace>) mainContext
-				.getSubContext(GlobalVars.CONTEXT_NAMES.WORKPLACE_CONTEXT);
-		Context<Shoppingcenter> sc = (Context<Shoppingcenter>) mainContext
-				.getSubContext(GlobalVars.CONTEXT_NAMES.SHOPPINGCENTER_CONTEXT);
-		Context<Restaurant> Rc = (Context<Restaurant>) mainContext
-				.getSubContext(GlobalVars.CONTEXT_NAMES.RESTAURANT_CONTEXT);
-		Context<Road> roc = (Context<Road>) mainContext.getSubContext(GlobalVars.CONTEXT_NAMES.ROAD_CONTEXT);
-		Context<Junction> jc = (Context<Junction>) mainContext.getSubContext(GlobalVars.CONTEXT_NAMES.JUNCTION_CONTEXT);
-
-		// Geography<Building> bg = (Geography<Building>)
-		// bc.getProjection(GlobalVars.CONTEXT_NAMES.BUILDING_GEOGRAPHY);
-		// Geography<Road> rg = (Geography<Road>)
-		// rc.getProjection(GlobalVars.CONTEXT_NAMES.ROAD_GEOGRAPHY);
-		// Geography<Junction> jg = (Geography<Junction>)
-		// rc.getProjection(GlobalVars.CONTEXT_NAMES.JUNCTION_GEOGRAPHY);
-		Network<Junction> rn = (Network<Junction>) jc.getProjection(GlobalVars.CONTEXT_NAMES.ROAD_NETWORK);
-		System.out.print("roadNetwork has" + rn.size() + "edges\n");
-		// 1. Check that there are some objects in each of the contexts
-		checkSize(rc, wc, sc, Rc, roc, jc);
-		// System.out.print("Size is OK!");
-		// 2. Check that the number of roads matches the number of edges
-
-		if (sizeOfIterable(roc.getObjects(Road.class)) != sizeOfIterable(rn.getEdges())) {
-			throw new EnvironmentError("There should be equal numbers of roads in the road "
-					+ "context and edges in the road network. But there are "
-					+ sizeOfIterable(roc.getObjects(Road.class)) + " and " + sizeOfIterable(rn.getEdges()));
-		}
-
-		// 3. Check that the number of junctions matches the number of nodes
-		if (sizeOfIterable(jc.getObjects(Junction.class)) != sizeOfIterable(rn.getNodes())) {
-			throw new EnvironmentError("There should be equal numbers of junctions in the junction "
-					+ "context and nodes in the road network. But there are "
-					+ sizeOfIterable(jc.getObjects(Junction.class)) + " and " + sizeOfIterable(rn.getNodes()));
-		}
-
-		LOGGER.log(Level.FINE, "The road network has " + sizeOfIterable(rn.getNodes()) + " nodes and "
-				+ sizeOfIterable(rn.getEdges()) + " edges.");
-
-		// 4. Check that Roads and Buildings have unique identifiers
-		HashMap<String, ?> idList = new HashMap<String, Object>();
-		for (Residential b : rc.getObjects(Residential.class)) {
-			if (idList.containsKey(b.getIdentifier()))
-				throw new EnvironmentError("More than one residential found with id " + b.getIdentifier());
-			idList.put(b.getIdentifier(), null);
-		}
-		idList.clear();
-
-		for (Workplace b : wc.getObjects(Workplace.class)) {
-			if (idList.containsKey(b.getIdentifier()))
-				throw new EnvironmentError("More than one workplace found with id " + b.getIdentifier());
-			idList.put(b.getIdentifier(), null);
-		}
-		idList.clear();
-
-		for (Shoppingcenter b : sc.getObjects(Shoppingcenter.class)) {
-			if (idList.containsKey(b.getIdentifier()))
-				throw new EnvironmentError("More than one shoppingcenter found with id " + b.getIdentifier());
-			idList.put(b.getIdentifier(), null);
-		}
-		idList.clear();
-
-		for (Restaurant b : Rc.getObjects(Restaurant.class)) {
-			if (idList.containsKey(b.getIdentifier()))
-				throw new EnvironmentError("More than one restaurant found with id " + b.getIdentifier());
-			idList.put(b.getIdentifier(), null);
-		}
-		idList.clear();
-
-		for (Road b : roc.getObjects(Road.class)) {
-			if (idList.containsKey(b.getIdentifier()))
-				throw new EnvironmentError("More than one road found with id " + b.getIdentifier());
-			idList.put(b.getIdentifier(), null);
-		}
-
-	}
-
-	public static int sizeOfIterable(Iterable i) {
-		int size = 0;
-		Iterator<Object> it = i.iterator();
-		while (it.hasNext()) {
-			size++;
-			it.next();
-		}
-		return size;
-	}
-
-	/**
-	 * Checks that the given <code>Context</code>s have more than zero objects in
-	 * them
-	 * 
-	 * @param contexts
-	 * @throws EnvironmentError
-	 */
-	public void checkSize(Context<?>... contexts) throws EnvironmentError {
-		for (Context<?> c : contexts) {
-			int numObjs = sizeOfIterable(c.getObjects(Object.class));
-			if (numObjs == 0) {
-				throw new EnvironmentError("There are no objects in the context: " + c.getId().toString());
-			}
-		}
-	}
 
 	public static void stopSim(Exception ex, Class<?> clazz) {
 		ISchedule sched = RunEnvironment.getInstance().getCurrentSchedule();
