@@ -1,8 +1,10 @@
 package repastcity3.main.FarmIO;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
@@ -14,28 +16,33 @@ import java.util.List;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.annotations.Expose;
+
 import repast.simphony.util.collections.IndexedIterable;
 import repastcity3.agent.DefaultAgent;
 import repastcity3.agent.IAgent;
 import repastcity3.environment.Farm;
 import repastcity3.environment.FixedGeography;
 import repastcity3.environment.food.*;
+import repastcity3.exceptions.NoIdentifierException;
 
 
 public class DataLogger {
 	char RecordSeparator;
 	String fileName1;
-	String fileName2;
-	String fileName3;
+	String fileNameFarm;
+	String fileNameAgent;
 	String fileName4;
 	String fileName5;
 	public DataLogger () throws IOException {
 		RecordSeparator = '\n';
 		fileName1 = "./Output/farm_calorie_production";
-		fileName2 = "./Output/farm_organic_waste";
-		fileName3 = "./Output/agent_waste";
-		fileName4 = "./Output/agent_calorie_consumption.csv";
-		fileName5 = "./Output/agent_health.csv";
+		fileNameFarm = "./Output/Farm";
+		fileNameAgent = "./Output/agent";
+		fileName4 = "./Output/agent_calorie_consumption";
+		fileName5 = "./Output/agent_health";
+		
 		Calendar c= Calendar.getInstance();
 		int year = c.get(Calendar.YEAR); 
 		int month = c.get(Calendar.MONTH); 
@@ -45,15 +52,15 @@ public class DataLogger {
 		int second = c.get(Calendar.SECOND); 
 		String time = year + "_" + month + "_" + date + "_" +hour + "_" +minute + "_" + second; 
 		fileName1 = fileName1 + time + ".csv";
-		fileName2 = fileName2 + time + ".csv";
-		fileName3 = fileName3 + time + ".csv";
+		fileNameFarm = fileNameFarm + time + ".json";
+		fileNameAgent = fileNameAgent + time + ".json";
 		fileName4 = fileName4 + time + ".csv";
 		fileName5 = fileName5 + time + ".csv";
 		File f = new File(fileName1);
 		f.createNewFile();
-		f = new File(fileName2);
+		f = new File(fileNameFarm);
 		f.createNewFile();
-		f = new File(fileName3);
+		f = new File(fileNameAgent);
 		f.createNewFile();
 		f = new File(fileName4);
 		f.createNewFile();
@@ -103,32 +110,42 @@ public class DataLogger {
 		//System.out.println("start to export data to csv file");
 	}
 	
-	public void printDataToCSVFile(ArrayList<String> dataList, String fileName) throws IOException {
-		
-		CSVFormat formator = CSVFormat.DEFAULT.withRecordSeparator(RecordSeparator);
+	private void printDataToCSVFile(ArrayList<String> dataList, String fileName) throws IOException {
+			
+			CSVFormat formator = CSVFormat.DEFAULT.withRecordSeparator(RecordSeparator);
+			Writer fileWriter = new FileWriter(fileName,true);
+			CSVPrinter printer = new CSVPrinter(fileWriter, formator);
+			
+			printer.printRecord(dataList);
+			fileWriter.close();
+			printer.close();
+		}
+	private void printDataToJsonFile(String str, String fileName) throws IOException {
 		Writer fileWriter = new FileWriter(fileName,true);
-		CSVPrinter printer = new CSVPrinter(fileWriter, formator);
-		
-		printer.printRecord(dataList);
+		fileWriter.write(str);
 		fileWriter.close();
-		printer.close();
 	}
 	
-	public void printDataToJsonFile() {
-		
-	}
+	
 	public <T> void printJsonData(IndexedIterable<T> agentList, int tick) throws IOException {
 		T t = agentList.get(0);
-		Gson gson = new Gson();
+		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();
 		if( t instanceof Farm) {
+			ArrayList<farm> farms = new ArrayList<farm>();
+			Farm x = new Farm();
+			farm f = new farm();
 			for (int i = 0; i < agentList.size(); i++) {
-				Farm x = (Farm)(agentList.get(i));
-				farm f = new farm(tick,x.getStock());
-				
-				String jsonStr = gson.toJson(f);
-				System.out.print(jsonStr);
+				x = (Farm)(agentList.get(i));
+				f = new farm(tick,x);
+				farms.add(f);
 			}
-			
+			String jsonStr = gson.toJson(farms);
+			//System.out.print("farm  "+jsonStr);
+			try {
+				printDataToJsonFile(jsonStr, fileNameFarm);
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
 		} else if (t instanceof IAgent) {
 			for (int i = 0; i < agentList.size(); i++) {
 				DefaultAgent x = (DefaultAgent) agentList.get(i);
@@ -137,26 +154,48 @@ public class DataLogger {
 				a.setCaloryConsumption(x.getCaloryConsumption());
 				a.setHealth(x.getHealth());
 				String jsonStr = gson.toJson(a);
-				System.out.print(jsonStr);
-				
+				//System.out.print(jsonStr);
+				try {
+					printDataToJsonFile(jsonStr, fileNameAgent);
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+
 				
 			}
-		System.out.print("call json");
+		System.out.println("call json");
 		}
 	}
 	public static class farm {
+		@Expose()
+		String identifier;
+		@Expose()
 		int tick;
+		@Expose()
 		int stockNum;
+		@Expose()
 		List<Food> stock;
-		public farm(int t, List<Food> s) {
+		public farm(int t, Farm f) {
 			tick = t;
-			stock = s;
-			stockNum = s.size();
+			stock = f.getStock();
+			stockNum = stock.size();
+			try {
+				identifier = f.getIdentifier();
+			} catch (NoIdentifierException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		public farm() {
+			// TODO Auto-generated constructor stub
 		}
 	}
 	public static class agent {
+		@Expose()
 		int tick;
+		@Expose()
 		double caloryConsumption;
+		@Expose()
 		double health;
 		public void setTick(int t) {
 			tick = t;
