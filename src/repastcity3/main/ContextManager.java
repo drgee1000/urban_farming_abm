@@ -435,8 +435,8 @@ public class ContextManager implements ContextBuilder<Object> {
 		//schedule.schedule(stop, this, "calculateStation");
 		
 		// Schedule something that outputs ticks every 10 iterations.
-		schedule.schedule(ScheduleParameters.createRepeating(1, 1, ScheduleParameters.LAST_PRIORITY), this,
-				"printTicks");
+		schedule.schedule(ScheduleParameters.createRepeating(1, 1, ScheduleParameters.LAST_PRIORITY), this,"recordTicks");
+		schedule.schedule(ScheduleParameters.createAtEnd(ScheduleParameters.LAST_PRIORITY),this,"printTicks");
 
 		/*
 		 * Schedule the agents. This is slightly complicated because if all the agents can be stepped at the same time
@@ -475,14 +475,22 @@ public class ContextManager implements ContextBuilder<Object> {
 		}
 	}
 
-	public void printTicks() {
+	public void recordTicks() {
 		LOGGER.info("Iterations: " + RunEnvironment.getInstance().getCurrentSchedule().getTickCount());
 		
 		try{
 			
-			dLogger.printData(agentContext.getObjects(IAgent.class),(int)RunEnvironment.getInstance().getCurrentSchedule().getTickCount());
-			dLogger.printData(FarmContext.getObjects(Farm.class),(int)RunEnvironment.getInstance().getCurrentSchedule().getTickCount());
+			dLogger.recordData(agentContext.getObjects(IAgent.class),(int)RunEnvironment.getInstance().getCurrentSchedule().getTickCount());
+			dLogger.recordData(FarmContext.getObjects(Farm.class),(int)RunEnvironment.getInstance().getCurrentSchedule().getTickCount());
 		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public void printTicks() {
+		try {
+			dLogger.printDataToJsonFile();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

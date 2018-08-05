@@ -35,13 +35,15 @@ public class DataLogger {
 	String fileNameAgent;
 	String fileName4;
 	String fileName5;
+	ArrayList<farm> farms = new ArrayList<>();
+	ArrayList<agent> agents = new ArrayList<>();
 	public DataLogger () throws IOException {
-		RecordSeparator = '\n';
-		fileName1 = "./Output/farm_calorie_production";
+		// RecordSeparator = '\n';
+		// fileName1 = "./Output/farm_calorie_production";
 		fileNameFarm = "./Output/Farm";
 		fileNameAgent = "./Output/agent";
-		fileName4 = "./Output/agent_calorie_consumption";
-		fileName5 = "./Output/agent_health";
+		// fileName4 = "./Output/agent_calorie_consumption";
+		// fileName5 = "./Output/agent_health";
 		
 		Calendar c= Calendar.getInstance();
 		int year = c.get(Calendar.YEAR); 
@@ -51,87 +53,29 @@ public class DataLogger {
 		int minute = c.get(Calendar.MINUTE); 
 		int second = c.get(Calendar.SECOND); 
 		String time = year + "_" + month + "_" + date + "_" +hour + "_" +minute + "_" + second; 
-		fileName1 = fileName1 + time + ".csv";
+		// fileName1 = fileName1 + time + ".csv";
 		fileNameFarm = fileNameFarm + time + ".json";
 		fileNameAgent = fileNameAgent + time + ".json";
-		fileName4 = fileName4 + time + ".csv";
-		fileName5 = fileName5 + time + ".csv";
-		File f = new File(fileName1);
-		f.createNewFile();
-		f = new File(fileNameFarm);
+		// fileName4 = fileName4 + time + ".csv";
+		// fileName5 = fileName5 + time + ".csv";
+		// File f = new File(fileName1);
+		// f.createNewFile();
+		File f = new File(fileNameFarm);
 		f.createNewFile();
 		f = new File(fileNameAgent);
 		f.createNewFile();
-		f = new File(fileName4);
-		f.createNewFile();
-		f = new File(fileName5);
-		f.createNewFile();
+		// f = new File(fileName4);
+		// f.createNewFile();
+		// f = new File(fileName5);
+		// f.createNewFile();
 	}
 	public DataLogger (char s) {
 		RecordSeparator = s;
 	}
 	
-	public <T> void printData(IndexedIterable<T> agentList, int tick) throws IOException {
+	public <T> void recordData(IndexedIterable<T> agentList, int tick) throws IOException {
 		T t = agentList.get(0);
-		printJsonData(agentList,tick);
 		if( t instanceof Farm) {
-			//System.out.println("exporting farm data");
-			
-			ArrayList<String> list1 = new ArrayList<>();
-			ArrayList<String> list2 = new ArrayList<>();
-			ArrayList<String> list3 = new ArrayList<>();
-			
-			String x;
-			for (int i = 0; i < agentList.size(); i++) {
-				x = agentList.get(i).toString();
-				list1.add((x));
-			}
-			
-			printDataToCSVFile(list1, fileName1);
-		} else if (t instanceof IAgent) {
-			//System.out.println("exporting agent data");
-			
-			//String fileName2 = "./Output/agent_waste.csv";
-			
-			ArrayList<String> list1 = new ArrayList<>();
-			ArrayList<String> list2 = new ArrayList<>();
-			
-			String x;
-			for (int i = 0; i < agentList.size(); i++) {
-				x = Double.toString(((DefaultAgent) agentList.get(i)).getCaloryConsumption());
-				list1.add((x));
-				x = Double.toString(((DefaultAgent) agentList.get(i)).getHealth());
-				list2.add(x);
-			}
-			
-			printDataToCSVFile(list1, fileName4);
-			printDataToCSVFile(list2, fileName5);
-		}
-		//System.out.println("start to export data to csv file");
-	}
-	
-	private void printDataToCSVFile(ArrayList<String> dataList, String fileName) throws IOException {
-			
-			CSVFormat formator = CSVFormat.DEFAULT.withRecordSeparator(RecordSeparator);
-			Writer fileWriter = new FileWriter(fileName,true);
-			CSVPrinter printer = new CSVPrinter(fileWriter, formator);
-			
-			printer.printRecord(dataList);
-			fileWriter.close();
-			printer.close();
-		}
-	private void printDataToJsonFile(String str, String fileName) throws IOException {
-		Writer fileWriter = new FileWriter(fileName,true);
-		fileWriter.write(str);
-		fileWriter.close();
-	}
-	
-	
-	public <T> void printJsonData(IndexedIterable<T> agentList, int tick) throws IOException {
-		T t = agentList.get(0);
-		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();
-		if( t instanceof Farm) {
-			ArrayList<farm> farms = new ArrayList<farm>();
 			Farm x = new Farm();
 			farm f = new farm();
 			for (int i = 0; i < agentList.size(); i++) {
@@ -139,13 +83,7 @@ public class DataLogger {
 				f = new farm(tick,x);
 				farms.add(f);
 			}
-			String jsonStr = gson.toJson(farms);
-			//System.out.print("farm  "+jsonStr);
-			try {
-				printDataToJsonFile(jsonStr, fileNameFarm);
-			} catch (Exception e) {
-				// TODO: handle exception
-			}
+			
 		} else if (t instanceof IAgent) {
 			for (int i = 0; i < agentList.size(); i++) {
 				DefaultAgent x = (DefaultAgent) agentList.get(i);
@@ -153,19 +91,74 @@ public class DataLogger {
 				a.setTick(tick);
 				a.setCaloryConsumption(x.getCaloryConsumption());
 				a.setHealth(x.getHealth());
-				String jsonStr = gson.toJson(a);
-				//System.out.print(jsonStr);
-				try {
-					printDataToJsonFile(jsonStr, fileNameAgent);
-				} catch (Exception e) {
-					// TODO: handle exception
-				}
-
-				
+				agents.add(a);
 			}
-		System.out.println("call json");
 		}
+		// if( t instanceof Farm) {
+		// 	//System.out.println("exporting farm data");
+			
+		// 	ArrayList<String> list1 = new ArrayList<>();
+		// 	ArrayList<String> list2 = new ArrayList<>();
+		// 	ArrayList<String> list3 = new ArrayList<>();
+			
+		// 	String x;
+		// 	for (int i = 0; i < agentList.size(); i++) {
+		// 		x = agentList.get(i).toString();
+		// 		list1.add((x));
+		// 	}
+			
+		// 	printDataToCSVFile(list1, fileName1);
+		// } else if (t instanceof IAgent) {
+		// 	//System.out.println("exporting agent data");
+			
+		// 	//String fileName2 = "./Output/agent_waste.csv";
+			
+		// 	ArrayList<String> list1 = new ArrayList<>();
+		// 	ArrayList<String> list2 = new ArrayList<>();
+			
+		// 	String x;
+		// 	for (int i = 0; i < agentList.size(); i++) {
+		// 		x = Double.toString(((DefaultAgent) agentList.get(i)).getCaloryConsumption());
+		// 		list1.add((x));
+		// 		x = Double.toString(((DefaultAgent) agentList.get(i)).getHealth());
+		// 		list2.add(x);
+		// 	}
+			
+		// 	printDataToCSVFile(list1, fileName4);
+		// 	printDataToCSVFile(list2, fileName5);
+		// }
+		//System.out.println("start to export data to csv file");
 	}
+	
+	// private void printDataToCSVFile(ArrayList<String> dataList, String fileName) throws IOException {
+			
+	// 		CSVFormat formator = CSVFormat.DEFAULT.withRecordSeparator(RecordSeparator);
+	// 		Writer fileWriter = new FileWriter(fileName,true);
+	// 		CSVPrinter printer = new CSVPrinter(fileWriter, formator);
+			
+	// 		printer.printRecord(dataList);
+	// 		fileWriter.close();
+	// 		printer.close();
+	// 	}
+	public void printDataToJsonFile() throws IOException {
+		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();
+		
+		Writer fileWriter = new FileWriter(fileNameFarm);
+		String jsonStr = gson.toJson(farms);
+		fileWriter.write(jsonStr);
+		
+		fileWriter = new FileWriter(fileNameAgent);
+		jsonStr = gson.toJson(agents);
+		fileWriter.write(jsonStr);
+		fileWriter.close();
+	}
+	
+	
+	// public <T> void printJsonData(IndexedIterable<T> agentList, int tick) throws IOException {
+	// 	T t = agentList.get(0);
+	// 	Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();
+		
+	// }
 	public static class farm {
 		@Expose()
 		String identifier;

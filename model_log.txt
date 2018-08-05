@@ -1,22 +1,24 @@
-Aug 05, 2018 3:45:19 PM repastcity3.main.ContextManager build
+Aug 05, 2018 5:40:35 PM repastcity3.main.ContextManager build
 INFO: Creating agents with the agent definition: 'point:people_600.shp$repastcity3.agent.DefaultAgent'
-Aug 05, 2018 3:45:19 PM repastcity3.agent.AgentFactory createPointAgents
+Aug 05, 2018 5:40:35 PM repastcity3.agent.AgentFactory createPointAgents
 INFO: Have created 300 of type repastcity3.agent.DefaultAgent from file ./data/gis_data/urban_farming/people_600.shp
-Aug 05, 2018 3:45:19 PM repastcity3.agent.AgentFactory createPointAgents
+Aug 05, 2018 5:40:35 PM repastcity3.agent.AgentFactory createPointAgents
 INFO: Have created 600 of type repastcity3.agent.DefaultAgent from file ./data/gis_data/urban_farming/people_600.shp
-Aug 05, 2018 3:45:19 PM repastcity3.main.ContextManager createSchedule
+Aug 05, 2018 5:40:36 PM repastcity3.main.ContextManager createSchedule
 INFO: The multi-threaded scheduler will be used.
-Aug 05, 2018 3:45:26 PM repastcity3.main.ContextManager printTicks
+Aug 05, 2018 5:40:42 PM repastcity3.main.ContextManager recordTicks
 INFO: Iterations: 1.0
-Aug 05, 2018 3:45:34 PM repastcity3.main.ContextManager build
-INFO: Creating agents with the agent definition: 'point:people_600.shp$repastcity3.agent.DefaultAgent'
-Aug 05, 2018 3:45:34 PM repastcity3.agent.AgentFactory createPointAgents
-INFO: Have created 300 of type repastcity3.agent.DefaultAgent from file ./data/gis_data/urban_farming/people_600.shp
-Aug 05, 2018 3:45:34 PM repastcity3.agent.AgentFactory createPointAgents
-INFO: Have created 600 of type repastcity3.agent.DefaultAgent from file ./data/gis_data/urban_farming/people_600.shp
-Aug 05, 2018 3:45:34 PM repastcity3.main.ContextManager createSchedule
-INFO: The multi-threaded scheduler will be used.
-Aug 05, 2018 3:45:37 PM repastcity3.main.ContextManager printTicks
-INFO: Iterations: 1.0
-Aug 05, 2018 3:45:43 PM repastcity3.main.ContextManager printTicks
+Aug 05, 2018 5:40:44 PM repastcity3.main.ContextManager recordTicks
 INFO: Iterations: 2.0
+Aug 05, 2018 5:40:45 PM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 3.0
+Aug 05, 2018 5:40:46 PM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 4.0
+Aug 05, 2018 5:40:47 PM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 5.0
+Aug 05, 2018 5:40:47 PM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 6.0
+Aug 05, 2018 5:40:48 PM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 7.0
+Aug 05, 2018 5:40:48 PM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 8.0
