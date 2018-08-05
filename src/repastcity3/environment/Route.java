@@ -40,6 +40,7 @@ import repastcity3.agent.IAgent;
 import repastcity3.exceptions.RoutingException;
 import repastcity3.main.ContextManager;
 import repastcity3.main.GlobalVars;
+import repastcity3.utilities.Helper;
 
 /**
  * Create routes around a GIS road network. The <code>setRoute</code> function actually finds the route and can be
@@ -1877,7 +1878,7 @@ class NearestRoadCoordCache implements Serializable {
 		Iterable<Road> roads = ContextManager.roadProjection.getObjectsWithin(searchEnvelope);
 		debugIntro.append("Looking for nearest road coordinate around ").append(c.toString()).append(".\n");
 		debugIntro.append("RoadEnvironment.getObjectsWithin() returned ").append(
-				ContextManager.sizeOfIterable(roads) + " roads, printing debugging info:\n");
+				Helper.sizeOfIterable(roads) + " roads, printing debugging info:\n");
 		debugIntro.append(debug);
 		throw new Exception(debugIntro.toString());
 

@@ -72,23 +72,23 @@ public class DefaultAgent implements IAgent {
 	}
 	
 	public int setPurpose() {
-		double generator1 = Math.random();
-		if (generator1 > 0 && generator1 < p1){
-			type = 1; // Workplace
-	
-		} else if (generator1 > p1 && generator1 < (p1 + p2)){
-			type = 2; //Shopping center
-			
-		} else if (generator1 > (p1 + p2) && generator1 < (p1 + p2 + p3)){
-			type = 3; // Restaurant
-			
-		} else {
-			type = 4;
-			
-		}
-		Random generator2 = new Random(new Date().getTime());
-		income = generator2.nextInt(9) + 1;
-		return type;
+//		double generator1 = Math.random();
+//		if (generator1 > 0 && generator1 < p1){
+//			type = 1; // Workplace
+//	
+//		} else if (generator1 > p1 && generator1 < (p1 + p2)){
+//			type = 2; //Shopping center
+//			
+//		} else if (generator1 > (p1 + p2) && generator1 < (p1 + p2 + p3)){
+//			type = 3; // Restaurant
+//			
+//		} else {
+//			type = 4;
+//			
+//		}
+//		Random generator2 = new Random(new Date().getTime());
+//		income = generator2.nextInt(9) + 1;
+		return 4;
 	}
 
 	@Override
