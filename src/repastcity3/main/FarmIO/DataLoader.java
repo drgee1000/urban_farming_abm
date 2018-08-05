@@ -25,7 +25,7 @@ public class DataLoader {
 		String[] FILE_HEADER = {"Area","plants per sqm","production rate"};
 		String Area,PlantsPerSqm,ProductionRate;
 		CSVFormat format = CSVFormat.DEFAULT.withHeader(FILE_HEADER).withSkipHeaderRecord();
-		List<FarmData> farmData = null;
+		List<FarmInputData> farmData = null;
 		try {
 			Reader in = new FileReader(fileName);
 			Iterable<CSVRecord> records = format.parse(in);
@@ -33,7 +33,7 @@ public class DataLoader {
 				Area = record.get("Area");
 				PlantsPerSqm = record.get("Plants per sqm");
 				ProductionRate= record.get("production rate");
-				FarmData fData = new FarmData(Area, PlantsPerSqm,ProductionRate);
+				FarmInputData fData = new FarmInputData(Area, PlantsPerSqm,ProductionRate);
 				farmData.add(fData);
 			}
 			

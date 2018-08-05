@@ -480,8 +480,8 @@ public class ContextManager implements ContextBuilder<Object> {
 		
 		try{
 			
-			dLogger.printData(agentContext.getObjects(IAgent.class));
-			dLogger.printData(FarmContext.getObjects(Farm.class));
+			dLogger.printData(agentContext.getObjects(IAgent.class),(int)RunEnvironment.getInstance().getCurrentSchedule().getTickCount());
+			dLogger.printData(FarmContext.getObjects(Farm.class),(int)RunEnvironment.getInstance().getCurrentSchedule().getTickCount());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

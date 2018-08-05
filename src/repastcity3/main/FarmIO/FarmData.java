@@ -1,15 +1,15 @@
 package repastcity3.main.FarmIO;
 
-class FarmData {
+class FarmInputData {
 	private int area;
 	private int plantsPerSqm;
 	private int productionRate;
-	public FarmData() {
+	public FarmInputData() {
 		area = 0;
 		plantsPerSqm = 0;
 		productionRate = 0;
 	}
-	public FarmData(String _area, String _plantsPerSqm, String _productionRate) {
+	public FarmInputData(String _area, String _plantsPerSqm, String _productionRate) {
 		try{
 			area = Integer.parseInt(_area);
 			plantsPerSqm = Integer.parseInt(_plantsPerSqm);
@@ -26,5 +26,22 @@ class FarmData {
 	}
 	public int getProductionRate() {
 		return productionRate;
+	}
+}
+class FarmOutputData{
+	private int stockType;
+	
+	public FarmOutputData() {
+	
+	}
+	public FarmOutputData(int _stockType) {
+		try{
+			stockType = _stockType;
+		} catch(Exception e) {
+			e.printStackTrace();
+		}	
+	}
+	public int getStockType() {
+		return stockType;
 	}
 }

@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
@@ -18,6 +19,8 @@ import repastcity3.agent.DefaultAgent;
 import repastcity3.agent.IAgent;
 import repastcity3.environment.Farm;
 import repastcity3.environment.FixedGeography;
+import repastcity3.environment.food.*;
+
 
 public class DataLogger {
 	char RecordSeparator;
@@ -61,9 +64,9 @@ public class DataLogger {
 		RecordSeparator = s;
 	}
 	
-	public <T> void printData(IndexedIterable<T> agentList) throws IOException {
+	public <T> void printData(IndexedIterable<T> agentList, int tick) throws IOException {
 		T t = agentList.get(0);
-		printJsonData(agentList);
+		printJsonData(agentList,tick);
 		if( t instanceof Farm) {
 			//System.out.println("exporting farm data");
 			
@@ -114,41 +117,56 @@ public class DataLogger {
 	public void printDataToJsonFile() {
 		
 	}
-	public <T> void printJsonData(IndexedIterable<T> agentList) throws IOException {
+	public <T> void printJsonData(IndexedIterable<T> agentList, int tick) throws IOException {
 		T t = agentList.get(0);
 		Gson gson = new Gson();
-		String x;
-		t = agentList.get(0);
 		if( t instanceof Farm) {
-			//System.out.println("exporting farm data");
-			
 			for (int i = 0; i < agentList.size(); i++) {
-				x = Double.toString(((DefaultAgent) agentList.get(i)).getCaloryConsumption());
-				x = Double.toString(((DefaultAgent) agentList.get(i)).getHealth());
+				Farm x = (Farm)(agentList.get(i));
+				farm f = new farm(tick,x.getStock());
+				
+				String jsonStr = gson.toJson(f);
+				System.out.print(jsonStr);
 			}
 			
 		} else if (t instanceof IAgent) {
-			//System.out.println("exporting agent data");
-			
-			//String fileName2 = "./Output/agent_waste.csv";
-			
-			ArrayList<String> list1 = new ArrayList<>();
-			ArrayList<String> list2 = new ArrayList<>();
-			
 			for (int i = 0; i < agentList.size(); i++) {
-				x = Double.toString(((DefaultAgent) agentList.get(i)).getCaloryConsumption());
-				list1.add((x));
-				x = Double.toString(((DefaultAgent) agentList.get(i)).getHealth());
-				list2.add(x);
+				DefaultAgent x = (DefaultAgent) agentList.get(i);
+				agent a = new agent(); 
+				a.setTick(tick);
+				a.setCaloryConsumption(x.getCaloryConsumption());
+				a.setHealth(x.getHealth());
+				String jsonStr = gson.toJson(a);
+				System.out.print(jsonStr);
+				
+				
 			}
-			
-			printDataToCSVFile(list1, fileName4);
-			printDataToCSVFile(list2, fileName5);
+		System.out.print("call json");
 		}
-		System.out.println("call json");
-	
-			
-			
-		//System.out.println("start to export data to csv file");
 	}
+	public static class farm {
+		int tick;
+		int stockNum;
+		List<Food> stock;
+		public farm(int t, List<Food> s) {
+			tick = t;
+			stock = s;
+			stockNum = s.size();
+		}
+	}
+	public static class agent {
+		int tick;
+		double caloryConsumption;
+		double health;
+		public void setTick(int t) {
+			tick = t;
+		}
+		public void setCaloryConsumption(double c) {
+			caloryConsumption = c;
+		}
+		public void setHealth(double h) {
+			health = h;
+		}
+	}
+	
 }
