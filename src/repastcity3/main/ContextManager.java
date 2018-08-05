@@ -73,8 +73,8 @@ import repastcity3.exceptions.ParameterNotFoundException;
 public class ContextManager implements ContextBuilder<Object> {
 
 	/*
-	 * A logger for this class. Note that there is a static block that is used to configure all logging for the model
-	 * (at the bottom of this file).
+	 * A logger for this class. Note that there is a static block that is used to
+	 * configure all logging for the model (at the bottom of this file).
 	 */
 	private static Logger LOGGER = Logger.getLogger(ContextManager.class.getName());
 
@@ -82,93 +82,85 @@ public class ContextManager implements ContextBuilder<Object> {
 	private static final boolean TURN_OFF_THREADING = false;
 
 	private static Properties properties;
-	
+
 	public static final double MAX_ITERATIONS = 1000;
-	
-//	// Parameters for calculation method
-//	private static double[] gamma1 = {0.2, 0.05};
-//	private static double[] gamma2 = {0.15, 0.1};
-//	private static double[] gamma3 = {-0.2, 0.15};
-//	
-//	private static double[] beta1 = {-2.5, -0.15, 1, 1, 1, 1};
-//	private static double[] beta2 = {-2, -0.13, 1, 1, 1, 1};
-//	private static double[] beta3 = {-1.5, -0.11, 1, 1, 1, 1};
-//	
-//	private static double[] p1 = new double[25]; 
-//	private static double[] p2 = new double[25];
-//	private static double[] p3 = new double[25];
-//	
-//	private static double c1 = 0.1;
-//	private static double c2 = 0.2;
-//	private static double c3 = 0.3;
-//	
-//	private static double sigma1 = 0.5;
-//	private static double sigma2 = 0.5;
-//	private static double sigma3 = 0.5;
-//	
-//	private int numAgent = 600;
-//	private int numCan = 16;
-//	private int numCandidate_less = 9;
-//	private int numItera = 96;
-//	private double costTranLine = 55900.6;
-//	
-//	private double[][] Dis = new double[numAgent][numCan];
-//	private int[] Res = new int[numCan];
-//	private int[] Shop = new int[numCan];
-//	private int[] Super = new int[numCan];
-//	private int[] TralPurp = new int[numAgent];
-//	private int[] Income = new int[numAgent];
-//	private int[][] Des = new int[numAgent][numCan];
-//	
-//	private double[] q = new double[numAgent];
-//	private int[][] index1 = new int[numItera][numCandidate_less];
-//	private int[][] index2 = new int[numItera][numCandidate_less];
-//	private int[][] index3 = new int[numItera][numCandidate_less];
-//	private int[] population = {352711, 352302, 223991, 116360, 229282, 
-//						122077, 69346, 185439, 188318};
-//	private double energyPer = 6.721; // in MWh per year per person
-//	private double[] baseLoad = new double[numCan];
-//	
-//	
-//	private int numCandidate = 16;
-//	private double cost_lev1 = 40000;
-//	private double cost_lev2 = 150000;
-//	private double cost_lev3 = 650000;
-//	private double[] cost1 = new double[numCandidate];
-//	private double[] cost2 = new double[numCandidate];
-//	private double[] cost3 = new double[numCandidate];
-//	private double a2 = 0.0128;
-//	private double a1 = 17.82;
-//	private double a0 = 10.15;
-//
-//	private double P1 = 0.71;
-//	private double P2 = 0.96;
-//	private double P3 = 1.83;
-//	
-//	private double[][] Sum = new double[numItera][3];
-	
+
+	// // Parameters for calculation method
+	// private static double[] gamma1 = {0.2, 0.05};
+	// private static double[] gamma2 = {0.15, 0.1};
+	// private static double[] gamma3 = {-0.2, 0.15};
+	//
+	// private static double[] beta1 = {-2.5, -0.15, 1, 1, 1, 1};
+	// private static double[] beta2 = {-2, -0.13, 1, 1, 1, 1};
+	// private static double[] beta3 = {-1.5, -0.11, 1, 1, 1, 1};
+	//
+	// private static double[] p1 = new double[25];
+	// private static double[] p2 = new double[25];
+	// private static double[] p3 = new double[25];
+	//
+	// private static double c1 = 0.1;
+	// private static double c2 = 0.2;
+	// private static double c3 = 0.3;
+	//
+	// private static double sigma1 = 0.5;
+	// private static double sigma2 = 0.5;
+	// private static double sigma3 = 0.5;
+	//
+	// private int numAgent = 600;
+	// private int numCan = 16;
+	// private int numCandidate_less = 9;
+	// private int numItera = 96;
+	// private double costTranLine = 55900.6;
+	//
+	// private double[][] Dis = new double[numAgent][numCan];
+	// private int[] Res = new int[numCan];
+	// private int[] Shop = new int[numCan];
+	// private int[] Super = new int[numCan];
+	// private int[] TralPurp = new int[numAgent];
+	// private int[] Income = new int[numAgent];
+	// private int[][] Des = new int[numAgent][numCan];
+	//
+	// private double[] q = new double[numAgent];
+	// private int[][] index1 = new int[numItera][numCandidate_less];
+	// private int[][] index2 = new int[numItera][numCandidate_less];
+	// private int[][] index3 = new int[numItera][numCandidate_less];
+	// private int[] population = {352711, 352302, 223991, 116360, 229282,
+	// 122077, 69346, 185439, 188318};
+	// private double energyPer = 6.721; // in MWh per year per person
+	// private double[] baseLoad = new double[numCan];
+	//
+	//
+	// private int numCandidate = 16;
+	// private double cost_lev1 = 40000;
+	// private double cost_lev2 = 150000;
+	// private double cost_lev3 = 650000;
+	// private double[] cost1 = new double[numCandidate];
+	// private double[] cost2 = new double[numCandidate];
+	// private double[] cost3 = new double[numCandidate];
+	// private double a2 = 0.0128;
+	// private double a1 = 17.82;
+	// private double a0 = 10.15;
+	//
+	// private double P1 = 0.71;
+	// private double P2 = 0.96;
+	// private double P3 = 1.83;
+	//
+	// private double[][] Sum = new double[numItera][3];
+
 	/*
-	 * Pointers to contexts and projections (for convenience). Most of these can be made public, but the agent ones
-	 * can't be because multi-threaded agents will simultaneously try to call 'move()' and interfere with each other. So
-	 * methods like 'moveAgent()' are provided by ContextManager.
+	 * Pointers to contexts and projections (for convenience). Most of these can be
+	 * made public, but the agent ones can't be because multi-threaded agents will
+	 * simultaneously try to call 'move()' and interfere with each other. So methods
+	 * like 'moveAgent()' are provided by ContextManager.
 	 */
 
 	private static Context<Object> mainContext;
-	
+
 	public static Context<Residential> residentialContext;
 	public static Geography<Residential> residentialProjection;
-	
-//	public static Context<Shoppingcenter> shoppingcenterContext;
-//	public static Geography<Shoppingcenter> shoppingcenterProjection;
-	
+
 	public static Context<Farm> FarmContext;
 	public static Geography<Farm> FarmProjection;
-	
-//	public static Context<Workplace> workplaceContext;
-//	public static Geography<Workplace> workplaceProjection;
-//	
-//	public static Context<Restaurant> restaurantContext;
-//	public static Geography<Restaurant> restaurantProjection;
 
 	public static Context<Road> roadContext;
 	public static Geography<Road> roadProjection;
@@ -179,14 +171,9 @@ public class ContextManager implements ContextBuilder<Object> {
 
 	private static Context<IAgent> agentContext;
 	private static Geography<IAgent> agentGeography;
-	
 
-//	public static Context<Substation> substationContext;
-//	public static Geography<Substation> substationProjection;
-	
-	
 	DataLogger dLogger = new DataLogger();
-	
+
 	@Override
 	public Context<Object> build(Context<Object> con) {
 
@@ -210,44 +197,6 @@ public class ContextManager implements ContextBuilder<Object> {
 		LOGGER.log(Level.FINE, "Configuring the environment with data from " + gisDataDir);
 
 		try {
-//			// Create the substation - context and geography projection
-//			substationContext = new SubstationContext();
-//			substationProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
-//					GlobalVars.CONTEXT_NAMES.SUBSTATION_GEOGRAPHY, substationContext,
-//					new GeographyParameters<Substation>(new SimpleAdder<Substation>()));
-//			String substationFile = gisDataDir + getProperty(GlobalVars.SubstationShapefile);
-//			GISFunctions.readShapefile(Substation.class, substationFile, substationProjection, substationContext);
-//			mainContext.addSubContext(substationContext);
-//			SpatialIndexManager.createIndex(substationProjection, Substation.class);
-//			LOGGER.log(Level.FINER, "Read " + substationContext.getObjects(Substation.class).size() + " substation "
-//					+ substationFile);
-			
-//			// Create the residential - context and geography projection
-//			residentialContext = new ResidentialContext();
-//			residentialProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
-//					GlobalVars.CONTEXT_NAMES.RESIDENTIAL_GEOGRAPHY, residentialContext,
-//					new GeographyParameters<Residential>(new SimpleAdder<Residential>()));
-//			String residentialFile = gisDataDir + getProperty(GlobalVars.ResidentialShapefile);
-//			GISFunctions.readShapefile(Residential.class, residentialFile, residentialProjection, residentialContext);
-//			mainContext.addSubContext(residentialContext);
-//			SpatialIndexManager.createIndex(residentialProjection, Residential.class);
-//			LOGGER.log(Level.FINER, "Read " + residentialContext.getObjects(Residential.class).size() + " residentials from "
-//					+ residentialFile);
-
-			
-//			// Create the shoppingcenter - context and geography projection
-//			shoppingcenterContext = new ShoppingcenterContext();
-//			shoppingcenterProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
-//					GlobalVars.CONTEXT_NAMES.SHOPPINGCENTER_GEOGRAPHY, shoppingcenterContext,
-//					new GeographyParameters<Shoppingcenter>(new SimpleAdder<Shoppingcenter>()));
-//			String shoppingcenterFile = gisDataDir + getProperty(GlobalVars.ShoppingcenterShapefile);
-//			GISFunctions.readShapefile(Shoppingcenter.class, shoppingcenterFile, shoppingcenterProjection, shoppingcenterContext);
-//			mainContext.addSubContext(shoppingcenterContext);
-//			SpatialIndexManager.createIndex(shoppingcenterProjection, Shoppingcenter.class);
-//			LOGGER.log(Level.FINER, "Read " + shoppingcenterContext.getObjects(Shoppingcenter.class).size() + " shoppingcenters from "
-//					+ shoppingcenterFile);
-			
-			
 			// Create the Farm - context and geography projection
 			FarmContext = new FarmContext();
 			FarmProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
@@ -257,33 +206,20 @@ public class ContextManager implements ContextBuilder<Object> {
 			GISFunctions.readShapefile(Farm.class, FarmFile, FarmProjection, FarmContext);
 			mainContext.addSubContext(FarmContext);
 			SpatialIndexManager.createIndex(FarmProjection, Farm.class);
-			LOGGER.log(Level.FINER, "Read " + FarmContext.getObjects(Farm.class).size() + " Farms from "
-					+ FarmFile);
-//			
-//			// Create the workplace - context and geography projection
-//			workplaceContext = new WorkplaceContext();
-//			workplaceProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
-//					GlobalVars.CONTEXT_NAMES.WORKPLACE_GEOGRAPHY, workplaceContext,
-//					new GeographyParameters<Workplace>(new SimpleAdder<Workplace>()));
-//			String workplaceFile = gisDataDir + getProperty(GlobalVars.WorkplaceShapefile);
-//			GISFunctions.readShapefile(Workplace.class, workplaceFile, workplaceProjection, workplaceContext);
-//			mainContext.addSubContext(workplaceContext);
-//			SpatialIndexManager.createIndex(workplaceProjection, Workplace.class);
-//			LOGGER.log(Level.FINER, "Read " + workplaceContext.getObjects(Workplace.class).size() + " workplaces from "
-//					+ workplaceFile);
-//			
-//			// Create the restaurant - context and geography projection
-//			restaurantContext = new RestaurantContext();
-//			restaurantProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
-//					GlobalVars.CONTEXT_NAMES.RESTAURANT_GEOGRAPHY, restaurantContext,
-//					new GeographyParameters<Restaurant>(new SimpleAdder<Restaurant>()));
-//			String restaurantFile = gisDataDir + getProperty(GlobalVars.RestaurantShapefile);
-//			GISFunctions.readShapefile(Restaurant.class, restaurantFile, restaurantProjection, restaurantContext);
-//			mainContext.addSubContext(restaurantContext);
-//			SpatialIndexManager.createIndex(restaurantProjection, Restaurant.class);
-//			LOGGER.log(Level.FINER, "Read " + restaurantContext.getObjects(Restaurant.class).size() + " restaurants from "
-//					+ restaurantFile);
-			
+			LOGGER.log(Level.FINER, "Read " + FarmContext.getObjects(Farm.class).size() + " Farms from " + FarmFile);
+
+			// Create the residential - context and geography projection
+			residentialContext = new ResidentialContext();
+			residentialProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
+					GlobalVars.CONTEXT_NAMES.RESIDENTIAL_GEOGRAPHY, residentialContext,
+					new GeographyParameters<Residential>(new SimpleAdder<Residential>()));
+			String residentialFile = gisDataDir + getProperty(GlobalVars.ResidentialShapefile);
+			GISFunctions.readShapefile(Residential.class, residentialFile, residentialProjection, residentialContext);
+			mainContext.addSubContext(residentialContext);
+			SpatialIndexManager.createIndex(residentialProjection, Residential.class);
+			LOGGER.log(Level.FINER, "Read " + residentialContext.getObjects(Residential.class).size()
+					+ " residentials from " + residentialFile);
+
 			// Create the Roads - context and geography
 			roadContext = new RoadContext();
 			roadProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
@@ -294,7 +230,7 @@ public class ContextManager implements ContextBuilder<Object> {
 			mainContext.addSubContext(roadContext);
 			SpatialIndexManager.createIndex(roadProjection, Road.class);
 			LOGGER.log(Level.FINER, "Read " + roadContext.getObjects(Road.class).size() + " roads from " + roadFile);
-			
+
 			// Create road network
 
 			// 1.junctionContext and junctionGeography
@@ -315,15 +251,18 @@ public class ContextManager implements ContextBuilder<Object> {
 			// road network had been created).
 			SpatialIndexManager.createIndex(junctionGeography, Junction.class);
 
-			testEnvironment();
+			// testEnvironment();
 
 		} catch (MalformedURLException e) {
 			LOGGER.log(Level.SEVERE, "", e);
 			return null;
-		} catch (EnvironmentError e) {
-			LOGGER.log(Level.SEVERE, "There is an eror with the environment, cannot start simulation", e);
-			return null;
-		} catch (NoIdentifierException e) {
+		}
+		// catch (EnvironmentError e) {
+		// LOGGER.log(Level.SEVERE, "There is an eror with the environment, cannot start
+		// simulation", e);
+		// return null;
+		// }
+		catch (NoIdentifierException e) {
 			LOGGER.log(Level.SEVERE, "One of the input buildings had no identifier (this should be read"
 					+ "from the 'identifier' column in an input GIS file)", e);
 			return null;
@@ -349,9 +288,11 @@ public class ContextManager implements ContextBuilder<Object> {
 			agentFactory.createAgents(agentContext);
 
 		} catch (ParameterNotFoundException e) {
-			LOGGER.log(Level.SEVERE, "Could not find the parameter which defines how agents should be "
-					+ "created. The parameter is called " + MODEL_PARAMETERS.AGENT_DEFINITION
-					+ " and should be added to the parameters.xml file.", e);
+			LOGGER.log(Level.SEVERE,
+					"Could not find the parameter which defines how agents should be "
+							+ "created. The parameter is called " + MODEL_PARAMETERS.AGENT_DEFINITION
+							+ " and should be added to the parameters.xml file.",
+					e);
 			return null;
 		} catch (AgentCreationException e) {
 			LOGGER.log(Level.SEVERE, "", e);
@@ -377,18 +318,20 @@ public class ContextManager implements ContextBuilder<Object> {
 		RunEnvironment model_core = RunEnvironment.getInstance();
 		model_core.endAt(MAX_ITERATIONS);
 		ISchedule schedule = model_core.getCurrentSchedule();
-		//ScheduleParameters stop = ScheduleParameters.createAtEnd(ScheduleParameters.LAST_PRIORITY);
-		//schedule.schedule(stop, this, "calculateStation");
-		
+		// ScheduleParameters stop =
+		// ScheduleParameters.createAtEnd(ScheduleParameters.LAST_PRIORITY);
+		// schedule.schedule(stop, this, "calculateStation");
+
 		// Schedule something that outputs ticks every 10 iterations.
 		schedule.schedule(ScheduleParameters.createRepeating(1, 10, ScheduleParameters.LAST_PRIORITY), this,
 				"printTicks");
 
 		/*
-		 * Schedule the agents. This is slightly complicated because if all the agents can be stepped at the same time
-		 * (i.e. there are no inter- agent communications that make this difficult) then the scheduling is controlled by
-		 * a separate function that steps them in different threads. This massively improves performance on multi-core
-		 * machines.
+		 * Schedule the agents. This is slightly complicated because if all the agents
+		 * can be stepped at the same time (i.e. there are no inter- agent
+		 * communications that make this difficult) then the scheduling is controlled by
+		 * a separate function that steps them in different threads. This massively
+		 * improves performance on multi-core machines.
 		 */
 		boolean isThreadable = true;
 		for (IAgent a : agentContext.getObjects(IAgent.class)) {
@@ -401,11 +344,12 @@ public class ContextManager implements ContextBuilder<Object> {
 		if (ContextManager.TURN_OFF_THREADING) { // Overide threading?
 			isThreadable = false;
 		}
-		
+
 		if (isThreadable && (Runtime.getRuntime().availableProcessors() > 1)) {
 			/*
-			 * Agents can be threaded so the step scheduling not actually done by repast scheduler, a method in
-			 * ThreadedAgentScheduler is called which manually steps each agent.
+			 * Agents can be threaded so the step scheduling not actually done by repast
+			 * scheduler, a method in ThreadedAgentScheduler is called which manually steps
+			 * each agent.
 			 */
 			LOGGER.info("The multi-threaded scheduler will be used.");
 			ThreadedAgentScheduler s = new ThreadedAgentScheduler();
@@ -423,20 +367,14 @@ public class ContextManager implements ContextBuilder<Object> {
 
 	public void printTicks() {
 		LOGGER.info("Iterations: " + RunEnvironment.getInstance().getCurrentSchedule().getTickCount());
-		
-		try{
+
+		try {
 			dLogger.printData(agentContext.getObjects(IAgent.class));
 			dLogger.printData(FarmContext.getObjects(Farm.class));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
-	
-	
-	
 
 	/**
 	 * Convenience function to get a Simphony parameter
@@ -464,8 +402,9 @@ public class ContextManager implements ContextBuilder<Object> {
 	}
 
 	/**
-	 * Get the value of a property in the properties file. If the input is empty or null or if there is no property with
-	 * a matching name, throw a RuntimeException.
+	 * Get the value of a property in the properties file. If the input is empty or
+	 * null or if there is no property with a matching name, throw a
+	 * RuntimeException.
 	 * 
 	 * @param property
 	 *            The property to look for.
@@ -487,9 +426,10 @@ public class ContextManager implements ContextBuilder<Object> {
 	}
 
 	/**
-	 * Read the properties file and add properties. Will check if any properties have been included on the command line
-	 * as well as in the properties file, in these cases the entries in the properties file are ignored in preference
-	 * for those specified on the command line.
+	 * Read the properties file and add properties. Will check if any properties
+	 * have been included on the command line as well as in the properties file, in
+	 * these cases the entries in the properties file are ignored in preference for
+	 * those specified on the command line.
 	 * 
 	 * @throws FileNotFoundException
 	 * @throws IOException
@@ -498,8 +438,8 @@ public class ContextManager implements ContextBuilder<Object> {
 
 		File propFile = new File("./repastcity.properties");
 		if (!propFile.exists()) {
-			throw new FileNotFoundException("Could not find properties file in the default location: "
-					+ propFile.getAbsolutePath());
+			throw new FileNotFoundException(
+					"Could not find properties file in the default location: " + propFile.getAbsolutePath());
 		}
 
 		LOGGER.log(Level.FINE, "Initialising properties from file " + propFile.toString());
@@ -517,9 +457,9 @@ public class ContextManager implements ContextBuilder<Object> {
 			if (newVal != null) {
 				// The system property has the same name as the one from the
 				// properties file, replace the one in the properties file.
-				LOGGER.log(Level.INFO, "Found a system property '" + k + "->" + newVal
-						+ "' which matches a NeissModel property '" + k + "->" + properties.getProperty(k)
-						+ "', replacing the non-system one.");
+				LOGGER.log(Level.INFO,
+						"Found a system property '" + k + "->" + newVal + "' which matches a NeissModel property '" + k
+								+ "->" + properties.getProperty(k) + "', replacing the non-system one.");
 				properties.setProperty(k, newVal);
 			}
 		} // for
@@ -535,11 +475,16 @@ public class ContextManager implements ContextBuilder<Object> {
 
 		LOGGER.log(Level.FINE, "Testing the environment");
 		// Get copies of the contexts/projections from main context
-		//Context<Building> bc = (Context<Building>) mainContext.getSubContext(GlobalVars.CONTEXT_NAMES.BUILDING_CONTEXT);
-		Context<Residential> rc = (Context<Residential>) mainContext.getSubContext(GlobalVars.CONTEXT_NAMES.RESIDENTIAL_CONTEXT);
-		Context<Workplace> wc = (Context<Workplace>) mainContext.getSubContext(GlobalVars.CONTEXT_NAMES.WORKPLACE_CONTEXT);
-		Context<Shoppingcenter> sc = (Context<Shoppingcenter>) mainContext.getSubContext(GlobalVars.CONTEXT_NAMES.SHOPPINGCENTER_CONTEXT);
-		Context<Restaurant> Rc = (Context<Restaurant>) mainContext.getSubContext(GlobalVars.CONTEXT_NAMES.RESTAURANT_CONTEXT);
+		// Context<Building> bc = (Context<Building>)
+		// mainContext.getSubContext(GlobalVars.CONTEXT_NAMES.BUILDING_CONTEXT);
+		Context<Residential> rc = (Context<Residential>) mainContext
+				.getSubContext(GlobalVars.CONTEXT_NAMES.RESIDENTIAL_CONTEXT);
+		Context<Workplace> wc = (Context<Workplace>) mainContext
+				.getSubContext(GlobalVars.CONTEXT_NAMES.WORKPLACE_CONTEXT);
+		Context<Shoppingcenter> sc = (Context<Shoppingcenter>) mainContext
+				.getSubContext(GlobalVars.CONTEXT_NAMES.SHOPPINGCENTER_CONTEXT);
+		Context<Restaurant> Rc = (Context<Restaurant>) mainContext
+				.getSubContext(GlobalVars.CONTEXT_NAMES.RESTAURANT_CONTEXT);
 		Context<Road> roc = (Context<Road>) mainContext.getSubContext(GlobalVars.CONTEXT_NAMES.ROAD_CONTEXT);
 		Context<Junction> jc = (Context<Junction>) mainContext.getSubContext(GlobalVars.CONTEXT_NAMES.JUNCTION_CONTEXT);
 
@@ -553,9 +498,9 @@ public class ContextManager implements ContextBuilder<Object> {
 		System.out.print("roadNetwork has" + rn.size() + "edges\n");
 		// 1. Check that there are some objects in each of the contexts
 		checkSize(rc, wc, sc, Rc, roc, jc);
-		//System.out.print("Size is OK!");
+		// System.out.print("Size is OK!");
 		// 2. Check that the number of roads matches the number of edges
-		
+
 		if (sizeOfIterable(roc.getObjects(Road.class)) != sizeOfIterable(rn.getEdges())) {
 			throw new EnvironmentError("There should be equal numbers of roads in the road "
 					+ "context and edges in the road network. But there are "
@@ -580,28 +525,28 @@ public class ContextManager implements ContextBuilder<Object> {
 			idList.put(b.getIdentifier(), null);
 		}
 		idList.clear();
-		
+
 		for (Workplace b : wc.getObjects(Workplace.class)) {
 			if (idList.containsKey(b.getIdentifier()))
 				throw new EnvironmentError("More than one workplace found with id " + b.getIdentifier());
 			idList.put(b.getIdentifier(), null);
 		}
 		idList.clear();
-		
+
 		for (Shoppingcenter b : sc.getObjects(Shoppingcenter.class)) {
 			if (idList.containsKey(b.getIdentifier()))
 				throw new EnvironmentError("More than one shoppingcenter found with id " + b.getIdentifier());
 			idList.put(b.getIdentifier(), null);
 		}
 		idList.clear();
-		
+
 		for (Restaurant b : Rc.getObjects(Restaurant.class)) {
 			if (idList.containsKey(b.getIdentifier()))
 				throw new EnvironmentError("More than one restaurant found with id " + b.getIdentifier());
 			idList.put(b.getIdentifier(), null);
 		}
 		idList.clear();
-		
+
 		for (Road b : roc.getObjects(Road.class)) {
 			if (idList.containsKey(b.getIdentifier()))
 				throw new EnvironmentError("More than one road found with id " + b.getIdentifier());
@@ -621,7 +566,8 @@ public class ContextManager implements ContextBuilder<Object> {
 	}
 
 	/**
-	 * Checks that the given <code>Context</code>s have more than zero objects in them
+	 * Checks that the given <code>Context</code>s have more than zero objects in
+	 * them
 	 * 
 	 * @param contexts
 	 * @throws EnvironmentError
@@ -643,9 +589,10 @@ public class ContextManager implements ContextBuilder<Object> {
 	}
 
 	/**
-	 * Move an agent by a vector. This method is required -- rather than giving agents direct access to the
-	 * agentGeography -- because when multiple threads are used they can interfere with each other and agents end up
-	 * moving incorrectly.
+	 * Move an agent by a vector. This method is required -- rather than giving
+	 * agents direct access to the agentGeography -- because when multiple threads
+	 * are used they can interfere with each other and agents end up moving
+	 * incorrectly.
 	 * 
 	 * @param agent
 	 *            The agent to move.
@@ -657,11 +604,12 @@ public class ContextManager implements ContextBuilder<Object> {
 	 */
 	public static synchronized void moveAgentByVector(IAgent agent, double distToTravel, double angle) {
 		ContextManager.agentGeography.moveByVector(agent, distToTravel, angle);
-	} //We should use this method!!!!!!
+	} // We should use this method!!!!!!
 
 	/**
-	 * Move an agent. This method is required -- rather than giving agents direct access to the agentGeography --
-	 * because when multiple threads are used they can interfere with each other and agents end up moving incorrectly.
+	 * Move an agent. This method is required -- rather than giving agents direct
+	 * access to the agentGeography -- because when multiple threads are used they
+	 * can interfere with each other and agents end up moving incorrectly.
 	 * 
 	 * @param agent
 	 *            The agent to move.
@@ -673,9 +621,10 @@ public class ContextManager implements ContextBuilder<Object> {
 	}
 
 	/**
-	 * Add an agent to the agent context. This method is required -- rather than giving agents direct access to the
-	 * agentGeography -- because when multiple threads are used they can interfere with each other and agents end up
-	 * moving incorrectly.
+	 * Add an agent to the agent context. This method is required -- rather than
+	 * giving agents direct access to the agentGeography -- because when multiple
+	 * threads are used they can interfere with each other and agents end up moving
+	 * incorrectly.
 	 * 
 	 * @param agent
 	 *            The agent to add.
@@ -685,12 +634,13 @@ public class ContextManager implements ContextBuilder<Object> {
 	}
 
 	/**
-	 * Get all the agents in the agent context. This method is required -- rather than giving agents direct access to
-	 * the agentGeography -- because when multiple threads are used they can interfere with each other and agents end up
-	 * moving incorrectly.
+	 * Get all the agents in the agent context. This method is required -- rather
+	 * than giving agents direct access to the agentGeography -- because when
+	 * multiple threads are used they can interfere with each other and agents end
+	 * up moving incorrectly.
 	 * 
-	 * @return An iterable over all agents, chosen in a random order. See the <code>getRandomObjects</code> function in
-	 *         <code>DefaultContext</code>
+	 * @return An iterable over all agents, chosen in a random order. See the
+	 *         <code>getRandomObjects</code> function in <code>DefaultContext</code>
 	 * @see DefaultContext
 	 */
 	public static synchronized Iterable<IAgent> getAllAgents() {
@@ -698,9 +648,10 @@ public class ContextManager implements ContextBuilder<Object> {
 	}
 
 	/**
-	 * Get the geometry of the given agent. This method is required -- rather than giving agents direct access to the
-	 * agentGeography -- because when multiple threads are used they can interfere with each other and agents end up
-	 * moving incorrectly.
+	 * Get the geometry of the given agent. This method is required -- rather than
+	 * giving agents direct access to the agentGeography -- because when multiple
+	 * threads are used they can interfere with each other and agents end up moving
+	 * incorrectly.
 	 */
 	public static synchronized Geometry getAgentGeometry(IAgent agent) {
 		return ContextManager.agentGeography.getGeometry(agent);
@@ -710,8 +661,9 @@ public class ContextManager implements ContextBuilder<Object> {
 	 * Get a pointer to the agent context.
 	 * 
 	 * <p>
-	 * Warning: accessing the context directly is not thread safe so this should be used with care. The functions
-	 * <code>getAllAgents()</code> and <code>getAgentGeometry()</code> can be used to query the agent context or
+	 * Warning: accessing the context directly is not thread safe so this should be
+	 * used with care. The functions <code>getAllAgents()</code> and
+	 * <code>getAgentGeometry()</code> can be used to query the agent context or
 	 * projection.
 	 * </p>
 	 */
@@ -723,8 +675,9 @@ public class ContextManager implements ContextBuilder<Object> {
 	 * Get a pointer to the agent geography.
 	 * 
 	 * <p>
-	 * Warning: accessing the context directly is not thread safe so this should be used with care. The functions
-	 * <code>getAllAgents()</code> and <code>getAgentGeometry()</code> can be used to query the agent context or
+	 * Warning: accessing the context directly is not thread safe so this should be
+	 * used with care. The functions <code>getAllAgents()</code> and
+	 * <code>getAgentGeometry()</code> can be used to query the agent context or
 	 * projection.
 	 * </p>
 	 */
@@ -733,4 +686,3 @@ public class ContextManager implements ContextBuilder<Object> {
 	}
 
 }
-

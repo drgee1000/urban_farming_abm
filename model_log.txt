@@ -1,2 +1,1091 @@
-Aug 03, 2018 7:52:10 PM org.geotools.referencing.factory.DeferredAuthorityFactory disposeBackingStore
-INFO: Disposing class org.geotools.referencing.factory.epsg.ThreadedHsqlEpsgFactory backing store
+Aug 05, 2018 3:48:26 PM repastcity3.main.ContextManager build
+INFO: Creating agents with the agent definition: 'random:50'
+Aug 05, 2018 3:48:26 PM repastcity3.agent.AgentFactory createRandomAgents
+INFO: Creating 50 agents using random method.
+Aug 05, 2018 3:48:26 PM repastcity3.main.ContextManager createSchedule
+INFO: The multi-threaded scheduler will be used.
+Aug 05, 2018 3:50:16 PM gov.nasa.worldwind.util.SessionCacheRetrievalPostProcessor run
+SEVERE: Retrieval failed for https://worldwind47.arc.nasa.gov/topo?EXCEPTIONS=application/vnd.ogc.se_xml&REQUEST=GetCapabilities&SERVICE=WMS&VERSION=1.3.0
+Aug 05, 2018 3:50:16 PM gov.nasa.worldwind.util.SessionCacheRetrievalPostProcessor run
+SEVERE: Retrieval failed for https://worldwind47.arc.nasa.gov/topo?EXCEPTIONS=application/vnd.ogc.se_xml&REQUEST=GetCapabilities&SERVICE=WMS&VERSION=1.3.0
+Aug 05, 2018 3:50:16 PM gov.nasa.worldwind.util.SessionCacheUtils retrieveSessionData
+SEVERE: Exception while retrieving resources for https://worldwind47.arc.nasa.gov/topo?EXCEPTIONS=application/vnd.ogc.se_xml&REQUEST=GetCapabilities&SERVICE=WMS&VERSION=1.3.0
+java.net.ConnectException: Bad file descriptor (connect failed)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at sun.security.ssl.SSLSocketImpl.connect(SSLSocketImpl.java:673)
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:175)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:463)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:558)
+	at sun.net.www.protocol.https.HttpsClient.<init>(HttpsClient.java:264)
+	at sun.net.www.protocol.https.HttpsClient.New(HttpsClient.java:367)
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.getNewHttpClient(AbstractDelegateHttpsURLConnection.java:191)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1156)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1050)
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:177)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1564)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1492)
+	at java.net.HttpURLConnection.getResponseCode(HttpURLConnection.java:480)
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getResponseCode(HttpsURLConnectionImpl.java:347)
+	at gov.nasa.worldwind.retrieve.HTTPRetriever.doRead(HTTPRetriever.java:48)
+	at gov.nasa.worldwind.retrieve.URLRetriever.read(URLRetriever.java:368)
+	at gov.nasa.worldwind.retrieve.URLRetriever.call(URLRetriever.java:244)
+	at gov.nasa.worldwind.retrieve.URLRetriever.call(URLRetriever.java:27)
+	at gov.nasa.worldwind.util.SessionCacheUtils.retrieveSessionData(SessionCacheUtils.java:80)
+	at gov.nasa.worldwind.util.SessionCacheUtils.getOrRetrieveSessionCapabilities(SessionCacheUtils.java:170)
+	at gov.nasa.worldwind.layers.BasicTiledImageLayer.retrieveResources(BasicTiledImageLayer.java:723)
+	at gov.nasa.worldwind.layers.BasicTiledImageLayer$2.run(BasicTiledImageLayer.java:811)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:50:16 PM gov.nasa.worldwind.util.SessionCacheUtils retrieveSessionData
+SEVERE: Exception while retrieving resources for https://worldwind47.arc.nasa.gov/topo?EXCEPTIONS=application/vnd.ogc.se_xml&REQUEST=GetCapabilities&SERVICE=WMS&VERSION=1.3.0
+java.net.ConnectException: Bad file descriptor (connect failed)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at sun.security.ssl.SSLSocketImpl.connect(SSLSocketImpl.java:673)
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:175)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:463)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:558)
+	at sun.net.www.protocol.https.HttpsClient.<init>(HttpsClient.java:264)
+	at sun.net.www.protocol.https.HttpsClient.New(HttpsClient.java:367)
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.getNewHttpClient(AbstractDelegateHttpsURLConnection.java:191)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1156)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1050)
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:177)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1564)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1492)
+	at java.net.HttpURLConnection.getResponseCode(HttpURLConnection.java:480)
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getResponseCode(HttpsURLConnectionImpl.java:347)
+	at gov.nasa.worldwind.retrieve.HTTPRetriever.doRead(HTTPRetriever.java:48)
+	at gov.nasa.worldwind.retrieve.URLRetriever.read(URLRetriever.java:368)
+	at gov.nasa.worldwind.retrieve.URLRetriever.call(URLRetriever.java:244)
+	at gov.nasa.worldwind.retrieve.URLRetriever.call(URLRetriever.java:27)
+	at gov.nasa.worldwind.util.SessionCacheUtils.retrieveSessionData(SessionCacheUtils.java:80)
+	at gov.nasa.worldwind.util.SessionCacheUtils.getOrRetrieveSessionCapabilities(SessionCacheUtils.java:170)
+	at gov.nasa.worldwind.layers.BasicTiledImageLayer.retrieveResources(BasicTiledImageLayer.java:723)
+	at gov.nasa.worldwind.layers.BasicTiledImageLayer$2.run(BasicTiledImageLayer.java:811)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:50:16 PM gov.nasa.worldwind.util.SessionCacheRetrievalPostProcessor run
+SEVERE: Retrieval failed for https://worldwind27.arc.nasa.gov/wms/virtualearth?EXCEPTIONS=application/vnd.ogc.se_xml&REQUEST=GetCapabilities&SERVICE=WMS&VERSION=1.3.0
+Aug 05, 2018 3:50:16 PM gov.nasa.worldwind.util.SessionCacheUtils retrieveSessionData
+SEVERE: Exception while retrieving resources for https://worldwind27.arc.nasa.gov/wms/virtualearth?EXCEPTIONS=application/vnd.ogc.se_xml&REQUEST=GetCapabilities&SERVICE=WMS&VERSION=1.3.0
+java.net.ConnectException: Bad file descriptor (connect failed)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at sun.security.ssl.SSLSocketImpl.connect(SSLSocketImpl.java:673)
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:175)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:463)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:558)
+	at sun.net.www.protocol.https.HttpsClient.<init>(HttpsClient.java:264)
+	at sun.net.www.protocol.https.HttpsClient.New(HttpsClient.java:367)
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.getNewHttpClient(AbstractDelegateHttpsURLConnection.java:191)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1156)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1050)
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:177)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1564)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1492)
+	at java.net.HttpURLConnection.getResponseCode(HttpURLConnection.java:480)
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getResponseCode(HttpsURLConnectionImpl.java:347)
+	at gov.nasa.worldwind.retrieve.HTTPRetriever.doRead(HTTPRetriever.java:48)
+	at gov.nasa.worldwind.retrieve.URLRetriever.read(URLRetriever.java:368)
+	at gov.nasa.worldwind.retrieve.URLRetriever.call(URLRetriever.java:244)
+	at gov.nasa.worldwind.retrieve.URLRetriever.call(URLRetriever.java:27)
+	at gov.nasa.worldwind.util.SessionCacheUtils.retrieveSessionData(SessionCacheUtils.java:80)
+	at gov.nasa.worldwind.util.SessionCacheUtils.getOrRetrieveSessionCapabilities(SessionCacheUtils.java:170)
+	at gov.nasa.worldwind.layers.BasicTiledImageLayer.retrieveResources(BasicTiledImageLayer.java:723)
+	at gov.nasa.worldwind.layers.BasicTiledImageLayer$2.run(BasicTiledImageLayer.java:811)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:50:17 PM gov.nasa.worldwind.util.SessionCacheRetrievalPostProcessor run
+SEVERE: Retrieval returned no content for https://worldwind20.arc.nasa.gov/mapcache?EXCEPTIONS=application/vnd.ogc.se_xml&REQUEST=GetCapabilities&SERVICE=WMS&VERSION=1.3.0
+Aug 05, 2018 3:55:12 PM repastcity3.main.ContextManager build
+INFO: Creating agents with the agent definition: 'point:people.shp$repastcity3.agent.DefaultAgent'
+Aug 05, 2018 3:55:12 PM repastcity3.agent.AgentFactory createPointAgents
+INFO: Have created 42 of type repastcity3.agent.DefaultAgent from file ./data/gis_data/shenzhen/people.shp
+Aug 05, 2018 3:55:12 PM repastcity3.agent.AgentFactory createPointAgents
+INFO: Have created 84 of type repastcity3.agent.DefaultAgent from file ./data/gis_data/shenzhen/people.shp
+Aug 05, 2018 3:55:12 PM repastcity3.main.ContextManager createSchedule
+INFO: The multi-threaded scheduler will be used.
+Aug 05, 2018 3:55:21 PM repastcity3.main.ContextManager build
+INFO: Creating agents with the agent definition: 'point:people.shp$repastcity3.agent.DefaultAgent'
+Aug 05, 2018 3:55:21 PM repastcity3.agent.AgentFactory createPointAgents
+INFO: Have created 42 of type repastcity3.agent.DefaultAgent from file ./data/gis_data/shenzhen/people.shp
+Aug 05, 2018 3:55:21 PM repastcity3.agent.AgentFactory createPointAgents
+INFO: Have created 84 of type repastcity3.agent.DefaultAgent from file ./data/gis_data/shenzhen/people.shp
+Aug 05, 2018 3:55:21 PM repastcity3.main.ContextManager createSchedule
+INFO: The multi-threaded scheduler will be used.
+Aug 05, 2018 3:55:28 PM repastcity3.agent.BurglarThread run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 58 (114.0106672,22.5386502), roads: [road: 11, road: 1]
+	Junction 59 (114.0108045,22.5386898), roads: [road: 11]
+	Junction 69 (114.0646986,22.5178392), roads: [road: 17, road: 4]
+	Junction 70 (114.0450932,22.5948609), roads: [road: 17, road: 4]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.agent.BurglarThread run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 69 (114.0646986,22.5178392), roads: [road: 17, road: 4]
+	Junction 70 (114.0450932,22.5948609), roads: [road: 17, road: 4]
+	Junction 71 (114.081703,22.5432223), roads: [road: 18]
+	Junction 72 (114.0817074,22.5430807), roads: [road: 18]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.agent.BurglarThread run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 71 (114.081703,22.5432223), roads: [road: 18]
+	Junction 72 (114.0817074,22.5430807), roads: [road: 18]
+	Junction 58 (114.0106672,22.5386502), roads: [road: 11, road: 1]
+	Junction 59 (114.0108045,22.5386898), roads: [road: 11]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.main.ContextManager stopSim
+SEVERE: ContextManager has been told to stop by repastcity3.agent.BurglarThread
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 69 (114.0646986,22.5178392), roads: [road: 17, road: 4]
+	Junction 70 (114.0450932,22.5948609), roads: [road: 17, road: 4]
+	Junction 71 (114.081703,22.5432223), roads: [road: 18]
+	Junction 72 (114.0817074,22.5430807), roads: [road: 18]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.agent.BurglarThread run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 77 (114.0449096,22.5161665), roads: [road: 3]
+	Junction 78 (114.1212554,22.5569205), roads: [road: 3]
+	Junction 58 (114.0106672,22.5386502), roads: [road: 11, road: 1]
+	Junction 59 (114.0108045,22.5386898), roads: [road: 11]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.main.ContextManager stopSim
+SEVERE: ContextManager has been told to stop by repastcity3.agent.BurglarThread
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 77 (114.0449096,22.5161665), roads: [road: 3]
+	Junction 78 (114.1212554,22.5569205), roads: [road: 3]
+	Junction 58 (114.0106672,22.5386502), roads: [road: 11, road: 1]
+	Junction 59 (114.0108045,22.5386898), roads: [road: 11]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.agent.BurglarThread run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 71 (114.081703,22.5432223), roads: [road: 18]
+	Junction 72 (114.0817074,22.5430807), roads: [road: 18]
+	Junction 81 (114.1455566,22.5506913), roads: [road: 6]
+	Junction 82 (113.8925745,22.4823134), roads: [road: 6]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.agent.BurglarThread run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 64 (114.0029823,22.5462544), roads: [road: 14]
+	Junction 65 (114.0814219,22.5569884), roads: [road: 14]
+	Junction 81 (114.1455566,22.5506913), roads: [road: 6]
+	Junction 82 (113.8925745,22.4823134), roads: [road: 6]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.agent.BurglarThread run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 58 (114.0106672,22.5386502), roads: [road: 11, road: 1]
+	Junction 74 (114.0617529,22.5192344), roads: [road: 1]
+	Junction 71 (114.081703,22.5432223), roads: [road: 18]
+	Junction 72 (114.0817074,22.5430807), roads: [road: 18]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.agent.BurglarThread run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 71 (114.081703,22.5432223), roads: [road: 18]
+	Junction 72 (114.0817074,22.5430807), roads: [road: 18]
+	Junction 58 (114.0106672,22.5386502), roads: [road: 11, road: 1]
+	Junction 59 (114.0108045,22.5386898), roads: [road: 11]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.main.ContextManager stopSim
+SEVERE: ContextManager has been told to stop by repastcity3.agent.BurglarThread
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 58 (114.0106672,22.5386502), roads: [road: 11, road: 1]
+	Junction 74 (114.0617529,22.5192344), roads: [road: 1]
+	Junction 71 (114.081703,22.5432223), roads: [road: 18]
+	Junction 72 (114.0817074,22.5430807), roads: [road: 18]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.agent.BurglarThread run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 79 (114.036303,22.5993764), roads: [road: 5]
+	Junction 80 (114.0534326,22.5028069), roads: [road: 5]
+	Junction 81 (114.1455566,22.5506913), roads: [road: 6]
+	Junction 82 (113.8925745,22.4823134), roads: [road: 6]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.main.ContextManager stopSim
+SEVERE: ContextManager has been told to stop by repastcity3.agent.BurglarThread
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 71 (114.081703,22.5432223), roads: [road: 18]
+	Junction 72 (114.0817074,22.5430807), roads: [road: 18]
+	Junction 58 (114.0106672,22.5386502), roads: [road: 11, road: 1]
+	Junction 59 (114.0108045,22.5386898), roads: [road: 11]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.main.ContextManager stopSim
+SEVERE: ContextManager has been told to stop by repastcity3.agent.BurglarThread
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 71 (114.081703,22.5432223), roads: [road: 18]
+	Junction 72 (114.0817074,22.5430807), roads: [road: 18]
+	Junction 81 (114.1455566,22.5506913), roads: [road: 6]
+	Junction 82 (113.8925745,22.4823134), roads: [road: 6]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.main.ContextManager stopSim
+SEVERE: ContextManager has been told to stop by repastcity3.agent.BurglarThread
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 58 (114.0106672,22.5386502), roads: [road: 11, road: 1]
+	Junction 59 (114.0108045,22.5386898), roads: [road: 11]
+	Junction 69 (114.0646986,22.5178392), roads: [road: 17, road: 4]
+	Junction 70 (114.0450932,22.5948609), roads: [road: 17, road: 4]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.main.ContextManager stopSim
+SEVERE: ContextManager has been told to stop by repastcity3.agent.BurglarThread
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 79 (114.036303,22.5993764), roads: [road: 5]
+	Junction 80 (114.0534326,22.5028069), roads: [road: 5]
+	Junction 81 (114.1455566,22.5506913), roads: [road: 6]
+	Junction 82 (113.8925745,22.4823134), roads: [road: 6]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.main.ContextManager stopSim
+SEVERE: ContextManager has been told to stop by repastcity3.agent.BurglarThread
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 64 (114.0029823,22.5462544), roads: [road: 14]
+	Junction 65 (114.0814219,22.5569884), roads: [road: 14]
+	Junction 81 (114.1455566,22.5506913), roads: [road: 6]
+	Junction 82 (113.8925745,22.4823134), roads: [road: 6]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.main.ContextManager stopSim
+SEVERE: ContextManager has been told to stop by repastcity3.agent.BurglarThread
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 71 (114.081703,22.5432223), roads: [road: 18]
+	Junction 72 (114.0817074,22.5430807), roads: [road: 18]
+	Junction 58 (114.0106672,22.5386502), roads: [road: 11, road: 1]
+	Junction 59 (114.0108045,22.5386898), roads: [road: 11]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.agent.BurglarThread run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 79 (114.036303,22.5993764), roads: [road: 5]
+	Junction 80 (114.0534326,22.5028069), roads: [road: 5]
+	Junction 71 (114.081703,22.5432223), roads: [road: 18]
+	Junction 72 (114.0817074,22.5430807), roads: [road: 18]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.main.ContextManager stopSim
+SEVERE: ContextManager has been told to stop by repastcity3.agent.BurglarThread
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 79 (114.036303,22.5993764), roads: [road: 5]
+	Junction 80 (114.0534326,22.5028069), roads: [road: 5]
+	Junction 71 (114.081703,22.5432223), roads: [road: 18]
+	Junction 72 (114.0817074,22.5430807), roads: [road: 18]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.agent.BurglarThread run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 79 (114.036303,22.5993764), roads: [road: 5]
+	Junction 80 (114.0534326,22.5028069), roads: [road: 5]
+	Junction 58 (114.0106672,22.5386502), roads: [road: 11, road: 1]
+	Junction 59 (114.0108045,22.5386898), roads: [road: 11]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.main.ContextManager stopSim
+SEVERE: ContextManager has been told to stop by repastcity3.agent.BurglarThread
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 79 (114.036303,22.5993764), roads: [road: 5]
+	Junction 80 (114.0534326,22.5028069), roads: [road: 5]
+	Junction 58 (114.0106672,22.5386502), roads: [road: 11, road: 1]
+	Junction 59 (114.0108045,22.5386898), roads: [road: 11]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.agent.BurglarThread run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 79 (114.036303,22.5993764), roads: [road: 5]
+	Junction 80 (114.0534326,22.5028069), roads: [road: 5]
+	Junction 81 (114.1455566,22.5506913), roads: [road: 6]
+	Junction 82 (113.8925745,22.4823134), roads: [road: 6]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.main.ContextManager stopSim
+SEVERE: ContextManager has been told to stop by repastcity3.agent.BurglarThread
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 79 (114.036303,22.5993764), roads: [road: 5]
+	Junction 80 (114.0534326,22.5028069), roads: [road: 5]
+	Junction 81 (114.1455566,22.5506913), roads: [road: 6]
+	Junction 82 (113.8925745,22.4823134), roads: [road: 6]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.agent.BurglarThread run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 77 (114.0449096,22.5161665), roads: [road: 3]
+	Junction 78 (114.1212554,22.5569205), roads: [road: 3]
+	Junction 81 (114.1455566,22.5506913), roads: [road: 6]
+	Junction 82 (113.8925745,22.4823134), roads: [road: 6]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.main.ContextManager stopSim
+SEVERE: ContextManager has been told to stop by repastcity3.agent.BurglarThread
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 77 (114.0449096,22.5161665), roads: [road: 3]
+	Junction 78 (114.1212554,22.5569205), roads: [road: 3]
+	Junction 81 (114.1455566,22.5506913), roads: [road: 6]
+	Junction 82 (113.8925745,22.4823134), roads: [road: 6]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.agent.BurglarThread run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 77 (114.0449096,22.5161665), roads: [road: 3]
+	Junction 78 (114.1212554,22.5569205), roads: [road: 3]
+	Junction 81 (114.1455566,22.5506913), roads: [road: 6]
+	Junction 82 (113.8925745,22.4823134), roads: [road: 6]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.main.ContextManager stopSim
+SEVERE: ContextManager has been told to stop by repastcity3.agent.BurglarThread
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 77 (114.0449096,22.5161665), roads: [road: 3]
+	Junction 78 (114.1212554,22.5569205), roads: [road: 3]
+	Junction 81 (114.1455566,22.5506913), roads: [road: 6]
+	Junction 82 (113.8925745,22.4823134), roads: [road: 6]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.agent.BurglarThread run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 77 (114.0449096,22.5161665), roads: [road: 3]
+	Junction 78 (114.1212554,22.5569205), roads: [road: 3]
+	Junction 69 (114.0646986,22.5178392), roads: [road: 17, road: 4]
+	Junction 70 (114.0450932,22.5948609), roads: [road: 17, road: 4]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.main.ContextManager stopSim
+SEVERE: ContextManager has been told to stop by repastcity3.agent.BurglarThread
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 77 (114.0449096,22.5161665), roads: [road: 3]
+	Junction 78 (114.1212554,22.5569205), roads: [road: 3]
+	Junction 69 (114.0646986,22.5178392), roads: [road: 17, road: 4]
+	Junction 70 (114.0450932,22.5948609), roads: [road: 17, road: 4]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.agent.BurglarThread run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 69 (114.0646986,22.5178392), roads: [road: 17, road: 4]
+	Junction 70 (114.0450932,22.5948609), roads: [road: 17, road: 4]
+	Junction 81 (114.1455566,22.5506913), roads: [road: 6]
+	Junction 82 (113.8925745,22.4823134), roads: [road: 6]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.main.ContextManager stopSim
+SEVERE: ContextManager has been told to stop by repastcity3.agent.BurglarThread
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 69 (114.0646986,22.5178392), roads: [road: 17, road: 4]
+	Junction 70 (114.0450932,22.5948609), roads: [road: 17, road: 4]
+	Junction 81 (114.1455566,22.5506913), roads: [road: 6]
+	Junction 82 (113.8925745,22.4823134), roads: [road: 6]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.agent.BurglarThread run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 71 (114.081703,22.5432223), roads: [road: 18]
+	Junction 72 (114.0817074,22.5430807), roads: [road: 18]
+	Junction 81 (114.1455566,22.5506913), roads: [road: 6]
+	Junction 82 (113.8925745,22.4823134), roads: [road: 6]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.main.ContextManager stopSim
+SEVERE: ContextManager has been told to stop by repastcity3.agent.BurglarThread
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 71 (114.081703,22.5432223), roads: [road: 18]
+	Junction 72 (114.0817074,22.5430807), roads: [road: 18]
+	Junction 81 (114.1455566,22.5506913), roads: [road: 6]
+	Junction 82 (113.8925745,22.4823134), roads: [road: 6]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.agent.BurglarThread run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 77 (114.0449096,22.5161665), roads: [road: 3]
+	Junction 78 (114.1212554,22.5569205), roads: [road: 3]
+	Junction 69 (114.0646986,22.5178392), roads: [road: 17, road: 4]
+	Junction 70 (114.0450932,22.5948609), roads: [road: 17, road: 4]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.main.ContextManager stopSim
+SEVERE: ContextManager has been told to stop by repastcity3.agent.BurglarThread
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 77 (114.0449096,22.5161665), roads: [road: 3]
+	Junction 78 (114.1212554,22.5569205), roads: [road: 3]
+	Junction 69 (114.0646986,22.5178392), roads: [road: 17, road: 4]
+	Junction 70 (114.0450932,22.5948609), roads: [road: 17, road: 4]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.agent.BurglarThread run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 79 (114.036303,22.5993764), roads: [road: 5]
+	Junction 80 (114.0534326,22.5028069), roads: [road: 5]
+	Junction 69 (114.0646986,22.5178392), roads: [road: 17, road: 4]
+	Junction 70 (114.0450932,22.5948609), roads: [road: 17, road: 4]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.main.ContextManager stopSim
+SEVERE: ContextManager has been told to stop by repastcity3.agent.BurglarThread
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 79 (114.036303,22.5993764), roads: [road: 5]
+	Junction 80 (114.0534326,22.5028069), roads: [road: 5]
+	Junction 69 (114.0646986,22.5178392), roads: [road: 17, road: 4]
+	Junction 70 (114.0450932,22.5948609), roads: [road: 17, road: 4]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.agent.BurglarThread run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 71 (114.081703,22.5432223), roads: [road: 18]
+	Junction 72 (114.0817074,22.5430807), roads: [road: 18]
+	Junction 58 (114.0106672,22.5386502), roads: [road: 11, road: 1]
+	Junction 59 (114.0108045,22.5386898), roads: [road: 11]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.main.ContextManager stopSim
+SEVERE: ContextManager has been told to stop by repastcity3.agent.BurglarThread
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 71 (114.081703,22.5432223), roads: [road: 18]
+	Junction 72 (114.0817074,22.5430807), roads: [road: 18]
+	Junction 58 (114.0106672,22.5386502), roads: [road: 11, road: 1]
+	Junction 59 (114.0108045,22.5386898), roads: [road: 11]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.agent.BurglarThread run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 71 (114.081703,22.5432223), roads: [road: 18]
+	Junction 72 (114.0817074,22.5430807), roads: [road: 18]
+	Junction 69 (114.0646986,22.5178392), roads: [road: 17, road: 4]
+	Junction 70 (114.0450932,22.5948609), roads: [road: 17, road: 4]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.main.ContextManager stopSim
+SEVERE: ContextManager has been told to stop by repastcity3.agent.BurglarThread
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 71 (114.081703,22.5432223), roads: [road: 18]
+	Junction 72 (114.0817074,22.5430807), roads: [road: 18]
+	Junction 69 (114.0646986,22.5178392), roads: [road: 17, road: 4]
+	Junction 70 (114.0450932,22.5948609), roads: [road: 17, road: 4]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.agent.BurglarThread run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 77 (114.0449096,22.5161665), roads: [road: 3]
+	Junction 78 (114.1212554,22.5569205), roads: [road: 3]
+	Junction 81 (114.1455566,22.5506913), roads: [road: 6]
+	Junction 82 (113.8925745,22.4823134), roads: [road: 6]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.main.ContextManager stopSim
+SEVERE: ContextManager has been told to stop by repastcity3.agent.BurglarThread
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 77 (114.0449096,22.5161665), roads: [road: 3]
+	Junction 78 (114.1212554,22.5569205), roads: [road: 3]
+	Junction 81 (114.1455566,22.5506913), roads: [road: 6]
+	Junction 82 (113.8925745,22.4823134), roads: [road: 6]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.agent.BurglarThread run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 77 (114.0449096,22.5161665), roads: [road: 3]
+	Junction 78 (114.1212554,22.5569205), roads: [road: 3]
+	Junction 71 (114.081703,22.5432223), roads: [road: 18]
+	Junction 72 (114.0817074,22.5430807), roads: [road: 18]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.main.ContextManager stopSim
+SEVERE: ContextManager has been told to stop by repastcity3.agent.BurglarThread
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 77 (114.0449096,22.5161665), roads: [road: 3]
+	Junction 78 (114.1212554,22.5569205), roads: [road: 3]
+	Junction 71 (114.081703,22.5432223), roads: [road: 18]
+	Junction 72 (114.0817074,22.5430807), roads: [road: 18]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.agent.BurglarThread run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 79 (114.036303,22.5993764), roads: [road: 5]
+	Junction 80 (114.0534326,22.5028069), roads: [road: 5]
+	Junction 81 (114.1455566,22.5506913), roads: [road: 6]
+	Junction 82 (113.8925745,22.4823134), roads: [road: 6]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.main.ContextManager stopSim
+SEVERE: ContextManager has been told to stop by repastcity3.agent.BurglarThread
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 79 (114.036303,22.5993764), roads: [road: 5]
+	Junction 80 (114.0534326,22.5028069), roads: [road: 5]
+	Junction 81 (114.1455566,22.5506913), roads: [road: 6]
+	Junction 82 (113.8925745,22.4823134), roads: [road: 6]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.agent.BurglarThread run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 79 (114.036303,22.5993764), roads: [road: 5]
+	Junction 80 (114.0534326,22.5028069), roads: [road: 5]
+	Junction 71 (114.081703,22.5432223), roads: [road: 18]
+	Junction 72 (114.0817074,22.5430807), roads: [road: 18]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.agent.BurglarThread run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 77 (114.0449096,22.5161665), roads: [road: 3]
+	Junction 78 (114.1212554,22.5569205), roads: [road: 3]
+	Junction 71 (114.081703,22.5432223), roads: [road: 18]
+	Junction 72 (114.0817074,22.5430807), roads: [road: 18]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.main.ContextManager stopSim
+SEVERE: ContextManager has been told to stop by repastcity3.agent.BurglarThread
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 79 (114.036303,22.5993764), roads: [road: 5]
+	Junction 80 (114.0534326,22.5028069), roads: [road: 5]
+	Junction 71 (114.081703,22.5432223), roads: [road: 18]
+	Junction 72 (114.0817074,22.5430807), roads: [road: 18]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.agent.BurglarThread run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 71 (114.081703,22.5432223), roads: [road: 18]
+	Junction 72 (114.0817074,22.5430807), roads: [road: 18]
+	Junction 58 (114.0106672,22.5386502), roads: [road: 11, road: 1]
+	Junction 59 (114.0108045,22.5386898), roads: [road: 11]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.main.ContextManager stopSim
+SEVERE: ContextManager has been told to stop by repastcity3.agent.BurglarThread
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 77 (114.0449096,22.5161665), roads: [road: 3]
+	Junction 78 (114.1212554,22.5569205), roads: [road: 3]
+	Junction 71 (114.081703,22.5432223), roads: [road: 18]
+	Junction 72 (114.0817074,22.5430807), roads: [road: 18]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.main.ContextManager stopSim
+SEVERE: ContextManager has been told to stop by repastcity3.agent.BurglarThread
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 71 (114.081703,22.5432223), roads: [road: 18]
+	Junction 72 (114.0817074,22.5430807), roads: [road: 18]
+	Junction 58 (114.0106672,22.5386502), roads: [road: 11, road: 1]
+	Junction 59 (114.0108045,22.5386898), roads: [road: 11]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.agent.BurglarThread run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 71 (114.081703,22.5432223), roads: [road: 18]
+	Junction 72 (114.0817074,22.5430807), roads: [road: 18]
+	Junction 81 (114.1455566,22.5506913), roads: [road: 6]
+	Junction 82 (113.8925745,22.4823134), roads: [road: 6]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.main.ContextManager stopSim
+SEVERE: ContextManager has been told to stop by repastcity3.agent.BurglarThread
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 71 (114.081703,22.5432223), roads: [road: 18]
+	Junction 72 (114.0817074,22.5430807), roads: [road: 18]
+	Junction 81 (114.1455566,22.5506913), roads: [road: 6]
+	Junction 82 (113.8925745,22.4823134), roads: [road: 6]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.agent.BurglarThread run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 58 (114.0106672,22.5386502), roads: [road: 11, road: 1]
+	Junction 59 (114.0108045,22.5386898), roads: [road: 11]
+	Junction 81 (114.1455566,22.5506913), roads: [road: 6]
+	Junction 82 (113.8925745,22.4823134), roads: [road: 6]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.main.ContextManager stopSim
+SEVERE: ContextManager has been told to stop by repastcity3.agent.BurglarThread
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 58 (114.0106672,22.5386502), roads: [road: 11, road: 1]
+	Junction 59 (114.0108045,22.5386898), roads: [road: 11]
+	Junction 81 (114.1455566,22.5506913), roads: [road: 6]
+	Junction 82 (113.8925745,22.4823134), roads: [road: 6]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.agent.BurglarThread run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 79 (114.036303,22.5993764), roads: [road: 5]
+	Junction 80 (114.0534326,22.5028069), roads: [road: 5]
+	Junction 71 (114.081703,22.5432223), roads: [road: 18]
+	Junction 72 (114.0817074,22.5430807), roads: [road: 18]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.main.ContextManager stopSim
+SEVERE: ContextManager has been told to stop by repastcity3.agent.BurglarThread
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 79 (114.036303,22.5993764), roads: [road: 5]
+	Junction 80 (114.0534326,22.5028069), roads: [road: 5]
+	Junction 71 (114.081703,22.5432223), roads: [road: 18]
+	Junction 72 (114.0817074,22.5430807), roads: [road: 18]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.agent.BurglarThread run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 77 (114.0449096,22.5161665), roads: [road: 3]
+	Junction 78 (114.1212554,22.5569205), roads: [road: 3]
+	Junction 81 (114.1455566,22.5506913), roads: [road: 6]
+	Junction 82 (113.8925745,22.4823134), roads: [road: 6]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.main.ContextManager stopSim
+SEVERE: ContextManager has been told to stop by repastcity3.agent.BurglarThread
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 77 (114.0449096,22.5161665), roads: [road: 3]
+	Junction 78 (114.1212554,22.5569205), roads: [road: 3]
+	Junction 81 (114.1455566,22.5506913), roads: [road: 6]
+	Junction 82 (113.8925745,22.4823134), roads: [road: 6]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.agent.BurglarThread run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 79 (114.036303,22.5993764), roads: [road: 5]
+	Junction 80 (114.0534326,22.5028069), roads: [road: 5]
+	Junction 58 (114.0106672,22.5386502), roads: [road: 11, road: 1]
+	Junction 59 (114.0108045,22.5386898), roads: [road: 11]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:28 PM repastcity3.main.ContextManager stopSim
+SEVERE: ContextManager has been told to stop by repastcity3.agent.BurglarThread
+repastcity3.exceptions.RoutingException: Route.getShortestRoute() could not find a route. Looking for the shortest route between :
+	Junction 79 (114.036303,22.5993764), roads: [road: 5]
+	Junction 80 (114.0534326,22.5028069), roads: [road: 5]
+	Junction 58 (114.0106672,22.5386502), roads: [road: 11, road: 1]
+	Junction 59 (114.0108045,22.5386898), roads: [road: 11]
+
+	at repastcity3.environment.Route.getShortestRoute(Route.java:906)
+	at repastcity3.environment.Route.setRoute(Route.java:295)
+	at repastcity3.environment.Route.travel(Route.java:434)
+	at repastcity3.agent.DefaultAgent.step(DefaultAgent.java:222)
+	at repastcity3.agent.BurglarThread.run(ThreadedAgentScheduler.java:209)
+	at java.lang.Thread.run(Thread.java:748)
+
+Aug 05, 2018 3:55:29 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 1.0
