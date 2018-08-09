@@ -135,7 +135,7 @@ public class ContextManager implements ContextBuilder<Object> {
 
 		// Configure the environment
 		String gisDataDir = ContextManager.getProperty(GlobalVars.GISDataDirectory);
-		LOGGER.log(Level.FINE, "Configuring the environment with data from " + gisDataDir);
+		LOGGER.log(Level.INFO, "Configuring the environment with data from " + gisDataDir);
 
 		try {
 			// Create the Farm - context and geography projection
@@ -147,7 +147,7 @@ public class ContextManager implements ContextBuilder<Object> {
 			GISFunctions.readShapefile(Farm.class, FarmFile, FarmProjection, FarmContext);
 			mainContext.addSubContext(FarmContext);
 			SpatialIndexManager.createIndex(FarmProjection, Farm.class);
-			LOGGER.log(Level.FINER, "Read " + FarmContext.getObjects(Farm.class).size() + " Farms from " + FarmFile);
+			LOGGER.log(Level.INFO, "Read " + FarmContext.getObjects(Farm.class).size() + "farms from " + FarmFile);
 
 			// Create the residential - context and geography projection
 			residentialContext = new ResidentialContext();
@@ -158,7 +158,7 @@ public class ContextManager implements ContextBuilder<Object> {
 			GISFunctions.readShapefile(Residential.class, residentialFile, residentialProjection, residentialContext);
 			mainContext.addSubContext(residentialContext);
 			SpatialIndexManager.createIndex(residentialProjection, Residential.class);
-			LOGGER.log(Level.FINER, "Read " + residentialContext.getObjects(Residential.class).size()
+			LOGGER.log(Level.INFO, "Read " + residentialContext.getObjects(Residential.class).size()
 					+ " residentials from " + residentialFile);
 
 			// Create the Roads - context and geography
@@ -170,7 +170,7 @@ public class ContextManager implements ContextBuilder<Object> {
 			GISFunctions.readShapefile(Road.class, roadFile, roadProjection, roadContext);
 			mainContext.addSubContext(roadContext);
 			SpatialIndexManager.createIndex(roadProjection, Road.class);
-			LOGGER.log(Level.FINER, "Read " + roadContext.getObjects(Road.class).size() + " roads from " + roadFile);
+			LOGGER.log(Level.INFO, "Read " + roadContext.getObjects(Road.class).size() + " roads from " + roadFile);
 
 			// Create road network
 
@@ -199,7 +199,7 @@ public class ContextManager implements ContextBuilder<Object> {
 			return null;
 		}
 		 catch (EnvironmentError e) {
-		 LOGGER.log(Level.SEVERE, "There is an eror with the environment, cannot start simulation", e);
+		 LOGGER.log(Level.SEVERE, "There is an error with the environment, cannot start simulation", e);
 		 return null;
 		 }
 		catch (NoIdentifierException e) {
@@ -296,7 +296,7 @@ public class ContextManager implements ContextBuilder<Object> {
 			ScheduleParameters agentStepParams = ScheduleParameters.createRepeating(1, 1, 0);
 			schedule.schedule(agentStepParams, s, "agentStep");
 		} else { // Agents will execute in serial, use the repast scheduler.
-			LOGGER.log(Level.FINE, "The single-threaded scheduler will be used.");
+			LOGGER.log(Level.INFO, "The single-threaded scheduler will be used.");
 			ScheduleParameters agentStepParams = ScheduleParameters.createRepeating(1, 1, 0);
 			// Schedule the agents' step methods.
 			for (IAgent a : agentContext.getObjects(IAgent.class)) {
@@ -382,7 +382,7 @@ public class ContextManager implements ContextBuilder<Object> {
 					"Could not find properties file in the default location: " + propFile.getAbsolutePath());
 		}
 
-		LOGGER.log(Level.FINE, "Initialising properties from file " + propFile.toString());
+		LOGGER.log(Level.INFO, "Initialising properties from file " + propFile.toString());
 
 		ContextManager.properties = new Properties();
 
