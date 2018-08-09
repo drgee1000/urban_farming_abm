@@ -25,7 +25,7 @@ public class TestEnv {
 	 */
 	public static void testEnvironment(Context<Object> mainContext) throws EnvironmentError, NoIdentifierException {
 
-		LOGGER.log(Level.FINE, "Testing the environment");
+		LOGGER.log(Level.INFO, "Testing the environment");
 		// Get copies of the contexts/projections from main context
 		// Context<Building> bc = (Context<Building>)
 		// mainContext.getSubContext(GlobalVars.CONTEXT_NAMES.BUILDING_CONTEXT);
@@ -41,7 +41,7 @@ public class TestEnv {
 		// Geography<Junction> jg = (Geography<Junction>)
 		// rc.getProjection(GlobalVars.CONTEXT_NAMES.JUNCTION_GEOGRAPHY);
 		Network<Junction> rn = (Network<Junction>) jc.getProjection(GlobalVars.CONTEXT_NAMES.ROAD_NETWORK);
-		System.out.print("roadNetwork has" + rn.size() + "edges\n");
+		System.out.print("roadNetwork has " + rn.size() + "edges\n");
 
 		// 1. Check that there are some objects in each of the contexts
 		checkSize(rc, roc, jc);
@@ -61,7 +61,7 @@ public class TestEnv {
 					+ sizeOfIterable(jc.getObjects(Junction.class)) + " and " + sizeOfIterable(rn.getNodes()));
 		}
 
-		LOGGER.log(Level.FINE, "The road network has " + sizeOfIterable(rn.getNodes()) + " nodes and "
+		LOGGER.log(Level.INFO, "The road network has " + sizeOfIterable(rn.getNodes()) + " nodes and "
 				+ sizeOfIterable(rn.getEdges()) + " edges.");
 
 		// 4. Check that Roads and Buildings have unique identifiers
