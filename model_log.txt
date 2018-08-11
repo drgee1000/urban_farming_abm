@@ -1,12 +1,66 @@
-Aug 09, 2018 10:42:36 PM repastcity3.main.ContextManager readProperties
+Aug 11, 2018 11:50:54 PM repastcity3.main.ContextManager readProperties
 INFO: Initialising properties from file ./repastcity.properties
-Aug 09, 2018 10:42:36 PM repastcity3.main.ContextManager build
+Aug 11, 2018 11:50:54 PM repastcity3.main.ContextManager build
 INFO: Configuring the environment with data from ./data/gis_data/shenzhen/
-Aug 09, 2018 10:42:43 PM repastcity3.main.ContextManager build
-INFO: Read 6farms from ./data/gis_data/shenzhen/Farm.shp
-Aug 09, 2018 10:42:43 PM repastcity3.main.ContextManager build
+Aug 11, 2018 11:50:57 PM repastcity3.main.ContextManager build
+INFO: Read 6farms from ./data/gis_data/shenzhen/farm.shp
+Aug 11, 2018 11:50:57 PM repastcity3.main.ContextManager build
 INFO: Read 4 residentials from ./data/gis_data/shenzhen/residential.shp
-Aug 09, 2018 10:42:44 PM repastcity3.main.ContextManager build
-INFO: Read 12 roads from ./data/gis_data/shenzhen/st.shp
-Aug 09, 2018 10:43:53 PM repastcity3.main.TestEnv testEnvironment
+Aug 11, 2018 11:50:57 PM repastcity3.main.ContextManager build
+INFO: Read 86 roads from ./data/gis_data/shenzhen/street.shp
+Aug 11, 2018 11:50:58 PM repastcity3.main.TestEnv testEnvironment
 INFO: Testing the environment
+Aug 11, 2018 11:50:58 PM repastcity3.main.TestEnv testEnvironment
+INFO: The road network has 73 nodes and 86 edges.
+Aug 11, 2018 11:50:58 PM repastcity3.main.ContextManager build
+INFO: Creating agents with the agent definition: 'point:people.shp$repastcity3.agent.DefaultAgent'
+Aug 11, 2018 11:50:58 PM repastcity3.agent.AgentFactory createPointAgents
+INFO: Have created 42 of type repastcity3.agent.DefaultAgent from file ./data/gis_data/shenzhen/people.shp
+Aug 11, 2018 11:50:58 PM repastcity3.agent.AgentFactory createPointAgents
+INFO: Have created 84 of type repastcity3.agent.DefaultAgent from file ./data/gis_data/shenzhen/people.shp
+Aug 11, 2018 11:50:58 PM repastcity3.main.ContextManager createSchedule
+INFO: The multi-threaded scheduler will be used.
+Aug 11, 2018 11:51:24 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 1.0
+Aug 11, 2018 11:51:25 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 11.0
+Aug 11, 2018 11:51:26 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 21.0
+Aug 11, 2018 11:51:27 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 31.0
+Aug 11, 2018 11:51:27 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 41.0
+Aug 11, 2018 11:51:28 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 51.0
+Aug 11, 2018 11:51:28 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 61.0
+Aug 11, 2018 11:51:29 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 71.0
+Aug 11, 2018 11:51:30 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 81.0
+Aug 11, 2018 11:51:30 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 91.0
+Aug 11, 2018 11:51:31 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 101.0
+Aug 11, 2018 11:54:37 PM repastcity3.main.ContextManager readProperties
+INFO: Initialising properties from file ./repastcity.properties
+Aug 11, 2018 11:54:37 PM repastcity3.main.ContextManager build
+INFO: Configuring the environment with data from ./data/gis_data/shenzhen/
+Aug 11, 2018 11:54:37 PM repastcity3.main.ContextManager build
+INFO: Read 6farms from ./data/gis_data/shenzhen/farm.shp
+Aug 11, 2018 11:54:37 PM repastcity3.main.ContextManager build
+INFO: Read 4 residentials from ./data/gis_data/shenzhen/residential.shp
+Aug 11, 2018 11:54:37 PM repastcity3.main.ContextManager build
+INFO: Read 86 roads from ./data/gis_data/shenzhen/street.shp
+Aug 11, 2018 11:54:37 PM repastcity3.main.TestEnv testEnvironment
+INFO: Testing the environment
+Aug 11, 2018 11:54:37 PM repastcity3.main.TestEnv testEnvironment
+INFO: The road network has 73 nodes and 86 edges.
+Aug 11, 2018 11:54:37 PM repastcity3.main.ContextManager build
+INFO: Creating agents with the agent definition: 'point:people.shp$repastcity3.agent.DefaultAgent'
+Aug 11, 2018 11:54:37 PM repastcity3.agent.AgentFactory createPointAgents
+INFO: Have created 42 of type repastcity3.agent.DefaultAgent from file ./data/gis_data/shenzhen/people.shp
+Aug 11, 2018 11:54:37 PM repastcity3.agent.AgentFactory createPointAgents
+INFO: Have created 84 of type repastcity3.agent.DefaultAgent from file ./data/gis_data/shenzhen/people.shp
+Aug 11, 2018 11:54:37 PM repastcity3.main.ContextManager createSchedule
+INFO: The multi-threaded scheduler will be used.
