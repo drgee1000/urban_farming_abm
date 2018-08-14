@@ -132,7 +132,7 @@ public class GISFunctions {
 //				System.out.print(i + "\n");
 //				i++;
 				System.out.print("Edge number is " + sizeOfIterable(roadNetwork.getEdges()) + "\n");
-				System.out.print(sizeOfIterable(roadNetwork.getEdges()));
+//				System.out.print(sizeOfIterable(roadNetwork.getEdges()));
 			} else {
 				LOGGER.severe("CityContext: buildRoadNetwork: for some reason this edge that has just been created "
 						+ "already exists in the RoadNetwork!");

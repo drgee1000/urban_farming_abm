@@ -346,7 +346,7 @@ public class DefaultAgent implements IAgent {
 			Farm farm = iter.next();
 			Route r = new Route(this, ContextManager.FarmProjection.getGeometry(farm).getCentroid().getCoordinate(), farm);
 			this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
-			this.destination = ContextManager.workplaceProjection.getGeometry(farm).getCentroid().getCoordinate();
+			this.destination = ContextManager.FarmProjection.getGeometry(farm).getCentroid().getCoordinate();
 			double dis = r.getDistance(this, origin, destination);
 			if(dis<min) {
 				min = dis;
