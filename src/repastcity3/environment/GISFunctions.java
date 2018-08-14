@@ -121,7 +121,7 @@ public class GISFunctions {
 			// Tell the Road and the Edge about each other
 			road.setEdge(edge);
 			edge.setRoad(road);
-			//System.out.print("Edge number is " + roadNetwork.size() + "\n");
+			System.out.print("Edge number is " + roadNetwork.size() + "\n");
 			if (!roadNetwork.containsEdge(edge)) {
 				roadNetwork.addEdge(edge);
 				if (last != sizeOfIterable(roadNetwork.getEdges())){
@@ -129,10 +129,10 @@ public class GISFunctions {
 					last--;
 				}
 					last++;
-				//System.out.print(i + "\n");
-				//i++;
-				//System.out.print("Edge number is " + sizeOfIterable(roadNetwork.getEdges()) + "\n");
-				//System.out.print(sizeOfIterable(roadNetwork.getEdges()));
+//				System.out.print(i + "\n");
+//				i++;
+				System.out.print("Edge number is " + sizeOfIterable(roadNetwork.getEdges()) + "\n");
+				System.out.print(sizeOfIterable(roadNetwork.getEdges()));
 			} else {
 				LOGGER.severe("CityContext: buildRoadNetwork: for some reason this edge that has just been created "
 						+ "already exists in the RoadNetwork!");

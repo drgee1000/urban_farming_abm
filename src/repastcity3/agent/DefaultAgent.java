@@ -13,7 +13,6 @@ import org.geotools.referencing.datum.DefaultEllipsoid;
 
 import com.vividsolutions.jts.geom.Coordinate;
 
-import repastcity3.environment.Candidate1;
 import repastcity3.environment.Farm;
 import repastcity3.environment.Residential;
 import repastcity3.environment.Restaurant;
@@ -73,23 +72,23 @@ public class DefaultAgent implements IAgent {
 	}
 	
 	public int setPurpose() {
-		double generator1 = Math.random();
-		if (generator1 > 0 && generator1 < p1){
-			type = 1; // Workplace
-	
-		} else if (generator1 > p1 && generator1 < (p1 + p2)){
-			type = 2; //Shopping center
-			
-		} else if (generator1 > (p1 + p2) && generator1 < (p1 + p2 + p3)){
-			type = 3; // Restaurant
-			
-		} else {
-			type = 4;
-			
-		}
-		Random generator2 = new Random(new Date().getTime());
-		income = generator2.nextInt(9) + 1;
-		return type;
+//		double generator1 = Math.random();
+//		if (generator1 > 0 && generator1 < p1){
+//			type = 1; // Workplace
+//	
+//		} else if (generator1 > p1 && generator1 < (p1 + p2)){
+//			type = 2; //Shopping center
+//			
+//		} else if (generator1 > (p1 + p2) && generator1 < (p1 + p2 + p3)){
+//			type = 3; // Restaurant
+//			
+//		} else {
+//			type = 4;
+//			
+//		}
+//		Random generator2 = new Random(new Date().getTime());
+//		income = generator2.nextInt(9) + 1;
+		return 4;
 	}
 
 	@Override
@@ -138,73 +137,73 @@ public class DefaultAgent implements IAgent {
 		}
 		else {	
 		switch (type) {
-		case 1: {
-			
-			if (this.route == null) {
-				Workplace w = ContextManager.workplaceContext.getRandomObject();
-				
-				this.route = new Route(this, ContextManager.workplaceProjection.getGeometry(w).getCentroid().getCoordinate(), w);
-				this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
-				this.destination = ContextManager.workplaceProjection.getGeometry(w).getCentroid().getCoordinate();
-				
-			}
-			
-			if (!this.route.atDestination()) {
-				this.route.travel();
-				} else {
-					this.route = null;
-					setPurpose();
-				}
-				break;
-				
-				}
-		
-		case 2: {
-			
-			if (this.route == null) {
-				this.goingHome = false;
-				Shoppingcenter s = ContextManager.shoppingcenterContext.getRandomObject();
-				this.route = new Route(this, ContextManager.shoppingcenterProjection.getGeometry(s).getCentroid().getCoordinate(), s);
-				this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
-				this.destination = ContextManager.shoppingcenterProjection.getGeometry(s).getCentroid().getCoordinate();
-				
-			}
-			
-			if (!this.route.atDestination()) {
-				this.route.travel();
-				
-				
-				} else {
-				
-			
-					this.route = null;
-					setPurpose();
-			}
-		
-			break;
-			
-			
-				}
-		case 3: {
-			
-			if (this.route == null) {
-				this.goingHome = false;
-				Restaurant r = ContextManager.restaurantContext.getRandomObject();
-				this.route = new Route(this, ContextManager.restaurantProjection.getGeometry(r).getCentroid().getCoordinate(), r);
-				this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
-				this.destination = ContextManager.restaurantProjection.getGeometry(r).getCentroid().getCoordinate();
-				
-			}
-			
-			if (!this.route.atDestination()) {
-				this.route.travel();
-				
-				} else {
-					this.route = null;
-					setPurpose();
-				}
-			break;
-		}
+//		case 1: {
+//			
+//			if (this.route == null) {
+//				Workplace w = ContextManager.workplaceContext.getRandomObject();
+//				
+//				this.route = new Route(this, ContextManager.workplaceProjection.getGeometry(w).getCentroid().getCoordinate(), w);
+//				this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
+//				this.destination = ContextManager.workplaceProjection.getGeometry(w).getCentroid().getCoordinate();
+//				
+//			}
+//			
+//			if (!this.route.atDestination()) {
+//				this.route.travel();
+//				} else {
+//					this.route = null;
+//					setPurpose();
+//				}
+//				break;
+//				
+//				}
+//		
+//		case 2: {
+//			
+//			if (this.route == null) {
+//				this.goingHome = false;
+//				Shoppingcenter s = ContextManager.shoppingcenterContext.getRandomObject();
+//				this.route = new Route(this, ContextManager.shoppingcenterProjection.getGeometry(s).getCentroid().getCoordinate(), s);
+//				this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
+//				this.destination = ContextManager.shoppingcenterProjection.getGeometry(s).getCentroid().getCoordinate();
+//				
+//			}
+//			
+//			if (!this.route.atDestination()) {
+//				this.route.travel();
+//				
+//				
+//				} else {
+//				
+//			
+//					this.route = null;
+//					setPurpose();
+//			}
+//		
+//			break;
+//			
+//			
+//				}
+//		case 3: {
+//			
+//			if (this.route == null) {
+//				this.goingHome = false;
+//				Restaurant r = ContextManager.restaurantContext.getRandomObject();
+//				this.route = new Route(this, ContextManager.restaurantProjection.getGeometry(r).getCentroid().getCoordinate(), r);
+//				this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
+//				this.destination = ContextManager.restaurantProjection.getGeometry(r).getCentroid().getCoordinate();
+//				
+//			}
+//			
+//			if (!this.route.atDestination()) {
+//				this.route.travel();
+//				
+//				} else {
+//					this.route = null;
+//					setPurpose();
+//				}
+//			break;
+//		}
 		
 		case 4: {
 			
@@ -287,48 +286,48 @@ public class DefaultAgent implements IAgent {
 	@Override
 	public void calculateDis(){
 		
-		Iterable<Candidate1> iter_can1 = ContextManager.candidate1Context.getObjects(Candidate1.class);
-		Iterator<Candidate1> iter = iter_can1.iterator();
-		routedisogn = this.route.getShortestPathLength();
-
-		int i = 0;
-		while (iter.hasNext()) {
-			Candidate1 can = iter.next();
-			//System.out.print("iden is " + can.identifier + "\n" );
-			Coordinate transfer = ContextManager.candidate1Projection.getGeometry(can).getCentroid().getCoordinate();
-			this.routedev1 = new Route(this.origin, transfer);
-			this.routedev2 = new Route(transfer, this.destination);
-			this.routedisdev1 = routedev1.myGetDistance();
-			this.routedisdev2 = routedev2.myGetDistance();
-			double temp = (routedisdev1 + routedisdev2 - routedisogn) * 10; 
-			if (temp > 0) {
-				distances[i] = temp;
-			} else {
-				distances[i] = 0;
-			}
-			//System.out.print("distance is " + distances[i] + "\n");
-			i++;
-		}
+//		Iterable<Candidate1> iter_can1 = ContextManager.candidate1Context.getObjects(Candidate1.class);
+//		Iterator<Candidate1> iter = iter_can1.iterator();
+//		routedisogn = this.route.getShortestPathLength();
+//
+//		int i = 0;
+//		while (iter.hasNext()) {
+//			Candidate1 can = iter.next();
+//			//System.out.print("iden is " + can.identifier + "\n" );
+//			Coordinate transfer = ContextManager.candidate1Projection.getGeometry(can).getCentroid().getCoordinate();
+//			this.routedev1 = new Route(this.origin, transfer);
+//			this.routedev2 = new Route(transfer, this.destination);
+//			this.routedisdev1 = routedev1.myGetDistance();
+//			this.routedisdev2 = routedev2.myGetDistance();
+//			double temp = (routedisdev1 + routedisdev2 - routedisogn) * 10; 
+//			if (temp > 0) {
+//				distances[i] = temp;
+//			} else {
+//				distances[i] = 0;
+//			}
+//			//System.out.print("distance is " + distances[i] + "\n");
+//			i++;
+//		}
 	}
 	
 	// Calculate the direct distance from the agent to the candidate locations
 	@Override
 	public void calDisDes2Can() {
 		
-		DefaultEllipsoid e = DefaultEllipsoid.WGS84;
-		Iterable<Candidate1> iter_can1 = ContextManager.candidate1Context.getObjects(Candidate1.class);
-		Iterator<Candidate1> iter = iter_can1.iterator();
-		int i = 0;
-		while (iter.hasNext()) {
-			
-			Candidate1 can = iter.next();
-			Coordinate can_coord = ContextManager.candidate1Projection.getGeometry(can).getCentroid().getCoordinate();
-			distancesDes2Can[i] = e.orthodromicDistance(this.destination.x, this.destination.y, can_coord.x, can_coord.y) / 1000;
-			//System.out.print("dis is " + distancesDes2Can[i] + "\n");
-			i++;
-			
-			
-		}
+//		DefaultEllipsoid e = DefaultEllipsoid.WGS84;
+//		Iterable<Candidate1> iter_can1 = ContextManager.candidate1Context.getObjects(Candidate1.class);
+//		Iterator<Candidate1> iter = iter_can1.iterator();
+//		int i = 0;
+//		while (iter.hasNext()) {
+//			
+//			Candidate1 can = iter.next();
+//			Coordinate can_coord = ContextManager.candidate1Projection.getGeometry(can).getCentroid().getCoordinate();
+//			distancesDes2Can[i] = e.orthodromicDistance(this.destination.x, this.destination.y, can_coord.x, can_coord.y) / 1000;
+//			//System.out.print("dis is " + distancesDes2Can[i] + "\n");
+//			i++;
+//			
+//			
+//		}
 		
 		
 	}
