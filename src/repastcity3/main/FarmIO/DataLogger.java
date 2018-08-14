@@ -87,10 +87,7 @@ public class DataLogger {
 		} else if (t instanceof IAgent) {
 			for (int i = 0; i < agentList.size(); i++) {
 				DefaultAgent x = (DefaultAgent) agentList.get(i);
-				agent a = new agent(); 
-				a.setTick(tick);
-				a.setCaloryConsumption(x.getCaloryConsumption());
-				a.setHealth(x.getHealth());
+				agent a = new agent(tick, x); 
 				agents.add(a);
 			}
 		}
@@ -190,14 +187,11 @@ public class DataLogger {
 		double caloryConsumption;
 		@Expose()
 		double health;
-		public void setTick(int t) {
+		
+		public agent(int t, DefaultAgent a) {
 			tick = t;
-		}
-		public void setCaloryConsumption(double c) {
-			caloryConsumption = c;
-		}
-		public void setHealth(double h) {
-			health = h;
+			caloryConsumption = a.getCaloryConsumption();
+			health = a.getHealth();
 		}
 	}
 	

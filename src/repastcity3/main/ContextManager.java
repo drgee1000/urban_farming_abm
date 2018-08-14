@@ -114,11 +114,16 @@ public class ContextManager implements ContextBuilder<Object> {
 	private static Context<IAgent> agentContext;
 	private static Geography<IAgent> agentGeography;
 
-	DataLogger dLogger = new DataLogger();
+	DataLogger dLogger;
 
 	@Override
 	public Context<Object> build(Context<Object> con) {
-
+		try {
+			dLogger = new DataLogger();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		RepastCityLogging.init();
 
 		// Keep a useful static link to the main context
