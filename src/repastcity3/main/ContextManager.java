@@ -71,6 +71,7 @@ import repastcity3.exceptions.AgentCreationException;
 import repastcity3.exceptions.EnvironmentError;
 import repastcity3.exceptions.NoIdentifierException;
 import repastcity3.exceptions.ParameterNotFoundException;
+import repastcity3.main.FarmIO.DataLogger;
 
 public class ContextManager implements ContextBuilder<Object> {
 
@@ -113,11 +114,16 @@ public class ContextManager implements ContextBuilder<Object> {
 	private static Context<IAgent> agentContext;
 	private static Geography<IAgent> agentGeography;
 
-	DataLogger dLogger = new DataLogger();
+	DataLogger dLogger;
 
 	@Override
 	public Context<Object> build(Context<Object> con) {
-
+		try {
+			dLogger = new DataLogger();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		RepastCityLogging.init();
 
 		// Keep a useful static link to the main context
@@ -209,6 +215,9 @@ public class ContextManager implements ContextBuilder<Object> {
 		} catch (FileNotFoundException e) {
 			LOGGER.log(Level.SEVERE, "Could not find an input shapefile to read objects from.", e);
 			return null;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		// Now create the agents (note that their step methods are scheduled later
@@ -263,8 +272,8 @@ public class ContextManager implements ContextBuilder<Object> {
 		// schedule.schedule(stop, this, "calculateStation");
 
 		// Schedule something that outputs ticks every 10 iterations.
-		schedule.schedule(ScheduleParameters.createRepeating(1, 10, ScheduleParameters.LAST_PRIORITY), this,
-				"printTicks");
+		schedule.schedule(ScheduleParameters.createRepeating(1, 1, ScheduleParameters.LAST_PRIORITY), this,"recordTicks");
+		schedule.schedule(ScheduleParameters.createAtEnd(ScheduleParameters.LAST_PRIORITY),this,"printTicks");
 
 		/*
 		 * Schedule the agents. This is slightly complicated because if all the agents
@@ -305,16 +314,31 @@ public class ContextManager implements ContextBuilder<Object> {
 		}
 	}
 
-	public void printTicks() {
+	public void recordTicks() {
 		LOGGER.info("Iterations: " + RunEnvironment.getInstance().getCurrentSchedule().getTickCount());
-
-		try {
-			dLogger.printData(agentContext.getObjects(IAgent.class));
-			dLogger.printData(FarmContext.getObjects(Farm.class));
+		
+		try{
+			
+			dLogger.recordData(agentContext.getObjects(IAgent.class),(int)RunEnvironment.getInstance().getCurrentSchedule().getTickCount());
+			dLogger.recordData(FarmContext.getObjects(Farm.class),(int)RunEnvironment.getInstance().getCurrentSchedule().getTickCount());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+	public void printTicks() {
+		try {
+			dLogger.printDataToJsonFile();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	
+	
+	
 
 	/**
 	 * Convenience function to get a Simphony parameter

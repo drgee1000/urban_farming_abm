@@ -1,17 +1,26 @@
 package repastcity3.environment.food;
 
+import com.google.gson.annotations.Expose;
+
 public class Food implements Comparable<Food>{
-
+	@Expose()
 	private String name;
+	@Expose()
 	private String type;//TODO change to enum
-
+	@Expose()
 	private double amount;
 //	private double calory;
+	@Expose()
 	private double productionCost;
+	
+	
 	private Nutrition nutrition;
+	@Expose()
 	private double price;
 	// unit: tick
+	@Expose()
 	private double productionTime;
+	@Expose()
 	private double expireTime;
 	
 	public Food(String name, String type, double amount,double price, double productionCost,Nutrition nutrition, 
