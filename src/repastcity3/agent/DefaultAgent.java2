@@ -405,8 +405,7 @@ public class DefaultAgent implements IAgent {
 			for(Food f : stock) {
 				if(f.getAmount() > 0) {
 					foodOrder.addOrder(f,1);
-//					health += f.getCaboHydrate();
-					health++;
+					health += f.getCaboHydrate();
 					if(health > defaultHealth)
 						break;
 				}

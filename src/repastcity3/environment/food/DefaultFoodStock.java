@@ -22,11 +22,11 @@ import repastcity3.exceptions.StockCreationException;;
 public class DefaultFoodStock {
 	
 	public static ArrayList<Food> defaultFoodList;
-	private static Normal nRand ;
+	private static Uniform nRand ;
 	public static String[] header;
 	static {
 		defaultFoodList=new ArrayList<>(50);
-		nRand= RandomHelper.createNormal(0, 0);
+		nRand= RandomHelper.createUniform();
 		try (Reader in = new FileReader("./data/food_data/food.csv")){
 			CSVFormat format = CSVFormat.DEFAULT.withFirstRecordAsHeader();
 			Iterable<CSVRecord> records = format.parse(in);
@@ -61,7 +61,6 @@ public class DefaultFoodStock {
 	public static List<Food> getRandomFoodList()
 	{
 		int n=RandomHelper.getUniform().nextIntFromTo(0, defaultFoodList.size());
-//		System.out.println("FoodList NUM: "+n);
 		ArrayList<Food> foodList=new ArrayList<>();
 		Collections.shuffle(defaultFoodList);
 		
@@ -70,12 +69,12 @@ public class DefaultFoodStock {
 			//todo: use more realistic 
 			double amount,price,productionCost,productionTime,expireTime;
 			double priceVar;
-			amount=nRand.nextDouble(0, 100);
-			priceVar=nRand.nextDouble(80,100);
-			price=srcFood.getPrice()+srcFood.getPrice()/(nRand.nextDouble(-1, 1)>0?priceVar:-priceVar);
-			productionCost=srcFood.getPrice()/nRand.nextDouble(0.5,0.98);
-			productionTime=srcFood.getPrice()*nRand.nextDouble(0.001,0.05);
-			expireTime=productionTime*nRand.nextDouble(1.3,10);
+			amount=nRand.nextDoubleFromTo(0, 100);
+			priceVar=nRand.nextDoubleFromTo(80,100);
+			price=srcFood.getPrice()+srcFood.getPrice()/(nRand.nextDoubleFromTo(-1, 1)>0?priceVar:-priceVar);
+			productionCost=srcFood.getPrice()/nRand.nextDoubleFromTo(0.5,0.98);
+			productionTime=srcFood.getPrice()*nRand.nextDoubleFromTo(0.001,0.05);
+			expireTime=productionTime*nRand.nextDoubleFromTo(1.3,10);
 			Food destFood=new Food(
 					srcFood.getName(),
 					srcFood.getType(),

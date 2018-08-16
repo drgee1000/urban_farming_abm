@@ -1,0 +1,458 @@
+Aug 17, 2018 12:02:35 AM repastcity3.main.ContextManager readProperties
+INFO: Initialising properties from file ./repastcity.properties
+Aug 17, 2018 12:02:35 AM repastcity3.main.ContextManager build
+INFO: Configuring the environment with data from ./data/gis_data/urban_farming/
+Aug 17, 2018 12:02:43 AM repastcity3.main.ContextManager build
+INFO: Read 9farms from ./data/gis_data/urban_farming/Farm.shp
+Aug 17, 2018 12:02:43 AM repastcity3.main.ContextManager build
+INFO: Read 47 residentials from ./data/gis_data/urban_farming/residential.shp
+Aug 17, 2018 12:02:44 AM repastcity3.main.ContextManager build
+INFO: Read 365 roads from ./data/gis_data/urban_farming/roads_dangle_free_ordered.shp
+Aug 17, 2018 12:02:44 AM repastcity3.main.TestEnv testEnvironment
+INFO: Testing the environment
+Aug 17, 2018 12:02:44 AM repastcity3.main.TestEnv testEnvironment
+INFO: The road network has 294 nodes and 365 edges.
+Aug 17, 2018 12:02:44 AM repastcity3.main.ContextManager build
+INFO: Creating agents with the agent definition: 'point:people_600.shp$repastcity3.agent.DefaultAgent'
+Aug 17, 2018 12:02:44 AM repastcity3.agent.AgentFactory createPointAgents
+INFO: Have created 300 of type repastcity3.agent.DefaultAgent from file ./data/gis_data/urban_farming/people_600.shp
+Aug 17, 2018 12:02:44 AM repastcity3.agent.AgentFactory createPointAgents
+INFO: Have created 600 of type repastcity3.agent.DefaultAgent from file ./data/gis_data/urban_farming/people_600.shp
+Aug 17, 2018 12:02:44 AM repastcity3.main.ContextManager createSchedule
+INFO: The multi-threaded scheduler will be used.
+Aug 17, 2018 12:02:52 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 1.0
+Aug 17, 2018 12:02:57 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 2.0
+Aug 17, 2018 12:02:57 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 3.0
+Aug 17, 2018 12:02:58 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 4.0
+Aug 17, 2018 12:02:58 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 5.0
+Aug 17, 2018 12:02:59 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 6.0
+Aug 17, 2018 12:02:59 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 7.0
+Aug 17, 2018 12:03:00 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 8.0
+Aug 17, 2018 12:03:00 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 9.0
+Aug 17, 2018 12:03:00 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 10.0
+Aug 17, 2018 12:03:01 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 11.0
+Aug 17, 2018 12:03:01 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 12.0
+Aug 17, 2018 12:03:02 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 13.0
+Aug 17, 2018 12:03:02 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 14.0
+Aug 17, 2018 12:03:03 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 15.0
+Aug 17, 2018 12:03:03 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 16.0
+Aug 17, 2018 12:03:03 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 17.0
+Aug 17, 2018 12:03:04 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 18.0
+Aug 17, 2018 12:03:04 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 19.0
+Aug 17, 2018 12:03:04 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 20.0
+Aug 17, 2018 12:03:05 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 21.0
+Aug 17, 2018 12:03:05 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 22.0
+Aug 17, 2018 12:03:05 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 23.0
+Aug 17, 2018 12:03:06 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 24.0
+Aug 17, 2018 12:03:06 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 25.0
+Aug 17, 2018 12:03:07 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 26.0
+Aug 17, 2018 12:03:07 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 27.0
+Aug 17, 2018 12:03:07 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 28.0
+Aug 17, 2018 12:03:08 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 29.0
+Aug 17, 2018 12:03:08 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 30.0
+Aug 17, 2018 12:03:08 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 31.0
+Aug 17, 2018 12:03:09 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 32.0
+Aug 17, 2018 12:03:09 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 33.0
+Aug 17, 2018 12:03:09 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 34.0
+Aug 17, 2018 12:03:10 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 35.0
+Aug 17, 2018 12:03:10 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 36.0
+Aug 17, 2018 12:03:11 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 37.0
+Aug 17, 2018 12:03:11 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 38.0
+Aug 17, 2018 12:03:11 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 39.0
+Aug 17, 2018 12:03:12 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 40.0
+Aug 17, 2018 12:03:12 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 41.0
+Aug 17, 2018 12:03:12 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 42.0
+Aug 17, 2018 12:03:13 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 43.0
+Aug 17, 2018 12:03:13 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 44.0
+Aug 17, 2018 12:03:13 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 45.0
+Aug 17, 2018 12:03:14 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 46.0
+Aug 17, 2018 12:03:14 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 47.0
+Aug 17, 2018 12:03:14 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 48.0
+Aug 17, 2018 12:03:14 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 49.0
+Aug 17, 2018 12:03:15 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 50.0
+Aug 17, 2018 12:03:15 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 51.0
+Aug 17, 2018 12:03:15 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 52.0
+Aug 17, 2018 12:03:16 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 53.0
+Aug 17, 2018 12:03:16 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 54.0
+Aug 17, 2018 12:03:16 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 55.0
+Aug 17, 2018 12:03:16 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 56.0
+Aug 17, 2018 12:03:17 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 57.0
+Aug 17, 2018 12:03:17 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 58.0
+Aug 17, 2018 12:03:18 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 59.0
+Aug 17, 2018 12:03:18 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 60.0
+Aug 17, 2018 12:03:18 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 61.0
+Aug 17, 2018 12:03:18 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 62.0
+Aug 17, 2018 12:03:19 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 63.0
+Aug 17, 2018 12:03:19 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 64.0
+Aug 17, 2018 12:03:19 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 65.0
+Aug 17, 2018 12:03:20 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 66.0
+Aug 17, 2018 12:03:20 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 67.0
+Aug 17, 2018 12:03:20 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 68.0
+Aug 17, 2018 12:03:21 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 69.0
+Aug 17, 2018 12:03:21 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 70.0
+Aug 17, 2018 12:03:21 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 71.0
+Aug 17, 2018 12:03:22 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 72.0
+Aug 17, 2018 12:03:22 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 73.0
+Aug 17, 2018 12:03:22 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 74.0
+Aug 17, 2018 12:03:22 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 75.0
+Aug 17, 2018 12:03:23 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 76.0
+Aug 17, 2018 12:03:23 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 77.0
+Aug 17, 2018 12:03:24 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 78.0
+Aug 17, 2018 12:03:24 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 79.0
+Aug 17, 2018 12:03:24 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 80.0
+Aug 17, 2018 12:03:25 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 81.0
+Aug 17, 2018 12:03:25 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 82.0
+Aug 17, 2018 12:03:26 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 83.0
+Aug 17, 2018 12:03:26 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 84.0
+Aug 17, 2018 12:03:26 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 85.0
+Aug 17, 2018 12:03:27 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 86.0
+Aug 17, 2018 12:03:27 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 87.0
+Aug 17, 2018 12:03:27 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 88.0
+Aug 17, 2018 12:03:28 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 89.0
+Aug 17, 2018 12:03:28 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 90.0
+Aug 17, 2018 12:03:29 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 91.0
+Aug 17, 2018 12:03:29 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 92.0
+Aug 17, 2018 12:03:29 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 93.0
+Aug 17, 2018 12:03:30 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 94.0
+Aug 17, 2018 12:03:30 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 95.0
+Aug 17, 2018 12:03:30 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 96.0
+Aug 17, 2018 12:03:31 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 97.0
+Aug 17, 2018 12:03:31 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 98.0
+Aug 17, 2018 12:03:32 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 99.0
+Aug 17, 2018 12:03:32 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 100.0
+Aug 17, 2018 12:03:32 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 101.0
+Aug 17, 2018 12:03:33 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 102.0
+Aug 17, 2018 12:03:33 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 103.0
+Aug 17, 2018 12:03:34 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 104.0
+Aug 17, 2018 12:03:34 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 105.0
+Aug 17, 2018 12:03:34 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 106.0
+Aug 17, 2018 12:03:35 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 107.0
+Aug 17, 2018 12:03:35 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 108.0
+Aug 17, 2018 12:03:35 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 109.0
+Aug 17, 2018 12:03:36 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 110.0
+Aug 17, 2018 12:03:36 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 111.0
+Aug 17, 2018 12:03:36 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 112.0
+Aug 17, 2018 12:03:37 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 113.0
+Aug 17, 2018 12:03:37 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 114.0
+Aug 17, 2018 12:03:37 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 115.0
+Aug 17, 2018 12:03:38 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 116.0
+Aug 17, 2018 12:03:38 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 117.0
+Aug 17, 2018 12:03:39 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 118.0
+Aug 17, 2018 12:03:39 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 119.0
+Aug 17, 2018 12:03:39 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 120.0
+Aug 17, 2018 12:03:40 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 121.0
+Aug 17, 2018 12:03:40 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 122.0
+Aug 17, 2018 12:03:40 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 123.0
+Aug 17, 2018 12:03:41 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 124.0
+Aug 17, 2018 12:03:41 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 125.0
+Aug 17, 2018 12:03:41 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 126.0
+Aug 17, 2018 12:03:42 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 127.0
+Aug 17, 2018 12:03:42 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 128.0
+Aug 17, 2018 12:03:43 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 129.0
+Aug 17, 2018 12:03:43 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 130.0
+Aug 17, 2018 12:03:43 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 131.0
+Aug 17, 2018 12:03:44 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 132.0
+Aug 17, 2018 12:03:44 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 133.0
+Aug 17, 2018 12:03:45 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 134.0
+Aug 17, 2018 12:03:45 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 135.0
+Aug 17, 2018 12:03:45 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 136.0
+Aug 17, 2018 12:03:46 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 137.0
+Aug 17, 2018 12:03:46 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 138.0
+Aug 17, 2018 12:03:46 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 139.0
+Aug 17, 2018 12:03:47 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 140.0
+Aug 17, 2018 12:03:47 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 141.0
+Aug 17, 2018 12:03:47 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 142.0
+Aug 17, 2018 12:03:48 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 143.0
+Aug 17, 2018 12:03:48 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 144.0
+Aug 17, 2018 12:03:49 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 145.0
+Aug 17, 2018 12:03:49 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 146.0
+Aug 17, 2018 12:03:49 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 147.0
+Aug 17, 2018 12:03:50 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 148.0
+Aug 17, 2018 12:03:50 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 149.0
+Aug 17, 2018 12:03:50 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 150.0
+Aug 17, 2018 12:03:51 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 151.0
+Aug 17, 2018 12:03:51 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 152.0
+Aug 17, 2018 12:03:52 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 153.0
+Aug 17, 2018 12:03:52 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 154.0
+Aug 17, 2018 12:03:52 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 155.0
+Aug 17, 2018 12:03:53 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 156.0
+Aug 17, 2018 12:03:53 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 157.0
+Aug 17, 2018 12:03:53 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 158.0
+Aug 17, 2018 12:03:54 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 159.0
+Aug 17, 2018 12:03:54 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 160.0
+Aug 17, 2018 12:03:55 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 161.0
+Aug 17, 2018 12:03:55 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 162.0
+Aug 17, 2018 12:03:56 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 163.0
+Aug 17, 2018 12:03:56 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 164.0
+Aug 17, 2018 12:03:57 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 165.0
+Aug 17, 2018 12:03:57 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 166.0
+Aug 17, 2018 12:03:57 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 167.0
+Aug 17, 2018 12:03:58 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 168.0
+Aug 17, 2018 12:03:58 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 169.0
+Aug 17, 2018 12:03:58 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 170.0
+Aug 17, 2018 12:03:59 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 171.0
+Aug 17, 2018 12:03:59 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 172.0
+Aug 17, 2018 12:04:00 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 173.0
+Aug 17, 2018 12:04:00 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 174.0
+Aug 17, 2018 12:04:01 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 175.0
+Aug 17, 2018 12:04:01 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 176.0
+Aug 17, 2018 12:04:02 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 177.0
+Aug 17, 2018 12:04:02 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 178.0
+Aug 17, 2018 12:04:02 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 179.0
+Aug 17, 2018 12:04:03 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 180.0
+Aug 17, 2018 12:04:03 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 181.0
+Aug 17, 2018 12:04:04 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 182.0
+Aug 17, 2018 12:04:04 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 183.0
+Aug 17, 2018 12:04:04 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 184.0
+Aug 17, 2018 12:04:05 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 185.0
+Aug 17, 2018 12:04:05 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 186.0
+Aug 17, 2018 12:04:06 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 187.0
+Aug 17, 2018 12:04:06 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 188.0
+Aug 17, 2018 12:04:06 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 189.0
+Aug 17, 2018 12:04:07 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 190.0
+Aug 17, 2018 12:04:07 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 191.0
+Aug 17, 2018 12:04:07 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 192.0
+Aug 17, 2018 12:04:08 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 193.0
+Aug 17, 2018 12:04:08 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 194.0
+Aug 17, 2018 12:04:09 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 195.0
+Aug 17, 2018 12:04:09 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 196.0
+Aug 17, 2018 12:04:09 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 197.0
+Aug 17, 2018 12:04:10 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 198.0
+Aug 17, 2018 12:04:10 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 199.0
+Aug 17, 2018 12:04:11 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 200.0
+Aug 17, 2018 12:04:11 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 201.0
+Aug 17, 2018 12:04:11 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 202.0
+Aug 17, 2018 12:04:12 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 203.0
+Aug 17, 2018 12:04:12 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 204.0
+Aug 17, 2018 12:04:13 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 205.0
+Aug 17, 2018 12:04:13 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 206.0
+Aug 17, 2018 12:04:13 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 207.0
+Aug 17, 2018 12:04:14 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 208.0
+Aug 17, 2018 12:04:14 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 209.0
+Aug 17, 2018 12:04:15 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 210.0
+Aug 17, 2018 12:04:15 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 211.0
+Aug 17, 2018 12:04:15 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 212.0
+Aug 17, 2018 12:04:16 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 213.0
+Aug 17, 2018 12:04:16 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 214.0
+Aug 17, 2018 12:04:17 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 215.0
+Aug 17, 2018 12:04:17 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 216.0
+Aug 17, 2018 12:04:18 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 217.0
+Aug 17, 2018 12:04:18 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 218.0

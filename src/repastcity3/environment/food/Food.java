@@ -9,10 +9,8 @@ public class Food implements Comparable<Food>{
 	private String type;//TODO change to enum
 	@Expose()
 	private double amount;
-//	private double calory;
 	@Expose()
 	private double productionCost;
-	
 	
 	private Nutrition nutrition;
 	@Expose()
@@ -74,9 +72,7 @@ public class Food implements Comparable<Food>{
 	public Nutrition getNutrition() {
 		return nutrition;
 	}
-	public double getCaboHydrate() {
-		return nutrition.carbohydrate;
-	}
+	
 	public void setNutrition(Nutrition nutrition) {
 		this.nutrition = nutrition;
 	}

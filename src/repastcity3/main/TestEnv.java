@@ -6,14 +6,18 @@ import java.util.logging.Level;
 
 import repast.simphony.context.Context;
 import repast.simphony.space.graph.Network;
+import repastcity3.environment.Farm;
 import repastcity3.environment.Junction;
 import repastcity3.environment.Residential;
 import repastcity3.environment.Restaurant;
 import repastcity3.environment.Road;
 import repastcity3.environment.Shoppingcenter;
 import repastcity3.environment.Workplace;
+import repastcity3.environment.food.Food;
 import repastcity3.exceptions.EnvironmentError;
 import repastcity3.exceptions.NoIdentifierException;
+import repastcity3.exceptions.StockCreationException;
+
 import static repastcity3.main.ContextManager.LOGGER;
 import static repastcity3.utilities.Helper.*;
 
@@ -22,8 +26,9 @@ public class TestEnv {
 	 * Check that the environment looks ok
 	 * 
 	 * @throws NoIdentifierException
+	 * @throws StockCreationException 
 	 */
-	public static void testEnvironment(Context<Object> mainContext) throws EnvironmentError, NoIdentifierException {
+	public static void testEnvironment(Context<Object> mainContext) throws EnvironmentError, NoIdentifierException, StockCreationException {
 
 		LOGGER.log(Level.INFO, "Testing the environment");
 		// Get copies of the contexts/projections from main context
@@ -33,7 +38,17 @@ public class TestEnv {
 				.getSubContext(GlobalVars.CONTEXT_NAMES.RESIDENTIAL_CONTEXT);
 		Context<Road> roc = (Context<Road>) mainContext.getSubContext(GlobalVars.CONTEXT_NAMES.ROAD_CONTEXT);
 		Context<Junction> jc = (Context<Junction>) mainContext.getSubContext(GlobalVars.CONTEXT_NAMES.JUNCTION_CONTEXT);
-
+		Context<Farm> fm = (Context<Farm>) mainContext.getSubContext(GlobalVars.CONTEXT_NAMES.Farm_CONTEXT);
+		
+		for (Farm farm : fm.getObjects(Farm.class)) {
+			for (Food food:farm.getStock()) {
+				if(food.getAmount()<0||food.getPrice()<0||food.getProductionCost()<0||
+						food.getProductionTime()<0||food.getExpireTime()<0)
+				{
+					throw new StockCreationException("exist nagative parameter in farm stock when init");
+				}
+			}
+		}
 		// Geography<Building> bg = (Geography<Building>)
 		// bc.getProjection(GlobalVars.CONTEXT_NAMES.BUILDING_GEOGRAPHY);
 		// Geography<Road> rg = (Geography<Road>)
@@ -42,7 +57,8 @@ public class TestEnv {
 		// rc.getProjection(GlobalVars.CONTEXT_NAMES.JUNCTION_GEOGRAPHY);
 		Network<Junction> rn = (Network<Junction>) jc.getProjection(GlobalVars.CONTEXT_NAMES.ROAD_NETWORK);
 		System.out.print("roadNetwork has " + rn.size() + "edges\n");
-
+		
+		
 		// 1. Check that there are some objects in each of the contexts
 		checkSize(rc, roc, jc);
 		// System.out.print("Size is OK!");

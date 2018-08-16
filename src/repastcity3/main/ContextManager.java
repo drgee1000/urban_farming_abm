@@ -37,6 +37,7 @@ import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.engine.schedule.ISchedule;
 import repast.simphony.engine.schedule.ScheduleParameters;
 import repast.simphony.parameter.Parameters;
+import repast.simphony.random.RandomHelper;
 import repast.simphony.space.gis.Geography;
 import repast.simphony.space.gis.GeographyParameters;
 import repast.simphony.space.gis.SimpleAdder;
@@ -71,6 +72,7 @@ import repastcity3.exceptions.AgentCreationException;
 import repastcity3.exceptions.EnvironmentError;
 import repastcity3.exceptions.NoIdentifierException;
 import repastcity3.exceptions.ParameterNotFoundException;
+import repastcity3.exceptions.StockCreationException;
 import repastcity3.main.FarmIO.DataLogger;
 
 public class ContextManager implements ContextBuilder<Object> {
@@ -87,7 +89,6 @@ public class ContextManager implements ContextBuilder<Object> {
 	private static Properties properties;
 
 	public static final double MAX_ITERATIONS = 1000;
-
 
 	/*
 	 * Pointers to contexts and projections (for convenience). Most of these can be
@@ -203,12 +204,10 @@ public class ContextManager implements ContextBuilder<Object> {
 		} catch (MalformedURLException e) {
 			LOGGER.log(Level.SEVERE, "", e);
 			return null;
-		}
-		 catch (EnvironmentError e) {
-		 LOGGER.log(Level.SEVERE, "There is an error with the environment, cannot start simulation", e);
-		 return null;
-		 }
-		catch (NoIdentifierException e) {
+		} catch (EnvironmentError e) {
+			LOGGER.log(Level.SEVERE, "There is an error with the environment, cannot start simulation", e);
+			return null;
+		} catch (NoIdentifierException e) {
 			LOGGER.log(Level.SEVERE, "One of the input buildings had no identifier (this should be read"
 					+ "from the 'identifier' column in an input GIS file)", e);
 			return null;
@@ -216,6 +215,9 @@ public class ContextManager implements ContextBuilder<Object> {
 			LOGGER.log(Level.SEVERE, "Could not find an input shapefile to read objects from.", e);
 			return null;
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (StockCreationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -272,8 +274,9 @@ public class ContextManager implements ContextBuilder<Object> {
 		// schedule.schedule(stop, this, "calculateStation");
 
 		// Schedule something that outputs ticks every 10 iterations.
-		schedule.schedule(ScheduleParameters.createRepeating(1, 1, ScheduleParameters.LAST_PRIORITY), this,"recordTicks");
-		schedule.schedule(ScheduleParameters.createAtEnd(ScheduleParameters.LAST_PRIORITY),this,"printTicks");
+		schedule.schedule(ScheduleParameters.createRepeating(1, 1, ScheduleParameters.LAST_PRIORITY), this,
+				"recordTicks");
+		schedule.schedule(ScheduleParameters.createAtEnd(ScheduleParameters.LAST_PRIORITY), this, "printTicks");
 
 		/*
 		 * Schedule the agents. This is slightly complicated because if all the agents
@@ -316,15 +319,18 @@ public class ContextManager implements ContextBuilder<Object> {
 
 	public void recordTicks() {
 		LOGGER.info("Iterations: " + RunEnvironment.getInstance().getCurrentSchedule().getTickCount());
-		
-		try{
-			
-			dLogger.recordData(agentContext.getObjects(IAgent.class),(int)RunEnvironment.getInstance().getCurrentSchedule().getTickCount());
-			dLogger.recordData(FarmContext.getObjects(Farm.class),(int)RunEnvironment.getInstance().getCurrentSchedule().getTickCount());
+
+		try {
+
+			dLogger.recordData(agentContext.getObjects(IAgent.class),
+					(int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount());
+			dLogger.recordData(FarmContext.getObjects(Farm.class),
+					(int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+
 	public void printTicks() {
 		try {
 			dLogger.printDataToJsonFile();
@@ -333,12 +339,6 @@ public class ContextManager implements ContextBuilder<Object> {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
-	
-	
-	
 
 	/**
 	 * Convenience function to get a Simphony parameter
