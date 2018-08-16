@@ -40,8 +40,8 @@ public class DataLogger {
 	public DataLogger () throws IOException {
 		// RecordSeparator = '\n';
 		// fileName1 = "./Output/farm_calorie_production";
-		fileNameFarm = "./Output/Farm";
-		fileNameAgent = "./Output/agent";
+		fileNameFarm = "./output/Farm";
+		fileNameAgent = "./output/agent";
 		// fileName4 = "./Output/agent_calorie_consumption";
 		// fileName5 = "./Output/agent_health";
 		

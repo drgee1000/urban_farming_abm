@@ -95,16 +95,12 @@ public class DefaultAgent implements IAgent {
 	public void step() throws Exception {
 		
 		LOGGER.log(Level.FINE, "Agent " + this.id + " is stepping.");
-		if(this.health < -50) {
-			LOGGER.log(Level.FINE, "Agent " + this.id + " is dead.");
-			ContextManager.FarmContext.remove(this);
-			return;
-		}
 		if(this.health < this.healthThreshold) {
 			if(!this.goforEat) {
 				this.goforEat = true;
 				this.goingHome = false;
-				farm = this.findNearestFarm();
+				//TO-DO find nearest Farm
+				farm = ContextManager.FarmContext.getRandomObject();
 				this.route = new Route(this, ContextManager.FarmProjection.getGeometry(farm).getCentroid().getCoordinate(), farm);
 				this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
 				this.destination = ContextManager.FarmProjection.getGeometry(farm).getCentroid().getCoordinate();
@@ -336,38 +332,7 @@ public class DefaultAgent implements IAgent {
 		
 	}
 	
-	public Farm findNearestFarm() {
-		Iterator<Farm> iter = ContextManager.FarmContext.iterator();
-		double min = Double.POSITIVE_INFINITY;
-		Farm nearestFarm = null;
-		//may not iterate all the farms.
-		int iterTime = 100;
-		while(iter.hasNext()) {
-			Farm farm = iter.next();
-			Route r = new Route(this, ContextManager.FarmProjection.getGeometry(farm).getCentroid().getCoordinate(), farm);
-			this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
-			this.destination = ContextManager.FarmProjection.getGeometry(farm).getCentroid().getCoordinate();
-			double dis = r.getDistance(this, origin, destination);
-			if(dis<min) {
-				min = dis;
-				nearestFarm =farm;
-			}
-		}
-		return nearestFarm;
-	}
 	
-	public Farm findFarmWithMostFood() {
-		Iterator<Farm> iter = ContextManager.FarmContext.iterator();
-		double max = -1;
-		Farm mostFoodFarm = null;
-		int iterTime = 100;
-		while(iter.hasNext()) {
-			Farm farm = iter.next();
-			// to-do
-			// in the farm class, add a method to return the total amount of food
-		}
-		return mostFoodFarm;
-	}
 	@Override
 	public double returnDis(String id) {
 		

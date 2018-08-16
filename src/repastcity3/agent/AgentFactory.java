@@ -175,6 +175,7 @@ public class AgentFactory {
 			while (i.hasNext() && agentsCreated < numAgents) {
 				Residential b = i.next(); // Find a building
 				IAgent a = new DefaultAgent(); // Create a new agent
+
 				a.setHome(b); // Tell the agent where it lives
 				b.addAgent(a); // Tell the building that the agent lives there
 				ContextManager.addAgentToContext(a); // Add the agent to the context

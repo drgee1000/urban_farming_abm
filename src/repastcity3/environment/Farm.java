@@ -11,6 +11,7 @@ import com.vividsolutions.jts.geom.Coordinate;
 
 import repast.simphony.engine.schedule.ScheduledMethod;
 import repastcity3.agent.IAgent;
+import repastcity3.environment.food.DefaultFoodStock;
 import repastcity3.environment.food.Food;
 import repastcity3.environment.food.FoodOrder;
 import repastcity3.environment.food.Nutrition;
@@ -50,8 +51,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 	}
 
 	private void initStock() {
-		
-		
+		stock=DefaultFoodStock.getRandomFoodList();
 	}
 
 	private void addFood(Food food) {

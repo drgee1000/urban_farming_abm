@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Scenario simphonyVersion="2.5.0">
+<repast.simphony.dataLoader.engine.ClassNameDataLoaderAction context="maincontext" file="repast.simphony.dataLoader.engine.ClassNameDataLoaderAction.xml" />
+<repast.simphony.action.data_set context="maincontext" file="repast.simphony.action.data_set.xml" />
+<repast.simphony.action.time_series_chart context="maincontext" file="repast.simphony.action.time_series_chart.xml" />
+<repast.simphony.action.display context="AgentContext" file="repast.simphony.action.display.xml" />
+</Scenario>
