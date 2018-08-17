@@ -73,7 +73,7 @@ public class DefaultAgent implements IAgent {
 	}
 	
 	public int setPurpose() {
-		double generator1 = Math.random();
+		/*double generator1 = Math.random();
 		if (generator1 > 0 && generator1 < p1){
 			type = 1; // Workplace
 	
@@ -89,7 +89,8 @@ public class DefaultAgent implements IAgent {
 		}
 		Random generator2 = new Random(new Date().getTime());
 		income = generator2.nextInt(9) + 1;
-		return type;
+		*/
+		return 4;
 	}
 
 	@Override
@@ -98,7 +99,7 @@ public class DefaultAgent implements IAgent {
 		LOGGER.log(Level.FINE, "Agent " + this.id + " is stepping.");
 		if(this.health < -50) {
 			LOGGER.log(Level.FINE, "Agent " + this.id + " is dead.");
-			ContextManager.FarmContext.remove(this);
+			ContextManager.getAgentContext().remove(this);
 			return;
 		}
 		if(this.health < this.healthThreshold) {
@@ -142,7 +143,7 @@ public class DefaultAgent implements IAgent {
 		}
 		else {	
 		switch (type) {
-		case 1: {
+		/*case 1: {
 			
 			if (this.route == null) {
 				Workplace w = ContextManager.workplaceContext.getRandomObject();
@@ -208,7 +209,7 @@ public class DefaultAgent implements IAgent {
 					setPurpose();
 				}
 			break;
-		}
+		}*/
 		
 		case 4: {
 			
@@ -347,8 +348,8 @@ public class DefaultAgent implements IAgent {
 			Farm farm = iter.next();
 			Route r = new Route(this, ContextManager.FarmProjection.getGeometry(farm).getCentroid().getCoordinate(), farm);
 			this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
-			this.destination = ContextManager.workplaceProjection.getGeometry(farm).getCentroid().getCoordinate();
-			double dis = r.getDistance(this, origin, destination);
+			this.destination = ContextManager.FarmProjection.getGeometry(farm).getCentroid().getCoordinate();
+			double dis = (origin.x-destination.x)*(origin.x-destination.x) + (origin.y-destination.y)*(origin.y-destination.y);
 			if(dis<min) {
 				min = dis;
 				nearestFarm =farm;
@@ -433,7 +434,7 @@ public class DefaultAgent implements IAgent {
 	}
 	
 	
-	public FoodOrder selectFood(Farm farm) {
+	synchronized public FoodOrder selectFood(Farm farm) {
 		List<Food> stock= farm.getStock();
 		FoodOrder foodOrder = new FoodOrder();
 		Collections.sort(stock);
@@ -441,7 +442,8 @@ public class DefaultAgent implements IAgent {
 			for(Food f : stock) {
 				if(f.getAmount() > 0) {
 					foodOrder.addOrder(f,1);
-					health += f.getCaboHydrate();
+					//health += f.getCaboHydrate();
+					health += 20;
 					if(health > defaultHealth)
 						break;
 				}
