@@ -102,8 +102,8 @@ public class ContextManager implements ContextBuilder<Object> {
 	public static Context<Residential> residentialContext;
 	public static Geography<Residential> residentialProjection;
 
-	public static Context<Farm> FarmContext;
-	public static Geography<Farm> FarmProjection;
+	public static Context<Farm> farmContext;
+	public static Geography<Farm> farmProjection;
 
 	public static Context<Road> roadContext;
 	public static Geography<Road> roadProjection;
@@ -146,15 +146,15 @@ public class ContextManager implements ContextBuilder<Object> {
 
 		try {
 			// Create the Farm - context and geography projection
-			FarmContext = new FarmContext();
-			FarmProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
-					GlobalVars.CONTEXT_NAMES.Farm_GEOGRAPHY, FarmContext,
+			farmContext = new FarmContext();
+			farmProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
+					GlobalVars.CONTEXT_NAMES.Farm_GEOGRAPHY, farmContext,
 					new GeographyParameters<Farm>(new SimpleAdder<Farm>()));
 			String FarmFile = gisDataDir + getProperty(GlobalVars.FarmShapefile);
-			GISFunctions.readShapefile(Farm.class, FarmFile, FarmProjection, FarmContext);
-			mainContext.addSubContext(FarmContext);
-			SpatialIndexManager.createIndex(FarmProjection, Farm.class);
-			LOGGER.log(Level.INFO, "Read " + FarmContext.getObjects(Farm.class).size() + "farms from " + FarmFile);
+			GISFunctions.readShapefile(Farm.class, FarmFile, farmProjection, farmContext);
+			mainContext.addSubContext(farmContext);
+			SpatialIndexManager.createIndex(farmProjection, Farm.class);
+			LOGGER.log(Level.INFO, "Read " + farmContext.getObjects(Farm.class).size() + "farms from " + FarmFile);
 
 			// Create the residential - context and geography projection
 			residentialContext = new ResidentialContext();
@@ -324,7 +324,7 @@ public class ContextManager implements ContextBuilder<Object> {
 
 			dLogger.recordData(agentContext.getObjects(IAgent.class),
 					(int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount());
-			dLogger.recordData(FarmContext.getObjects(Farm.class),
+			dLogger.recordData(farmContext.getObjects(Farm.class),
 					(int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount());
 		} catch (Exception e) {
 			e.printStackTrace();

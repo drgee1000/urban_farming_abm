@@ -72,24 +72,25 @@ public class DefaultAgent implements IAgent {
 			if(!this.goforEat) {
 				this.goforEat = true;
 				farm = this.findNearestFarm();
-				this.route = new Route(this, ContextManager.FarmProjection.getGeometry(farm).getCentroid().getCoordinate(), farm);
+				this.route = new Route(this, ContextManager.farmProjection.getGeometry(farm).getCentroid().getCoordinate(), farm);
 				this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
-				this.destination = ContextManager.FarmProjection.getGeometry(farm).getCentroid().getCoordinate();
+				this.destination = ContextManager.farmProjection.getGeometry(farm).getCentroid().getCoordinate();
 			}
 		   if(!this.route.atDestination()) {
 				this.route.travel();
 				this.health = this.health - caloryConsumption;
 			}else if(this.route.atDestination() && flag==0){
-				farm = ContextManager.FarmContext.getRandomObject();
-				this.route = new Route(this, ContextManager.FarmProjection.getGeometry(farm).getCentroid().getCoordinate(), farm);
+				farm = ContextManager.farmContext.getRandomObject();
+				this.route = new Route(this, ContextManager.farmProjection.getGeometry(farm).getCentroid().getCoordinate(), farm);
 				this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
-				this.destination = ContextManager.FarmProjection.getGeometry(farm).getCentroid().getCoordinate();
+				this.destination = ContextManager.farmProjection.getGeometry(farm).getCentroid().getCoordinate();
 			}else {
 				LOGGER.info("Agent" + this.id + " health before eating is" + this.health);
 				
 				
 				if(this.health<this.healthThreshold) {
-						this.selectFood(farm);
+						FoodOrder foodOrder = this.selectFood(farm);
+						farm.sell(foodOrder);
 						if(this.health>this.defaultHealth) {
 							flag = 1;
 							this.goforEat = false;
@@ -195,16 +196,16 @@ public class DefaultAgent implements IAgent {
 	}
 	
 	public Farm findNearestFarm() {
-		Iterator<Farm> iter = ContextManager.FarmContext.iterator();
+		Iterator<Farm> iter = ContextManager.farmContext.iterator();
 		double min = Double.POSITIVE_INFINITY;
 		Farm nearestFarm = null;
 		//may not iterate all the farms.
 		int iterTime = 100;
 		while(iter.hasNext()) {
 			Farm farm = iter.next();
-			Route r = new Route(this, ContextManager.FarmProjection.getGeometry(farm).getCentroid().getCoordinate(), farm);
+			Route r = new Route(this, ContextManager.farmProjection.getGeometry(farm).getCentroid().getCoordinate(), farm);
 			this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
-			this.destination = ContextManager.FarmProjection.getGeometry(farm).getCentroid().getCoordinate();
+			this.destination = ContextManager.farmProjection.getGeometry(farm).getCentroid().getCoordinate();
 			double dis = (origin.x-destination.x)*(origin.x-destination.x) + (origin.y-destination.y)*(origin.y-destination.y);
 			if(dis<min) {
 				min = dis;
@@ -215,7 +216,7 @@ public class DefaultAgent implements IAgent {
 	}
 	
 	public Farm findFarmWithMostFood() {
-		Iterator<Farm> iter = ContextManager.FarmContext.iterator();
+		Iterator<Farm> iter = ContextManager.farmContext.iterator();
 		double max = -1;
 		Farm mostFoodFarm = null;
 		int iterTime = 100;
@@ -293,12 +294,11 @@ public class DefaultAgent implements IAgent {
 	synchronized public FoodOrder selectFood(Farm farm) {
 		List<Food> stock= farm.getStock();
 		FoodOrder foodOrder = new FoodOrder();
-		Collections.sort(stock);
+//		Collections.sort(stock);
 		while(health <= defaultHealth && farm.isAvailable()) {
 			for(Food f : stock) {
 				if(f.getAmount() > 0) {
 					foodOrder.addOrder(f,1);
-					//health += f.getCaboHydrate();
 					health += 20;
 					if(health > defaultHealth)
 						break;

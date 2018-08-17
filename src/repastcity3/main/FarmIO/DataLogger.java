@@ -165,10 +165,13 @@ public class DataLogger {
 		int stockNum;
 		@Expose()
 		List<Food> stock;
+		@Expose()
+		double count;
 		public farm(int t, Farm f) {
 			tick = t;
 			stock = f.getStock();
 			stockNum = stock.size();
+			count=f.getCount();
 			try {
 				identifier = f.getIdentifier();
 			} catch (NoIdentifierException e) {

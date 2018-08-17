@@ -40,23 +40,29 @@ public class Farm extends FarmableLocation implements FixedGeography {
 
 	private Coordinate coords;
 
-	// amount of food type that are not zero
+	// amount of all food
 	private double count;
 
+	
+
 	public Farm() {
+		//double setupCost,double dailyMaintenanceCost, double fund,List<Food> stock
+		super(1000, 100, 10000, new ArrayList<Food>());
 		this.agents = new ArrayList<IAgent>();
-		super.stock = new ArrayList<Food>();
 		this.count = 0;
 		initStock();
 	}
 
 	private void initStock() {
-		stock=DefaultFoodStock.getRandomFoodList();
+		this.stock = DefaultFoodStock.getRandomFoodList();
+		for (Food food : stock) {
+			count += food.getAmount();
+		}
 	}
 
 	private void addFood(Food food) {
 		this.stock.add(food);
-		this.count++;
+		this.count += food.getAmount();
 	}
 
 	@Override
@@ -78,6 +84,13 @@ public class Farm extends FarmableLocation implements FixedGeography {
 		} else {
 			return identifier;
 		}
+	}
+	public double getCount() {
+		return count;
+	}
+
+	public void setCount(double count) {
+		this.count = count;
 	}
 
 	public void setIdentifier(String id) {
@@ -121,11 +134,9 @@ public class Farm extends FarmableLocation implements FixedGeography {
 	@Override
 	public synchronized void product() {
 		/*
-		 * TODO: 
-		 * use strategy for production
-		 * (use preference list)
+		 * TODO: use strategy for production (use preference list)
 		 */
-		
+
 		for (Food food : stock) {
 			if (fund > 0) {
 				double amount = food.getAmount();
@@ -155,19 +166,14 @@ public class Farm extends FarmableLocation implements FixedGeography {
 	public boolean isAvailable() {
 		return count > 0;
 	}
-	
-	
-	
+
 	public synchronized void sell(FoodOrder order) {
 		HashMap<Food, Double> list = order.getList();
 		list.forEach((food, amount) -> {
 			food.setAmount(food.getAmount() - amount);
 			this.fund += amount * food.getPrice();
-			if(food.getAmount()<=0)
-			{
-				this.count--;
-			}
+			count -= amount;
 		});
 	}
-	
+
 }
