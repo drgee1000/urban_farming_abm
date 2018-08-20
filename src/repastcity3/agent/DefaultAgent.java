@@ -31,9 +31,9 @@ public class DefaultAgent implements IAgent {
 	
 	private boolean goforEat = false;
 	private double defaultHealth = 200;
-	private double health = defaultHealth;
+	private double health = 200;
 	private double healthThreshold = 100;
-	private double caloryConsumption = 1;
+	private double caloryConsumption = 5;
 	private double caloryProduction;
 	
 	private static int uniqueID = 0;
@@ -61,7 +61,7 @@ public class DefaultAgent implements IAgent {
 
 	@Override
 	public void step() throws Exception {
-		
+//		System.out.println(this.health);
 		LOGGER.log(Level.FINE, "Agent " + this.id + " is stepping.");
 		if(this.health < -50) {
 			LOGGER.log(Level.FINE, "Agent " + this.id + " is dead.");
@@ -72,6 +72,9 @@ public class DefaultAgent implements IAgent {
 			if(!this.goforEat) {
 				this.goforEat = true;
 				farm = this.findNearestFarm();
+				if(!farm.isAvailable()) {
+					farm = ContextManager.farmContext.getRandomObject();
+				}
 				this.route = new Route(this, ContextManager.farmProjection.getGeometry(farm).getCentroid().getCoordinate(), farm);
 				this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
 				this.destination = ContextManager.farmProjection.getGeometry(farm).getCentroid().getCoordinate();
@@ -79,30 +82,23 @@ public class DefaultAgent implements IAgent {
 		   if(!this.route.atDestination()) {
 				this.route.travel();
 				this.health = this.health - caloryConsumption;
-			}else if(this.route.atDestination() && flag==0){
-				farm = ContextManager.farmContext.getRandomObject();
-				this.route = new Route(this, ContextManager.farmProjection.getGeometry(farm).getCentroid().getCoordinate(), farm);
-				this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
-				this.destination = ContextManager.farmProjection.getGeometry(farm).getCentroid().getCoordinate();
-			}else {
-				LOGGER.info("Agent" + this.id + " health before eating is" + this.health);
-				
-				
-				if(this.health<this.healthThreshold) {
-						FoodOrder foodOrder = this.selectFood(farm);
-						farm.sell(foodOrder);
-						if(this.health>this.defaultHealth) {
-							flag = 1;
-							this.goforEat = false;
-							this.route = null;
-							setPurpose();
-						}else {
-							//to-do find farm with most food
-							flag = 0;
-						}
+			}else if(this.route.atDestination())
+			 	{
+				//LOGGER.info("Agent" + this.id + " health before eating is" + this.health);
+				FoodOrder foodOrder = this.selectFood(farm);
+				farm.sell(foodOrder);
+				if(this.health>this.defaultHealth) {
+						flag = 1;
+						this.goforEat = false;
+						this.route = null;
+						setPurpose();
+					}else {
+						this.goforEat = true;
+						flag = 0;
 					}
+					
 				
-				LOGGER.info("Agent" + this.id + " health after eating is" + this.health);
+				//LOGGER.info("Agent" + this.id + " health after eating is" + this.health);
 				
 				
 			}
@@ -112,29 +108,29 @@ public class DefaultAgent implements IAgent {
 		case 4: {
 			
 			if (this.route == null) {
-				Residential R = ContextManager.residentialContext.getRandomObject();
-				while (R == home) {
-					R = ContextManager.residentialContext.getRandomObject();
-				}
-				this.route = new Route(this, ContextManager.residentialProjection.getGeometry(R).getCentroid().getCoordinate(), R);
+				Farm R = ContextManager.farmContext.getRandomObject();
+				
+				this.route = new Route(this, ContextManager.farmProjection.getGeometry(R).getCentroid().getCoordinate(), R);
 				this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
-				this.destination = ContextManager.residentialProjection.getGeometry(R).getCentroid().getCoordinate();
+				this.destination = ContextManager.farmProjection.getGeometry(R).getCentroid().getCoordinate();
 			}
 			
 			if (!this.route.atDestination()) {
 				this.route.travel();
+				this.health -= caloryConsumption;
 				
 				} else {
 					this.route = null;
 					setPurpose();
 				}
-			
+				
 					break;
 			}
 		
 		}
-			this.health -= this.health - caloryConsumption;
+			
 		}
+		this.health -= caloryConsumption;
 
 	}
 
@@ -292,13 +288,17 @@ public class DefaultAgent implements IAgent {
 	
 	
 	synchronized public FoodOrder selectFood(Farm farm) {
+		//System.out.println("enter select food");
 		List<Food> stock= farm.getStock();
 		FoodOrder foodOrder = new FoodOrder();
-//		Collections.sort(stock);
+		Collections.sort(stock);
 		while(health <= defaultHealth && farm.isAvailable()) {
+			//System.out.println("enter while loop");
 			for(Food f : stock) {
 				if(f.getAmount() > 0) {
+//					System.out.println("enter final if");
 					foodOrder.addOrder(f,1);
+					//health += f.getCaboHydrate();
 					health += 20;
 					if(health > defaultHealth)
 						break;

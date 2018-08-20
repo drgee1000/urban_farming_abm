@@ -6,6 +6,7 @@ package repastcity3.environment;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.logging.Level;
 
 import com.vividsolutions.jts.geom.Coordinate;
 
@@ -16,7 +17,7 @@ import repastcity3.environment.food.Food;
 import repastcity3.environment.food.FoodOrder;
 import repastcity3.environment.food.Nutrition;
 import repastcity3.exceptions.NoIdentifierException;
-
+import static repastcity3.main.ContextManager.LOGGER;
 /**
  * @author CHAO LUO
  *
@@ -130,13 +131,14 @@ public class Farm extends FarmableLocation implements FixedGeography {
 		return stock;
 	}
 
-	@ScheduledMethod(start = 0, interval = 1)
+	
 	@Override
+	@ScheduledMethod(start = 0, interval = 1)
 	public synchronized void product() {
 		/*
 		 * TODO: use strategy for production (use preference list)
 		 */
-
+		LOGGER.log(Level.INFO,"Farm "+this.identifier+" is producting");
 		for (Food food : stock) {
 			if (fund > 0) {
 				double amount = food.getAmount();

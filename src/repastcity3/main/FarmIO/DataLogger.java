@@ -74,6 +74,8 @@ public class DataLogger {
 	}
 	
 	public <T> void recordData(IndexedIterable<T> agentList, int tick) throws IOException {
+		if(agentList.size()==0)
+			return;
 		T t = agentList.get(0);
 		if( t instanceof Farm) {
 			Farm x = new Farm();
