@@ -36,7 +36,8 @@ import com.vividsolutions.jts.operation.distance.DistanceOp;
 import repast.simphony.space.gis.Geography;
 import repast.simphony.space.graph.RepastEdge;
 import repast.simphony.space.graph.ShortestPath;
-import repastcity3.agent.IAgent;
+import repastcity3.agent.Consumer;
+import repastcity3.agent.People;
 import repastcity3.exceptions.RoutingException;
 import repastcity3.main.ContextManager;
 import repastcity3.main.GlobalVars;
@@ -64,7 +65,7 @@ public class Route implements Cacheable {
 		// Route.routeCache = new Hashtable<CachedRoute, CachedRoute>();
 	}
 
-	private IAgent agent;
+	private Consumer agent;
 	private Coordinate destination;
 	private Coordinate origin;
 	private Residential destinationBuilding;
@@ -142,31 +143,31 @@ public class Route implements Cacheable {
 	 * @param type
 	 *            The (optional) type of route, used by burglars who want to search.
 	 */
-	public Route(IAgent agent, Coordinate destination, Residential destinationBuilding) {
+	public Route(Consumer agent, Coordinate destination, Residential destinationBuilding) {
 		this.destination = destination;
 		this.agent = agent;
 		this.destinationBuilding = destinationBuilding;
 	}
 	
-	public Route(IAgent agent, Coordinate destination, Workplace destinationWorkplace) {
+	public Route(Consumer agent, Coordinate destination, Workplace destinationWorkplace) {
 		this.destination = destination;
 		this.agent = agent;
 		this.destiationWorkplace = destinationWorkplace;
 	}
 	
-	public Route(IAgent agent, Coordinate destination, Shoppingcenter destinationShoppingcenter) {
+	public Route(Consumer agent, Coordinate destination, Shoppingcenter destinationShoppingcenter) {
 		this.destination = destination;
 		this.agent = agent;
 		this.destinationShoppingcenter = destinationShoppingcenter;
 	}
 	
-	public Route(IAgent agent, Coordinate destination, Restaurant destinationRestaurant) {
+	public Route(Consumer agent, Coordinate destination, Restaurant destinationRestaurant) {
 		this.destination = destination;
 		this.agent = agent;
 		this.destinationRestaurant = destinationRestaurant;
 	}
 	
-	public Route(IAgent agent, Coordinate destination, Farm destinationFarm) {
+	public Route(Consumer agent, Coordinate destination, Farm destinationFarm) {
 		this.destination = destination;
 		this.agent = agent;
 		this.destinationFarm = destinationFarm;
@@ -722,7 +723,7 @@ public class Route implements Cacheable {
 	 * @param destination
 	 * @return
 	 */
-	public double getDistance(IAgent theBurglar, Coordinate origin, Coordinate destination) {
+	public double getDistance(People theBurglar, Coordinate origin, Coordinate destination) {
 
 		// // See if this distance has already been calculated
 		// if (Route.routeDistanceCache == null) {

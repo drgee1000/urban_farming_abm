@@ -20,7 +20,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 
 import repast.simphony.util.collections.IndexedIterable;
-import repastcity3.agent.DefaultAgent;
+import repastcity3.agent.Consumer;
 import repastcity3.agent.IAgent;
 import repastcity3.environment.Farm;
 import repastcity3.environment.FixedGeography;
@@ -74,8 +74,8 @@ public class DataLogger {
 	}
 	
 	public <T> void recordData(IndexedIterable<T> agentList, int tick) throws IOException {
-		if(agentList.size()==0)
-			return;
+//		if(agentList.size()==0)
+//			return;
 		T t = agentList.get(0);
 		if( t instanceof Farm) {
 			Farm x = new Farm();
@@ -88,7 +88,7 @@ public class DataLogger {
 			
 		} else if (t instanceof IAgent) {
 			for (int i = 0; i < agentList.size(); i++) {
-				DefaultAgent x = (DefaultAgent) agentList.get(i);
+				Consumer x = (Consumer) agentList.get(i);
 				agent a = new agent(tick, x); 
 				agents.add(a);
 			}
@@ -193,7 +193,7 @@ public class DataLogger {
 		@Expose()
 		double health;
 		
-		public agent(int t, DefaultAgent a) {
+		public agent(int t, Consumer a) {
 			tick = t;
 			caloryConsumption = a.getCaloryConsumption();
 			health = a.getHealth();

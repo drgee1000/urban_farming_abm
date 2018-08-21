@@ -86,7 +86,7 @@ import repastcity3.main.GlobalVars;
  * </ul>
  * 
  * @author Nick Malleson
- * @see DefaultAgent
+ * @see Consumer
  */
 public class AgentFactory {
 
@@ -174,7 +174,7 @@ public class AgentFactory {
 					.iterator();
 			while (i.hasNext() && agentsCreated < numAgents) {
 				Residential b = i.next(); // Find a building
-				IAgent a = new DefaultAgent(); // Create a new agent
+				Consumer a = new Consumer(); // Create a new agent
 
 				a.setHome(b); // Tell the agent where it lives
 				b.addAgent(a); // Tell the building that the agent lives there
@@ -202,7 +202,7 @@ public class AgentFactory {
 
 		String fileName;
 		String className;
-		Class<IAgent> clazz;
+		Class<Consumer> clazz;
 		if (singleType) {
 			// Agent class provided, can use the Simphony Shapefile loader to load agents of the given class
 
@@ -218,7 +218,7 @@ public class AgentFactory {
 			className = split[1];
 			// Try to create a class from the given name.
 			try {
-				clazz = (Class<IAgent>) Class.forName(className);
+				clazz = (Class<Consumer>) Class.forName(className);
 				GISFunctions.readAgentShapefile(clazz, fileName, ContextManager.getAgentGeography(), ContextManager
 						.getAgentContext());
 			} catch (Exception e) {
@@ -232,7 +232,7 @@ public class AgentFactory {
 
 		// Assign agents to houses
 		int numAgents = 0;
-		for (IAgent a : ContextManager.getAllAgents()) {
+		for (Consumer a : ContextManager.getAllAgents()) {
 			numAgents++;
 			//System.out.print(numAgents + "\n");
 			Geometry g = ContextManager.getAgentGeometry(a);

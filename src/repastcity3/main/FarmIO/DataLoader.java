@@ -15,7 +15,7 @@ import org.apache.commons.csv.CSVRecord;
 
 import gov.nasa.worldwind.formats.shapefile.ShapefilePolygons.Record;
 import repast.simphony.util.collections.IndexedIterable;
-import repastcity3.agent.DefaultAgent;
+import repastcity3.agent.Consumer;
 import repastcity3.agent.IAgent;
 import repastcity3.environment.Farm;
 import repastcity3.environment.FixedGeography;

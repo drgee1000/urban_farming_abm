@@ -6,6 +6,7 @@ package repastcity3.environment;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Vector;
 import java.util.logging.Level;
 
 import com.vividsolutions.jts.geom.Coordinate;
@@ -48,11 +49,13 @@ public class Farm extends FarmableLocation implements FixedGeography {
 
 	public Farm() {
 		//double setupCost,double dailyMaintenanceCost, double fund,List<Food> stock
-		super(1000, 100, 10000, new ArrayList<Food>());
+		super(1000, 100, 10000, new Vector<Food>());
 		this.agents = new ArrayList<IAgent>();
 		this.count = 0;
 		initStock();
 	}
+	
+	
 
 	private void initStock() {
 		this.stock = DefaultFoodStock.getRandomFoodList();
@@ -61,6 +64,16 @@ public class Farm extends FarmableLocation implements FixedGeography {
 		}
 	}
 
+	
+	@Override
+	public void step() throws Exception {
+		product();
+	}
+
+	@Override
+	public boolean isThreadable() {
+		return true;
+	}
 	private void addFood(Food food) {
 		this.stock.add(food);
 		this.count += food.getAmount();
@@ -133,12 +146,11 @@ public class Farm extends FarmableLocation implements FixedGeography {
 
 	
 	@Override
-	@ScheduledMethod(start = 0, interval = 1)
 	public synchronized void product() {
 		/*
 		 * TODO: use strategy for production (use preference list)
 		 */
-		LOGGER.log(Level.INFO,"Farm "+this.identifier+" is producting");
+//		LOGGER.log(Level.INFO,"Farm "+this.identifier+" is producting");
 		for (Food food : stock) {
 			if (fund > 0) {
 				double amount = food.getAmount();
@@ -177,5 +189,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 			count -= amount;
 		});
 	}
+
+	
 
 }

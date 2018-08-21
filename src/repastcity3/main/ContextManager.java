@@ -43,7 +43,9 @@ import repast.simphony.space.gis.GeographyParameters;
 import repast.simphony.space.gis.SimpleAdder;
 import repast.simphony.space.graph.Network;
 import repastcity3.agent.AgentFactory;
+import repastcity3.agent.Consumer;
 import repastcity3.agent.IAgent;
+import repastcity3.agent.People;
 import repastcity3.agent.ThreadedAgentScheduler;
 //import repastcity3.environment.Candidate1;
 //import repastcity3.environment.Candidate2;
@@ -112,8 +114,8 @@ public class ContextManager implements ContextBuilder<Object> {
 	public static Geography<Junction> junctionGeography;
 	public static Network<Junction> roadNetwork;
 
-	private static Context<IAgent> agentContext;
-	private static Geography<IAgent> agentGeography;
+	private static Context<Consumer> agentContext;
+	private static Geography<Consumer> agentGeography;
 
 	DataLogger dLogger;
 
@@ -229,7 +231,7 @@ public class ContextManager implements ContextBuilder<Object> {
 			mainContext.addSubContext(agentContext);
 			agentGeography = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
 					GlobalVars.CONTEXT_NAMES.AGENT_GEOGRAPHY, agentContext,
-					new GeographyParameters<IAgent>(new SimpleAdder<IAgent>()));
+					new GeographyParameters<Consumer>(new SimpleAdder<Consumer>()));
 
 			String agentDefn = ContextManager.getParameter(MODEL_PARAMETERS.AGENT_DEFINITION.toString());
 
@@ -451,7 +453,7 @@ public class ContextManager implements ContextBuilder<Object> {
 	 *            The angle at which to travel.
 	 * @see Geography
 	 */
-	public static synchronized void moveAgentByVector(IAgent agent, double distToTravel, double angle) {
+	public static synchronized void moveAgentByVector(Consumer agent, double distToTravel, double angle) {
 		ContextManager.agentGeography.moveByVector(agent, distToTravel, angle);
 	} // We should use this method!!!!!!
 
@@ -465,7 +467,7 @@ public class ContextManager implements ContextBuilder<Object> {
 	 * @param point
 	 *            The point to move the agent to
 	 */
-	public static synchronized void moveAgent(IAgent agent, Point point) {
+	public static synchronized void moveAgent(Consumer agent, Point point) {
 		ContextManager.agentGeography.move(agent, point);
 	}
 
@@ -478,7 +480,7 @@ public class ContextManager implements ContextBuilder<Object> {
 	 * @param agent
 	 *            The agent to add.
 	 */
-	public static synchronized void addAgentToContext(IAgent agent) {
+	public static synchronized void addAgentToContext(Consumer agent) {
 		ContextManager.agentContext.add(agent);
 	}
 
@@ -492,8 +494,12 @@ public class ContextManager implements ContextBuilder<Object> {
 	 *         <code>getRandomObjects</code> function in <code>DefaultContext</code>
 	 * @see DefaultContext
 	 */
-	public static synchronized Iterable<IAgent> getAllAgents() {
-		return ContextManager.agentContext.getRandomObjects(IAgent.class, ContextManager.agentContext.size());
+	public static synchronized Iterable<Consumer> getAllAgents() {
+		return ContextManager.agentContext.getRandomObjects(Consumer.class, ContextManager.agentContext.size());
+	}
+	
+	public static synchronized Iterable<Farm> getFarmAgents() {
+		return ContextManager.farmContext.getRandomObjects(Farm.class, ContextManager.farmContext.size());
 	}
 
 	/**
@@ -516,7 +522,7 @@ public class ContextManager implements ContextBuilder<Object> {
 	 * projection.
 	 * </p>
 	 */
-	public static Context<IAgent> getAgentContext() {
+	public static Context<Consumer> getAgentContext() {
 		return ContextManager.agentContext;
 	}
 
@@ -530,7 +536,7 @@ public class ContextManager implements ContextBuilder<Object> {
 	 * projection.
 	 * </p>
 	 */
-	public static Geography<IAgent> getAgentGeography() {
+	public static Geography<Consumer> getAgentGeography() {
 		return ContextManager.agentGeography;
 	}
 

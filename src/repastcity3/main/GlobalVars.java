@@ -3,12 +3,14 @@ package repastcity3.main;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.vividsolutions.jts.geom.Geometry;
 
 import repastcity3.agent.IAgent;
+import repastcity3.agent.People;
 import repastcity3.environment.Route;
 
 public abstract class GlobalVars {
@@ -119,7 +121,7 @@ public abstract class GlobalVars {
 		// This variable is used by NetworkEdge.getWeight() function so that it knows what travel options
 		// are available to the agent (e.g. has a car). Can't be passed as a parameter because NetworkEdge.getWeight()
 		// must override function in RepastEdge because this is the one called by ShortestPath.
-		public static IAgent currentAgent = null;
+		public static People currentAgent = null;
 		public static Object currentBurglarLock = new Object();
 
 		public static final String WALK = "walk";

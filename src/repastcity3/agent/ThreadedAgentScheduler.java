@@ -128,7 +128,7 @@ class ThreadController implements Runnable {
 			} // while !freeCPU
 		} // for burglars
 		
-		for (IAgent b : ContextManager.getAllAgents()) {
+		for (IAgent b : ContextManager.getFarmAgents()) {
 
 			// Find a free cpu to exectue on
 			boolean foundFreeCPU = false; // Determine if there are no free CPUs

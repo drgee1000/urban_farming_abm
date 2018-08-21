@@ -19,7 +19,7 @@
     <entry>
       <string>humanCount</string>
       <repast.simphony.data2.engine.CountSourceDefinition>
-        <typeName>repastcity3.agent.DefaultAgent</typeName>
+        <typeName>repastcity3.agent.Consumer</typeName>
         <id>humanCount</id>
       </repast.simphony.data2.engine.CountSourceDefinition>
     </entry>
