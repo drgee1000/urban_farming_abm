@@ -7,7 +7,7 @@
 									
 		/>
 				<parameter name="AGENT_DEFINITION" displayName="Agent Definition" type="java.lang.String" 
-						defaultValue="point:people_600.shp$repastcity3.agent.Consumer" 
+						defaultValue="point:people.shp$repastcity3.agent.DefaultAgent" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
 									

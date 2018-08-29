@@ -58,6 +58,7 @@ public class Consumer implements People {
 	public void step() throws Exception {
 		// System.out.println(this.health);
 		LOGGER.log(Level.FINE, "Agent " + this.id + " is stepping.");
+		//System.out.println("step"+this.id);
 		if (this.health < -50) {
 			LOGGER.log(Level.FINE, "Agent " + this.id + " is dead.");
 			ContextManager.getAgentContext().remove(this);
@@ -67,7 +68,7 @@ public class Consumer implements People {
 			if (!this.goforEat) {
 				this.goforEat = true;
 				farm = this.findNearestFarm();
-				if (!farm.isAvailable()) {
+				if (!farm.isAvailable() || farm.getCount()<50) {
 					farm = ContextManager.farmContext.getRandomObject();
 				}
 				this.route = new Route(this,
@@ -124,7 +125,7 @@ public class Consumer implements People {
 
 		}
 		this.health -= caloryConsumption;
-
+		
 	}
 
 	/**
@@ -242,26 +243,33 @@ public class Consumer implements People {
 		this.defaultHealth = defaultHealth;
 	}
 
-	public synchronized FoodOrder selectFood(Farm farm) {
-		// System.out.println("enter select food");
-
-		List<Food> stock = farm.getStock();
-		FoodOrder foodOrder = new FoodOrder();
-		Collections.sort(stock);
-		while (health <= defaultHealth && farm.isAvailable()) {
-			// System.out.println("enter while loop");
-			for (Food f : stock) {
-				if (f.getAmount() > 0) {
-					// System.out.println("enter final if");
-					foodOrder.addOrder(f, 1);
-					// health += f.getCaboHydrate();
-					health += 20;
-					if (health > defaultHealth)
-						break;
+	public FoodOrder selectFood(Farm farm) {
+			FoodOrder foodOrder = new FoodOrder();
+			int iter = 0;
+			int maxIter = 50;
+			while (health <= defaultHealth && farm.isAvailable() && iter < maxIter) {
+				iter++;
+				List<Food> stock = farm.getStock();
+				int len = stock.size();
+				//Collections.sort(stock);
+				for (int i=0; i<len; i++) {
+					
+					Food f = stock.get(i);
+					if (f.getAmount() > 0) {
+						// System.out.println("enter final if");
+						foodOrder.addOrder(f, 1);
+						// health += f.getCaboHydrate();
+						health += 20;
+						if (health > defaultHealth)
+							break;
+					}
 				}
+				
 			}
-		}
-		return foodOrder;
+			
+			return foodOrder;
+		
+		
 
 	}
 
