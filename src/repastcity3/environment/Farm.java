@@ -67,7 +67,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 	
 	@Override
 	public void step() throws Exception {
-		product();
+		produce();
 	}
 
 	@Override
@@ -140,17 +140,15 @@ public class Farm extends FarmableLocation implements FixedGeography {
 		return this.identifier.hashCode();
 	}
 
-	public List<Food> getStock() {
-		return stock;
-	}
+
 
 	
-	@Override
-	public synchronized void product() {
+	
+	public synchronized void produce() {
 		/*
 		 * TODO: use strategy for production (use preference list)
 		 */
-//		LOGGER.log(Level.INFO,"Farm "+this.identifier+" is producting");
+		//LOGGER.log(Level.INFO,"Farm "+this.identifier+" is producting");
 		for (Food food : stock) {
 			if (fund > 0) {
 				double amount = food.getAmount();
@@ -169,6 +167,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 					count += availableProductionAmount;
 					fund = 0;
 				}
+				food.setAmount(amount);
 
 			} else {
 				// if there is no fund for production, then stop;
@@ -188,6 +187,8 @@ public class Farm extends FarmableLocation implements FixedGeography {
 			this.fund += amount * food.getPrice();
 			count -= amount;
 		});
+		//let order be collected by GC 
+		order=null;
 	}
 
 	

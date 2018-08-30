@@ -14,13 +14,45 @@ public abstract class FarmableLocation implements IAgent {
 		protected double dailyMaintenanceCost;
 		protected double fund;
 		protected List<Food> stock;
-		public abstract void product();
+		public abstract void produce();
 		
 		public FarmableLocation(double setupCost, double dailyMaintenanceCost, double fund,
 				List<Food> stock) {
 			this.setupCost = setupCost;
 			this.dailyMaintenanceCost = dailyMaintenanceCost;
 			this.fund = fund;
+			this.stock = stock;
+		}
+
+		public double getSetupCost() {
+			return setupCost;
+		}
+
+		public void setSetupCost(double setupCost) {
+			this.setupCost = setupCost;
+		}
+
+		public double getDailyMaintenanceCost() {
+			return dailyMaintenanceCost;
+		}
+
+		public void setDailyMaintenanceCost(double dailyMaintenanceCost) {
+			this.dailyMaintenanceCost = dailyMaintenanceCost;
+		}
+
+		public double getFund() {
+			return fund;
+		}
+
+		public void setFund(double fund) {
+			this.fund = fund;
+		}
+
+		public List<Food> getStock() {
+			return stock;
+		}
+
+		public void setStock(List<Food> stock) {
 			this.stock = stock;
 		}
 		

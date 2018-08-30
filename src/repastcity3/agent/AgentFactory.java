@@ -16,12 +16,14 @@ import repastcity3.main.ContextManager;
 import repastcity3.main.GlobalVars;
 
 /**
- * Create agents. There are three methods that can be used to create agents: randomly create a number of agents, create
- * agents from a point shapefile or create a certain number of agents per neighbourhood specified in an area shapefile.
+ * Create agents. There are three methods that can be used to create agents:
+ * randomly create a number of agents, create agents from a point shapefile or
+ * create a certain number of agents per neighbourhood specified in an area
+ * shapefile.
  * 
  * <P>
- * The method to use is specified by the 'agent_definition' parameter in <code>parameters.xml</code>. The parameter
- * takes the following form:
+ * The method to use is specified by the 'agent_definition' parameter in
+ * <code>parameters.xml</code>. The parameter takes the following form:
  * </P>
  * 
  * <pre>
@@ -41,8 +43,9 @@ import repastcity3.main.GlobalVars;
  * {@code random:<num_agents>}
  * </pre>
  * 
- * Create 'num_agents' agents in randomly chosen houses. The agents are of type <code>DefaultAgent</code>. For example,
- * this will create 10 agents in randomly chosen houses: '<code>random:1</code>'. See the
+ * Create 'num_agents' agents in randomly chosen houses. The agents are of type
+ * <code>DefaultAgent</code>. For example, this will create 10 agents in
+ * randomly chosen houses: '<code>random:1</code>'. See the
  * <code>createRandomAgents</code> function for implementation details.</li>
  * 
  * <li>
@@ -51,16 +54,22 @@ import repastcity3.main.GlobalVars;
  * {@code point:<filename>%<agent_class>}
  * </pre>
  * 
- * Create agents from the given point shapefile (one agent per point). If a point in the agent shapefile is within a
- * building object then the agent's home will be set to that building. The type of the agent can be given in two ways:
+ * Create agents from the given point shapefile (one agent per point). If a
+ * point in the agent shapefile is within a building object then the agent's
+ * home will be set to that building. The type of the agent can be given in two
+ * ways:
  * <ol>
- * <li>The 'agent_class' parameter can be used - this is the fully qualified (e.g. including package) name of a class
- * that will be used to create all the agents. For example the following will create instances of <code>MyAgent</code>
- * at each point in the shapefile '<code>point:data/my_shapefile.shp$my_package.agents.MyAgent</code>'.</li>
- * <li>A String column in the input shapefile called 'agent_type' provides the class of the agents. IIn this manner
- * agents of different types can be created from the same input. For example, the following will read the shapefile and
- * look at the values in the 'agent_type' column to create agents: '<code>point:data/my_shapefile.shp</code>' (note that
- * unlike the previous method there is no '$').</li>
+ * <li>The 'agent_class' parameter can be used - this is the fully qualified
+ * (e.g. including package) name of a class that will be used to create all the
+ * agents. For example the following will create instances of
+ * <code>MyAgent</code> at each point in the shapefile
+ * '<code>point:data/my_shapefile.shp$my_package.agents.MyAgent</code>'.</li>
+ * <li>A String column in the input shapefile called 'agent_type' provides the
+ * class of the agents. IIn this manner agents of different types can be created
+ * from the same input. For example, the following will read the shapefile and
+ * look at the values in the 'agent_type' column to create agents:
+ * '<code>point:data/my_shapefile.shp</code>' (note that unlike the previous
+ * method there is no '$').</li>
  * </ol>
  * 
  * See the <code>createPointAgents</code> function for implementation details.
@@ -71,18 +80,21 @@ import repastcity3.main.GlobalVars;
  * {@code area:<filename>$BglrC1%<agent_class1>$ .. $BglrC5%<agent_class5>}
  * </pre>
  * 
- * Create agents from the given areas shapefile. Up to five different types of agents can be created. Columns in the
- * shapefile specify how many agents of each type to create per area and the agents created are randomly assigned to
- * houses withing their area. The columns names must follow the format 'BglrCX' where 1 <= X <= 5. For example the
- * following string:<br>
+ * Create agents from the given areas shapefile. Up to five different types of
+ * agents can be created. Columns in the shapefile specify how many agents of
+ * each type to create per area and the agents created are randomly assigned to
+ * houses withing their area. The columns names must follow the format 'BglrCX'
+ * where 1 <= X <= 5. For example the following string:<br>
  * 
  * <pre>
  * {@code area:area.shp$BglrC1%BurglarAgent$BglrC2%EmployedAgent}
  * </pre>
  * 
- * will read the <code>area.shp</code> and, for each area, create a number of <code>BurglarAgent</code> and
- * <code>EmployedAgent</code> agents in each area, the number being specied by columns called <code>BglrC1</code> and
- * <code>BglrC2</code> respectively. See the <code>createAreaAgents</code> function for implementation details.</li>
+ * will read the <code>area.shp</code> and, for each area, create a number of
+ * <code>BurglarAgent</code> and <code>EmployedAgent</code> agents in each area,
+ * the number being specied by columns called <code>BglrC1</code> and
+ * <code>BglrC2</code> respectively. See the <code>createAreaAgents</code>
+ * function for implementation details.</li>
  * </ul>
  * 
  * @author Nick Malleson
@@ -128,12 +140,14 @@ public class AgentFactory {
 		else {
 			throw new AgentCreationException("Unrecognised method of creating agents: '" + method
 					+ "'. Method must be one of " + AGENT_FACTORY_METHODS.RANDOM.toString() + ", "
-					+ AGENT_FACTORY_METHODS.POINT_FILE.toString() + " or " + AGENT_FACTORY_METHODS.AREA_FILE.toString());
+					+ AGENT_FACTORY_METHODS.POINT_FILE.toString() + " or "
+					+ AGENT_FACTORY_METHODS.AREA_FILE.toString());
 		}
 
 		this.definition = defn; // Method is OK, save the definition for creating agents later.
 
-		// Check the rest of the definition is also correct (passing false means don't create agents)
+		// Check the rest of the definition is also correct (passing false means don't
+		// create agents)
 		// An exception will be thrown if it doesn't work.
 		this.methodToUse.createAgMeth().createagents(false, this);
 	}
@@ -143,12 +157,12 @@ public class AgentFactory {
 	}
 
 	/**
-	 * Create a number of in randomly chosen houses. If there are more agents than houses then some houses will have
-	 * more than one agent in them.
+	 * Create a number of in randomly chosen houses. If there are more agents than
+	 * houses then some houses will have more than one agent in them.
 	 * 
 	 * @param dummy
-	 *            Whether or not to actually create agents. If this is false then just check that the definition can be
-	 *            parsed.
+	 *            Whether or not to actually create agents. If this is false then
+	 *            just check that the definition can be parsed.
 	 * @throws AgentCreationException
 	 */
 	private void createRandomAgents(boolean dummy) throws AgentCreationException {
@@ -165,7 +179,8 @@ public class AgentFactory {
 			return;
 		}
 
-		// Create agents in randomly chosen houses. Use two while loops in case there are more agents
+		// Create agents in randomly chosen houses. Use two while loops in case there
+		// are more agents
 		// than houses, so that houses have to be looped over twice.
 		LOGGER.info("Creating " + numAgents + " agents using " + this.methodToUse + " method.");
 		int agentsCreated = 0;
@@ -187,24 +202,30 @@ public class AgentFactory {
 	}
 
 	/**
-	 * Read a shapefile and create an agent at each location. If there is a column called
+	 * Read a shapefile and create an agent at each location. If there is a column
+	 * called
 	 * 
 	 * @param dummy
-	 *            Whether or not to actually create agents. If this is false then just check that the definition can be
-	 *            parsed.
+	 *            Whether or not to actually create agents. If this is false then
+	 *            just check that the definition can be parsed.
 	 * @throws AgentCreationException
 	 */
 	@SuppressWarnings("unchecked")
 	private void createPointAgents(boolean dummy) throws AgentCreationException {
-
-		// See if there is a single type of agent to create or should read a colum in shapefile
+		// The definition has been parsed OK, no can either stop or create the agents
+		if (dummy) {
+			return;
+		}
+		// See if there is a single type of agent to create or should read a colum in
+		// shapefile
 		boolean singleType = this.definition.contains("$");
 
 		String fileName;
 		String className;
 		Class<Consumer> clazz;
 		if (singleType) {
-			// Agent class provided, can use the Simphony Shapefile loader to load agents of the given class
+			// Agent class provided, can use the Simphony Shapefile loader to load agents of
+			// the given class
 
 			// Work out the file and class names from the agent definition
 			String[] split = this.definition.split("\\$");
@@ -213,28 +234,28 @@ public class AgentFactory {
 						+ "able to split the definition into two parts on '$', but only split it into " + split.length
 						+ ". The definition is: '" + this.definition + "'");
 			}
-			 // (Need to append root data directory to the filename).
-			fileName = ContextManager.getProperty(GlobalVars.GISDataDirectory)+split[0];
+			// (Need to append root data directory to the filename).
+			fileName = ContextManager.getProperty(GlobalVars.GISDataDirectory) + split[0];
 			className = split[1];
 			// Try to create a class from the given name.
 			try {
 				clazz = (Class<Consumer>) Class.forName(className);
-				GISFunctions.readAgentShapefile(clazz, fileName, ContextManager.getAgentGeography(), ContextManager
-						.getAgentContext());
+				GISFunctions.readAgentShapefile(clazz, fileName, ContextManager.getAgentGeography(),
+						ContextManager.getAgentContext());
 			} catch (Exception e) {
 				throw new AgentCreationException(e);
 			}
 		} else {
 			// TODO Implement agent creation from shapefile value;
-			throw new AgentCreationException("Have not implemented the method of reading agent classes from a "
-					+ "shapefile yet.");
+			throw new AgentCreationException(
+					"Have not implemented the method of reading agent classes from a " + "shapefile yet.");
 		}
 
 		// Assign agents to houses
 		int numAgents = 0;
 		for (Consumer a : ContextManager.getAllAgents()) {
 			numAgents++;
-			//System.out.print(numAgents + "\n");
+			// System.out.print(numAgents + "\n");
 			Geometry g = ContextManager.getAgentGeometry(a);
 			for (Residential b : SpatialIndexManager.search(ContextManager.residentialProjection, g)) {
 				if (ContextManager.residentialProjection.getGeometry(b).contains(g)) {
@@ -245,8 +266,9 @@ public class AgentFactory {
 		}
 
 		if (singleType) {
-			LOGGER.info("Have created " + numAgents + " of type " + clazz.getName().toString() + " from file "
-					+ fileName);
+			LOGGER.info(
+					"Have created " + numAgents + " of type " + clazz.getName().toString() + " from file " + fileName);
+
 		} else {
 			// (NOTE: at the moment this will never happen because not implemented yet.)
 			LOGGER.info("Have created " + numAgents + " of different types from file " + fileName);
@@ -259,8 +281,9 @@ public class AgentFactory {
 	}
 
 	/**
-	 * The methods that can be used to create agents. The CreateAgentMethod stuff is just a long-winded way of
-	 * hard-coding the specific method to use for creating agents into the enum (much simpler in python).
+	 * The methods that can be used to create agents. The CreateAgentMethod stuff is
+	 * just a long-winded way of hard-coding the specific method to use for creating
+	 * agents into the enum (much simpler in python).
 	 * 
 	 * @author Nick Malleson
 	 */
@@ -280,8 +303,8 @@ public class AgentFactory {
 			}
 		}),
 		/**
-		 * Specify the number of agents per area as a shaefile. Agents will be randomly assigned to houses within the
-		 * area.
+		 * Specify the number of agents per area as a shaefile. Agents will be randomly
+		 * assigned to houses within the area.
 		 */
 		AREA_FILE("area", new CreateAgentMethod() {
 			@Override
@@ -295,8 +318,8 @@ public class AgentFactory {
 
 		/**
 		 * @param val
-		 *            The string representation of the enum which must match the method given in the 'agent_definition'
-		 *            parameter in parameters.xml.
+		 *            The string representation of the enum which must match the method
+		 *            given in the 'agent_definition' parameter in parameters.xml.
 		 * @param f
 		 */
 		AGENT_FACTORY_METHODS(String val, CreateAgentMethod f) {

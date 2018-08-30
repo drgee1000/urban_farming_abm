@@ -74,8 +74,8 @@ public class DataLogger {
 	}
 	
 	public <T> void recordData(IndexedIterable<T> agentList, int tick) throws IOException {
-//		if(agentList.size()==0)
-//			return;
+		if(agentList.size()==0)
+			return;
 		T t = agentList.get(0);
 		if( t instanceof Farm) {
 			Farm x = new Farm();
@@ -169,11 +169,14 @@ public class DataLogger {
 		List<Food> stock;
 		@Expose()
 		double count;
+		@Expose()
+		double fund;
 		public farm(int t, Farm f) {
 			tick = t;
 			stock = f.getStock();
 			stockNum = stock.size();
 			count=f.getCount();
+			fund=f.getFund();
 			try {
 				identifier = f.getIdentifier();
 			} catch (NoIdentifierException e) {
