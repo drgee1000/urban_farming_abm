@@ -239,7 +239,7 @@ public class ContextManager implements ContextBuilder<Object> {
 
 			AgentFactory agentFactory = new AgentFactory(agentDefn);
 			agentFactory.createAgents(agentContext);
-
+			
 		} catch (ParameterNotFoundException e) {
 			LOGGER.log(Level.SEVERE,
 					"Could not find the parameter which defines how agents should be "
@@ -251,7 +251,7 @@ public class ContextManager implements ContextBuilder<Object> {
 			LOGGER.log(Level.SEVERE, "", e);
 			return null;
 		}
-
+//		recordTicks();
 		// Create the schedule
 		createSchedule();
 
@@ -276,9 +276,9 @@ public class ContextManager implements ContextBuilder<Object> {
 		// schedule.schedule(stop, this, "calculateStation");
 
 		// Schedule something that outputs ticks every 10 iterations.
-		schedule.schedule(ScheduleParameters.createRepeating(1, 1, ScheduleParameters.LAST_PRIORITY), this,
+		schedule.schedule(ScheduleParameters.createRepeating(0, 1, ScheduleParameters.LAST_PRIORITY), this,
 				"recordTicks");
-		schedule.schedule(ScheduleParameters.createAtEnd(ScheduleParameters.LAST_PRIORITY), this, "printTicks");
+		schedule.schedule(ScheduleParameters.createAtEnd(ScheduleParameters.LAST_PRIORITY), this, "stopRecord");
 
 		/*
 		 * Schedule the agents. This is slightly complicated because if all the agents
@@ -333,9 +333,9 @@ public class ContextManager implements ContextBuilder<Object> {
 		}
 	}
 
-	public void printTicks() {
+	public void stopRecord() {
 		try {
-			dLogger.printDataToJsonFile();
+			dLogger.stopRecord();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -1,1636 +1,2022 @@
-八月 30, 2018 3:45:29 下午 repastcity3.main.ContextManager readProperties
+九月 02, 2018 12:57:47 上午 repastcity3.main.ContextManager readProperties
 信息: Initialising properties from file .\repastcity.properties
-八月 30, 2018 3:45:29 下午 repastcity3.main.ContextManager build
+九月 02, 2018 12:57:47 上午 repastcity3.main.ContextManager build
 信息: Configuring the environment with data from ./data/gis_data/shenzhen/
-八月 30, 2018 3:45:30 下午 repastcity3.main.ContextManager build
+九月 02, 2018 12:57:50 上午 repastcity3.main.ContextManager build
 信息: Read 6farms from ./data/gis_data/shenzhen/farm.shp
-八月 30, 2018 3:45:30 下午 repastcity3.main.ContextManager build
+九月 02, 2018 12:57:50 上午 repastcity3.main.ContextManager build
 信息: Read 9 residentials from ./data/gis_data/shenzhen/residential.shp
-八月 30, 2018 3:45:30 下午 repastcity3.main.ContextManager build
+九月 02, 2018 12:57:50 上午 repastcity3.main.ContextManager build
 信息: Read 86 roads from ./data/gis_data/shenzhen/street.shp
-八月 30, 2018 3:45:31 下午 repastcity3.main.TestEnv testEnvironment
+九月 02, 2018 12:57:50 上午 repastcity3.main.TestEnv testEnvironment
 信息: Testing the environment
-八月 30, 2018 3:45:31 下午 repastcity3.main.TestEnv testEnvironment
+九月 02, 2018 12:57:50 上午 repastcity3.main.TestEnv testEnvironment
 信息: The road network has 73 nodes and 86 edges.
-八月 30, 2018 3:45:31 下午 repastcity3.main.ContextManager build
+九月 02, 2018 12:57:50 上午 repastcity3.main.ContextManager build
 信息: Creating agents with the agent definition: 'point:people.shp$repastcity3.agent.Consumer'
-八月 30, 2018 3:45:31 下午 repastcity3.agent.AgentFactory createPointAgents
+九月 02, 2018 12:57:50 上午 repastcity3.agent.AgentFactory createPointAgents
 信息: Have created 146 of type repastcity3.agent.Consumer from file ./data/gis_data/shenzhen/people.shp
-八月 30, 2018 3:45:31 下午 repastcity3.main.ContextManager createSchedule
+九月 02, 2018 12:57:50 上午 repastcity3.main.ContextManager createSchedule
 信息: The multi-threaded scheduler will be used.
-八月 30, 2018 3:45:46 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:53 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 0.0
+九月 02, 2018 12:57:54 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 1.0
-八月 30, 2018 3:45:46 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:54 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 2.0
-八月 30, 2018 3:45:46 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:54 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 3.0
-八月 30, 2018 3:45:46 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:54 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 4.0
-八月 30, 2018 3:45:46 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:54 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 5.0
-八月 30, 2018 3:45:47 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:54 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 6.0
-八月 30, 2018 3:45:47 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:54 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 7.0
-八月 30, 2018 3:45:47 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:54 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 8.0
-八月 30, 2018 3:45:47 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:54 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 9.0
-八月 30, 2018 3:45:47 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:54 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 10.0
-八月 30, 2018 3:45:47 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:54 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 11.0
-八月 30, 2018 3:45:48 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:54 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 12.0
-八月 30, 2018 3:45:48 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:54 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 13.0
-八月 30, 2018 3:45:48 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:54 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 14.0
-八月 30, 2018 3:45:48 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:54 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 15.0
-八月 30, 2018 3:45:49 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:54 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 16.0
-八月 30, 2018 3:45:49 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:54 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 17.0
-八月 30, 2018 3:45:49 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:54 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 18.0
-八月 30, 2018 3:45:49 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:54 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 19.0
-八月 30, 2018 3:45:49 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:54 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 20.0
-八月 30, 2018 3:45:50 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:54 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 21.0
-八月 30, 2018 3:45:50 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:54 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 22.0
-八月 30, 2018 3:45:50 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:54 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 23.0
-八月 30, 2018 3:45:50 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:54 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 24.0
-八月 30, 2018 3:45:51 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:54 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 25.0
-八月 30, 2018 3:45:51 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:54 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 26.0
-八月 30, 2018 3:45:51 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:54 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 27.0
-八月 30, 2018 3:45:51 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:54 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 28.0
-八月 30, 2018 3:45:51 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 29.0
-八月 30, 2018 3:45:51 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 30.0
-八月 30, 2018 3:45:52 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 31.0
-八月 30, 2018 3:45:52 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 32.0
-八月 30, 2018 3:45:52 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 33.0
-八月 30, 2018 3:45:52 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 34.0
-八月 30, 2018 3:45:52 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 35.0
-八月 30, 2018 3:45:52 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 36.0
-八月 30, 2018 3:45:53 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 37.0
-八月 30, 2018 3:45:53 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 38.0
-八月 30, 2018 3:45:53 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 39.0
-八月 30, 2018 3:45:53 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 40.0
-八月 30, 2018 3:45:53 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 41.0
-八月 30, 2018 3:45:53 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 42.0
-八月 30, 2018 3:45:54 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 43.0
-八月 30, 2018 3:45:54 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 44.0
-八月 30, 2018 3:45:54 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 45.0
-八月 30, 2018 3:45:54 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 46.0
-八月 30, 2018 3:45:54 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 47.0
-八月 30, 2018 3:45:54 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 48.0
-八月 30, 2018 3:45:55 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 49.0
-八月 30, 2018 3:45:55 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 50.0
-八月 30, 2018 3:45:55 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 51.0
-八月 30, 2018 3:45:55 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 52.0
-八月 30, 2018 3:45:55 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 53.0
-八月 30, 2018 3:45:55 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 54.0
-八月 30, 2018 3:45:56 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 55.0
-八月 30, 2018 3:45:56 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 56.0
-八月 30, 2018 3:45:56 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 57.0
-八月 30, 2018 3:45:56 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 58.0
-八月 30, 2018 3:45:56 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 59.0
-八月 30, 2018 3:45:57 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 60.0
-八月 30, 2018 3:45:57 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 61.0
-八月 30, 2018 3:45:57 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 62.0
-八月 30, 2018 3:45:57 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 63.0
-八月 30, 2018 3:45:57 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 64.0
-八月 30, 2018 3:45:57 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 65.0
-八月 30, 2018 3:45:58 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 66.0
-八月 30, 2018 3:45:58 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 67.0
-八月 30, 2018 3:45:58 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 68.0
-八月 30, 2018 3:45:58 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 69.0
-八月 30, 2018 3:45:58 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 70.0
-八月 30, 2018 3:45:58 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 71.0
-八月 30, 2018 3:45:59 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 72.0
-八月 30, 2018 3:45:59 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 73.0
-八月 30, 2018 3:45:59 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 74.0
-八月 30, 2018 3:45:59 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 75.0
-八月 30, 2018 3:45:59 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 76.0
-八月 30, 2018 3:45:59 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 77.0
-八月 30, 2018 3:46:00 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 78.0
-八月 30, 2018 3:46:00 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 79.0
-八月 30, 2018 3:46:00 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 80.0
-八月 30, 2018 3:46:00 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 81.0
-八月 30, 2018 3:46:00 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 82.0
-八月 30, 2018 3:46:00 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 83.0
-八月 30, 2018 3:46:01 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 84.0
-八月 30, 2018 3:46:01 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 85.0
-八月 30, 2018 3:46:01 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 86.0
-八月 30, 2018 3:46:01 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 87.0
-八月 30, 2018 3:46:01 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 88.0
-八月 30, 2018 3:46:01 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 89.0
-八月 30, 2018 3:46:02 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 90.0
-八月 30, 2018 3:46:02 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 91.0
-八月 30, 2018 3:46:02 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 92.0
-八月 30, 2018 3:46:02 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 93.0
-八月 30, 2018 3:46:02 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 94.0
-八月 30, 2018 3:46:02 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 95.0
-八月 30, 2018 3:46:02 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 96.0
-八月 30, 2018 3:46:03 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 97.0
-八月 30, 2018 3:46:03 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 98.0
-八月 30, 2018 3:46:03 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:55 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 99.0
-八月 30, 2018 3:46:03 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 100.0
-八月 30, 2018 3:46:03 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 101.0
-八月 30, 2018 3:46:03 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 102.0
-八月 30, 2018 3:46:04 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 103.0
-八月 30, 2018 3:46:04 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 104.0
-八月 30, 2018 3:46:04 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 105.0
-八月 30, 2018 3:46:04 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 106.0
-八月 30, 2018 3:46:04 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 107.0
-八月 30, 2018 3:46:04 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 108.0
-八月 30, 2018 3:46:05 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 109.0
-八月 30, 2018 3:46:05 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 110.0
-八月 30, 2018 3:46:05 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 111.0
-八月 30, 2018 3:46:05 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 112.0
-八月 30, 2018 3:46:05 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 113.0
-八月 30, 2018 3:46:05 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 114.0
-八月 30, 2018 3:46:06 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 115.0
-八月 30, 2018 3:46:06 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 116.0
-八月 30, 2018 3:46:06 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 117.0
-八月 30, 2018 3:46:06 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 118.0
-八月 30, 2018 3:46:06 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 119.0
-八月 30, 2018 3:46:06 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 120.0
-八月 30, 2018 3:46:07 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 121.0
-八月 30, 2018 3:46:07 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 122.0
-八月 30, 2018 3:46:07 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 123.0
-八月 30, 2018 3:46:07 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 124.0
-八月 30, 2018 3:46:08 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 125.0
-八月 30, 2018 3:46:08 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 126.0
-八月 30, 2018 3:46:08 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 127.0
-八月 30, 2018 3:46:08 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 128.0
-八月 30, 2018 3:46:08 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 129.0
-八月 30, 2018 3:46:08 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 130.0
-八月 30, 2018 3:46:09 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 131.0
-八月 30, 2018 3:46:09 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 132.0
-八月 30, 2018 3:46:09 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 133.0
-八月 30, 2018 3:46:09 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 134.0
-八月 30, 2018 3:46:09 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 135.0
-八月 30, 2018 3:46:09 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 136.0
-八月 30, 2018 3:46:10 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 137.0
-八月 30, 2018 3:46:10 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 138.0
-八月 30, 2018 3:46:10 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 139.0
-八月 30, 2018 3:46:10 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 140.0
-八月 30, 2018 3:46:10 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 141.0
-八月 30, 2018 3:46:10 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 142.0
-八月 30, 2018 3:46:10 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 143.0
-八月 30, 2018 3:46:11 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 144.0
-八月 30, 2018 3:46:11 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 145.0
-八月 30, 2018 3:46:11 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 146.0
-八月 30, 2018 3:46:11 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 147.0
-八月 30, 2018 3:46:11 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 148.0
-八月 30, 2018 3:46:11 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 149.0
-八月 30, 2018 3:46:12 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 150.0
-八月 30, 2018 3:46:12 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 151.0
-八月 30, 2018 3:46:12 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 152.0
-八月 30, 2018 3:46:12 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 153.0
-八月 30, 2018 3:46:12 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 154.0
-八月 30, 2018 3:46:12 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 155.0
-八月 30, 2018 3:46:13 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 156.0
-八月 30, 2018 3:46:13 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 157.0
-八月 30, 2018 3:46:13 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 158.0
-八月 30, 2018 3:46:13 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 159.0
-八月 30, 2018 3:46:13 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 160.0
-八月 30, 2018 3:46:13 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 161.0
-八月 30, 2018 3:46:13 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 162.0
-八月 30, 2018 3:46:14 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 163.0
-八月 30, 2018 3:46:14 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 164.0
-八月 30, 2018 3:46:14 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 165.0
-八月 30, 2018 3:46:14 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 166.0
-八月 30, 2018 3:46:14 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 167.0
-八月 30, 2018 3:46:14 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 168.0
-八月 30, 2018 3:46:15 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 169.0
-八月 30, 2018 3:46:15 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 170.0
-八月 30, 2018 3:46:15 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 171.0
-八月 30, 2018 3:46:15 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 172.0
-八月 30, 2018 3:46:15 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 173.0
-八月 30, 2018 3:46:15 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 174.0
-八月 30, 2018 3:46:16 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 175.0
-八月 30, 2018 3:46:16 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 176.0
-八月 30, 2018 3:46:16 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 177.0
-八月 30, 2018 3:46:16 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 178.0
-八月 30, 2018 3:46:16 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 179.0
-八月 30, 2018 3:46:16 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 180.0
-八月 30, 2018 3:46:16 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 181.0
-八月 30, 2018 3:46:17 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 182.0
-八月 30, 2018 3:46:17 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 183.0
-八月 30, 2018 3:46:17 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 184.0
-八月 30, 2018 3:46:17 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 185.0
-八月 30, 2018 3:46:17 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 186.0
-八月 30, 2018 3:46:17 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 187.0
-八月 30, 2018 3:46:18 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 188.0
-八月 30, 2018 3:46:18 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 189.0
-八月 30, 2018 3:46:18 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 190.0
-八月 30, 2018 3:46:18 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 191.0
-八月 30, 2018 3:46:18 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 192.0
-八月 30, 2018 3:46:18 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 193.0
-八月 30, 2018 3:46:19 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 194.0
-八月 30, 2018 3:46:19 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:56 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 195.0
-八月 30, 2018 3:46:19 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 196.0
-八月 30, 2018 3:46:19 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 197.0
-八月 30, 2018 3:46:19 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 198.0
-八月 30, 2018 3:46:19 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 199.0
-八月 30, 2018 3:46:19 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 200.0
-八月 30, 2018 3:46:20 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 201.0
-八月 30, 2018 3:46:20 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 202.0
-八月 30, 2018 3:46:20 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 203.0
-八月 30, 2018 3:46:20 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 204.0
-八月 30, 2018 3:46:20 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 205.0
-八月 30, 2018 3:46:20 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 206.0
-八月 30, 2018 3:46:21 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 207.0
-八月 30, 2018 3:46:21 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 208.0
-八月 30, 2018 3:46:21 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 209.0
-八月 30, 2018 3:46:21 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 210.0
-八月 30, 2018 3:46:21 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 211.0
-八月 30, 2018 3:46:21 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 212.0
-八月 30, 2018 3:46:21 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 213.0
-八月 30, 2018 3:46:22 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 214.0
-八月 30, 2018 3:46:22 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 215.0
-八月 30, 2018 3:46:22 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 216.0
-八月 30, 2018 3:46:22 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 217.0
-八月 30, 2018 3:46:22 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 218.0
-八月 30, 2018 3:46:22 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 219.0
-八月 30, 2018 3:46:23 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 220.0
-八月 30, 2018 3:46:23 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 221.0
-八月 30, 2018 3:46:23 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 222.0
-八月 30, 2018 3:46:23 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 223.0
-八月 30, 2018 3:46:23 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 224.0
-八月 30, 2018 3:46:23 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 225.0
-八月 30, 2018 3:46:24 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 226.0
-八月 30, 2018 3:46:24 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 227.0
-八月 30, 2018 3:46:24 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 228.0
-八月 30, 2018 3:46:24 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 229.0
-八月 30, 2018 3:46:24 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 230.0
-八月 30, 2018 3:46:24 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 231.0
-八月 30, 2018 3:46:25 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 232.0
-八月 30, 2018 3:46:25 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 233.0
-八月 30, 2018 3:46:25 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 234.0
-八月 30, 2018 3:46:25 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 235.0
-八月 30, 2018 3:46:25 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 236.0
-八月 30, 2018 3:46:25 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 237.0
-八月 30, 2018 3:46:26 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 238.0
-八月 30, 2018 3:46:26 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 239.0
-八月 30, 2018 3:46:26 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 240.0
-八月 30, 2018 3:46:26 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 241.0
-八月 30, 2018 3:46:26 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 242.0
-八月 30, 2018 3:46:26 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 243.0
-八月 30, 2018 3:46:27 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 244.0
-八月 30, 2018 3:46:27 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 245.0
-八月 30, 2018 3:46:27 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 246.0
-八月 30, 2018 3:46:27 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 247.0
-八月 30, 2018 3:46:27 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 248.0
-八月 30, 2018 3:46:27 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 249.0
-八月 30, 2018 3:46:27 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 250.0
-八月 30, 2018 3:46:28 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 251.0
-八月 30, 2018 3:46:28 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 252.0
-八月 30, 2018 3:46:28 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 253.0
-八月 30, 2018 3:46:28 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 254.0
-八月 30, 2018 3:46:28 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 255.0
-八月 30, 2018 3:46:28 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 256.0
-八月 30, 2018 3:46:29 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 257.0
-八月 30, 2018 3:46:29 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 258.0
-八月 30, 2018 3:46:29 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 259.0
-八月 30, 2018 3:46:29 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 260.0
-八月 30, 2018 3:46:29 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 261.0
-八月 30, 2018 3:46:29 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 262.0
-八月 30, 2018 3:46:30 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 263.0
-八月 30, 2018 3:46:30 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 264.0
-八月 30, 2018 3:46:30 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 265.0
-八月 30, 2018 3:46:30 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 266.0
-八月 30, 2018 3:46:30 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 267.0
-八月 30, 2018 3:46:30 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 268.0
-八月 30, 2018 3:46:31 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 269.0
-八月 30, 2018 3:46:31 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 270.0
-八月 30, 2018 3:46:31 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 271.0
-八月 30, 2018 3:46:31 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 272.0
-八月 30, 2018 3:46:31 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 273.0
-八月 30, 2018 3:46:31 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 274.0
-八月 30, 2018 3:46:32 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 275.0
-八月 30, 2018 3:46:32 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 276.0
-八月 30, 2018 3:46:32 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 277.0
-八月 30, 2018 3:46:32 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 278.0
-八月 30, 2018 3:46:32 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 279.0
-八月 30, 2018 3:46:32 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 280.0
-八月 30, 2018 3:46:33 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 281.0
-八月 30, 2018 3:46:33 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 282.0
-八月 30, 2018 3:46:33 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 283.0
-八月 30, 2018 3:46:33 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 284.0
-八月 30, 2018 3:46:33 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 285.0
-八月 30, 2018 3:46:33 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 286.0
-八月 30, 2018 3:46:33 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 287.0
-八月 30, 2018 3:46:34 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 288.0
-八月 30, 2018 3:46:34 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 289.0
-八月 30, 2018 3:46:34 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 290.0
-八月 30, 2018 3:46:34 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 291.0
-八月 30, 2018 3:46:34 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 292.0
-八月 30, 2018 3:46:34 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 293.0
-八月 30, 2018 3:46:35 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:57 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 294.0
-八月 30, 2018 3:46:35 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 295.0
-八月 30, 2018 3:46:35 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 296.0
-八月 30, 2018 3:46:35 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 297.0
-八月 30, 2018 3:46:35 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 298.0
-八月 30, 2018 3:46:35 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 299.0
-八月 30, 2018 3:46:35 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 300.0
-八月 30, 2018 3:46:36 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 301.0
-八月 30, 2018 3:46:36 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 302.0
-八月 30, 2018 3:46:36 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 303.0
-八月 30, 2018 3:46:36 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 304.0
-八月 30, 2018 3:46:36 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 305.0
-八月 30, 2018 3:46:36 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 306.0
-八月 30, 2018 3:46:37 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 307.0
-八月 30, 2018 3:46:37 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 308.0
-八月 30, 2018 3:46:37 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 309.0
-八月 30, 2018 3:46:37 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 310.0
-八月 30, 2018 3:46:37 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 311.0
-八月 30, 2018 3:46:37 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 312.0
-八月 30, 2018 3:46:38 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 313.0
-八月 30, 2018 3:46:38 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 314.0
-八月 30, 2018 3:46:38 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 315.0
-八月 30, 2018 3:46:38 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 316.0
-八月 30, 2018 3:46:38 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 317.0
-八月 30, 2018 3:46:38 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 318.0
-八月 30, 2018 3:46:38 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 319.0
-八月 30, 2018 3:46:39 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 320.0
-八月 30, 2018 3:46:39 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 321.0
-八月 30, 2018 3:46:39 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 322.0
-八月 30, 2018 3:46:39 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 323.0
-八月 30, 2018 3:46:39 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 324.0
-八月 30, 2018 3:46:39 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 325.0
-八月 30, 2018 3:46:40 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 326.0
-八月 30, 2018 3:46:40 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 327.0
-八月 30, 2018 3:46:40 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 328.0
-八月 30, 2018 3:46:40 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 329.0
-八月 30, 2018 3:46:40 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 330.0
-八月 30, 2018 3:46:40 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 331.0
-八月 30, 2018 3:46:40 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 332.0
-八月 30, 2018 3:46:41 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 333.0
-八月 30, 2018 3:46:41 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 334.0
-八月 30, 2018 3:46:41 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 335.0
-八月 30, 2018 3:46:41 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 336.0
-八月 30, 2018 3:46:41 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 337.0
-八月 30, 2018 3:46:41 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 338.0
-八月 30, 2018 3:46:42 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 339.0
-八月 30, 2018 3:46:42 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 340.0
-八月 30, 2018 3:46:42 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 341.0
-八月 30, 2018 3:46:42 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 342.0
-八月 30, 2018 3:46:42 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 343.0
-八月 30, 2018 3:46:42 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 344.0
-八月 30, 2018 3:46:43 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 345.0
-八月 30, 2018 3:46:43 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 346.0
-八月 30, 2018 3:46:43 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 347.0
-八月 30, 2018 3:46:43 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 348.0
-八月 30, 2018 3:46:43 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 349.0
-八月 30, 2018 3:46:43 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 350.0
-八月 30, 2018 3:46:43 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 351.0
-八月 30, 2018 3:46:44 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 352.0
-八月 30, 2018 3:46:44 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 353.0
-八月 30, 2018 3:46:44 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 354.0
-八月 30, 2018 3:46:44 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 355.0
-八月 30, 2018 3:46:44 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 356.0
-八月 30, 2018 3:46:44 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 357.0
-八月 30, 2018 3:46:45 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 358.0
-八月 30, 2018 3:46:45 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 359.0
-八月 30, 2018 3:46:45 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 360.0
-八月 30, 2018 3:46:45 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 361.0
-八月 30, 2018 3:46:45 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 362.0
-八月 30, 2018 3:46:45 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 363.0
-八月 30, 2018 3:46:46 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 364.0
-八月 30, 2018 3:46:46 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 365.0
-八月 30, 2018 3:46:46 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 366.0
-八月 30, 2018 3:46:46 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 367.0
-八月 30, 2018 3:46:46 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 368.0
-八月 30, 2018 3:46:46 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 369.0
-八月 30, 2018 3:46:47 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 370.0
-八月 30, 2018 3:46:47 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 371.0
-八月 30, 2018 3:46:47 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 372.0
-八月 30, 2018 3:46:47 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 373.0
-八月 30, 2018 3:46:47 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 374.0
-八月 30, 2018 3:46:48 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 375.0
-八月 30, 2018 3:46:48 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 376.0
-八月 30, 2018 3:46:48 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 377.0
-八月 30, 2018 3:46:48 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 378.0
-八月 30, 2018 3:46:48 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 379.0
-八月 30, 2018 3:46:48 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 380.0
-八月 30, 2018 3:46:49 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 381.0
-八月 30, 2018 3:46:49 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 382.0
-八月 30, 2018 3:46:49 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 383.0
-八月 30, 2018 3:46:49 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 384.0
-八月 30, 2018 3:46:49 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 385.0
-八月 30, 2018 3:46:49 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 386.0
-八月 30, 2018 3:46:50 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 387.0
-八月 30, 2018 3:46:50 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 388.0
-八月 30, 2018 3:46:50 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 389.0
-八月 30, 2018 3:46:50 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 390.0
-八月 30, 2018 3:46:50 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 391.0
-八月 30, 2018 3:46:50 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 392.0
-八月 30, 2018 3:46:50 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 393.0
-八月 30, 2018 3:46:51 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 394.0
-八月 30, 2018 3:46:51 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 395.0
-八月 30, 2018 3:46:51 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 396.0
-八月 30, 2018 3:46:51 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 397.0
-八月 30, 2018 3:46:51 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 398.0
-八月 30, 2018 3:46:51 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 399.0
-八月 30, 2018 3:46:52 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 400.0
-八月 30, 2018 3:46:52 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 401.0
-八月 30, 2018 3:46:52 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 402.0
-八月 30, 2018 3:46:52 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 403.0
-八月 30, 2018 3:46:52 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 404.0
-八月 30, 2018 3:46:52 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 405.0
-八月 30, 2018 3:46:52 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 406.0
-八月 30, 2018 3:46:53 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 407.0
-八月 30, 2018 3:46:53 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 408.0
-八月 30, 2018 3:46:53 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 409.0
-八月 30, 2018 3:46:53 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 410.0
-八月 30, 2018 3:46:53 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 411.0
-八月 30, 2018 3:46:53 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 412.0
-八月 30, 2018 3:46:54 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 413.0
-八月 30, 2018 3:46:54 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 414.0
-八月 30, 2018 3:46:54 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 415.0
-八月 30, 2018 3:46:54 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 416.0
-八月 30, 2018 3:46:54 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 417.0
-八月 30, 2018 3:46:54 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 418.0
-八月 30, 2018 3:46:54 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 419.0
-八月 30, 2018 3:46:55 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 420.0
-八月 30, 2018 3:46:55 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 421.0
-八月 30, 2018 3:46:55 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 422.0
-八月 30, 2018 3:46:55 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 423.0
-八月 30, 2018 3:46:55 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 424.0
-八月 30, 2018 3:46:55 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 425.0
-八月 30, 2018 3:46:56 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 426.0
-八月 30, 2018 3:46:56 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 427.0
-八月 30, 2018 3:46:56 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 428.0
-八月 30, 2018 3:46:56 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 429.0
-八月 30, 2018 3:46:56 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 430.0
-八月 30, 2018 3:46:56 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 431.0
-八月 30, 2018 3:46:56 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 432.0
-八月 30, 2018 3:46:57 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 433.0
-八月 30, 2018 3:46:57 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 434.0
-八月 30, 2018 3:46:57 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 435.0
-八月 30, 2018 3:46:57 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 436.0
-八月 30, 2018 3:46:57 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 437.0
-八月 30, 2018 3:46:57 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 438.0
-八月 30, 2018 3:46:58 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 439.0
-八月 30, 2018 3:46:58 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 440.0
-八月 30, 2018 3:46:58 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 441.0
-八月 30, 2018 3:46:58 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 442.0
-八月 30, 2018 3:46:58 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 443.0
-八月 30, 2018 3:46:58 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 444.0
-八月 30, 2018 3:46:58 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 445.0
-八月 30, 2018 3:46:59 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 446.0
-八月 30, 2018 3:46:59 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 447.0
-八月 30, 2018 3:46:59 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 448.0
-八月 30, 2018 3:46:59 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 449.0
-八月 30, 2018 3:46:59 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 450.0
-八月 30, 2018 3:46:59 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 451.0
-八月 30, 2018 3:47:00 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 452.0
-八月 30, 2018 3:47:00 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 453.0
-八月 30, 2018 3:47:00 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 454.0
-八月 30, 2018 3:47:00 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 455.0
-八月 30, 2018 3:47:00 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 456.0
-八月 30, 2018 3:47:00 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 457.0
-八月 30, 2018 3:47:00 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 458.0
-八月 30, 2018 3:47:01 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 459.0
-八月 30, 2018 3:47:01 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 460.0
-八月 30, 2018 3:47:01 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 461.0
-八月 30, 2018 3:47:02 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 462.0
-八月 30, 2018 3:47:02 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:58 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 463.0
-八月 30, 2018 3:47:02 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 464.0
-八月 30, 2018 3:47:02 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 465.0
-八月 30, 2018 3:47:02 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 466.0
-八月 30, 2018 3:47:02 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 467.0
-八月 30, 2018 3:47:02 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 468.0
-八月 30, 2018 3:47:03 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 469.0
-八月 30, 2018 3:47:03 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 470.0
-八月 30, 2018 3:47:03 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 471.0
-八月 30, 2018 3:47:03 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 472.0
-八月 30, 2018 3:47:04 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 473.0
-八月 30, 2018 3:47:04 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 474.0
-八月 30, 2018 3:47:04 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 475.0
-八月 30, 2018 3:47:04 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 476.0
-八月 30, 2018 3:47:04 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 477.0
-八月 30, 2018 3:47:04 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 478.0
-八月 30, 2018 3:47:04 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 479.0
-八月 30, 2018 3:47:05 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 480.0
-八月 30, 2018 3:47:05 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 481.0
-八月 30, 2018 3:47:05 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 482.0
-八月 30, 2018 3:47:05 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 483.0
-八月 30, 2018 3:47:05 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 484.0
-八月 30, 2018 3:47:05 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 485.0
-八月 30, 2018 3:47:06 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 486.0
-八月 30, 2018 3:47:06 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 487.0
-八月 30, 2018 3:47:06 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 488.0
-八月 30, 2018 3:47:06 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 489.0
-八月 30, 2018 3:47:06 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 490.0
-八月 30, 2018 3:47:06 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 491.0
-八月 30, 2018 3:47:06 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 492.0
-八月 30, 2018 3:47:07 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 493.0
-八月 30, 2018 3:47:07 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 494.0
-八月 30, 2018 3:47:07 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 495.0
-八月 30, 2018 3:47:07 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 496.0
-八月 30, 2018 3:47:07 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 497.0
-八月 30, 2018 3:47:07 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 498.0
-八月 30, 2018 3:47:07 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 499.0
-八月 30, 2018 3:47:08 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 500.0
-八月 30, 2018 3:47:08 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 501.0
-八月 30, 2018 3:47:08 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 502.0
-八月 30, 2018 3:47:08 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 503.0
-八月 30, 2018 3:47:08 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 504.0
-八月 30, 2018 3:47:08 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 505.0
-八月 30, 2018 3:47:09 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 506.0
-八月 30, 2018 3:47:09 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 507.0
-八月 30, 2018 3:47:09 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 508.0
-八月 30, 2018 3:47:09 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 509.0
-八月 30, 2018 3:47:09 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 510.0
-八月 30, 2018 3:47:09 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 511.0
-八月 30, 2018 3:47:09 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 512.0
-八月 30, 2018 3:47:10 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 513.0
-八月 30, 2018 3:47:10 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 514.0
-八月 30, 2018 3:47:10 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 515.0
-八月 30, 2018 3:47:10 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 516.0
-八月 30, 2018 3:47:10 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 517.0
-八月 30, 2018 3:47:10 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 518.0
-八月 30, 2018 3:47:11 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 519.0
-八月 30, 2018 3:47:11 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 520.0
-八月 30, 2018 3:47:11 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 521.0
-八月 30, 2018 3:47:11 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 522.0
-八月 30, 2018 3:47:11 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 523.0
-八月 30, 2018 3:47:11 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 524.0
-八月 30, 2018 3:47:11 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 525.0
-八月 30, 2018 3:47:12 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 526.0
-八月 30, 2018 3:47:12 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 527.0
-八月 30, 2018 3:47:12 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 528.0
-八月 30, 2018 3:47:12 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 529.0
-八月 30, 2018 3:47:12 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 530.0
-八月 30, 2018 3:47:12 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 531.0
-八月 30, 2018 3:47:12 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 532.0
-八月 30, 2018 3:47:13 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 533.0
-八月 30, 2018 3:47:13 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 534.0
-八月 30, 2018 3:47:13 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 535.0
-八月 30, 2018 3:47:13 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 536.0
-八月 30, 2018 3:47:13 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 537.0
-八月 30, 2018 3:47:13 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 538.0
-八月 30, 2018 3:47:14 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 539.0
-八月 30, 2018 3:47:14 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 540.0
-八月 30, 2018 3:47:14 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 541.0
-八月 30, 2018 3:47:14 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 542.0
-八月 30, 2018 3:47:14 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 543.0
-八月 30, 2018 3:47:14 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 544.0
-八月 30, 2018 3:47:14 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 545.0
-八月 30, 2018 3:47:15 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 546.0
-八月 30, 2018 3:47:15 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 547.0
-八月 30, 2018 3:47:15 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 548.0
-八月 30, 2018 3:47:15 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 549.0
-八月 30, 2018 3:47:15 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 550.0
-八月 30, 2018 3:47:15 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 551.0
-八月 30, 2018 3:47:16 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 552.0
-八月 30, 2018 3:47:16 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 553.0
-八月 30, 2018 3:47:16 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 554.0
-八月 30, 2018 3:47:16 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 555.0
-八月 30, 2018 3:47:16 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 556.0
-八月 30, 2018 3:47:16 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 557.0
-八月 30, 2018 3:47:16 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 558.0
-八月 30, 2018 3:47:17 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 559.0
-八月 30, 2018 3:47:17 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 560.0
-八月 30, 2018 3:47:17 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 561.0
-八月 30, 2018 3:47:17 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 562.0
-八月 30, 2018 3:47:17 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 563.0
-八月 30, 2018 3:47:17 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 564.0
-八月 30, 2018 3:47:18 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 565.0
-八月 30, 2018 3:47:18 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 566.0
-八月 30, 2018 3:47:18 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 567.0
-八月 30, 2018 3:47:18 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 568.0
-八月 30, 2018 3:47:18 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 569.0
-八月 30, 2018 3:47:18 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 570.0
-八月 30, 2018 3:47:18 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 571.0
-八月 30, 2018 3:47:19 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 572.0
-八月 30, 2018 3:47:19 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 573.0
-八月 30, 2018 3:47:19 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 574.0
-八月 30, 2018 3:47:19 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 575.0
-八月 30, 2018 3:47:19 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 576.0
-八月 30, 2018 3:47:19 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 577.0
-八月 30, 2018 3:47:19 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 578.0
-八月 30, 2018 3:47:20 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 579.0
-八月 30, 2018 3:47:20 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 580.0
-八月 30, 2018 3:47:20 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 581.0
-八月 30, 2018 3:47:20 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 582.0
-八月 30, 2018 3:47:20 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 583.0
-八月 30, 2018 3:47:20 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 584.0
-八月 30, 2018 3:47:21 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 585.0
-八月 30, 2018 3:47:21 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 586.0
-八月 30, 2018 3:47:21 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 587.0
-八月 30, 2018 3:47:21 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 588.0
-八月 30, 2018 3:47:21 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 589.0
-八月 30, 2018 3:47:21 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 590.0
-八月 30, 2018 3:47:21 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 591.0
-八月 30, 2018 3:47:22 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 592.0
-八月 30, 2018 3:47:22 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 593.0
-八月 30, 2018 3:47:22 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 594.0
-八月 30, 2018 3:47:22 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 595.0
-八月 30, 2018 3:47:22 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 596.0
-八月 30, 2018 3:47:22 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 597.0
-八月 30, 2018 3:47:23 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 598.0
-八月 30, 2018 3:47:23 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 599.0
-八月 30, 2018 3:47:23 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 600.0
-八月 30, 2018 3:47:23 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 601.0
-八月 30, 2018 3:47:23 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 602.0
-八月 30, 2018 3:47:23 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 603.0
-八月 30, 2018 3:47:23 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 604.0
-八月 30, 2018 3:47:24 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 605.0
-八月 30, 2018 3:47:24 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 606.0
-八月 30, 2018 3:47:24 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 607.0
-八月 30, 2018 3:47:24 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 608.0
-八月 30, 2018 3:47:24 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 609.0
-八月 30, 2018 3:47:24 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 610.0
-八月 30, 2018 3:47:24 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 611.0
-八月 30, 2018 3:47:25 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 612.0
-八月 30, 2018 3:47:25 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 613.0
-八月 30, 2018 3:47:25 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 614.0
-八月 30, 2018 3:47:25 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 615.0
-八月 30, 2018 3:47:25 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 616.0
-八月 30, 2018 3:47:25 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 617.0
-八月 30, 2018 3:47:26 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 618.0
-八月 30, 2018 3:47:26 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 619.0
-八月 30, 2018 3:47:26 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 620.0
-八月 30, 2018 3:47:26 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 621.0
-八月 30, 2018 3:47:26 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 622.0
-八月 30, 2018 3:47:26 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 623.0
-八月 30, 2018 3:47:26 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 624.0
-八月 30, 2018 3:47:27 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 625.0
-八月 30, 2018 3:47:27 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 626.0
-八月 30, 2018 3:47:27 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 627.0
-八月 30, 2018 3:47:27 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 628.0
-八月 30, 2018 3:47:27 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 629.0
-八月 30, 2018 3:47:27 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 630.0
-八月 30, 2018 3:47:28 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 631.0
-八月 30, 2018 3:47:28 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 632.0
-八月 30, 2018 3:47:28 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 633.0
-八月 30, 2018 3:47:28 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 634.0
-八月 30, 2018 3:47:28 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 635.0
-八月 30, 2018 3:47:28 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 636.0
-八月 30, 2018 3:47:28 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 637.0
-八月 30, 2018 3:47:29 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 638.0
-八月 30, 2018 3:47:29 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 639.0
-八月 30, 2018 3:47:29 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 640.0
-八月 30, 2018 3:47:29 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 641.0
-八月 30, 2018 3:47:29 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 642.0
-八月 30, 2018 3:47:29 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 643.0
-八月 30, 2018 3:47:29 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 644.0
-八月 30, 2018 3:47:30 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 645.0
-八月 30, 2018 3:47:30 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 646.0
-八月 30, 2018 3:47:30 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 647.0
-八月 30, 2018 3:47:30 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 648.0
-八月 30, 2018 3:47:30 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 649.0
-八月 30, 2018 3:47:31 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 650.0
-八月 30, 2018 3:47:31 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 651.0
-八月 30, 2018 3:47:31 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 652.0
-八月 30, 2018 3:47:31 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 653.0
-八月 30, 2018 3:47:31 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 654.0
-八月 30, 2018 3:47:31 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 655.0
-八月 30, 2018 3:47:31 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 656.0
-八月 30, 2018 3:47:32 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 657.0
-八月 30, 2018 3:47:32 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 658.0
-八月 30, 2018 3:47:32 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 659.0
-八月 30, 2018 3:47:32 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 660.0
-八月 30, 2018 3:47:32 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 661.0
-八月 30, 2018 3:47:32 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 662.0
-八月 30, 2018 3:47:33 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 663.0
-八月 30, 2018 3:47:33 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 664.0
-八月 30, 2018 3:47:33 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 665.0
-八月 30, 2018 3:47:33 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 666.0
-八月 30, 2018 3:47:33 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 667.0
-八月 30, 2018 3:47:33 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 668.0
-八月 30, 2018 3:47:33 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 669.0
-八月 30, 2018 3:47:34 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 670.0
-八月 30, 2018 3:47:34 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 671.0
-八月 30, 2018 3:47:34 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 672.0
-八月 30, 2018 3:47:34 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 673.0
-八月 30, 2018 3:47:34 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 674.0
-八月 30, 2018 3:47:34 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 675.0
-八月 30, 2018 3:47:35 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 676.0
-八月 30, 2018 3:47:35 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 677.0
-八月 30, 2018 3:47:35 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 678.0
-八月 30, 2018 3:47:35 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 679.0
-八月 30, 2018 3:47:35 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 680.0
-八月 30, 2018 3:47:35 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 681.0
-八月 30, 2018 3:47:35 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 682.0
-八月 30, 2018 3:47:36 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 683.0
-八月 30, 2018 3:47:36 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 684.0
-八月 30, 2018 3:47:36 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 685.0
-八月 30, 2018 3:47:36 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 686.0
-八月 30, 2018 3:47:36 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 687.0
-八月 30, 2018 3:47:36 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 688.0
-八月 30, 2018 3:47:37 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 689.0
-八月 30, 2018 3:47:37 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 690.0
-八月 30, 2018 3:47:37 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 691.0
-八月 30, 2018 3:47:37 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 692.0
-八月 30, 2018 3:47:37 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 693.0
-八月 30, 2018 3:47:38 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 694.0
-八月 30, 2018 3:47:38 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 695.0
-八月 30, 2018 3:47:38 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 696.0
-八月 30, 2018 3:47:38 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 697.0
-八月 30, 2018 3:47:38 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 698.0
-八月 30, 2018 3:47:38 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 699.0
-八月 30, 2018 3:47:38 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 700.0
-八月 30, 2018 3:47:39 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 701.0
-八月 30, 2018 3:47:39 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 702.0
-八月 30, 2018 3:47:39 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 703.0
-八月 30, 2018 3:47:39 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 704.0
-八月 30, 2018 3:47:39 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 705.0
-八月 30, 2018 3:47:39 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 706.0
-八月 30, 2018 3:47:40 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 707.0
-八月 30, 2018 3:47:40 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 708.0
-八月 30, 2018 3:47:40 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 709.0
-八月 30, 2018 3:47:40 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 710.0
-八月 30, 2018 3:47:40 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 711.0
-八月 30, 2018 3:47:40 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 712.0
-八月 30, 2018 3:47:40 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 713.0
-八月 30, 2018 3:47:41 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 714.0
-八月 30, 2018 3:47:41 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 715.0
-八月 30, 2018 3:47:41 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 716.0
-八月 30, 2018 3:47:41 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 717.0
-八月 30, 2018 3:47:41 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 718.0
-八月 30, 2018 3:47:41 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 719.0
-八月 30, 2018 3:47:41 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 720.0
-八月 30, 2018 3:47:42 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 721.0
-八月 30, 2018 3:47:42 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 722.0
-八月 30, 2018 3:47:42 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 723.0
-八月 30, 2018 3:47:42 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 724.0
-八月 30, 2018 3:47:42 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 725.0
-八月 30, 2018 3:47:42 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 726.0
-八月 30, 2018 3:47:43 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 727.0
-八月 30, 2018 3:47:43 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 728.0
-八月 30, 2018 3:47:43 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 729.0
-八月 30, 2018 3:47:43 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 730.0
-八月 30, 2018 3:47:43 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 731.0
-八月 30, 2018 3:47:43 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 732.0
-八月 30, 2018 3:47:43 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 733.0
-八月 30, 2018 3:47:44 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 734.0
-八月 30, 2018 3:47:44 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 735.0
-八月 30, 2018 3:47:44 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 736.0
-八月 30, 2018 3:47:45 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 737.0
-八月 30, 2018 3:47:45 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 738.0
-八月 30, 2018 3:47:45 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 739.0
-八月 30, 2018 3:47:45 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 740.0
-八月 30, 2018 3:47:45 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 741.0
-八月 30, 2018 3:47:45 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 742.0
-八月 30, 2018 3:47:45 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 743.0
-八月 30, 2018 3:47:46 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 744.0
-八月 30, 2018 3:47:46 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 745.0
-八月 30, 2018 3:47:46 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 746.0
-八月 30, 2018 3:47:46 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 747.0
-八月 30, 2018 3:47:46 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 748.0
-八月 30, 2018 3:47:46 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 749.0
-八月 30, 2018 3:47:46 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 750.0
-八月 30, 2018 3:47:47 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 751.0
-八月 30, 2018 3:47:47 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 752.0
-八月 30, 2018 3:47:47 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 753.0
-八月 30, 2018 3:47:48 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 754.0
-八月 30, 2018 3:47:48 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 755.0
-八月 30, 2018 3:47:48 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 756.0
-八月 30, 2018 3:47:48 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 757.0
-八月 30, 2018 3:47:48 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 758.0
-八月 30, 2018 3:47:48 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 759.0
-八月 30, 2018 3:47:48 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 760.0
-八月 30, 2018 3:47:49 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 761.0
-八月 30, 2018 3:47:49 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 762.0
-八月 30, 2018 3:47:49 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 763.0
-八月 30, 2018 3:47:49 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 764.0
-八月 30, 2018 3:47:49 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 765.0
-八月 30, 2018 3:47:49 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 766.0
-八月 30, 2018 3:47:50 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 767.0
-八月 30, 2018 3:47:50 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 768.0
-八月 30, 2018 3:47:50 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 769.0
-八月 30, 2018 3:47:50 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 770.0
-八月 30, 2018 3:47:50 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 771.0
-八月 30, 2018 3:47:50 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 772.0
-八月 30, 2018 3:47:50 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 773.0
-八月 30, 2018 3:47:51 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 774.0
-八月 30, 2018 3:47:51 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 775.0
-八月 30, 2018 3:47:51 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 776.0
-八月 30, 2018 3:47:51 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 777.0
-八月 30, 2018 3:47:51 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 778.0
-八月 30, 2018 3:47:52 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 779.0
-八月 30, 2018 3:47:52 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 780.0
-八月 30, 2018 3:47:52 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 781.0
-八月 30, 2018 3:47:52 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 782.0
-八月 30, 2018 3:47:52 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 783.0
-八月 30, 2018 3:47:52 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 784.0
-八月 30, 2018 3:47:53 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 785.0
-八月 30, 2018 3:47:53 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 786.0
-八月 30, 2018 3:47:53 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 787.0
-八月 30, 2018 3:47:53 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 788.0
-八月 30, 2018 3:47:53 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 789.0
-八月 30, 2018 3:47:53 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 790.0
-八月 30, 2018 3:47:53 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 791.0
-八月 30, 2018 3:47:54 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 792.0
-八月 30, 2018 3:47:54 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 793.0
-八月 30, 2018 3:47:54 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 794.0
-八月 30, 2018 3:47:54 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 795.0
-八月 30, 2018 3:47:54 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 796.0
-八月 30, 2018 3:47:54 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 797.0
-八月 30, 2018 3:47:55 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 798.0
-八月 30, 2018 3:47:55 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 799.0
-八月 30, 2018 3:47:55 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 800.0
-八月 30, 2018 3:47:55 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 801.0
-八月 30, 2018 3:47:55 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 802.0
-八月 30, 2018 3:47:55 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 803.0
-八月 30, 2018 3:47:55 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 804.0
-八月 30, 2018 3:47:56 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 805.0
-八月 30, 2018 3:47:56 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 806.0
-八月 30, 2018 3:47:56 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 807.0
-八月 30, 2018 3:47:56 下午 repastcity3.main.ContextManager recordTicks
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
 信息: Iterations: 808.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 809.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 810.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 811.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 812.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 813.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 814.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 815.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 816.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 817.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 818.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 819.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 820.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 821.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 822.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 823.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 824.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 825.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 826.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 827.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 828.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 829.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 830.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 831.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 832.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 833.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 834.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 835.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 836.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 837.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 838.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 839.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 840.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 841.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 842.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 843.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 844.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 845.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 846.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 847.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 848.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 849.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 850.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 851.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 852.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 853.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 854.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 855.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 856.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 857.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 858.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 859.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 860.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 861.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 862.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 863.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 864.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 865.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 866.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 867.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 868.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 869.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 870.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 871.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 872.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 873.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 874.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 875.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 876.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 877.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 878.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 879.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 880.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 881.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 882.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 883.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 884.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 885.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 886.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 887.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 888.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 889.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 890.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 891.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 892.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 893.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 894.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 895.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 896.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 897.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 898.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 899.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 900.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 901.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 902.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 903.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 904.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 905.0
+九月 02, 2018 12:57:59 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 906.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 907.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 908.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 909.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 910.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 911.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 912.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 913.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 914.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 915.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 916.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 917.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 918.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 919.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 920.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 921.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 922.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 923.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 924.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 925.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 926.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 927.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 928.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 929.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 930.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 931.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 932.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 933.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 934.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 935.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 936.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 937.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 938.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 939.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 940.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 941.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 942.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 943.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 944.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 945.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 946.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 947.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 948.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 949.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 950.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 951.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 952.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 953.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 954.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 955.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 956.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 957.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 958.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 959.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 960.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 961.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 962.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 963.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 964.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 965.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 966.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 967.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 968.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 969.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 970.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 971.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 972.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 973.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 974.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 975.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 976.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 977.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 978.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 979.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 980.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 981.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 982.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 983.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 984.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 985.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 986.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 987.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 988.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 989.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 990.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 991.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 992.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 993.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 994.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 995.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 996.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 997.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 998.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 999.0
+九月 02, 2018 12:58:00 上午 repastcity3.main.ContextManager recordTicks
+信息: Iterations: 1000.0
