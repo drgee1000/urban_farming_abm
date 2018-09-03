@@ -8,7 +8,7 @@ import repastcity3.environment.food.Food;
 
 
 
-public abstract class FarmableLocation implements IAgent {
+public abstract class FarmableLocation extends Building implements IAgent {
 	// for farm data
 		protected double setupCost;
 		protected double dailyMaintenanceCost;

@@ -56,6 +56,7 @@ import repastcity3.environment.NetworkEdgeCreator;
 import repastcity3.environment.Residential;
 import repastcity3.environment.Restaurant;
 import repastcity3.environment.Road;
+import repastcity3.environment.School;
 import repastcity3.environment.Shoppingcenter;
 import repastcity3.environment.SpatialIndexManager;
 import repastcity3.environment.Substation;
@@ -66,6 +67,7 @@ import repastcity3.environment.contexts.JunctionContext;
 import repastcity3.environment.contexts.ResidentialContext;
 import repastcity3.environment.contexts.RestaurantContext;
 import repastcity3.environment.contexts.RoadContext;
+import repastcity3.environment.contexts.SchoolContext;
 import repastcity3.environment.contexts.ShoppingcenterContext;
 import repastcity3.environment.contexts.SubstationContext;
 import repastcity3.environment.contexts.FarmContext;
@@ -106,6 +108,12 @@ public class ContextManager implements ContextBuilder<Object> {
 
 	public static Context<Farm> farmContext;
 	public static Geography<Farm> farmProjection;
+
+	public static Context<School> schoolContext;
+	public static Geography<School> schoolProjection;
+
+	public static Context<Workplace> workplaceContext;
+	public static Geography<Workplace> workplaceProjection;
 
 	public static Context<Road> roadContext;
 	public static Geography<Road> roadProjection;
@@ -169,6 +177,30 @@ public class ContextManager implements ContextBuilder<Object> {
 			SpatialIndexManager.createIndex(residentialProjection, Residential.class);
 			LOGGER.log(Level.INFO, "Read " + residentialContext.getObjects(Residential.class).size()
 					+ " residentials from " + residentialFile);
+
+			// Create the school - context and geography projection
+			schoolContext = new SchoolContext();
+			schoolProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
+					GlobalVars.CONTEXT_NAMES.SCHOOL_GEOGRAPHY, schoolContext,
+					new GeographyParameters<School>(new SimpleAdder<School>()));
+			String schoolFile = gisDataDir + getProperty(GlobalVars.SchoolShapefile);
+			GISFunctions.readShapefile(School.class, schoolFile, schoolProjection, schoolContext);
+			mainContext.addSubContext(schoolContext);
+			SpatialIndexManager.createIndex(schoolProjection, School.class);
+			LOGGER.log(Level.INFO,
+					"Read " + schoolContext.getObjects(School.class).size() + " schools from " + schoolFile);
+
+			// Create the workplace - context and geography projection
+			workplaceContext = new WorkplaceContext();
+			workplaceProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
+					GlobalVars.CONTEXT_NAMES.WORKPLACE_GEOGRAPHY, workplaceContext,
+					new GeographyParameters<Workplace>(new SimpleAdder<Workplace>()));
+			String workplaceFile = gisDataDir + getProperty(GlobalVars.WorkplaceShapefile);
+			GISFunctions.readShapefile(Workplace.class, workplaceFile, workplaceProjection, workplaceContext);
+			mainContext.addSubContext(workplaceContext);
+			SpatialIndexManager.createIndex(workplaceProjection, Workplace.class);
+			LOGGER.log(Level.INFO, "Read " + workplaceContext.getObjects(Workplace.class).size() + " workplaces from "
+					+ workplaceFile);
 
 			// Create the Roads - context and geography
 			roadContext = new RoadContext();
@@ -239,7 +271,7 @@ public class ContextManager implements ContextBuilder<Object> {
 
 			AgentFactory agentFactory = new AgentFactory(agentDefn);
 			agentFactory.createAgents(agentContext);
-			
+
 		} catch (ParameterNotFoundException e) {
 			LOGGER.log(Level.SEVERE,
 					"Could not find the parameter which defines how agents should be "
@@ -251,7 +283,7 @@ public class ContextManager implements ContextBuilder<Object> {
 			LOGGER.log(Level.SEVERE, "", e);
 			return null;
 		}
-//		recordTicks();
+		// recordTicks();
 		// Create the schedule
 		createSchedule();
 
@@ -497,7 +529,7 @@ public class ContextManager implements ContextBuilder<Object> {
 	public static synchronized Iterable<Consumer> getAllAgents() {
 		return ContextManager.agentContext.getRandomObjects(Consumer.class, ContextManager.agentContext.size());
 	}
-	
+
 	public static synchronized Iterable<Farm> getFarmAgents() {
 		return ContextManager.farmContext.getRandomObjects(Farm.class, ContextManager.farmContext.size());
 	}

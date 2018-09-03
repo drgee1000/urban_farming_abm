@@ -7,6 +7,8 @@ import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.apache.commons.io.monitor.FileAlterationListener;
+
 import com.vividsolutions.jts.geom.Geometry;
 
 import repastcity3.agent.IAgent;
@@ -30,6 +32,7 @@ public abstract class GlobalVars {
 	public static final String BuildingsRoadsCoordsCache = "BuildingsRoadsCoordsCache";
 	public static final String BuildingsRoadsCache = "BuildingsRoadsCache";
 	public static final String SubstationShapefile = "SubstationShapefile";
+	public static final String SchoolShapefile="SchoolShapefile";
 	
 	
 	
@@ -110,6 +113,8 @@ public abstract class GlobalVars {
 		public static final String SUBSTATION_CONTEXT = "SubstationContext";
 		public static final String SUBSTATION_GEOGRAPHY = "SubstationGeography";
 		
+		public static final String SCHOOL_CONTEXT = "SchoolContext";
+		public static final String SCHOOL_GEOGRAPHY = "SchoolGeography";
 		
 		
 	
