@@ -36,6 +36,7 @@ public class DefaultFoodStock {
 				Food food=new Food(
 						record.get("name"),
 						record.get("type"),
+						Double.valueOf(record.get("avg_price")),
 						-1,
 						Double.valueOf(record.get("avg_price")),
 						-1,
@@ -78,6 +79,7 @@ public class DefaultFoodStock {
 			Food destFood=new Food(
 					srcFood.getName(),
 					srcFood.getType(),
+					srcFood.getCalorie(),
 					amount,
 					price,
 					productionCost,

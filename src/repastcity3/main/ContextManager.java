@@ -125,7 +125,7 @@ public class ContextManager implements ContextBuilder<Object> {
 	private static Context<Consumer> agentContext;
 	private static Geography<Consumer> agentGeography;
 
-	DataLogger dLogger;
+	public static DataLogger dLogger;
 
 	@Override
 	public Context<Object> build(Context<Object> con) {
