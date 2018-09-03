@@ -35,6 +35,11 @@ public class Helper {
 		}
 		return size;
 	}
+	
+	public static int getCurrentTick()
+	{
+		return (int)RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+	}
 
 	
 

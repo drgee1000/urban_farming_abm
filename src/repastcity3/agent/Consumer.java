@@ -17,6 +17,7 @@ import repastcity3.environment.Route;
 import repastcity3.environment.food.Food;
 import repastcity3.environment.food.FoodOrder;
 import repastcity3.main.ContextManager;
+import repastcity3.utilities.Helper;
 
 public class Consumer implements People {
 
@@ -62,7 +63,7 @@ public class Consumer implements People {
 		//System.out.println("step"+this.id);
 		if (this.health < -50) {
 			LOGGER.log(Level.FINE, "Agent " + this.id + " is dead.");
-			ContextManager.dLogger.recordDeath((int)RunEnvironment.getInstance().getCurrentSchedule().getTickCount(),this.id);
+			ContextManager.dLogger.recordDeath(Helper.getCurrentTick(),this.id);
 			ContextManager.getAgentContext().remove(this);
 			return;
 		}
