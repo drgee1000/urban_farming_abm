@@ -85,7 +85,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 		return this.identifier.equals(b.identifier);
 	}
 	
-	
+	@Override
 	public synchronized void produce() {
 		/*
 		 * TODO: use strategy for production (use preference list)
@@ -124,6 +124,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 
 	public synchronized void sell(FoodOrder order) {
 		HashMap<Food, Double> list = order.getList();
+//		double income=0;
 		list.forEach((food, amount) -> {
 			food.setAmount(food.getAmount() - amount);
 			this.fund += amount * food.getPrice();

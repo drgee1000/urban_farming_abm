@@ -26,5 +26,7 @@ public class FoodOrder {
 	public HashMap<Food, Double> getList() {
 		return list;
 	}
+	
+	
 
 }
