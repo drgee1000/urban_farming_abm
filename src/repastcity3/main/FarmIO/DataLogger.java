@@ -29,25 +29,19 @@ import repastcity3.environment.food.*;
 import repastcity3.exceptions.NoIdentifierException;
 
 public class DataLogger {
-	char RecordSeparator;
-	String fileName1;
 	String fileNameFarm;
 	String fileNameAgent;
-	String fileName4;
-	String fileName5;
+	String fileNameDeathRecord;
 
 	Gson gson;
 	Writer agentFileWriter;
 	Writer farmFileWriter;
-
+	Writer drFileWriter;
+	ArrayList<deathRecord> dRecords;
 	public DataLogger() throws IOException {
-		// RecordSeparator = '\n';
-		// fileName1 = "./Output/farm_calorie_production";
 		fileNameFarm = "./output/Farm";
-		fileNameAgent = "./output/agent";
-		// fileName4 = "./Output/agent_calorie_consumption";
-		// fileName5 = "./Output/agent_health";
-
+		fileNameAgent = "./output/Agent";
+		fileNameDeathRecord = "./output/Death";
 		Calendar c = Calendar.getInstance();
 		int year = c.get(Calendar.YEAR);
 		int month = c.get(Calendar.MONTH);
@@ -56,25 +50,24 @@ public class DataLogger {
 		int minute = c.get(Calendar.MINUTE);
 		int second = c.get(Calendar.SECOND);
 		String time = year + "_" + month + "_" + date + "_" + hour + "_" + minute + "_" + second;
-		// fileName1 = fileName1 + time + ".csv";
 		fileNameFarm = fileNameFarm + time + ".json";
 		fileNameAgent = fileNameAgent + time + ".json";
-		// fileName4 = fileName4 + time + ".csv";
-		// fileName5 = fileName5 + time + ".csv";
-		// File f = new File(fileName1);
+		fileNameDeathRecord = fileNameDeathRecord + time + ".json";
 		// f.createNewFile();
 		File f = new File(fileNameFarm);
 		f.createNewFile();
 		f = new File(fileNameAgent);
 		f.createNewFile();
-
+		f = new File(fileNameDeathRecord);
+		f.createNewFile();
+		
 		gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();
 		agentFileWriter = new FileWriter(fileNameAgent);
+		agentFileWriter.write('[');
 		farmFileWriter = new FileWriter(fileNameFarm);
-	}
-
-	public DataLogger(char s) {
-		RecordSeparator = s;
+		farmFileWriter.write('[');
+		drFileWriter = new FileWriter(fileNameDeathRecord);
+		dRecords =  new ArrayList<deathRecord>();
 	}
 
 	public <T> void recordData(IndexedIterable<T> agentList, int tick) throws IOException {
@@ -104,13 +97,27 @@ public class DataLogger {
 		// printDataToJsonFile
 		String farmJson = gson.toJson(farms);
 		farmFileWriter.write(farmJson);
+		farmFileWriter.write(',');
 		String agentJson = gson.toJson(agents);
 		agentFileWriter.write(agentJson);
+		agentFileWriter.write(',');
 	}
-
+	
+	public void recordDeath(int t, int i) {
+		
+		deathRecord dr = new deathRecord(t,i);
+		dRecords.add(dr);
+		
+	}
 	public void stopRecord() throws IOException {
+		System.out.println("total:" + dRecords.size());
+		String drJson = gson.toJson(dRecords);
+		drFileWriter.write(drJson);
+		agentFileWriter.write("[]]");
 		agentFileWriter.close();
+		farmFileWriter.write("[]]");
 		farmFileWriter.close();
+		drFileWriter.close();
 	}
 
 	public static class farm {
@@ -160,5 +167,14 @@ public class DataLogger {
 			health = a.getHealth();
 		}
 	}
-
+	public static class deathRecord {
+		@Expose()
+		int tick;
+		@Expose()
+		int id;
+		public deathRecord(int t, int i) {
+			tick = t;
+			id = i;
+		}
+	}
 }
