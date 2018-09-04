@@ -70,6 +70,7 @@ public class Route implements Cacheable {
 	private Coordinate origin;
 	private Residential destinationBuilding;
 	private Workplace destiationWorkplace;
+	private School destinationSchool;
 	private Shoppingcenter destinationShoppingcenter;
 	private Restaurant destinationRestaurant;
 	private Farm destinationFarm;
@@ -149,6 +150,11 @@ public class Route implements Cacheable {
 		this.destinationBuilding = destinationBuilding;
 	}
 	
+	public Route(Consumer agent, Coordinate destination, School destinationSchool) {
+		this.destination = destination;
+		this.agent = agent;
+		this.destinationSchool = destinationSchool;
+	}
 	public Route(Consumer agent, Coordinate destination, Workplace destinationWorkplace) {
 		this.destination = destination;
 		this.agent = agent;
