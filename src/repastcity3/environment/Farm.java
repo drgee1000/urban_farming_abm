@@ -3,6 +3,7 @@
  */
 package repastcity3.environment;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -134,7 +135,12 @@ public class Farm extends FarmableLocation implements FixedGeography {
 			count -= amount;
 		});
 		totalIncome = this.fund - totalIncome;
-		ContextManager.dLogger.recordSale(order,Helper.getCurrentTick(), totalIncome, this.identifier);
+		try {
+			ContextManager.dLogger.recordSale(order,Helper.getCurrentTick(), totalIncome, this.identifier);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		//let order be collected by GC 
 		order=null;
 	}
