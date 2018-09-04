@@ -18,6 +18,9 @@ import repastcity3.environment.food.Food;
 import repastcity3.environment.food.FoodOrder;
 import repastcity3.environment.food.Nutrition;
 import repastcity3.exceptions.NoIdentifierException;
+import repastcity3.main.ContextManager;
+import repastcity3.utilities.Helper;
+
 import static repastcity3.main.ContextManager.LOGGER;
 /**
  * @author CHAO LUO
@@ -124,12 +127,14 @@ public class Farm extends FarmableLocation implements FixedGeography {
 
 	public synchronized void sell(FoodOrder order) {
 		HashMap<Food, Double> list = order.getList();
-//		double income=0;
+		double totalIncome = this.fund;
 		list.forEach((food, amount) -> {
 			food.setAmount(food.getAmount() - amount);
 			this.fund += amount * food.getPrice();
 			count -= amount;
 		});
+		totalIncome = this.fund - totalIncome;
+		ContextManager.dLogger.recordSale(order,Helper.getCurrentTick(), totalIncome, this.identifier);
 		//let order be collected by GC 
 		order=null;
 	}

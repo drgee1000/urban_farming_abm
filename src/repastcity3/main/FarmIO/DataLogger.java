@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.commons.csv.CSVFormat;
@@ -104,10 +105,12 @@ public class DataLogger {
 	}
 	
 	public void recordDeath(int t, int i) {
-		
 		deathRecord dr = new deathRecord(t,i);
 		dRecords.add(dr);
-		
+	}
+	public void recordSale(FoodOrder foodOrder, int tick, double income, String id) {
+		saleRecord sr = new saleRecord(foodOrder, income, tick, id); 
+		System.out.println("farm" + sr.identifier + " sale income:" + sr.income + " tick: " + tick);
 	}
 	public void stopRecord() throws IOException {
 		System.out.println("total:" + dRecords.size());
@@ -175,6 +178,22 @@ public class DataLogger {
 		public deathRecord(int t, int i) {
 			tick = t;
 			id = i;
+		}
+	}
+	public static class saleRecord {
+		@Expose()
+		HashMap<Food, Double> list;
+		@Expose()
+		double income;
+		@Expose()
+		int tick;
+		@Expose()
+		String identifier;
+		public saleRecord (FoodOrder order, double i, int t, String id){
+			identifier = id;
+			list = order.getList();
+			income = i;
+			tick = t;
 		}
 	}
 }
