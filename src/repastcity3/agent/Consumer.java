@@ -30,6 +30,7 @@ public class Consumer implements People {
 	private Coordinate origin;
 	private Coordinate destination;
 	private Farm farm;
+	private Residential residential;
 	private int flag; // whether it has got enough food in one farm
 
 	private boolean goforEat = false;
@@ -39,7 +40,7 @@ public class Consumer implements People {
 	private double caloryConsumption;
 	private double caloryProduction;
 	private double mealEnergy;
-	private double dealthThreshold;
+	private double deathThreshold;
 
 	private static int uniqueID = 0;
 
@@ -55,8 +56,9 @@ public class Consumer implements People {
 		this.health = random.nextInt(100)+200;
 		this.mealEnergy = random.nextInt(200)+300;
 		this.healthThreshold = 0.5*mealEnergy;
-		this.dealthThreshold = -9*mealEnergy;
+		this.deathThreshold = -9*mealEnergy;
 		this.caloryConsumption = mealEnergy/50;
+		this.residential = ContextManager.residentialContext.getRandomObject();
 		setPurpose();
 	}
 
@@ -68,17 +70,15 @@ public class Consumer implements People {
 
 	@Override
 	public void step() throws Exception {
-		// System.out.println(this.health);
-		//System.out.println(this.id +" "+ health+" "+this.goforEat);
 		LOGGER.log(Level.FINE, "Agent " + this.id + " is stepping.");
-		//System.out.println("step"+this.id);
-		if (this.health < dealthThreshold) {
+		//System.out.println(getHour());
+		if (this.health < deathThreshold) {
 			LOGGER.log(Level.FINE, "Agent " + this.id + " is dead.");
 			ContextManager.dLogger.recordDeath(Helper.getCurrentTick(),this.id);
 			ContextManager.getAgentContext().remove(this);
 			return;
 		}
-		if (isEatingTime(this) && this.health <= healthThreshold) {
+		if (isEatingTime() && this.health <= healthThreshold) {
 			if (!this.goforEat) {
 				this.goforEat = true;
 				farm = this.findNearestFarm();
@@ -159,13 +159,12 @@ public class Consumer implements People {
 				break;
 			}
 			case 3: {
-				//System.err.println("enter purpose");
+				
 				if (this.route == null) {
-					Residential R = ContextManager.residentialContext.getRandomObject();
 					this.route = new Route(this,
-							ContextManager.residentialProjection.getGeometry(R).getCentroid().getCoordinate(), R);
+							ContextManager.residentialProjection.getGeometry(residential).getCentroid().getCoordinate(), residential);
 					this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
-					this.destination = ContextManager.residentialProjection.getGeometry(R).getCentroid().getCoordinate();
+					this.destination = ContextManager.residentialProjection.getGeometry(residential).getCentroid().getCoordinate();
 				}
 
 				if (!this.route.atDestination()) {
@@ -183,7 +182,11 @@ public class Consumer implements People {
 			}
 
 		}
-		this.health -= caloryConsumption;
+		
+		if(isSleepingTime())
+			this.health -= caloryConsumption/10;
+		else
+			this.health -= caloryConsumption;
 		
 	}
 
@@ -342,15 +345,27 @@ public class Consumer implements People {
 			return foodOrder;
 	}
 	
-	public boolean isEatingTime(Consumer c) {
-		int tick = Helper.getCurrentTick();
-		int day = tick/144;
-		int hour = (tick-day*144)/6;
+	public boolean isEatingTime() {
+		int hour = getHour();
 		if((hour>=6 && hour<=8) || (hour>=11 && hour<=13) || (hour>=17 && hour<=19)) {
 			return true;
 		}else {
 			return false;
 		}
+	}
+	public boolean isSleepingTime() {
+		int hour = Helper.getCurrentTick();
+		if(hour >= 21 || (hour>=0 && hour<=6)) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	public int getHour() {
+		int tick = Helper.getCurrentTick();
+		int day = tick/144;
+		int hour = (tick-day*144)/6;
+		return hour;
 	}
 
 }
