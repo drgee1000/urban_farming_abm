@@ -11,10 +11,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
+import org.hsqldb.lib.Iterator;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
@@ -32,16 +36,19 @@ public class DataLogger {
 	String fileNameFarm;
 	String fileNameAgent;
 	String fileNameDeathRecord;
+	String fileNameSales;
 
 	Gson gson;
 	Writer agentFileWriter;
 	Writer farmFileWriter;
 	Writer drFileWriter;
+	Writer salesFileWriter;
 	ArrayList<deathRecord> dRecords;
 	public DataLogger() throws IOException {
 		fileNameFarm = "./output/Farm";
 		fileNameAgent = "./output/Agent";
 		fileNameDeathRecord = "./output/Death";
+		fileNameSales = "./output/Sales";
 		Calendar c = Calendar.getInstance();
 		int year = c.get(Calendar.YEAR);
 		int month = c.get(Calendar.MONTH);
@@ -53,6 +60,7 @@ public class DataLogger {
 		fileNameFarm = fileNameFarm + time + ".json";
 		fileNameAgent = fileNameAgent + time + ".json";
 		fileNameDeathRecord = fileNameDeathRecord + time + ".json";
+		fileNameSales = fileNameSales + time + ".json";
 		// f.createNewFile();
 		File f = new File(fileNameFarm);
 		f.createNewFile();
@@ -60,12 +68,16 @@ public class DataLogger {
 		f.createNewFile();
 		f = new File(fileNameDeathRecord);
 		f.createNewFile();
+		f = new File(fileNameSales);
+		f.createNewFile();
 		
 		gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();
 		agentFileWriter = new FileWriter(fileNameAgent);
 		agentFileWriter.write('[');
 		farmFileWriter = new FileWriter(fileNameFarm);
 		farmFileWriter.write('[');
+		salesFileWriter = new FileWriter(fileNameSales);
+		salesFileWriter.write('[');
 		drFileWriter = new FileWriter(fileNameDeathRecord);
 		dRecords =  new ArrayList<deathRecord>();
 	}
@@ -104,10 +116,16 @@ public class DataLogger {
 	}
 	
 	public void recordDeath(int t, int i) {
-		
 		deathRecord dr = new deathRecord(t,i);
 		dRecords.add(dr);
+	}
+	public void recordSale (FoodOrder foodOrder, int tick, double income, String id) throws IOException{
+		saleRecord sr = new saleRecord(foodOrder, income, tick, id);
 		
+		//System.out.println("farm" + sr.identifier + " sale income:" + sr.income + " tick: " + tick);
+		String salesJson = gson.toJson(sr);
+		salesFileWriter.write(salesJson);
+		salesFileWriter.write(',');
 	}
 	public void stopRecord() throws IOException {
 		System.out.println("total:" + dRecords.size());
@@ -118,6 +136,8 @@ public class DataLogger {
 		farmFileWriter.write("[]]");
 		farmFileWriter.close();
 		drFileWriter.close();
+		salesFileWriter.write("[]]");
+		salesFileWriter.close();
 	}
 
 	public static class farm {
@@ -175,6 +195,30 @@ public class DataLogger {
 		public deathRecord(int t, int i) {
 			tick = t;
 			id = i;
+		}
+	}
+	public static class saleRecord {
+		
+		@Expose()
+		double income;
+		@Expose()
+		int tick;
+		@Expose()
+		String identifier;
+		@Expose()
+		HashMap<String, Double> order;
+		public saleRecord (FoodOrder foodOrder, double i, int t, String id){
+			identifier = id;
+			income = i;
+			tick = t;
+			Set<Food> fSet = foodOrder.getList().keySet();
+			order = new HashMap<String, Double>();
+			java.util.Iterator<Food> iter = fSet.iterator();
+			while(iter.hasNext()) {
+				Food f = (Food) iter.next();
+				Double val = foodOrder.getList().get(f);
+				order.put(f.getName(), val);
+			}
 		}
 	}
 }

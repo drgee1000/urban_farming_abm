@@ -12,6 +12,8 @@
     <string>SettingsRegistryId</string>
     <string>Repast.registry</string>
     <string>LastLoadedScenario</string>
+
     <string>/Users/gongyue/urban_farming_abm/repastcity3.rs</string>
+
   </hashtable>
 </simphony.settings.SettingsRegistry>
