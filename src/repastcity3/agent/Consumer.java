@@ -3,17 +3,18 @@ package repastcity3.agent;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.vividsolutions.jts.geom.Coordinate;
 
-import repast.simphony.engine.environment.RunEnvironment;
 import repastcity3.environment.Farm;
 import repastcity3.environment.Residential;
 
 import repastcity3.environment.Route;
-
+import repastcity3.environment.School;
+import repastcity3.environment.Workplace;
 import repastcity3.environment.food.Food;
 import repastcity3.environment.food.FoodOrder;
 import repastcity3.main.ContextManager;
@@ -34,31 +35,35 @@ public class Consumer implements People {
 	private boolean goforEat = false;
 	private double defaultHealth = 200;
 	private double health = 200;
-	private double healthThreshold = 100;
-	private double caloryConsumption = 5;
+	private double healthThreshold = 150;
+	private double caloryConsumption = 1;
 	private double caloryProduction;
 
 	private static int uniqueID = 0;
 
 	private double thredis = 2; // In kilometer;
 	private int id;
-	private int type;
+	private int type = 3;
 
 	private int income;
 
 	public Consumer() {
 		this.id = uniqueID++;
+		Random random = new Random();
+		this.health = random.nextInt(100)+200;
 		setPurpose();
-
 	}
 
 	public int setPurpose() {
-		return 4;
+		Random random = new Random();
+		this.type = random.nextInt(3)+1;
+		return type;
 	}
 
 	@Override
 	public void step() throws Exception {
 		// System.out.println(this.health);
+		//System.out.println(this.id +" "+ health+" "+this.goforEat);
 		LOGGER.log(Level.FINE, "Agent " + this.id + " is stepping.");
 		//System.out.println("step"+this.id);
 		if (this.health < -50) {
@@ -78,14 +83,20 @@ public class Consumer implements People {
 						ContextManager.farmProjection.getGeometry(farm).getCentroid().getCoordinate(), farm);
 				this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
 				this.destination = ContextManager.farmProjection.getGeometry(farm).getCentroid().getCoordinate();
+			}else {
+				farm = ContextManager.farmContext.getRandomObject();
+				this.route = new Route(this,
+						ContextManager.farmProjection.getGeometry(farm).getCentroid().getCoordinate(), farm);
+				this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
+				this.destination = ContextManager.farmProjection.getGeometry(farm).getCentroid().getCoordinate();
 			}
 			if (!this.route.atDestination()) {
 				this.route.travel();
-				this.health = this.health - caloryConsumption;
+				
 			} else if (this.route.atDestination()) {
 				// LOGGER.info("Agent" + this.id + " health before eating is" + this.health);
 				FoodOrder foodOrder = this.selectFood(farm);
-				farm.sell(foodOrder);
+				//farm.sell(foodOrder);
 				if (this.health > this.defaultHealth) {
 					flag = 1;
 					this.goforEat = false;
@@ -101,20 +112,18 @@ public class Consumer implements People {
 			}
 		} else {
 			switch (type) {
-			case 4: {
-
+			case 1: {
+				//System.err.println("enter purpose");
 				if (this.route == null) {
-					Farm R = ContextManager.farmContext.getRandomObject();
-
+					School S = ContextManager.schoolContext.getRandomObject();
 					this.route = new Route(this,
-							ContextManager.farmProjection.getGeometry(R).getCentroid().getCoordinate(), R);
+							ContextManager.schoolProjection.getGeometry(S).getCentroid().getCoordinate(), S);
 					this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
-					this.destination = ContextManager.farmProjection.getGeometry(R).getCentroid().getCoordinate();
+					this.destination = ContextManager.schoolProjection.getGeometry(S).getCentroid().getCoordinate();
 				}
 
 				if (!this.route.atDestination()) {
 					this.route.travel();
-					this.health -= caloryConsumption;
 
 				} else {
 					this.route = null;
@@ -123,6 +132,47 @@ public class Consumer implements People {
 
 				break;
 			}
+			case 2: {
+				//System.err.println("enter purpose");
+				if (this.route == null) {
+					Workplace W = ContextManager.workplaceContext.getRandomObject();
+					this.route = new Route(this,
+							ContextManager.workplaceProjection.getGeometry(W).getCentroid().getCoordinate(), W);
+					this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
+					this.destination = ContextManager.workplaceProjection.getGeometry(W).getCentroid().getCoordinate();
+				}
+
+				if (!this.route.atDestination()) {
+					this.route.travel();
+
+				} else {
+					this.route = null;
+					setPurpose();
+				}
+
+				break;
+			}
+			case 3: {
+				//System.err.println("enter purpose");
+				if (this.route == null) {
+					Residential R = ContextManager.residentialContext.getRandomObject();
+					this.route = new Route(this,
+							ContextManager.residentialProjection.getGeometry(R).getCentroid().getCoordinate(), R);
+					this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
+					this.destination = ContextManager.residentialProjection.getGeometry(R).getCentroid().getCoordinate();
+				}
+
+				if (!this.route.atDestination()) {
+					this.route.travel();
+
+				} else {
+					this.route = null;
+					setPurpose();
+				}
+
+				break;
+			}
+			
 
 			}
 
@@ -247,20 +297,32 @@ public class Consumer implements People {
 	}
 
 	public FoodOrder selectFood(Farm farm) {
+			//System.err.println("enter select food");
 			FoodOrder foodOrder = new FoodOrder();
-			int iter = 0;
-			int maxIter = 50;
-			while (health <= defaultHealth && farm.isAvailable() && iter < maxIter) {
-				iter++;
-				List<Food> stock = farm.getStock();
+			
+			List<Food> stock = farm.getStock();
+			int count = 0;
+			for(int i=0; i<stock.size(); ++i) {
+				count += stock.get(i).getAmount();
+			}
+			while (health <= defaultHealth && count>0 ) {
+				
+				count = 0;
+				for(int i=0; i<stock.size(); ++i) {
+					count += stock.get(i).getAmount();
+				}
+				//System.err.println(this.id+" "+count);
+			
 				int len = stock.size();
 				//Collections.sort(stock);
 				for (int i=0; i<len; i++) {
-					
 					Food f = stock.get(i);
+					
 					if (f.getAmount() > 0) {
 						// System.out.println("enter final if");
 						foodOrder.addOrder(f, 1);
+						f.setAmount(f.getAmount()-1);
+						stock.set(i, f);
 						// health += f.getCaboHydrate();
 						health += 20;
 						if (health > defaultHealth)
@@ -269,7 +331,7 @@ public class Consumer implements People {
 				}
 				
 			}
-			
+			farm.sell(foodOrder);
 			return foodOrder;
 		
 		
