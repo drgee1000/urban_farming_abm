@@ -3,29 +3,32 @@ package repastcity3.environment.food;
 import com.google.gson.annotations.Expose;
 
 public class Food implements Comparable<Food>{
-	@Expose()
+	
 	private String name;
-	@Expose()
+	
 	private String type;//TODO change to enum
-	@Expose()
+	
 	private double amount;
-	@Expose()
+	
 	private double productionCost;
 	
 	private Nutrition nutrition;
-	@Expose()
+	
 	private double price;
 	// unit: tick
-	@Expose()
+	
+	private double calorie;
+	
 	private double productionTime;
-	@Expose()
+	
 	private double expireTime;
 	
-	public Food(String name, String type, double amount,double price, double productionCost,Nutrition nutrition, 
+	public Food(String name, String type, double calorie,double amount,double price, double productionCost,Nutrition nutrition, 
 			 double productionTime, double expireTime) {
 		super();
 		this.name = name;
 		this.type = type;
+		this.calorie=calorie;
 		this.amount = amount;
 		this.nutrition=nutrition;
 		this.productionCost = productionCost;
@@ -35,6 +38,15 @@ public class Food implements Comparable<Food>{
 	}
 	
 	public Food() {
+	}
+	
+
+	public double getCalorie() {
+		return calorie;
+	}
+
+	public void setCalorie(double calorie) {
+		this.calorie = calorie;
 	}
 
 	public double getPrice() {

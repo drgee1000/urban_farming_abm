@@ -5,6 +5,7 @@ import java.util.List;
 
 import repastcity3.agent.IAgent;
 import repastcity3.environment.food.Food;
+import repastcity3.environment.food.ProductionList;
 
 
 
@@ -14,7 +15,9 @@ public abstract class FarmableLocation extends Building implements IAgent {
 		protected double dailyMaintenanceCost;
 		protected double fund;
 		protected List<Food> stock;
-		public abstract void produce();
+		protected ProductionList productionList;
+		
+		public  abstract void produce();
 		
 		public FarmableLocation(double setupCost, double dailyMaintenanceCost, double fund,
 				List<Food> stock) {
