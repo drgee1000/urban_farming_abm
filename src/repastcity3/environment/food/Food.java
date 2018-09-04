@@ -3,9 +3,9 @@ package repastcity3.environment.food;
 import com.google.gson.annotations.Expose;
 
 public class Food implements Comparable<Food>{
-	
+	@Expose()
 	private String name;
-	
+	@Expose()
 	private String type;//TODO change to enum
 	
 	private double amount;
