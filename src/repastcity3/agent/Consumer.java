@@ -35,9 +35,11 @@ public class Consumer implements People {
 	private boolean goforEat = false;
 	private double defaultHealth = 200;
 	private double health = 200;
-	private double healthThreshold = 150;
-	private double caloryConsumption = 1;
+	private double healthThreshold;
+	private double caloryConsumption;
 	private double caloryProduction;
+	private double mealEnergy;
+	private double dealthThreshold;
 
 	private static int uniqueID = 0;
 
@@ -51,6 +53,10 @@ public class Consumer implements People {
 		this.id = uniqueID++;
 		Random random = new Random();
 		this.health = random.nextInt(100)+200;
+		this.mealEnergy = random.nextInt(200)+300;
+		this.healthThreshold = 0.5*mealEnergy;
+		this.dealthThreshold = -9*mealEnergy;
+		this.caloryConsumption = mealEnergy/50;
 		setPurpose();
 	}
 
@@ -66,13 +72,13 @@ public class Consumer implements People {
 		//System.out.println(this.id +" "+ health+" "+this.goforEat);
 		LOGGER.log(Level.FINE, "Agent " + this.id + " is stepping.");
 		//System.out.println("step"+this.id);
-		if (this.health < -50) {
+		if (this.health < dealthThreshold) {
 			LOGGER.log(Level.FINE, "Agent " + this.id + " is dead.");
 			ContextManager.dLogger.recordDeath(Helper.getCurrentTick(),this.id);
 			ContextManager.getAgentContext().remove(this);
 			return;
 		}
-		if (this.health < this.healthThreshold) {
+		if (isEatingTime(this) && this.health <= healthThreshold) {
 			if (!this.goforEat) {
 				this.goforEat = true;
 				farm = this.findNearestFarm();
@@ -96,8 +102,8 @@ public class Consumer implements People {
 			} else if (this.route.atDestination()) {
 				// LOGGER.info("Agent" + this.id + " health before eating is" + this.health);
 				FoodOrder foodOrder = this.selectFood(farm);
-				//farm.sell(foodOrder);
-				if (this.health > this.defaultHealth) {
+				
+				if (this.health > this.healthThreshold) {
 					flag = 1;
 					this.goforEat = false;
 					this.route = null;
@@ -301,11 +307,12 @@ public class Consumer implements People {
 			FoodOrder foodOrder = new FoodOrder();
 			
 			List<Food> stock = farm.getStock();
+			int CaloryGet = 0;
 			int count = 0;
 			for(int i=0; i<stock.size(); ++i) {
 				count += stock.get(i).getAmount();
 			}
-			while (health <= defaultHealth && count>0 ) {
+			while ((CaloryGet <= this.mealEnergy||this.health < healthThreshold) && count>0 ) {
 				
 				count = 0;
 				for(int i=0; i<stock.size(); ++i) {
@@ -324,18 +331,26 @@ public class Consumer implements People {
 						f.setAmount(f.getAmount()-1);
 						stock.set(i, f);
 						// health += f.getCaboHydrate();
-						health += 20;
-						if (health > defaultHealth)
-							break;
+						health += f.getCalorie();
+						CaloryGet += f.getCalorie();
+						
 					}
 				}
 				
 			}
 			farm.sell(foodOrder);
 			return foodOrder;
-		
-		
-
+	}
+	
+	public boolean isEatingTime(Consumer c) {
+		int tick = Helper.getCurrentTick();
+		int day = tick/144;
+		int hour = (tick-day*144)/6;
+		if((hour>=6 && hour<=8) || (hour>=11 && hour<=13) || (hour>=17 && hour<=19)) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 
 }

@@ -33,7 +33,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 
 	public Farm() {
 		//double setupCost,double dailyMaintenanceCost, double fund,List<Food> stock
-		super(1000, 100, 10000, new Vector<Food>());
+		super(50000, 100, 1000000, new Vector<Food>());
 		this.agents = new ArrayList<IAgent>();
 		this.count = 0;
 		initStock();
