@@ -7,7 +7,7 @@ public class Food implements Comparable<Food>{
 	private String name;
 	@Expose()
 	private String type;//TODO change to enum
-	
+	@Expose()
 	private double amount;
 	
 	private double productionCost;

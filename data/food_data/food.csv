@@ -1,7 +1,7 @@
 name,type,avg_price,carbohydrate,protein,lipid,water,vitamins,minerals,calorie
-"potato", "staple",3,10, 12, 22, 44, 33, 22,76
-"rice", "staple",3,44, 0, 0, 10, 0, 0,116
-"cabbage", "vegatable",3.5,10, 3, 0, 10, 15, 5
-"beaf", "meat",50,25, 20, 20, 5, 10, 5,125
+"potato","staple",3,10, 12, 22, 44, 33, 22,76
+"rice","staple",3,44, 0, 0, 10, 0, 0,116
+"cabbage","vegatable",3.5,10, 3, 0, 10, 15, 5,12
+"beaf","meat",50,25, 20, 20, 5, 10, 5,125
 "pork","meat",15,25, 10, 20, 5, 5, 3,143
 "milk","milk",25,25, 5, 15, 25, 10, 5,54
