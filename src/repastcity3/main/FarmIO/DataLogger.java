@@ -175,6 +175,8 @@ public class DataLogger {
 
 	public static class agent {
 		@Expose()
+		String id;
+		@Expose()
 		int tick;
 		@Expose()
 		double caloryConsumption;
@@ -182,6 +184,7 @@ public class DataLogger {
 		double health;
 
 		public agent(int t, Consumer a) {
+			id = a.toString();
 			tick = t;
 			caloryConsumption = a.getCaloryConsumption();
 			health = a.getHealth();
