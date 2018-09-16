@@ -3,16 +3,63 @@ package repastcity3.environment;
 import java.util.HashMap;
 import java.util.List;
 
+import repastcity3.agent.IAgent;
 import repastcity3.environment.food.Food;
+import repastcity3.environment.food.ProductionList;
 
 
 
-public abstract class FarmableLocation {
+public abstract class FarmableLocation extends Building implements IAgent {
 	// for farm data
 		protected double setupCost;
-		protected double productionCost;
 		protected double dailyMaintenanceCost;
 		protected double fund;
 		protected List<Food> stock;
-		public abstract void product();
+		protected ProductionList productionList;
+		
+		public  abstract void produce();
+		
+		public FarmableLocation(double setupCost, double dailyMaintenanceCost, double fund,
+				List<Food> stock) {
+			this.setupCost = setupCost;
+			this.dailyMaintenanceCost = dailyMaintenanceCost;
+			this.fund = fund;
+			this.stock = stock;
+		}
+
+		public double getSetupCost() {
+			return setupCost;
+		}
+
+		public void setSetupCost(double setupCost) {
+			this.setupCost = setupCost;
+		}
+
+		public double getDailyMaintenanceCost() {
+			return dailyMaintenanceCost;
+		}
+
+		public void setDailyMaintenanceCost(double dailyMaintenanceCost) {
+			this.dailyMaintenanceCost = dailyMaintenanceCost;
+		}
+
+		public double getFund() {
+			return fund;
+		}
+
+		public void setFund(double fund) {
+			this.fund = fund;
+		}
+
+		public List<Food> getStock() {
+			return stock;
+		}
+
+		public void setStock(List<Food> stock) {
+			this.stock = stock;
+		}
+		
+	
+		
+		
 }

@@ -127,6 +127,34 @@ class ThreadController implements Runnable {
 				}
 			} // while !freeCPU
 		} // for burglars
+		
+		for (IAgent b : ContextManager.getFarmAgents()) {
+
+			// Find a free cpu to exectue on
+			boolean foundFreeCPU = false; // Determine if there are no free CPUs
+											// so thread can wait for one to
+											// become free
+			while (!foundFreeCPU) {
+				synchronized (this) {
+					// System.out.println("ThreadController looking for free cpu for burglar "+b.toString()+", "+Arrays.toString(cpuStatus));
+					cpus: for (int i = 0; i < this.numCPUs; i++) {
+						if (this.cpuStatus[i]) {
+							// Start a new thread on the free CPU and set it's
+							// status to false
+							// System.out.println("ThreadController running burglar "+b.toString()+" on cpu "+i+". ");
+							foundFreeCPU = true;
+							this.cpuStatus[i] = false;
+							(new Thread(new BurglarThread(this, i, b))).start();
+							break cpus; // Stop looping over CPUs, have found a
+										// free one for this burglar
+						}
+					} // for cpus
+					if (!foundFreeCPU) {
+						this.waitForBurglarThread();
+					} // if !foundFreeCPU
+				}
+			} // while !freeCPU
+		} // for burglars
 
 		// System.out.println("ThreadController finished looping burglars");
 
@@ -202,6 +230,7 @@ class BurglarThread implements Runnable {
 		this.theburglar = b;
 		// this.id = BurglarThread.uniqueID++;
 	}
+	
 	@Override
 	public void run() {
 		// System.out.println("BurglarThread "+id+" stepping burglar "+this.theburglar.toString()+" on CPU "+this.cpuNumber);

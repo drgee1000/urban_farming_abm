@@ -4,10 +4,10 @@
 
   <skipIfNotSupported/>
   
-  <programGroup defaultName="repastcity3" location="StartMenu"/>
+  <programGroup defaultName="urban_farming_abm" location="StartMenu"/>
   
   <shortcut
-     name="repastcity3"
+     name="urban_farming_abm"
      programGroup="yes"
      desktop="no"
      applications="no"
@@ -17,7 +17,7 @@
      commandLine=""
      workingDirectory="$INSTALL_PATH"
      description="Model"
-     iconFile="$INSTALL_PATH\repastcity3\icons\model.bmp"
+     iconFile="$INSTALL_PATH\urban_farming_abm\icons\model.bmp"
      iconIndex="0"
      initialState="noShow">
      <createForPack name="Model"/>
@@ -30,7 +30,7 @@
      applications="no"
      startMenu="no"
      startup="no"
-     target="$INSTALL_PATH\repastcity3\docs\index.html"
+     target="$INSTALL_PATH\urban_farming_abm\docs\index.html"
      commandLine=""
 	 iconFile="%SystemRoot%\system32\SHELL32.dll"
      iconIndex="23" 
@@ -40,7 +40,7 @@
   </shortcut>
   
   <shortcut
-     name="repastcity3 Uninstaller"
+     name="urban_farming_abm Uninstaller"
      programGroup="yes"
      desktop="no"
      applications="no"

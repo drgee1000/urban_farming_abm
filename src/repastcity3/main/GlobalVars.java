@@ -3,12 +3,16 @@ package repastcity3.main;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import org.apache.commons.io.monitor.FileAlterationListener;
 
 import com.vividsolutions.jts.geom.Geometry;
 
 import repastcity3.agent.IAgent;
+import repastcity3.agent.People;
 import repastcity3.environment.Route;
 
 public abstract class GlobalVars {
@@ -27,10 +31,8 @@ public abstract class GlobalVars {
 	public static final String CandidateShapefile = "CandidateShapefile";
 	public static final String BuildingsRoadsCoordsCache = "BuildingsRoadsCoordsCache";
 	public static final String BuildingsRoadsCache = "BuildingsRoadsCache";
-	public static final String Candidate1Shapefile = "Candidate1Shapefile";
-	public static final String Candidate2Shapefile = "Candidate2Shapefile";
-	public static final String Candidate3Shapefile = "Candidate3Shapefile";
 	public static final String SubstationShapefile = "SubstationShapefile";
+	public static final String SchoolShapefile="SchoolShapefile";
 	
 	
 	
@@ -105,21 +107,14 @@ public abstract class GlobalVars {
 		public static final String RESTAURANT_CONTEXT = "RestaurantContext";
 		public static final String RESTAURANT_GEOGRAPHY = "RestaurantGeography";
 		
-		public static final String CANDIDATE1_CONTEXT = "Candidate1Context";
-		public static final String CANDIDATE1_GEOGRAPHY = "Candidate1Geography";
-		
-		public static final String CANDIDATE2_CONTEXT = "Candidate2Context";
-		public static final String CANDIDATE2_GEOGRAPHY = "Candidate2Geography";
-		
-		public static final String CANDIDATE3_CONTEXT = "Candidate3Context";
-		public static final String CANDIDATE3_GEOGRAPHY = "Candidate3Geography";
-		
 		public static final String Farm_CONTEXT = "FarmContext";
 		public static final String Farm_GEOGRAPHY = "FarmGeography";
 		
 		public static final String SUBSTATION_CONTEXT = "SubstationContext";
 		public static final String SUBSTATION_GEOGRAPHY = "SubstationGeography";
 		
+		public static final String SCHOOL_CONTEXT = "SchoolContext";
+		public static final String SCHOOL_GEOGRAPHY = "SchoolGeography";
 		
 		
 	
@@ -131,7 +126,7 @@ public abstract class GlobalVars {
 		// This variable is used by NetworkEdge.getWeight() function so that it knows what travel options
 		// are available to the agent (e.g. has a car). Can't be passed as a parameter because NetworkEdge.getWeight()
 		// must override function in RepastEdge because this is the one called by ShortestPath.
-		public static IAgent currentAgent = null;
+		public static People currentAgent = null;
 		public static Object currentBurglarLock = new Object();
 
 		public static final String WALK = "walk";

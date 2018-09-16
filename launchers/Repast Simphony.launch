@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+
     <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
         <listEntry value="/urban_farming_abm"/>
     </listAttribute>
@@ -23,4 +24,5 @@
     <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="urban_farming_abm"/>
     <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Xss10M -Xmx400M"/>
     <stringAttribute key="org.eclipse.jdt.launching.WORKING_DIRECTORY" value="${eclipse_home}/plugins/repast.simphony.runtime_${REPAST_VERSION}"/>
+
 </launchConfiguration>

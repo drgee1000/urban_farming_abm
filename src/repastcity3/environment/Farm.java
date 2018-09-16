@@ -3,93 +3,78 @@
  */
 package repastcity3.environment;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Vector;
+import java.util.logging.Level;
 
 import com.vividsolutions.jts.geom.Coordinate;
 
-import cern.jet.random.Uniform;
-import jdk.nashorn.internal.objects.annotations.Where;
 import repast.simphony.engine.schedule.ScheduledMethod;
-import repast.simphony.random.RandomHelper;
-import repastcity3.agent.DefaultAgent;
 import repastcity3.agent.IAgent;
+import repastcity3.environment.food.DefaultFoodStock;
 import repastcity3.environment.food.Food;
-import repastcity3.environment.food.FoodConvertor;
+import repastcity3.environment.food.FoodOrder;
+import repastcity3.environment.food.Nutrition;
 import repastcity3.exceptions.NoIdentifierException;
+import repastcity3.main.ContextManager;
+import repastcity3.utilities.Helper;
 
+import static repastcity3.main.ContextManager.LOGGER;
 /**
  * @author CHAO LUO
  *
  */
 public class Farm extends FarmableLocation implements FixedGeography {
 
-	/** A list of agents who stay here */
-
-	private List<IAgent> agents;
-
-	/** A identifier for this Farm */
-
-	private String identifier;
-
-	/**
-	 * The coordinates of the Farm. This is also stored by the projection that
-	 * contains this Building but it is useful to have it here too. As they will
-	 * never change (buildings don't move) we don't need to worry about keeping them
-	 * in sync with the projection.
-	 */
-
-	private Coordinate coords;
-
+	
+	// amount of all food
 	private double count;
 
+	
+
 	public Farm() {
+		//double setupCost,double dailyMaintenanceCost, double fund,List<Food> stock
+		super(50000, 100, 1000000, new Vector<Food>());
 		this.agents = new ArrayList<IAgent>();
-		super.stock = new ArrayList<Food>();
 		this.count = 0;
-		init();
+		initStock();
 	}
+	
+	
 
-	private void init() {
-		// int foodCount = RandomHelper.getUniform().nextInt();
-		Food potato = new Food("potato", "Staple", 15, 10, 800, 0.25, 25);
-		stock.add(potato);
-		count += 15;
-	}
-
-	@Override
-	public Coordinate getCoords() {
-		return this.coords;
-	}
-
-	@Override
-	public void setCoords(Coordinate c) {
-		this.coords = c;
-
-	}
-
-	public String getIdentifier() throws NoIdentifierException {
-		if (this.identifier == null) {
-			throw new NoIdentifierException("This Farm has no identifier. This can happen "
-					+ "when roads are not initialised correctly (e.g. there is no attribute "
-					+ "called 'identifier' present in the shapefile used to create this Road)");
-		} else {
-			return identifier;
+	private void initStock() {
+		this.stock = DefaultFoodStock.getRandomFoodList();
+		for (Food food : stock) {
+			count += food.getAmount();
 		}
 	}
 
-	public void setIdentifier(String id) {
-		this.identifier = id;
+	
+	@Override
+	public void step() throws Exception {
+		produce();
 	}
 
-	public void addAgent(IAgent a) {
-		this.agents.add(a);
+	@Override
+	public boolean isThreadable() {
+		return true;
+	}
+	private void addFood(Food food) {
+		this.stock.add(food);
+		this.count += food.getAmount();
 	}
 
-	public List<IAgent> getAgents() {
-		return this.agents;
+	public double getCount() {
+		return count;
 	}
+
+	public void setCount(double count) {
+		this.count = count;
+	}
+	
 
 	@Override
 	public String toString() {
@@ -103,23 +88,13 @@ public class Farm extends FarmableLocation implements FixedGeography {
 		Farm b = (Farm) obj;
 		return this.identifier.equals(b.identifier);
 	}
-
-	/**
-	 * Return this Farm unique id number.
-	 */
+	
 	@Override
-	public int hashCode() {
-		return this.identifier.hashCode();
-	}
-
-	public List<Food> getStock() {
-		return stock;
-	}
-
-	@ScheduledMethod(start = 0, interval = 1)
-	@Override
-	public void product() {
-		// TODO Auto-generated method stub
+	public synchronized void produce() {
+		/*
+		 * TODO: use strategy for production (use preference list)
+		 */
+		//LOGGER.log(Level.INFO,"Farm "+this.identifier+" is producting");
 		for (Food food : stock) {
 			if (fund > 0) {
 				double amount = food.getAmount();
@@ -138,6 +113,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 					count += availableProductionAmount;
 					fund = 0;
 				}
+				food.setAmount(amount);
 
 			} else {
 				// if there is no fund for production, then stop;
@@ -150,24 +126,22 @@ public class Farm extends FarmableLocation implements FixedGeography {
 		return count > 0;
 	}
 
-	public void sell(DefaultAgent agent) {
-		double health = agent.getDefaultHealth() - agent.getHealth();
-		double nutrition = FoodConvertor.health2nutrition(health);
-		while (nutrition <= 0 && isAvailable()) {
-			// TODO random pick
-			Food food = stock.get(0);
-			double amount = nutrition / food.getNutrition();
-
-			if (food.getAmount() > amount) {
-				food.setAmount(food.getAmount() - amount);
-				agent.setHealth(agent.getDefaultHealth());
-				count -= amount;
-			} else {
-				food.setAmount(0);
-				agent.setHealth(agent.getHealth() + FoodConvertor.nutrition2health(amount * nutrition));
-			}
+	public synchronized void sell(FoodOrder order) {
+		HashMap<Food, Double> list = order.getList();
+		double totalIncome = this.fund;
+		list.forEach((food, amount) -> {
+			food.setAmount(food.getAmount() - amount);
+			this.fund += amount * food.getPrice();
+			count -= amount;
+		});
+		totalIncome = this.fund - totalIncome;
+		try {
+			ContextManager.dLogger.recordSale(order,Helper.getCurrentTick(), totalIncome, this.identifier);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-
+		//let order be collected by GC 
+		order=null;
 	}
-
 }

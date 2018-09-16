@@ -36,10 +36,12 @@ import com.vividsolutions.jts.operation.distance.DistanceOp;
 import repast.simphony.space.gis.Geography;
 import repast.simphony.space.graph.RepastEdge;
 import repast.simphony.space.graph.ShortestPath;
-import repastcity3.agent.IAgent;
+import repastcity3.agent.Consumer;
+import repastcity3.agent.People;
 import repastcity3.exceptions.RoutingException;
 import repastcity3.main.ContextManager;
 import repastcity3.main.GlobalVars;
+import repastcity3.utilities.Helper;
 
 /**
  * Create routes around a GIS road network. The <code>setRoute</code> function actually finds the route and can be
@@ -63,11 +65,12 @@ public class Route implements Cacheable {
 		// Route.routeCache = new Hashtable<CachedRoute, CachedRoute>();
 	}
 
-	private IAgent agent;
+	private Consumer agent;
 	private Coordinate destination;
 	private Coordinate origin;
 	private Residential destinationBuilding;
 	private Workplace destiationWorkplace;
+	private School destinationSchool;
 	private Shoppingcenter destinationShoppingcenter;
 	private Restaurant destinationRestaurant;
 	private Farm destinationFarm;
@@ -141,31 +144,36 @@ public class Route implements Cacheable {
 	 * @param type
 	 *            The (optional) type of route, used by burglars who want to search.
 	 */
-	public Route(IAgent agent, Coordinate destination, Residential destinationBuilding) {
+	public Route(Consumer agent, Coordinate destination, Residential destinationBuilding) {
 		this.destination = destination;
 		this.agent = agent;
 		this.destinationBuilding = destinationBuilding;
 	}
 	
-	public Route(IAgent agent, Coordinate destination, Workplace destinationWorkplace) {
+	public Route(Consumer agent, Coordinate destination, School destinationSchool) {
+		this.destination = destination;
+		this.agent = agent;
+		this.destinationSchool = destinationSchool;
+	}
+	public Route(Consumer agent, Coordinate destination, Workplace destinationWorkplace) {
 		this.destination = destination;
 		this.agent = agent;
 		this.destiationWorkplace = destinationWorkplace;
 	}
 	
-	public Route(IAgent agent, Coordinate destination, Shoppingcenter destinationShoppingcenter) {
+	public Route(Consumer agent, Coordinate destination, Shoppingcenter destinationShoppingcenter) {
 		this.destination = destination;
 		this.agent = agent;
 		this.destinationShoppingcenter = destinationShoppingcenter;
 	}
 	
-	public Route(IAgent agent, Coordinate destination, Restaurant destinationRestaurant) {
+	public Route(Consumer agent, Coordinate destination, Restaurant destinationRestaurant) {
 		this.destination = destination;
 		this.agent = agent;
 		this.destinationRestaurant = destinationRestaurant;
 	}
 	
-	public Route(IAgent agent, Coordinate destination, Farm destinationFarm) {
+	public Route(Consumer agent, Coordinate destination, Farm destinationFarm) {
 		this.destination = destination;
 		this.agent = agent;
 		this.destinationFarm = destinationFarm;
@@ -721,7 +729,7 @@ public class Route implements Cacheable {
 	 * @param destination
 	 * @return
 	 */
-	public double getDistance(IAgent theBurglar, Coordinate origin, Coordinate destination) {
+	public double getDistance(People theBurglar, Coordinate origin, Coordinate destination) {
 
 		// // See if this distance has already been calculated
 		// if (Route.routeDistanceCache == null) {
@@ -1877,7 +1885,7 @@ class NearestRoadCoordCache implements Serializable {
 		Iterable<Road> roads = ContextManager.roadProjection.getObjectsWithin(searchEnvelope);
 		debugIntro.append("Looking for nearest road coordinate around ").append(c.toString()).append(".\n");
 		debugIntro.append("RoadEnvironment.getObjectsWithin() returned ").append(
-				ContextManager.sizeOfIterable(roads) + " roads, printing debugging info:\n");
+				Helper.sizeOfIterable(roads) + " roads, printing debugging info:\n");
 		debugIntro.append(debug);
 		throw new Exception(debugIntro.toString());
 

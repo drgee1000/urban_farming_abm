@@ -14,7 +14,7 @@ import java.util.logging.SimpleFormatter;
  * @author Nick Malleson
  * 
  */
-abstract class RepastCityLogging {
+class RepastCityLogging {
 	// Make sure this is only initialised once
 	private static boolean initialised = false;
 	

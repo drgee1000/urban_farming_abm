@@ -18,4 +18,5 @@
     <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-buildfile &quot;${workspace_loc:repastcity3}/installer/installation_coordinator.xml&quot; -DoutputInstallationFile=&quot;${folder_prompt:the Folder to output the installer (setup.jar) file}/setup.jar&quot; -DEclipsePluginsDirectory=&quot;${eclipse_home}plugins&quot; -DREPAST_VERSION=${REPAST_VERSION}"/>
     <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="urban_farming_abm"/>
     <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Xss10M -Xmx400M"/>
+
 </launchConfiguration>
