@@ -61,7 +61,7 @@ public class DefaultFoodStock {
 
 	public static List<Food> getRandomFoodList()
 	{
-		int n=RandomHelper.getUniform().nextIntFromTo(0, defaultFoodList.size());
+		int n=RandomHelper.getUniform().nextIntFromTo(1, defaultFoodList.size());
 		ArrayList<Food> foodList=new ArrayList<>();
 		Collections.shuffle(defaultFoodList);
 		

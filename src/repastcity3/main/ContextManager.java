@@ -60,6 +60,7 @@ import repastcity3.environment.School;
 import repastcity3.environment.Shoppingcenter;
 import repastcity3.environment.SpatialIndexManager;
 import repastcity3.environment.Substation;
+import repastcity3.environment.Supermarket;
 import repastcity3.environment.Farm;
 import repastcity3.environment.Workplace;
 import repastcity3.environment.contexts.AgentContext;
@@ -70,6 +71,7 @@ import repastcity3.environment.contexts.RoadContext;
 import repastcity3.environment.contexts.SchoolContext;
 import repastcity3.environment.contexts.ShoppingcenterContext;
 import repastcity3.environment.contexts.SubstationContext;
+import repastcity3.environment.contexts.SupermarketContext;
 import repastcity3.environment.contexts.FarmContext;
 import repastcity3.environment.contexts.WorkplaceContext;
 import repastcity3.exceptions.AgentCreationException;
@@ -117,6 +119,9 @@ public class ContextManager implements ContextBuilder<Object> {
 
 	public static Context<Road> roadContext;
 	public static Geography<Road> roadProjection;
+
+	public static Context<Supermarket> supermarketContext;
+	public static Geography<Supermarket> supermarketProjection;
 
 	public static Context<Junction> junctionContext;
 	public static Geography<Junction> junctionGeography;
@@ -201,6 +206,18 @@ public class ContextManager implements ContextBuilder<Object> {
 			SpatialIndexManager.createIndex(workplaceProjection, Workplace.class);
 			LOGGER.log(Level.INFO, "Read " + workplaceContext.getObjects(Workplace.class).size() + " workplaces from "
 					+ workplaceFile);
+
+			// Create the supermarket - context and geography projection
+			supermarketContext = new SupermarketContext();
+			supermarketProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
+					GlobalVars.CONTEXT_NAMES.WORKPLACE_GEOGRAPHY, supermarketContext,
+					new GeographyParameters<Supermarket>(new SimpleAdder<Supermarket>()));
+			String supermarketFile = gisDataDir + getProperty(GlobalVars.SupermarketShapefile);
+			GISFunctions.readShapefile(Supermarket.class, supermarketFile, supermarketProjection, supermarketContext);
+			mainContext.addSubContext(supermarketContext);
+			SpatialIndexManager.createIndex(supermarketProjection, Supermarket.class);
+			LOGGER.log(Level.INFO, "Read " + supermarketContext.getObjects(Supermarket.class).size() + " supermarkets from "
+					+ supermarketFile);
 
 			// Create the Roads - context and geography
 			roadContext = new RoadContext();

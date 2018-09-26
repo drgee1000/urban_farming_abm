@@ -40,6 +40,8 @@ public class Helper {
 	{
 		return (int)RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 	}
+	
+	
 
 	
 
