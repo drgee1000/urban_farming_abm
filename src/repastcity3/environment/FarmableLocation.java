@@ -1,5 +1,6 @@
 package repastcity3.environment;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -27,6 +28,7 @@ public abstract class FarmableLocation extends Building implements IAgent {
 			this.fund = fund;
 			this.stock = stock;
 			this.scale=1;
+			this.productionList=new ProductionList();
 		}
 
 		public double getSetupCost() {
