@@ -94,7 +94,7 @@ public class ContextManager implements ContextBuilder<Object> {
 
 	private static Properties properties;
 
-	public static final double MAX_ITERATIONS = 1000;
+	public static final double MAX_ITERATIONS = 10000;
 
 	/*
 	 * Pointers to contexts and projections (for convenience). Most of these can be
@@ -358,6 +358,13 @@ public class ContextManager implements ContextBuilder<Object> {
 			ThreadedAgentScheduler s = new ThreadedAgentScheduler();
 			ScheduleParameters agentStepParams = ScheduleParameters.createRepeating(1, 1, 0);
 			schedule.schedule(agentStepParams, s, "agentStep");
+//			ScheduleParameters agentStepParams = ScheduleParameters.createRepeating(1, 1, 0);
+//			for (IAgent a : agentContext.getObjects(IAgent.class)) {
+//				schedule.schedule(agentStepParams, a, "step");
+//			}
+//			for(IAgent a : farmContext.getObjects(IAgent.class)) {
+//				schedule.schedule(agentStepParams, a, "step");
+//			}
 		} else { // Agents will execute in serial, use the repast scheduler.
 			LOGGER.log(Level.INFO, "The single-threaded scheduler will be used.");
 			ScheduleParameters agentStepParams = ScheduleParameters.createRepeating(1, 1, 0);
