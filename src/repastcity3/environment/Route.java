@@ -74,6 +74,7 @@ public class Route implements Cacheable {
 	private Shoppingcenter destinationShoppingcenter;
 	private Restaurant destinationRestaurant;
 	private Farm destinationFarm;
+	private Supermarket destinationSupermarket;
 	private double shortestPathLength;
 
 	/*
@@ -186,6 +187,13 @@ public class Route implements Cacheable {
 	
 	
 	
+	public Route(Consumer agent, Coordinate destination, Supermarket supermarket) {
+		// TODO Auto-generated constructor stub
+		this.destination = destination;
+		this.agent = agent;
+		this.destinationSupermarket = supermarket;
+	}
+
 	/**
 	 * Find a route from the origin to the destination. A route is a list of Coordinates which describe the route to a
 	 * destination restricted to a road network. The algorithm consists of three major parts:

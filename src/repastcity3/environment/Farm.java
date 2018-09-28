@@ -34,6 +34,8 @@ public class Farm extends FarmableLocation implements FixedGeography {
 	// amount of all food
 	private double count;
 	private int tick;
+	private double score;
+	private int score_count;
 	public Farm() {
 		// double setupCost,double dailyMaintenanceCost, double fund,List<Food> stock
 		super(1000, 100, 50000, new ArrayList<Food>());
@@ -59,6 +61,16 @@ public class Farm extends FarmableLocation implements FixedGeography {
 		}
 		
 		
+	}
+	
+	public void updateScore(double newScore) {
+		this.score_count += 1;
+		double score_sum = this.score + newScore;
+		this.score = score_sum/score_count;
+	}
+	
+	public double getScore() {
+		return this.score;
 	}
 
 	@Override

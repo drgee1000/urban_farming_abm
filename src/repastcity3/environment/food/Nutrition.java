@@ -20,4 +20,22 @@ public class Nutrition {
 		this.vitamins = vitamins;
 		this.minerals = minerals;
 	}
+	public double getCarbohydrate(){
+		return carbohydrate;
+	}
+	public double getprotein(){
+		return protein;
+	}
+	public double getlipid(){
+		return lipid;
+	}
+	public double getwater(){
+		return water;
+	}
+	public double getvitamins(){
+		return vitamins;
+	}
+	public double getminerals(){
+		return minerals;
+	}
 }
