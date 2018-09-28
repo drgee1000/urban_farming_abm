@@ -1,8 +1,21 @@
 
 package repastcity3.agent;
 
+import java.awt.print.Printable;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import org.apache.xmlbeans.impl.tool.FactorImports;
 
 import repast.simphony.engine.environment.RunEnvironment;
 import repastcity3.main.ContextManager;
@@ -29,39 +42,65 @@ import repastcity3.main.ContextManager;
  * @author Nick Malleson
  * @see ContextManager
  * @see ThreadController
- * @see BurglarThread
+ * @see AgentTask
  */
 public class ThreadedAgentScheduler {
-	
+
 	private static Logger LOGGER = Logger.getLogger(ThreadedAgentScheduler.class.getName());
 
 	private boolean burglarsFinishedStepping; // A flag for stepping finish at each iteration
 
-	/**
-	 * This is called once per iteration and goes through each burglar calling
-	 * their step method. This is done (instead of using Repast scheduler) to
-	 * allow multi-threading (each step method can be executed on a free core).
-	 * This method actually just starts a ThreadController thread (which handles
-	 * spawning threads to step burglars) and waits for it to finish
-	 */
-	public synchronized void agentStep() {
+	private  ThreadPoolExecutor poolExecutor;
 
-		this.burglarsFinishedStepping = false;
-		(new Thread(new ThreadController(this))).start();
-		while (!this.burglarsFinishedStepping) {
-			try {
-				this.wait(); // Wait for the ThreadController to call setBurglarsFinishedStepping().
-			} catch (InterruptedException e) {
-				LOGGER.log(Level.SEVERE, "", e);
-				ContextManager.stopSim(e, ThreadedAgentScheduler.class);
-			}// Wait until the thread controller has finished
-		}
+	private  int numCPUs;
+
+	// private static final CountDownLatch endGate = new CountDownLatch(nThreads);
+
+	public ThreadedAgentScheduler() {
+		numCPUs = Runtime.getRuntime().availableProcessors();
+		poolExecutor = new ThreadPoolExecutor(numCPUs, numCPUs, 0L, TimeUnit.MILLISECONDS,
+				new LinkedBlockingQueue<Runnable>(Integer.MAX_VALUE));
+//		LOGGER.severe("=========================numCPUS: "+numCPUs);
 	}
 
 	/**
-	 * Used to tell the ContextCreator that all burglars have finished their
-	 * step methods and it can continue doing whatever it was doing (it will be
-	 * waiting while burglars are stepping).
+	 * This is called once per iteration and goes through each burglar calling their
+	 * step method. This is done (instead of using Repast scheduler) to allow
+	 * multi-threading (each step method can be executed on a free core). This
+	 * method actually just starts a ThreadController thread (which handles spawning
+	 * threads to step burglars) and waits for it to finish
+	 */
+	public synchronized void agentStep() {
+		this.burglarsFinishedStepping = false;
+		ArrayList<IAgent> agents = new ArrayList<>(100000);
+		for (IAgent consumer : ContextManager.getAllAgents()) {
+			agents.add(consumer);
+		}
+		for (IAgent farm : ContextManager.getFarmAgents()) {
+			agents.add(farm);
+		}
+		Collections.shuffle(agents);
+		final CountDownLatch latch = new CountDownLatch(agents.size());
+
+		for (IAgent agent : agents) {
+			AgentTask task = new AgentTask(agent, latch);
+			poolExecutor.execute(task);
+		}
+
+		try {
+			LOGGER.severe("Pool state: [pool queue size]: "+poolExecutor.getQueue().size());
+			latch.await(); // Wait for the ThreadController to call setBurglarsFinishedStepping().
+		} catch (InterruptedException e) {
+			LOGGER.log(Level.SEVERE, "", e);
+			ContextManager.stopSim(e, ThreadedAgentScheduler.class);
+		} // Wait until the thread controller has finished
+
+	}
+
+	/**
+	 * Used to tell the ContextCreator that all burglars have finished their step
+	 * methods and it can continue doing whatever it was doing (it will be waiting
+	 * while burglars are stepping).
 	 */
 	public synchronized void setBurglarsFinishedStepping() {
 		this.burglarsFinishedStepping = true;
@@ -69,180 +108,31 @@ public class ThreadedAgentScheduler {
 	}
 }
 
-/** Controls the allocation of <code>BurglarThread</code>s to free CPUs */
-class ThreadController implements Runnable {
-	
-	private static Logger LOGGER = Logger.getLogger(ThreadController.class.getName());
-
-	// A pointer to the scheduler, used to inform it when it can wake up
-	private ThreadedAgentScheduler cc;
-
-	private int numCPUs; // The number of CPUs which can be utilised
-	private boolean[] cpuStatus; // Record which cpus are free (true) or busy
-									// (false)
-
-	public ThreadController(ThreadedAgentScheduler cc) {
-		this.cc = cc;
-		this.numCPUs = Runtime.getRuntime().availableProcessors(); // Get the number of processors
-		// Set all CPU status to 'free'
-		this.cpuStatus = new boolean[this.numCPUs];
-		for (int i = 0; i < this.numCPUs; i++) {
-			this.cpuStatus[i] = true;
-		}
-		// System.out.println("ThreadController found "+this.numCPUs+" CPUs");
-	}
-
-	/**
-	 * Start the ThreadController. Iterate over all burglars, starting
-	 * <code>BurglarThread</code>s on free CPUs. If no free CPUs then wait for a
-	 * BurglarThread to finish.
-	 */
-	@Override
-	public void run() {
-
-		for (IAgent b : ContextManager.getAllAgents()) {
-
-			// Find a free cpu to exectue on
-			boolean foundFreeCPU = false; // Determine if there are no free CPUs
-											// so thread can wait for one to
-											// become free
-			while (!foundFreeCPU) {
-				synchronized (this) {
-					// System.out.println("ThreadController looking for free cpu for burglar "+b.toString()+", "+Arrays.toString(cpuStatus));
-					cpus: for (int i = 0; i < this.numCPUs; i++) {
-						if (this.cpuStatus[i]) {
-							// Start a new thread on the free CPU and set it's
-							// status to false
-							// System.out.println("ThreadController running burglar "+b.toString()+" on cpu "+i+". ");
-							foundFreeCPU = true;
-							this.cpuStatus[i] = false;
-							(new Thread(new BurglarThread(this, i, b))).start();
-							break cpus; // Stop looping over CPUs, have found a
-										// free one for this burglar
-						}
-					} // for cpus
-					if (!foundFreeCPU) {
-						this.waitForBurglarThread();
-					} // if !foundFreeCPU
-				}
-			} // while !freeCPU
-		} // for burglars
-		
-		for (IAgent b : ContextManager.getFarmAgents()) {
-
-			// Find a free cpu to exectue on
-			boolean foundFreeCPU = false; // Determine if there are no free CPUs
-											// so thread can wait for one to
-											// become free
-			while (!foundFreeCPU) {
-				synchronized (this) {
-					// System.out.println("ThreadController looking for free cpu for burglar "+b.toString()+", "+Arrays.toString(cpuStatus));
-					cpus: for (int i = 0; i < this.numCPUs; i++) {
-						if (this.cpuStatus[i]) {
-							// Start a new thread on the free CPU and set it's
-							// status to false
-							// System.out.println("ThreadController running burglar "+b.toString()+" on cpu "+i+". ");
-							foundFreeCPU = true;
-							this.cpuStatus[i] = false;
-							(new Thread(new BurglarThread(this, i, b))).start();
-							break cpus; // Stop looping over CPUs, have found a
-										// free one for this burglar
-						}
-					} // for cpus
-					if (!foundFreeCPU) {
-						this.waitForBurglarThread();
-					} // if !foundFreeCPU
-				}
-			} // while !freeCPU
-		} // for burglars
-
-		// System.out.println("ThreadController finished looping burglars");
-
-		// Have started stepping over all burglars, now wait for all to finish.
-		boolean allFinished = false;
-		while (!allFinished) {
-			allFinished = true;
-			synchronized (this) {
-				// System.out.println("ThreadController checking CPU status: "+Arrays.toString(cpuStatus));
-				cpus: for (int i = 0; i < this.cpuStatus.length; i++) {
-					if (!this.cpuStatus[i]) {
-						allFinished = false;
-						break cpus;
-					}
-				} // for cpus
-				if (!allFinished) {
-					this.waitForBurglarThread();
-				}
-			}
-		} // while !allFinished
-			// Finished, tell the context creator to start up again.
-			// System.out.println("ThreadController finished stepping all burglars (iteration "+GlobalVars.getIteration()+")"+Arrays.toString(cpuStatus));
-		this.cc.setBurglarsFinishedStepping();
-	}
-
-	/**
-	 * Causes the ThreadController to wait for a BurglarThred to notify it that
-	 * it has finished and a CPU has become free.
-	 */
-	private synchronized void waitForBurglarThread() {
-		try {
-			// System.out.println("ThreadController got no free cpus, waiting "+Arrays.toString(cpuStatus));
-			this.wait();
-			// System.out.println("NOTIFIED");
-		} catch (InterruptedException e) {
-			LOGGER.log(Level.SEVERE, "", e);
-			ContextManager.stopSim(e, ThreadedAgentScheduler.class);
-		}// Wait until the thread controller has finished
-
-	}
-
-	/**
-	 * Tell this <code>ThreadController</code> that one of the CPUs is no free
-	 * and it can stop waiting
-	 * 
-	 * @param cpuNumber
-	 *            The CPU which is now free
-	 */
-	public synchronized void setCPUFree(int cpuNumber) {
-		// System.out.println("ThreadController has been notified that CPU "+cpuNumber+" is now free");
-		this.cpuStatus[cpuNumber] = true;
-		this.notifyAll();
-	}
-
-}
-
 /** Single thread to call a Burglar's step method */
-class BurglarThread implements Runnable {
-	
-	private static Logger LOGGER = Logger.getLogger(BurglarThread.class.getName());
+class AgentTask implements Runnable {
 
-	private IAgent theburglar; // The burglar to step
-	private ThreadController tc;
-	private int cpuNumber; // The cpu that the thread is running on, used so
-							// that ThreadController
+	private static Logger LOGGER = Logger.getLogger(AgentTask.class.getName());
 
-	// private static int uniqueID = 0;
-	// private int id;
+	private IAgent agent; // The burglar to step
+	private CountDownLatch latch;
 
-	public BurglarThread(ThreadController tc, int cpuNumber, IAgent b) {
-		this.tc = tc;
-		this.cpuNumber = cpuNumber;
-		this.theburglar = b;
-		// this.id = BurglarThread.uniqueID++;
+	public AgentTask(IAgent a, CountDownLatch latch) {
+		this.agent = a;
+		this.latch = latch;
 	}
-	
+
 	@Override
 	public void run() {
-		// System.out.println("BurglarThread "+id+" stepping burglar "+this.theburglar.toString()+" on CPU "+this.cpuNumber);
 		try {
-			this.theburglar.step();
+			this.agent.step();
+			
 		} catch (Exception ex) {
 			LOGGER.log(Level.SEVERE, "ThreadedAgentScheduler caught an error, telling model to stop", ex);
 			ContextManager.stopSim(ex, this.getClass());
+		}finally{
+			latch.countDown();
 		}
-		// Tell the ThreadController that this thread has finished
-		tc.setCPUFree(this.cpuNumber); // Tell the ThreadController that this
-										// thread has finished
+
 	}
 
 }

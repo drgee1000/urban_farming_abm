@@ -18,32 +18,29 @@ import repastcity3.environment.food.DefaultFoodStock;
 import repastcity3.environment.food.Food;
 import repastcity3.environment.food.FoodOrder;
 import repastcity3.environment.food.Nutrition;
+import repastcity3.environment.food.ProductionList;
 import repastcity3.exceptions.NoIdentifierException;
 import repastcity3.main.ContextManager;
 import repastcity3.utilities.Helper;
 
 import static repastcity3.main.ContextManager.LOGGER;
+
 /**
  * @author CHAO LUO
  *
  */
 public class Farm extends FarmableLocation implements FixedGeography {
 
-	
 	// amount of all food
 	private double count;
-
-	
-
+	private int tick;
 	public Farm() {
-		//double setupCost,double dailyMaintenanceCost, double fund,List<Food> stock
-		super(50000, 100, 1000000, new Vector<Food>());
+		// double setupCost,double dailyMaintenanceCost, double fund,List<Food> stock
+		super(1000, 100, 50000, new ArrayList<Food>());
 		this.agents = new ArrayList<IAgent>();
 		this.count = 0;
 		initStock();
 	}
-	
-	
 
 	private void initStock() {
 		this.stock = DefaultFoodStock.getRandomFoodList();
@@ -52,16 +49,23 @@ public class Farm extends FarmableLocation implements FixedGeography {
 		}
 	}
 
-	
 	@Override
-	public void step() throws Exception {
-		produce();
+	public void step() {
+		tick=Helper.getCurrentTick();
+		if(tick%144==30)
+		{
+			produce();
+			wasteProcess();
+		}
+		
+		
 	}
 
 	@Override
 	public boolean isThreadable() {
 		return true;
 	}
+
 	private void addFood(Food food) {
 		this.stock.add(food);
 		this.count += food.getAmount();
@@ -74,7 +78,6 @@ public class Farm extends FarmableLocation implements FixedGeography {
 	public void setCount(double count) {
 		this.count = count;
 	}
-	
 
 	@Override
 	public String toString() {
@@ -88,36 +91,46 @@ public class Farm extends FarmableLocation implements FixedGeography {
 		Farm b = (Farm) obj;
 		return this.identifier.equals(b.identifier);
 	}
-	
+
 	@Override
 	public synchronized void produce() {
 		/*
 		 * TODO: use strategy for production (use preference list)
 		 */
-		//LOGGER.log(Level.INFO,"Farm "+this.identifier+" is producting");
+
+		// LOGGER.log(Level.INFO,"Farm "+this.identifier+" is producting");
 		for (Food food : stock) {
 			if (fund > 0) {
+
 				double amount = food.getAmount();
 				double foodCost = food.getProductionCost();
-				double productionAmount = 1 / food.getProductionTime();
-				double availableProductionAmount = fund / foodCost;
-				double expireAmount = 1 / food.getExpireTime();
-				amount -= expireAmount;
-				count -= expireAmount;
-				if (availableProductionAmount > productionAmount) {
-					amount += productionAmount;
-					count += productionAmount;
-					fund -= foodCost * productionAmount;
-				} else {
-					amount += availableProductionAmount;
-					count += availableProductionAmount;
-					fund = 0;
+				// produce
+				double productionAmount = (1 / food.getProductionTime()) * 144 * scale;
+
+				// strategy: leave some fund to maintain daily business
+				if (productionAmount * foodCost > fund) {
+					break;
 				}
+
+				amount += productionAmount;
+				count += productionAmount;
+				productionList.addFood(food, productionAmount,tick);
+
 				food.setAmount(amount);
 
 			} else {
-				// if there is no fund for production, then stop;
+				// strategy: if there is no fund for production, then stop;
 				break;
+			}
+		}
+	}
+
+	public void wasteProcess() {
+		
+		for (ProductionList.FoodEntry foodEntry:productionList.getList()) {
+			if(foodEntry.checkExpired(tick))
+			{
+				
 			}
 		}
 	}
@@ -135,13 +148,13 @@ public class Farm extends FarmableLocation implements FixedGeography {
 			count -= amount;
 		});
 		totalIncome = this.fund - totalIncome;
+
 		try {
-			ContextManager.dLogger.recordSale(order,Helper.getCurrentTick(), totalIncome, this.identifier);
+			ContextManager.dLogger.recordSale(order, Helper.getCurrentTick(), totalIncome, this.identifier);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//let order be collected by GC 
-		order=null;
+		// let order be collected by GC
+		order = null;
 	}
 }

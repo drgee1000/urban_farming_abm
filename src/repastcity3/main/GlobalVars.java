@@ -33,7 +33,7 @@ public abstract class GlobalVars {
 	public static final String BuildingsRoadsCache = "BuildingsRoadsCache";
 	public static final String SubstationShapefile = "SubstationShapefile";
 	public static final String SchoolShapefile="SchoolShapefile";
-	
+	public static final String SupermarketShapefile="SupermarketShapefile";
 	
 	
 	public static final class GEOGRAPHY_PARAMS {
@@ -116,7 +116,8 @@ public abstract class GlobalVars {
 		public static final String SCHOOL_CONTEXT = "SchoolContext";
 		public static final String SCHOOL_GEOGRAPHY = "SchoolGeography";
 		
-		
+		public static final String SUPERMARKET_CONTEXT = "SupermarketContext";
+		public static final String SUPERMARKET_GEOGRAPHY = "SupermarketGeography";
 	
 	}
 	
