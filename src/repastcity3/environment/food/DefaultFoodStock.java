@@ -27,6 +27,7 @@ public class DefaultFoodStock {
 	private static HashMap<String,List<Food>> allFood;
 	public static String[] header;
 	static {
+		allFood = new HashMap<String,List<Food>>();
 		defaultFoodList=new ArrayList<>(50);
 		nRand= RandomHelper.createUniform();
 		try (Reader in = new FileReader("./data/food_data/food.csv")){

@@ -55,9 +55,10 @@ public class Farm extends FarmableLocation implements FixedGeography {
 		stockCount = new HashMap<String,Double>();
 		this.agents = new ArrayList<IAgent>();
 		//this.count = 0;
-		initStock();
+		
 		variety = stock.size();
 		this.productionPlan = DefaultFoodStock.getRandomFoodList();
+		initStock();
 		this.productionQueue = new PriorityQueue<FoodEntry>(new feComparator());
 		enqueProductionPlan(this.productionPlan);
 	}

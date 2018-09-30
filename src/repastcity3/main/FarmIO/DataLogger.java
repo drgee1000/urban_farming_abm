@@ -148,17 +148,17 @@ public class DataLogger {
 		@Expose()
 		int stockNum;
 		@Expose()
-		List<Food> stock;
-		@Expose()
-		double count;
+		HashMap<String,List<FoodEntry>> stock;
+		//@Expose()
+		//double count;
 		@Expose()
 		double fund;
 
 		public farm(int t, Farm f) {
 			tick = t;
-			stock = f.getStock();
+			stock = f.getRawStock();
 			stockNum = stock.size();
-			count = f.getCount();
+			//count = f.getCount();
 			fund = f.getFund();
 			try {
 				identifier = f.getIdentifier();

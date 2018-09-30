@@ -39,7 +39,7 @@ public class TestEnv {
 		Context<Road> roc = (Context<Road>) mainContext.getSubContext(GlobalVars.CONTEXT_NAMES.ROAD_CONTEXT);
 		Context<Junction> jc = (Context<Junction>) mainContext.getSubContext(GlobalVars.CONTEXT_NAMES.JUNCTION_CONTEXT);
 		Context<Farm> fm = (Context<Farm>) mainContext.getSubContext(GlobalVars.CONTEXT_NAMES.Farm_CONTEXT);
-		
+		/*
 		for (Farm farm : fm.getObjects(Farm.class)) {
 			for (Food food:farm.getStock()) {
 				if(food.getAmount()<0||food.getPrice()<0||food.getProductionCost()<0||
@@ -49,6 +49,7 @@ public class TestEnv {
 				}
 			}
 		}
+		*/
 		// Geography<Building> bg = (Geography<Building>)
 		// bc.getProjection(GlobalVars.CONTEXT_NAMES.BUILDING_GEOGRAPHY);
 		// Geography<Road> rg = (Geography<Road>)
