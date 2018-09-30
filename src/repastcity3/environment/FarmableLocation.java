@@ -6,64 +6,65 @@ import java.util.List;
 
 import repastcity3.agent.IAgent;
 import repastcity3.environment.food.Food;
+import repastcity3.environment.food.FoodEntry;
 import repastcity3.environment.food.ProductionList;
 
 
 
 public abstract class FarmableLocation extends Building implements IAgent {
 	// for farm data
-		protected double setupCost;
-		protected double dailyMaintenanceCost;
-		protected double fund;
-		protected List<Food> stock;
-		protected ProductionList productionList;
-		protected double scale;
-		
-		public  abstract void produce();
-		
-		public FarmableLocation(double setupCost, double dailyMaintenanceCost, double fund,
-				List<Food> stock) {
-			this.setupCost = setupCost;
-			this.dailyMaintenanceCost = dailyMaintenanceCost;
-			this.fund = fund;
-			this.stock = stock;
-			this.scale=1;
-			this.productionList=new ProductionList();
-		}
+	protected double setupCost;
+	protected double dailyMaintenanceCost;
+	protected double fund;
+	protected HashMap<String,List<FoodEntry>> stock;
+	protected ProductionList productionList;
+	protected double scale;
 
-		public double getSetupCost() {
-			return setupCost;
-		}
+	public  abstract void produce();
 
-		public void setSetupCost(double setupCost) {
-			this.setupCost = setupCost;
-		}
+	public FarmableLocation(double setupCost, double dailyMaintenanceCost, double fund,
+							HashMap<String,List<FoodEntry>> stock) {
+		this.setupCost = setupCost;
+		this.dailyMaintenanceCost = dailyMaintenanceCost;
+		this.fund = fund;
+		this.stock = stock;
+		this.scale=1;
+		this.productionList=new ProductionList();
+	}
 
-		public double getDailyMaintenanceCost() {
-			return dailyMaintenanceCost;
-		}
+	public double getSetupCost() {
+		return setupCost;
+	}
 
-		public void setDailyMaintenanceCost(double dailyMaintenanceCost) {
-			this.dailyMaintenanceCost = dailyMaintenanceCost;
-		}
+	public void setSetupCost(double setupCost) {
+		this.setupCost = setupCost;
+	}
 
-		public double getFund() {
-			return fund;
-		}
+	public double getDailyMaintenanceCost() {
+		return dailyMaintenanceCost;
+	}
 
-		public void setFund(double fund) {
-			this.fund = fund;
-		}
+	public void setDailyMaintenanceCost(double dailyMaintenanceCost) {
+		this.dailyMaintenanceCost = dailyMaintenanceCost;
+	}
 
-		public List<Food> getStock() {
-			return stock;
-		}
+	public double getFund() {
+		return fund;
+	}
 
-		public void setStock(List<Food> stock) {
-			this.stock = stock;
-		}
-		
-	
-		
-		
+	public void setFund(double fund) {
+		this.fund = fund;
+	}
+
+	//public HashMap<String,List<FoodEntry>> getStock() {
+	//	return stock;
+	//}
+
+	public void setStock(HashMap<String,List<FoodEntry>> stock) {
+		this.stock = stock;
+	}
+
+
+
+
 }

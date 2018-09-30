@@ -1,30 +1,32 @@
 package repastcity3.environment.food;
 
+import repastcity3.utilities.Helper;
+
 public class FoodEntry {
-	String name;
-	String type;
-	int productionTime;
-	double amount;
-	int expireTime;
+	Food food;
+	private int productionTick;
 	boolean isExpired;
 	
-	public FoodEntry(String name, String type, int productionTime, double amount, int expireTime) {
-		super();
-		this.name = name;
-		this.type = type;
-		this.productionTime = productionTime;
-		this.amount = amount;
-		this.expireTime = expireTime;
-		this.isExpired=false;
+	public FoodEntry(Food f) {
+		this.food = f;
+		this.productionTick = Helper.getCurrentTick() + f.getProductionTime();
+		this.isExpired = false;
 	}
 
-	public int getProductionTime() {
-		return productionTime;
+	public int getProductionTick() {
+		return productionTick;
 	}
-	
-	public boolean checkExpired(int tick)
-	{
-		isExpired=tick-productionTime>expireTime;
-		return isExpired;
+	public void check(int tick) {
+		if (tick - productionTick > food.getExpireTime())
+			isExpired = true;
+	}
+	public Food getFood(){
+		return this.food;
+	}
+	public boolean expired() {
+		if (this.isExpired)
+			return true;
+		else 
+			return false;
 	}
 }

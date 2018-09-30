@@ -5,5 +5,5 @@ public enum FoodType {
 	FRUIT,
 	GRAIN,
 	MEAT,
-	Milk
+	DAIRY
 }

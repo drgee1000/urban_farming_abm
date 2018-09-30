@@ -5,8 +5,9 @@ import com.google.gson.annotations.Expose;
 public class Food implements Comparable<Food>{
 	@Expose()
 	private String name;
+	
 	@Expose()
-	private String type;//TODO change to enum
+	private String type;
 	@Expose()
 	private double amount;
 	
@@ -19,12 +20,13 @@ public class Food implements Comparable<Food>{
 	
 	private double calorie;
 	
-	private double productionTime;
+	private int productionTime;
 	
-	private double expireTime;
-	
-	public Food(String name, String type, double calorie,double amount,double price, double productionCost,Nutrition nutrition, 
-			 double productionTime, double expireTime) {
+	private int expireTime;
+
+
+	public Food(String name, String type, double calorie,double amount,double price, double productionCost,Nutrition nutrition,
+			 int productionTime, int expireTime) {
 		super();
 		this.name = name;
 		this.type = type;
@@ -88,16 +90,16 @@ public class Food implements Comparable<Food>{
 	public void setNutrition(Nutrition nutrition) {
 		this.nutrition = nutrition;
 	}
-	public double getProductionTime() {
+	public int getProductionTime() {
 		return productionTime;
 	}
-	public void setProductionTime(double productionTime) {
+	public void setProductionTime(int productionTime) {
 		this.productionTime = productionTime;
 	}
 	public double getExpireTime() {
 		return expireTime;
 	}
-	public void setExpireTime(double expireTime) {
+	public void setExpireTime(int expireTime) {
 		this.expireTime = expireTime;
 	}
 	@Override
