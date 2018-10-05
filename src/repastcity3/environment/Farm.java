@@ -82,6 +82,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 		}
 	}
 	private void initStock() {
+		stockThreshold = new HashMap<String,Double>();
 		for (Food food : productionPlan) {
 			String name = food.getName();
 			String type = food.getType();
@@ -153,8 +154,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 		return;
 	}
 	public HashMap<String,List<Food>> getStock(){
-		HashMap<String,List<Food>> availableStock;
-		availableStock = new HashMap<String,List<Food>>();
+		HashMap<String,List<Food>> availableStock=new HashMap<String,List<Food>>();
 		for (String type : stock.keySet()) {
 			List<FoodEntry> fes = stock.get(type);
 			List<Food> list = new ArrayList<Food>();
@@ -163,13 +163,15 @@ public class Farm extends FarmableLocation implements FixedGeography {
 				if (availableStock.containsKey(type)) {
 					list = availableStock.get(type);
 					list.add(food);
+					availableStock.put(type,list);
 
 				} else {
 					list = new ArrayList<Food>();
 					list.add(food);
+					availableStock.put(type, list);
 				}
 			}
-			availableStock.put(type, list);
+			/*availableStock.put(type, list);*/
 		}
 		return availableStock;
 	}

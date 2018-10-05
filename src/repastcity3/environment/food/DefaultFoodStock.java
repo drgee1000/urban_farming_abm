@@ -99,8 +99,16 @@ public class DefaultFoodStock {
 			);
 			foodList.add(destFood);
 			String type = destFood.getType();
+			/*
+			System.out.println("all types:");
+			for(String typeName : allFood.keySet()) {
+				System.out.print("key: "+typeName+"   ");
+			}
+			System.out.println();
+			System.out.println("currentType: "+type);
+			*/
 			if (allFood.containsKey(type)) {
-				List<Food> fList = allFood.get(destFood);
+				List<Food> fList = allFood.get(type);
 				fList.add(destFood);
 				allFood.put(type, fList);
 			} else {
