@@ -80,6 +80,7 @@ import repastcity3.exceptions.NoIdentifierException;
 import repastcity3.exceptions.ParameterNotFoundException;
 import repastcity3.exceptions.StockCreationException;
 import repastcity3.main.FarmIO.DataLogger;
+import repastcity3.utilities.Helper;
 
 public class ContextManager implements ContextBuilder<Object> {
 
@@ -171,6 +172,17 @@ public class ContextManager implements ContextBuilder<Object> {
 			SpatialIndexManager.createIndex(farmProjection, Farm.class);
 			LOGGER.log(Level.INFO, "Read " + farmContext.getObjects(Farm.class).size() + "farms from " + FarmFile);
 
+			// Create the supermarket - context and geography projection
+			supermarketContext = new SupermarketContext();
+			supermarketProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
+					GlobalVars.CONTEXT_NAMES.WORKPLACE_GEOGRAPHY, supermarketContext,
+					new GeographyParameters<Supermarket>(new SimpleAdder<Supermarket>()));
+			String supermarketFile = gisDataDir + getProperty(GlobalVars.SupermarketShapefile);
+			GISFunctions.readShapefile(Supermarket.class, supermarketFile, supermarketProjection, supermarketContext);
+			mainContext.addSubContext(supermarketContext);
+			SpatialIndexManager.createIndex(supermarketProjection, Supermarket.class);
+			LOGGER.log(Level.INFO, "Read " + supermarketContext.getObjects(Supermarket.class).size() + " supermarkets from "
+					+ supermarketFile);
 			// Create the residential - context and geography projection
 			residentialContext = new ResidentialContext();
 			residentialProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
@@ -207,17 +219,6 @@ public class ContextManager implements ContextBuilder<Object> {
 			LOGGER.log(Level.INFO, "Read " + workplaceContext.getObjects(Workplace.class).size() + " workplaces from "
 					+ workplaceFile);
 
-			// Create the supermarket - context and geography projection
-			supermarketContext = new SupermarketContext();
-			supermarketProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
-					GlobalVars.CONTEXT_NAMES.WORKPLACE_GEOGRAPHY, supermarketContext,
-					new GeographyParameters<Supermarket>(new SimpleAdder<Supermarket>()));
-			String supermarketFile = gisDataDir + getProperty(GlobalVars.SupermarketShapefile);
-			GISFunctions.readShapefile(Supermarket.class, supermarketFile, supermarketProjection, supermarketContext);
-			mainContext.addSubContext(supermarketContext);
-			SpatialIndexManager.createIndex(supermarketProjection, Supermarket.class);
-			LOGGER.log(Level.INFO, "Read " + supermarketContext.getObjects(Supermarket.class).size() + " supermarkets from "
-					+ supermarketFile);
 
 			// Create the Roads - context and geography
 			roadContext = new RoadContext();
@@ -380,10 +381,9 @@ public class ContextManager implements ContextBuilder<Object> {
 
 		try {
 
-			dLogger.recordData(agentContext.getObjects(IAgent.class),
-					(int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount());
-			dLogger.recordData(farmContext.getObjects(Farm.class),
-					(int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount());
+			dLogger.recordData(agentContext.getObjects(IAgent.class),Helper.getCurrentTick());
+			dLogger.recordData(farmContext.getObjects(Farm.class),Helper.getCurrentTick());
+			dLogger.recordData(supermarketContext.getObjects(Supermarket.class), Helper.getCurrentTick());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -6,7 +6,11 @@ import java.util.logging.Level;
 import repast.simphony.context.Context;
 import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.engine.schedule.ISchedule;
+import repastcity3.environment.Farm;
+import repastcity3.environment.Route;
 import repastcity3.exceptions.EnvironmentError;
+import repastcity3.main.ContextManager;
+
 import static repastcity3.main.ContextManager.LOGGER;
 
 public class Helper {
@@ -40,9 +44,5 @@ public class Helper {
 	{
 		return (int)RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 	}
-	
-	
-
-	
 
 }

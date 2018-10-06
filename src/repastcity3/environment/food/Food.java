@@ -2,6 +2,8 @@ package repastcity3.environment.food;
 
 import com.google.gson.annotations.Expose;
 
+import repastcity3.utilities.Helper;
+
 public class Food implements Comparable<Food>{
 	@Expose()
 	private String name;
@@ -109,6 +111,21 @@ public class Food implements Comparable<Food>{
 		}
 		return -1;
 	}
+	private int productionTick;
+	boolean isExpired;
 
+	public int getProductionTick() {
+		return productionTick;
+	}
+	public void check(int tick) {
+		if (tick - productionTick > expireTime)
+			isExpired = true;
+	}
+	public boolean expired() {
+		if (this.isExpired)
+			return true;
+		else 
+			return false;
+	}
 	
 }

@@ -29,6 +29,7 @@ import repastcity3.agent.IAgent;
 import repastcity3.agent.People;
 import repastcity3.environment.Farm;
 import repastcity3.environment.FixedGeography;
+import repastcity3.environment.Supermarket;
 import repastcity3.environment.food.*;
 import repastcity3.exceptions.NoIdentifierException;
 
@@ -37,18 +38,21 @@ public class DataLogger {
 	String fileNameAgent;
 	String fileNameDeathRecord;
 	String fileNameSales;
+	String fileNameSupermarket;
 
 	Gson gson;
 	Writer agentFileWriter;
 	Writer farmFileWriter;
 	Writer drFileWriter;
 	Writer salesFileWriter;
+	Writer supermarketFileWriter;
 	ArrayList<deathRecord> dRecords;
 	public DataLogger() throws IOException {
 		fileNameFarm = "./output/Farm";
 		fileNameAgent = "./output/Agent";
 		fileNameDeathRecord = "./output/Death";
 		fileNameSales = "./output/Sales";
+		fileNameSupermarket = "./output/Supermarket";
 		Calendar c = Calendar.getInstance();
 		int year = c.get(Calendar.YEAR);
 		int month = c.get(Calendar.MONTH);
@@ -61,6 +65,7 @@ public class DataLogger {
 		fileNameAgent = fileNameAgent + time + ".json";
 		fileNameDeathRecord = fileNameDeathRecord + time + ".json";
 		fileNameSales = fileNameSales + time + ".json";
+		fileNameSupermarket = fileNameSupermarket+time+".json";
 		// f.createNewFile();
 		File f = new File(fileNameFarm);
 		f.createNewFile();
@@ -70,6 +75,8 @@ public class DataLogger {
 		f.createNewFile();
 		f = new File(fileNameSales);
 		f.createNewFile();
+		f = new File(fileNameSupermarket);
+		f.createNewFile();
 		
 		gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();
 		agentFileWriter = new FileWriter(fileNameAgent);
@@ -78,6 +85,8 @@ public class DataLogger {
 		farmFileWriter.write('[');
 		salesFileWriter = new FileWriter(fileNameSales);
 		salesFileWriter.write('[');
+		supermarketFileWriter = new FileWriter(fileNameSupermarket);
+		supermarketFileWriter.write('[');
 		drFileWriter = new FileWriter(fileNameDeathRecord);
 		dRecords =  new ArrayList<deathRecord>();
 	}
@@ -88,6 +97,7 @@ public class DataLogger {
 
 		ArrayList<farm> farms = new ArrayList<>();
 		ArrayList<agent> agents = new ArrayList<>();
+		ArrayList<supermarket> supermarkets = new ArrayList<>();
 		T t = agentList.get(0);
 		if (t instanceof Farm) {
 			Farm x = new Farm();
@@ -104,12 +114,24 @@ public class DataLogger {
 				agent a = new agent(tick, x);
 				agents.add(a);
 			}
+		} else if(t instanceof Supermarket) {
+			
+			for(int i = 0; i < agentList.size();i++) {
+				Supermarket S = (Supermarket)agentList.get(i);
+				supermarket s = new supermarket(tick,S);
+				supermarkets.add(s);
+			}	
+			
 		}
 
 		// printDataToJsonFile
 		String farmJson = gson.toJson(farms);
 		farmFileWriter.write(farmJson);
 		farmFileWriter.write(',');
+		
+		String supermarketJson = gson.toJson(supermarkets);
+		supermarketFileWriter.write(supermarketJson);
+		supermarketFileWriter.write(',');
 		String agentJson = gson.toJson(agents);
 		agentFileWriter.write(agentJson);
 		agentFileWriter.write(',');
@@ -135,6 +157,8 @@ public class DataLogger {
 		agentFileWriter.close();
 		farmFileWriter.write("[]]");
 		farmFileWriter.close();
+		supermarketFileWriter.write("[]]");
+		supermarketFileWriter.close();
 		drFileWriter.close();
 		salesFileWriter.write("[]]");
 		salesFileWriter.close();
@@ -148,7 +172,7 @@ public class DataLogger {
 		@Expose()
 		int stockNum;
 		@Expose()
-		HashMap<String,List<FoodEntry>> stock;
+		HashMap<String,List<Food>> stock;
 		//@Expose()
 		//double count;
 		@Expose()
@@ -156,7 +180,7 @@ public class DataLogger {
 
 		public farm(int t, Farm f) {
 			tick = t;
-			stock = f.getRawStock();
+			stock = f.getStock();
 			stockNum = stock.size();
 			//count = f.getCount();
 			fund = f.getFund();
@@ -167,10 +191,7 @@ public class DataLogger {
 			}
 
 		}
-
-		public farm() {
-			// TODO Auto-generated constructor stub
-		}
+		public farm() {}
 	}
 
 	public static class agent {
@@ -223,5 +244,35 @@ public class DataLogger {
 				order.put(f.getName(), val);
 			}
 		}
+	}
+	public static class supermarket {
+		@Expose()
+		String identifier;
+		@Expose()
+		int tick;
+		@Expose()
+		int stockNum;
+		@Expose()
+		HashMap<String,List<Food>> stock;
+		//@Expose()
+		//double count;
+		@Expose()
+		double fund;
+
+		public supermarket(int t, Supermarket s) {
+			tick = t;
+			stock = s.getStock();
+			stockNum = stock.size();
+			//count = f.getCount();
+			fund = s.getFund();
+			try {
+				identifier = s.getIdentifier();
+			} catch (NoIdentifierException e) {
+				e.printStackTrace();
+			}
+
+		}
+		public supermarket() {}
+		
 	}
 }
