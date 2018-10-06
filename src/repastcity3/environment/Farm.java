@@ -22,7 +22,7 @@ import repastcity3.environment.food.DefaultFoodStock;
 import repastcity3.environment.food.Food;
 import repastcity3.environment.food.FoodOrder;
 import repastcity3.environment.food.Nutrition;
-import repastcity3.environment.food.FoodEntry;
+import repastcity3.environment.food.Food;
 import repastcity3.environment.food.ProductionList;
 
 import repastcity3.exceptions.NoIdentifierException;
@@ -44,14 +44,14 @@ public class Farm extends FarmableLocation implements FixedGeography {
 	private double score;
 	private int score_count;
 	private List<Food> productionPlan;
-	private PriorityQueue<FoodEntry> productionQueue;
-	private HashMap<String,List<FoodEntry>> waste;
+	private PriorityQueue<Food> productionQueue;
+	private HashMap<String,List<Food>> waste;
 	private HashMap<String,Double> stockCount;
 	private HashMap<String,Double> stockThreshold;
 	public Farm() {
 		// double setupCost,double dailyMaintenanceCost, double fund,List<Food> stock
-		super(1000, 100, 50000, new HashMap<String,List<FoodEntry>>());
-		waste = new HashMap<String,List<FoodEntry>>();
+		super(1000, 100, 50000, new HashMap<String,List<Food>>());
+		waste = new HashMap<String,List<Food>>();
 		stockCount = new HashMap<String,Double>();
 		this.agents = new ArrayList<IAgent>();
 		//this.count = 0;
@@ -59,23 +59,22 @@ public class Farm extends FarmableLocation implements FixedGeography {
 		variety = stock.size();
 		this.productionPlan = DefaultFoodStock.getRandomFoodList();
 		initStock();
-		this.productionQueue = new PriorityQueue<FoodEntry>(new feComparator());
+		this.productionQueue = new PriorityQueue<Food>(new FoodComparator());
 		enqueProductionPlan(this.productionPlan);
 	}
 	private void enqueProductionPlan(List<Food> plan) {
 		for (Food food : plan) {
-			FoodEntry fe = new FoodEntry(food);
-			productionQueue.add(fe);
+			productionQueue.add(food);
 		}
 	}
 	private synchronized void dequeProductionQueue() {
 		tick = Helper.getCurrentTick();
-		FoodEntry fe = productionQueue.peek();
+		Food food = productionQueue.peek();
 		while(!productionQueue.isEmpty()) {
 
-			if(fe.getProductionTick() <= tick) {
+			if(food.getProductionTick() <= tick) {
 				productionQueue.poll();
-				addStock(fe);
+				addStock(food);
 			} else {
 				break;
 			}
@@ -85,7 +84,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 		stockThreshold = new HashMap<String,Double>();
 		for (Food food : productionPlan) {
 			String type = food.getType();
-			FoodEntry fe = new FoodEntry(food);
+			
 			//init stock count
 			if(!stockCount.containsKey(type)){
 				stockCount.put(type,food.getAmount());
@@ -101,38 +100,38 @@ public class Farm extends FarmableLocation implements FixedGeography {
 				stockThreshold.put(type, x);
 			}
 			// add to stock
-			addStock(fe);
+			addStock(food);
 		}
 		HashMap<String,List<Food>> astock = getStock();
 		for (String t : astock.keySet()) {
 			System.out.println(t+"  has "+astock.get(t).size());
 		}
 	}
-	private void addStock(FoodEntry fe) {
-		Food food = fe.getFood();
+	private void addStock(Food food) {
+		
 		String type = food.getType();
-		List<FoodEntry> list;
+		List<Food> list;
 		if (stock.containsKey(type)) {
 			list = stock.get(type);
-			list.add(new FoodEntry(food));
+			list.add(food);
 			stock.put(type, list);
 		} else {
-			list = new ArrayList<FoodEntry>();
-			list.add(new FoodEntry(food));
+			list = new ArrayList<Food>();
+			list.add(food);
 			stock.put(type, list);
 		}
 	}
-	private void addWaste(FoodEntry fe) {
-		Food food = fe.getFood();
+	private void addWaste(Food food) {
+		
 		String name = food.getName();
-		List<FoodEntry> list;
+		List<Food> list;
 		if (waste.containsKey(name)) {
 			list = waste.get(name);
-			list.add(new FoodEntry(food));
+			list.add(food);
 			waste.put(name, list);
 		} else {
-			list = new ArrayList<FoodEntry>();
-			list.add(new FoodEntry(food));
+			list = new ArrayList<Food>();
+			list.add(food);
 			waste.put(name, list);
 		}
 	}
@@ -159,10 +158,9 @@ public class Farm extends FarmableLocation implements FixedGeography {
 	public HashMap<String,List<Food>> getStock(){
 		HashMap<String,List<Food>> availableStock=new HashMap<String,List<Food>>();
 		for (String type : stock.keySet()) {
-			List<FoodEntry> fes = stock.get(type);
+			List<Food> foods = stock.get(type);
 			List<Food> list = new ArrayList<Food>();
-			for (FoodEntry fe:fes) {
-				Food food = fe.getFood();
+			for (Food food:foods) {
 				if (availableStock.containsKey(type)) {
 					list = availableStock.get(type);
 					list.add(food);
@@ -178,7 +176,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 		}
 		return availableStock;
 	}
-	public HashMap<String,List<FoodEntry>> getRawStock(){
+	public HashMap<String,List<Food>> getRawStock(){
 		return this.stock;
 	}
 	@Override
@@ -189,17 +187,17 @@ public class Farm extends FarmableLocation implements FixedGeography {
 	}
 	public void checkStock() {
 		for (String name : stock.keySet()) {
-			List<FoodEntry> fes = stock.get(name);
-			Iterator<FoodEntry> iter =  fes.iterator();
+			List<Food> foods = stock.get(name);
+			Iterator<Food> iter =  foods.iterator();
 			while(iter.hasNext()) {
-				FoodEntry fe = (FoodEntry) iter.next();
-				fe.check(Helper.getCurrentTick());
-				if(fe.expired()) {
-					fes.remove(fe);
-					addWaste(fe);
+				Food food = (Food) iter.next();
+				food.checkExpired();
+				if(food.isExpired()) {
+					foods.remove(food);
+					addWaste(food);
 				}
 			}
-			stock.put(name, fes);
+			stock.put(name, foods);
 		}
 	}
 	@Override
@@ -284,7 +282,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 
 	public void wasteProcess() {
 
-		for (ProductionList.FoodEntry foodEntry:productionList.getList()) {
+		for (ProductionList.Food foodEntry:productionList.getList()) {
 			if(foodEntry.checkExpired(tick))
 			{
 
@@ -314,8 +312,8 @@ public class Farm extends FarmableLocation implements FixedGeography {
 		// let order be collected by GC
 		order = null;
 	}
-	public class feComparator implements Comparator<FoodEntry> {
-		public int compare(FoodEntry fe1, FoodEntry fe2) {
+	public class FoodComparator implements Comparator<Food> {
+		public int compare(Food fe1, Food fe2) {
 
 			if(fe1.getProductionTick() < fe2.getProductionTick())
 				return -1;

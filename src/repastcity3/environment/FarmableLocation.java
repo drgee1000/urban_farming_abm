@@ -6,7 +6,6 @@ import java.util.List;
 
 import repastcity3.agent.IAgent;
 import repastcity3.environment.food.Food;
-import repastcity3.environment.food.FoodEntry;
 import repastcity3.environment.food.ProductionList;
 
 
@@ -16,14 +15,14 @@ public abstract class FarmableLocation extends Building implements IAgent {
 	protected double setupCost;
 	protected double dailyMaintenanceCost;
 	protected double fund;
-	protected HashMap<String,List<FoodEntry>> stock;
+	protected HashMap<String,List<Food>> stock;
 	protected ProductionList productionList;
 	protected double scale;
 
 	public  abstract void produce();
 
 	public FarmableLocation(double setupCost, double dailyMaintenanceCost, double fund,
-							HashMap<String,List<FoodEntry>> stock) {
+							HashMap<String,List<Food>> stock) {
 		this.setupCost = setupCost;
 		this.dailyMaintenanceCost = dailyMaintenanceCost;
 		this.fund = fund;
@@ -60,7 +59,7 @@ public abstract class FarmableLocation extends Building implements IAgent {
 	//	return stock;
 	//}
 
-	public void setStock(HashMap<String,List<FoodEntry>> stock) {
+	public void setStock(HashMap<String,List<Food>> stock) {
 		this.stock = stock;
 	}
 

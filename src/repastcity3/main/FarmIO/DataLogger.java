@@ -148,7 +148,7 @@ public class DataLogger {
 		@Expose()
 		int stockNum;
 		@Expose()
-		HashMap<String,List<FoodEntry>> stock;
+		HashMap<String,List<Food>> stock;
 		//@Expose()
 		//double count;
 		@Expose()

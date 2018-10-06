@@ -8,7 +8,7 @@ import repastcity3.utilities.Helper;
 
 
 public class ProductionList {
-	private ArrayList<FoodEntry> list;
+	private ArrayList<Food> list;
 	
 	public ProductionList() {
 		list=new ArrayList<>();
@@ -16,12 +16,11 @@ public class ProductionList {
 	
 	public void addFood(Food food)
 	{
-		FoodEntry foodEntry=new FoodEntry(food);
-		list.add(foodEntry);
+		list.add(food);
 	}
 	
 	
-	public ArrayList<FoodEntry> getList()
+	public ArrayList<Food> getList()
 	{
 		return list;
 	}
