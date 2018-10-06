@@ -61,9 +61,9 @@ public class Farm extends FarmableLocation implements FixedGeography {
 	private synchronized void dequeProductionQueue() {
 		// food produced is add to stock
 		
-		Food fe = productionQueue.peek();
+		
 		while(!productionQueue.isEmpty()) {
-
+			Food fe = productionQueue.peek();
 			if(fe.getProductionTick() <= tick) {
 				productionQueue.poll();
 				addStock(fe);

@@ -1,104 +1,232 @@
-Oct 07, 2018 12:12:28 AM repastcity3.main.ContextManager readProperties
+Oct 07, 2018 12:29:30 AM repastcity3.main.ContextManager readProperties
 INFO: Initialising properties from file .\repastcity.properties
-Oct 07, 2018 12:12:28 AM repastcity3.main.ContextManager build
+Oct 07, 2018 12:29:30 AM repastcity3.main.ContextManager build
 INFO: Configuring the environment with data from ./data/gis_data/shenzhen/
-Oct 07, 2018 12:12:31 AM repastcity3.main.ContextManager build
+Oct 07, 2018 12:29:33 AM repastcity3.main.ContextManager build
 INFO: Read 6farms from ./data/gis_data/shenzhen/farm.shp
-Oct 07, 2018 12:12:32 AM repastcity3.main.ContextManager build
+Oct 07, 2018 12:29:33 AM repastcity3.main.ContextManager build
 INFO: Read 6 supermarkets from ./data/gis_data/shenzhen/supermarket.shp
-Oct 07, 2018 12:12:32 AM repastcity3.main.ContextManager build
+Oct 07, 2018 12:29:33 AM repastcity3.main.ContextManager build
 INFO: Read 9 residentials from ./data/gis_data/shenzhen/residential.shp
-Oct 07, 2018 12:12:32 AM repastcity3.main.ContextManager build
+Oct 07, 2018 12:29:33 AM repastcity3.main.ContextManager build
 INFO: Read 6 schools from ./data/gis_data/shenzhen/school.shp
-Oct 07, 2018 12:12:32 AM repastcity3.main.ContextManager build
+Oct 07, 2018 12:29:33 AM repastcity3.main.ContextManager build
 INFO: Read 9 workplaces from ./data/gis_data/shenzhen/workplace.shp
-Oct 07, 2018 12:12:32 AM repastcity3.main.ContextManager build
+Oct 07, 2018 12:29:33 AM repastcity3.main.ContextManager build
 INFO: Read 86 roads from ./data/gis_data/shenzhen/street.shp
-Oct 07, 2018 12:12:32 AM repastcity3.main.TestEnv testEnvironment
+Oct 07, 2018 12:29:33 AM repastcity3.main.TestEnv testEnvironment
 INFO: Testing the environment
-Oct 07, 2018 12:12:32 AM repastcity3.main.TestEnv testEnvironment
+Oct 07, 2018 12:29:33 AM repastcity3.main.TestEnv testEnvironment
 INFO: The road network has 73 nodes and 86 edges.
-Oct 07, 2018 12:12:32 AM repastcity3.main.ContextManager build
+Oct 07, 2018 12:29:33 AM repastcity3.main.ContextManager build
 INFO: Creating agents with the agent definition: 'point:people.shp$repastcity3.agent.Consumer'
-Oct 07, 2018 12:12:32 AM repastcity3.agent.AgentFactory createPointAgents
+Oct 07, 2018 12:29:33 AM repastcity3.agent.AgentFactory createPointAgents
 INFO: Have created 146 of type repastcity3.agent.Consumer from file ./data/gis_data/shenzhen/people.shp
-Oct 07, 2018 12:12:32 AM repastcity3.main.ContextManager createSchedule
+Oct 07, 2018 12:29:33 AM repastcity3.main.ContextManager createSchedule
 INFO: The multi-threaded scheduler will be used.
-Oct 07, 2018 12:12:36 AM repastcity3.main.ContextManager recordTicks
+Oct 07, 2018 12:29:37 AM repastcity3.main.ContextManager recordTicks
 INFO: Iterations: 0.0
-Oct 07, 2018 12:12:36 AM repastcity3.agent.ThreadedAgentScheduler agentStep
-SEVERE: Pool state: [pool queue size]: 140
-Oct 07, 2018 12:12:36 AM repastcity3.agent.AgentTask run
-SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
-java.util.ConcurrentModificationException
-	at java.util.ArrayList$Itr.checkForComodification(Unknown Source)
-	at java.util.ArrayList$Itr.next(Unknown Source)
-	at repastcity3.environment.Farm.checkStock(Farm.java:154)
-	at repastcity3.environment.Farm.step(Farm.java:169)
-	at repastcity3.agent.AgentTask.run(ThreadedAgentScheduler.java:127)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
-	at java.lang.Thread.run(Unknown Source)
-
-Oct 07, 2018 12:12:36 AM repastcity3.agent.AgentTask run
-SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
-java.util.ConcurrentModificationException
-	at java.util.ArrayList$Itr.checkForComodification(Unknown Source)
-	at java.util.ArrayList$Itr.next(Unknown Source)
-	at repastcity3.environment.Farm.checkStock(Farm.java:154)
-	at repastcity3.environment.Farm.step(Farm.java:169)
-	at repastcity3.agent.AgentTask.run(ThreadedAgentScheduler.java:127)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
-	at java.lang.Thread.run(Unknown Source)
-
-Oct 07, 2018 12:12:36 AM repastcity3.agent.AgentTask run
-SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
-java.util.ConcurrentModificationException
-	at java.util.ArrayList$Itr.checkForComodification(Unknown Source)
-	at java.util.ArrayList$Itr.next(Unknown Source)
-	at repastcity3.environment.Farm.checkStock(Farm.java:154)
-	at repastcity3.environment.Farm.step(Farm.java:169)
-	at repastcity3.agent.AgentTask.run(ThreadedAgentScheduler.java:127)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
-	at java.lang.Thread.run(Unknown Source)
-
-Oct 07, 2018 12:12:36 AM repastcity3.main.ContextManager stopSim
-SEVERE: ContextManager has been told to stop by repastcity3.agent.AgentTask
-java.util.ConcurrentModificationException
-	at java.util.ArrayList$Itr.checkForComodification(Unknown Source)
-	at java.util.ArrayList$Itr.next(Unknown Source)
-	at repastcity3.environment.Farm.checkStock(Farm.java:154)
-	at repastcity3.environment.Farm.step(Farm.java:169)
-	at repastcity3.agent.AgentTask.run(ThreadedAgentScheduler.java:127)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
-	at java.lang.Thread.run(Unknown Source)
-
-Oct 07, 2018 12:12:36 AM repastcity3.agent.AgentTask run
-SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
-java.util.ConcurrentModificationException
-	at java.util.ArrayList$Itr.checkForComodification(Unknown Source)
-	at java.util.ArrayList$Itr.next(Unknown Source)
-	at repastcity3.environment.Farm.checkStock(Farm.java:154)
-	at repastcity3.environment.Farm.step(Farm.java:169)
-	at repastcity3.agent.AgentTask.run(ThreadedAgentScheduler.java:127)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
-	at java.lang.Thread.run(Unknown Source)
-
-Oct 07, 2018 12:12:36 AM repastcity3.main.ContextManager stopSim
-SEVERE: ContextManager has been told to stop by repastcity3.agent.AgentTask
-java.util.ConcurrentModificationException
-	at java.util.ArrayList$Itr.checkForComodification(Unknown Source)
-	at java.util.ArrayList$Itr.next(Unknown Source)
-	at repastcity3.environment.Farm.checkStock(Farm.java:154)
-	at repastcity3.environment.Farm.step(Farm.java:169)
-	at repastcity3.agent.AgentTask.run(ThreadedAgentScheduler.java:127)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
-	at java.lang.Thread.run(Unknown Source)
-
-Oct 07, 2018 12:12:36 AM repastcity3.main.ContextManager recordTicks
+Oct 07, 2018 12:29:37 AM repastcity3.agent.ThreadedAgentScheduler agentStep
+SEVERE: Pool state: [pool queue size]: 139
+Oct 07, 2018 12:29:37 AM repastcity3.main.ContextManager recordTicks
 INFO: Iterations: 1.0
+Oct 07, 2018 12:29:37 AM repastcity3.agent.ThreadedAgentScheduler agentStep
+SEVERE: Pool state: [pool queue size]: 142
+Oct 07, 2018 12:29:37 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 2.0
+Oct 07, 2018 12:29:38 AM repastcity3.agent.ThreadedAgentScheduler agentStep
+SEVERE: Pool state: [pool queue size]: 143
+Oct 07, 2018 12:29:38 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 3.0
+Oct 07, 2018 12:29:38 AM repastcity3.agent.ThreadedAgentScheduler agentStep
+SEVERE: Pool state: [pool queue size]: 142
+Oct 07, 2018 12:29:38 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 4.0
+Oct 07, 2018 12:29:38 AM repastcity3.agent.ThreadedAgentScheduler agentStep
+SEVERE: Pool state: [pool queue size]: 150
+Oct 07, 2018 12:29:38 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 5.0
+Oct 07, 2018 12:29:38 AM repastcity3.agent.ThreadedAgentScheduler agentStep
+SEVERE: Pool state: [pool queue size]: 149
+Oct 07, 2018 12:29:39 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 6.0
+Oct 07, 2018 12:29:39 AM repastcity3.agent.ThreadedAgentScheduler agentStep
+SEVERE: Pool state: [pool queue size]: 149
+Oct 07, 2018 12:29:39 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 7.0
+Oct 07, 2018 12:29:39 AM repastcity3.agent.ThreadedAgentScheduler agentStep
+SEVERE: Pool state: [pool queue size]: 148
+Oct 07, 2018 12:29:39 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 8.0
+Oct 07, 2018 12:29:39 AM repastcity3.agent.ThreadedAgentScheduler agentStep
+SEVERE: Pool state: [pool queue size]: 149
+Oct 07, 2018 12:29:39 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 9.0
+Oct 07, 2018 12:29:39 AM repastcity3.agent.ThreadedAgentScheduler agentStep
+SEVERE: Pool state: [pool queue size]: 149
+Oct 07, 2018 12:29:39 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 10.0
+Oct 07, 2018 12:29:39 AM repastcity3.agent.ThreadedAgentScheduler agentStep
+SEVERE: Pool state: [pool queue size]: 149
+Oct 07, 2018 12:29:39 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 11.0
+Oct 07, 2018 12:29:40 AM repastcity3.agent.ThreadedAgentScheduler agentStep
+SEVERE: Pool state: [pool queue size]: 149
+Oct 07, 2018 12:29:40 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 12.0
+Oct 07, 2018 12:29:40 AM repastcity3.agent.ThreadedAgentScheduler agentStep
+SEVERE: Pool state: [pool queue size]: 149
+Oct 07, 2018 12:29:40 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 13.0
+Oct 07, 2018 12:29:40 AM repastcity3.agent.ThreadedAgentScheduler agentStep
+SEVERE: Pool state: [pool queue size]: 148
+Oct 07, 2018 12:29:40 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 14.0
+Oct 07, 2018 12:29:40 AM repastcity3.agent.ThreadedAgentScheduler agentStep
+SEVERE: Pool state: [pool queue size]: 149
+Oct 07, 2018 12:29:40 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 15.0
+Oct 07, 2018 12:29:40 AM repastcity3.agent.ThreadedAgentScheduler agentStep
+SEVERE: Pool state: [pool queue size]: 148
+Oct 07, 2018 12:29:40 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 16.0
+Oct 07, 2018 12:29:40 AM repastcity3.agent.ThreadedAgentScheduler agentStep
+SEVERE: Pool state: [pool queue size]: 148
+Oct 07, 2018 12:29:40 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 17.0
+Oct 07, 2018 12:29:41 AM repastcity3.agent.ThreadedAgentScheduler agentStep
+SEVERE: Pool state: [pool queue size]: 149
+Oct 07, 2018 12:29:41 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 18.0
+Oct 07, 2018 12:29:41 AM repastcity3.agent.ThreadedAgentScheduler agentStep
+SEVERE: Pool state: [pool queue size]: 148
+Oct 07, 2018 12:29:41 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 19.0
+Oct 07, 2018 12:29:41 AM repastcity3.agent.ThreadedAgentScheduler agentStep
+SEVERE: Pool state: [pool queue size]: 149
+Oct 07, 2018 12:29:41 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 20.0
+Oct 07, 2018 12:29:41 AM repastcity3.agent.ThreadedAgentScheduler agentStep
+SEVERE: Pool state: [pool queue size]: 149
+Oct 07, 2018 12:29:41 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 21.0
+Oct 07, 2018 12:29:41 AM repastcity3.agent.ThreadedAgentScheduler agentStep
+SEVERE: Pool state: [pool queue size]: 149
+Oct 07, 2018 12:29:41 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 22.0
+Oct 07, 2018 12:29:41 AM repastcity3.agent.ThreadedAgentScheduler agentStep
+SEVERE: Pool state: [pool queue size]: 149
+Oct 07, 2018 12:29:41 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 23.0
+Oct 07, 2018 12:29:42 AM repastcity3.agent.ThreadedAgentScheduler agentStep
+SEVERE: Pool state: [pool queue size]: 148
+Oct 07, 2018 12:29:42 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 24.0
+Oct 07, 2018 12:29:42 AM repastcity3.agent.ThreadedAgentScheduler agentStep
+SEVERE: Pool state: [pool queue size]: 148
+Oct 07, 2018 12:29:42 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 25.0
+Oct 07, 2018 12:29:42 AM repastcity3.agent.ThreadedAgentScheduler agentStep
+SEVERE: Pool state: [pool queue size]: 148
+Oct 07, 2018 12:29:42 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 26.0
+Oct 07, 2018 12:29:42 AM repastcity3.agent.ThreadedAgentScheduler agentStep
+SEVERE: Pool state: [pool queue size]: 149
+Oct 07, 2018 12:29:42 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 27.0
+Oct 07, 2018 12:29:42 AM repastcity3.agent.ThreadedAgentScheduler agentStep
+SEVERE: Pool state: [pool queue size]: 149
+Oct 07, 2018 12:29:42 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 28.0
+Oct 07, 2018 12:29:42 AM repastcity3.agent.ThreadedAgentScheduler agentStep
+SEVERE: Pool state: [pool queue size]: 149
+Oct 07, 2018 12:29:42 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 29.0
+Oct 07, 2018 12:29:43 AM repastcity3.agent.ThreadedAgentScheduler agentStep
+SEVERE: Pool state: [pool queue size]: 150
+Oct 07, 2018 12:29:43 AM repastcity3.agent.AgentTask run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+java.util.ConcurrentModificationException
+	at java.util.ArrayList$Itr.checkForComodification(Unknown Source)
+	at java.util.ArrayList$Itr.next(Unknown Source)
+	at repastcity3.environment.Farm.checkStock(Farm.java:156)
+	at repastcity3.environment.Farm.step(Farm.java:171)
+	at repastcity3.agent.AgentTask.run(ThreadedAgentScheduler.java:127)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+Oct 07, 2018 12:29:43 AM repastcity3.agent.AgentTask run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+java.util.ConcurrentModificationException
+	at java.util.ArrayList$Itr.checkForComodification(Unknown Source)
+	at java.util.ArrayList$Itr.next(Unknown Source)
+	at repastcity3.environment.Farm.checkStock(Farm.java:156)
+	at repastcity3.environment.Farm.step(Farm.java:171)
+	at repastcity3.agent.AgentTask.run(ThreadedAgentScheduler.java:127)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+Oct 07, 2018 12:29:43 AM repastcity3.agent.AgentTask run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+java.util.ConcurrentModificationException
+	at java.util.ArrayList$Itr.checkForComodification(Unknown Source)
+	at java.util.ArrayList$Itr.next(Unknown Source)
+	at repastcity3.environment.Farm.checkStock(Farm.java:156)
+	at repastcity3.environment.Farm.step(Farm.java:171)
+	at repastcity3.agent.AgentTask.run(ThreadedAgentScheduler.java:127)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+Oct 07, 2018 12:29:43 AM repastcity3.agent.AgentTask run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+java.util.ConcurrentModificationException
+	at java.util.ArrayList$Itr.checkForComodification(Unknown Source)
+	at java.util.ArrayList$Itr.next(Unknown Source)
+	at repastcity3.environment.Farm.checkStock(Farm.java:156)
+	at repastcity3.environment.Farm.step(Farm.java:171)
+	at repastcity3.agent.AgentTask.run(ThreadedAgentScheduler.java:127)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+Oct 07, 2018 12:29:43 AM repastcity3.agent.AgentTask run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+java.util.ConcurrentModificationException
+	at java.util.ArrayList$Itr.checkForComodification(Unknown Source)
+	at java.util.ArrayList$Itr.next(Unknown Source)
+	at repastcity3.environment.Farm.checkStock(Farm.java:156)
+	at repastcity3.environment.Farm.step(Farm.java:171)
+	at repastcity3.agent.AgentTask.run(ThreadedAgentScheduler.java:127)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+Oct 07, 2018 12:29:43 AM repastcity3.agent.AgentTask run
+SEVERE: ThreadedAgentScheduler caught an error, telling model to stop
+java.util.ConcurrentModificationException
+	at java.util.ArrayList$Itr.checkForComodification(Unknown Source)
+	at java.util.ArrayList$Itr.next(Unknown Source)
+	at repastcity3.environment.Farm.checkStock(Farm.java:156)
+	at repastcity3.environment.Farm.step(Farm.java:171)
+	at repastcity3.agent.AgentTask.run(ThreadedAgentScheduler.java:127)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+Oct 07, 2018 12:29:43 AM repastcity3.main.ContextManager stopSim
+SEVERE: ContextManager has been told to stop by repastcity3.agent.AgentTask
+java.util.ConcurrentModificationException
+	at java.util.ArrayList$Itr.checkForComodification(Unknown Source)
+	at java.util.ArrayList$Itr.next(Unknown Source)
+	at repastcity3.environment.Farm.checkStock(Farm.java:156)
+	at repastcity3.environment.Farm.step(Farm.java:171)
+	at repastcity3.agent.AgentTask.run(ThreadedAgentScheduler.java:127)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+Oct 07, 2018 12:29:43 AM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 30.0
