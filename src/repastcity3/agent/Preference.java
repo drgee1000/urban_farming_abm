@@ -5,6 +5,7 @@ import repastcity3.environment.food.FoodClassifier;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Random;
 
 public class Preference {
 	//int organicity;
@@ -15,6 +16,8 @@ public class Preference {
 	ArrayList<String> fruit_list;
 	ArrayList<String> meat_list;
 	ArrayList<String> dairy_list;
+	double d_weight = 0; // weight for distance;
+	double s_weight = 0; // weight for score;
 	
 	//public int get_organicity() {
 	//	return organicity;
@@ -38,8 +41,18 @@ public class Preference {
 		Collections.shuffle(fruit_list);
 		Collections.shuffle(meat_list);
 		Collections.shuffle(dairy_list);
+		Random r = new Random();
+		this.d_weight = r.nextDouble();
+		this.s_weight = 1 - this.d_weight;
 	}
 
+	public double get_d_weight(){
+		return d_weight;
+	}
+
+	public double get_s_weight(){
+		return s_weight;
+	}
 	public ArrayList<String> getVegetable_list() {
 		return vegetable_list;
 	}
