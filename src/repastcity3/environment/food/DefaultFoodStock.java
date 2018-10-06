@@ -125,9 +125,7 @@ public class DefaultFoodStock {
 				allFood.put(type,fList);
 			}
 		}
-		for(Food f :foodList) {
-			System.out.println(f.getName()+"        " +f.getType());
-		}
+		
 
 		return foodList;
 	}
