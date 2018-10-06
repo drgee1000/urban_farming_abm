@@ -4,16 +4,17 @@ name,type,avg_price,carbohydrate,protein,lipid,water,vitamins,minerals,calorie
 "bread","grain",3,10, 12, 22, 44, 33, 22,76
 "wheat","grain",3,10, 12, 22, 44, 33, 22,76
 "rice","grain",3,44, 0, 0, 10, 0, 0,116
-"cabbage","vegatable",3.5,10, 3, 0, 10, 15, 5,12
-"spinach","vegatable",3.5,10, 3, 0, 10, 15, 5,12
-"broccoli","vegatable",3.5,10, 3, 0, 10, 15, 5,12
-"cabbage","vegatable",3.5,10, 3, 0, 10, 15, 5,12
-"tomato","vegatable",3.5,10, 3, 0, 10, 15, 5,12
+"cabbage","vegetable",3.5,10, 3, 0, 10, 15, 5,12
+"spinach","vegetable",3.5,10, 3, 0, 10, 15, 5,12
+"broccoli","vegetable",3.5,10, 3, 0, 10, 15, 5,12
+"cabbage","vegetable",3.5,10, 3, 0, 10, 15, 5,12
+"tomato","vegetable",3.5,10, 3, 0, 10, 15, 5,12
 "beaf","meat",50,25, 20, 20, 5, 10, 5,125
 "pork","meat",15,25, 10, 20, 5, 5, 3,143
 "chicken","meat",15,25, 10, 20, 5, 5, 3,143
 "mutton","meat",15,25, 10, 20, 5, 5, 3,143
 "fish","meat",15,25, 10, 20, 5, 5, 3,143
-"milk","diary",25,25, 5, 15, 25, 10, 5,54
-"cheese","diary",25,25, 5, 15, 25, 10, 5,54
-"cream","diary",25,25, 5, 15, 25, 10, 5,54
+"milk","dairy",25,25, 5, 15, 25, 10, 5,54
+"cheese","dairy",25,25, 5, 15, 25, 10, 5,54
+"cream","dairy",25,25, 5, 15, 25, 10, 5,54
+"apple","fruit",23,23,1,2,40,50,20,120

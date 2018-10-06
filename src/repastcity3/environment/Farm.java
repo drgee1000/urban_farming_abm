@@ -84,7 +84,6 @@ public class Farm extends FarmableLocation implements FixedGeography {
 	private void initStock() {
 		stockThreshold = new HashMap<String,Double>();
 		for (Food food : productionPlan) {
-			String name = food.getName();
 			String type = food.getType();
 			FoodEntry fe = new FoodEntry(food);
 			//init stock count
@@ -104,19 +103,23 @@ public class Farm extends FarmableLocation implements FixedGeography {
 			// add to stock
 			addStock(fe);
 		}
+		HashMap<String,List<Food>> astock = getStock();
+		for (String t : astock.keySet()) {
+			System.out.println(t+"  has "+astock.get(t).size());
+		}
 	}
 	private void addStock(FoodEntry fe) {
 		Food food = fe.getFood();
-		String name = food.getName();
+		String type = food.getType();
 		List<FoodEntry> list;
-		if (stock.containsKey(name)) {
-			list = stock.get(name);
+		if (stock.containsKey(type)) {
+			list = stock.get(type);
 			list.add(new FoodEntry(food));
-			stock.put("name", list);
+			stock.put(type, list);
 		} else {
 			list = new ArrayList<FoodEntry>();
 			list.add(new FoodEntry(food));
-			stock.put(name, list);
+			stock.put(type, list);
 		}
 	}
 	private void addWaste(FoodEntry fe) {

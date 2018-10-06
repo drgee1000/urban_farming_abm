@@ -69,8 +69,16 @@ public class DefaultFoodStock {
 		return food;
 	}
 	public static List<Food> getRandomFoodList()
+	
 	{
-		int n=RandomHelper.getUniform().nextIntFromTo(1, defaultFoodList.size());
+		ArrayList<String> foodTypes=new ArrayList<String>();
+		foodTypes.add("vegetable");
+		foodTypes.add("meat");
+		foodTypes.add("diary");
+		foodTypes.add("fruit");
+		foodTypes.add("grain");
+		//int n=RandomHelper.getUniform().nextIntFromTo(1, defaultFoodList.size());
+		int n = defaultFoodList.size();
 		ArrayList<Food> foodList=new ArrayList<>();
 		Collections.shuffle(defaultFoodList);
 
@@ -116,6 +124,9 @@ public class DefaultFoodStock {
 				fList.add(destFood);
 				allFood.put(type,fList);
 			}
+		}
+		for(Food f :foodList) {
+			System.out.println(f.getName()+"        " +f.getType());
 		}
 
 		return foodList;

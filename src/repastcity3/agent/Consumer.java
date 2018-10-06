@@ -403,14 +403,19 @@ public class Consumer implements People {
 			this.satisfaction = 100;
 			HashMap<String, List<Food>> stock = farm.getStock();
 			List<Food> grain_list = stock.get("grain");
+			System.out.println("grain: "+grain_list.size());
 			HashMap<String, Food> grain_map = toHashMap(grain_list);
 			List<Food> vegetable_list = stock.get("vegetable");
+			System.out.println("vegetable: "+vegetable_list.size());
 			HashMap<String, Food> vegetable_map = toHashMap(vegetable_list);
 			List<Food> fruit_list = stock.get("fruit");
+			System.out.println("fruit: "+fruit_list.size());
 			HashMap<String, Food> fruit_map = toHashMap(fruit_list);
 			List<Food> dairy_list = stock.get("dairy");
+			System.out.println("dairy: "+dairy_list.size());
 			HashMap<String, Food> dairy_map = toHashMap(dairy_list);
 			List<Food> meat_list = stock.get("meat");
+			System.out.println("meat: "+meat_list.size());
 			HashMap<String, Food> meat_map = toHashMap(meat_list);
 
 			Preference preference = new Preference();
