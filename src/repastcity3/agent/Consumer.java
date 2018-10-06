@@ -298,7 +298,7 @@ public class Consumer implements People {
 		Random random = new Random();
 		Farm farm = null;
 		int seed = random.nextInt(100);
-		if(seed < 50) {
+		if(seed < 100) {
 			farm = findNearestFarm();
 		}else {
 			farm = findPopularFarm();
@@ -328,6 +328,41 @@ public class Consumer implements People {
 		return nearestFarm;
 	}
 	
+	/*public Supermarket selectSupermarket() {
+		
+	}*/
+	
+	public double getSupermarketDistanceScore(Supermarket supermarket) {
+		Iterator<Supermarket> iter = ContextManager.supermarketContext.iterator();
+		double min = Double.POSITIVE_INFINITY;
+		double max = Double.NEGATIVE_INFINITY;
+		double distance = getDistance(supermarket);
+		while(iter.hasNext()){
+			Supermarket s = iter.next();
+			double dis = getDistance(supermarket);
+			if(dis<min){
+				min = dis;
+			}
+			if(dis>max){
+				max = dis;
+			}
+		}
+		double score = (distance - min)/(max - min);
+		return score;
+	}
+
+	public double getSupermarketRatingScore(Supermarket supermarket){
+		Iterator<Supermarket> iter = ContextManager.supermarketContext.iterator();
+		
+		return 0;
+	}
+	public double getDistance(Supermarket supermarket){
+		this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
+		this.destination = ContextManager.supermarketProjection.getGeometry(supermarket).getCentroid().getCoordinate();
+		double dis = (origin.x - destination.x) * (origin.x - destination.x)
+				+ (origin.y - destination.y) * (origin.y - destination.y);
+		return dis;
+	}
 	public Supermarket findNearestSupermarket() {
 		Iterator<Supermarket> iter = ContextManager.supermarketContext.iterator();
 		double min = Double.POSITIVE_INFINITY;
@@ -402,35 +437,43 @@ public class Consumer implements People {
 			FoodOrder foodOrder = new FoodOrder();
 			this.satisfaction = 100;
 			HashMap<String, List<Food>> stock = farm.getStock();
-			List<Food> grain_list = stock.get("grain");
-			System.out.println("grain: "+grain_list.size());
-			HashMap<String, Food> grain_map = toHashMap(grain_list);
-			List<Food> vegetable_list = stock.get("vegetable");
-			System.out.println("vegetable: "+vegetable_list.size());
-			HashMap<String, Food> vegetable_map = toHashMap(vegetable_list);
-			List<Food> fruit_list = stock.get("fruit");
-			System.out.println("fruit: "+fruit_list.size());
-			HashMap<String, Food> fruit_map = toHashMap(fruit_list);
-			List<Food> dairy_list = stock.get("dairy");
-			System.out.println("dairy: "+dairy_list.size());
-			HashMap<String, Food> dairy_map = toHashMap(dairy_list);
-			List<Food> meat_list = stock.get("meat");
-			System.out.println("meat: "+meat_list.size());
-			HashMap<String, Food> meat_map = toHashMap(meat_list);
-
 			Preference preference = new Preference();
-			ArrayList<String> grain_prefer = preference.getGrain_list();
-			ArrayList<String> vegetable_prefer = preference.getVegetable_list();
-			ArrayList<String> fruit_prefer = preference.getFruit_list();
-			ArrayList<String> dairy_prefer = preference.getDairy_list();
-			ArrayList<String> meat_prefer = preference.getMeat_list();
+			List<Food> grain_list = stock.get("grain");
+			if(grain_list != null) {
+				System.out.println("grain: "+grain_list.size());
+				HashMap<String, Food> grain_map = toHashMap(grain_list);
+				ArrayList<String> grain_prefer = preference.getGrain_list();
+				buyFood(grain_map,grain_prefer,foodOrder);
+			}
+			List<Food> vegetable_list = stock.get("vegetable");
+			if(vegetable_list != null){
+				System.out.println("vegetable: "+vegetable_list.size());
+				HashMap<String, Food> vegetable_map = toHashMap(vegetable_list);
+				ArrayList<String> vegetable_prefer = preference.getVegetable_list();
+				buyFood(vegetable_map,vegetable_prefer,foodOrder);
+			}
+			List<Food> fruit_list = stock.get("fruit");
+			if(fruit_list!=null){
+				System.out.println("fruit: "+fruit_list.size());
+				HashMap<String, Food> fruit_map = toHashMap(fruit_list);
+				ArrayList<String> fruit_prefer = preference.getFruit_list();
+				buyFood(fruit_map,fruit_prefer,foodOrder);
+			}
+			List<Food> dairy_list = stock.get("dairy");
+			if(dairy_list != null){
+				System.out.println("dairy: "+dairy_list.size());
+				HashMap<String, Food> dairy_map = toHashMap(dairy_list);
+				ArrayList<String> dairy_prefer = preference.getDairy_list();
+				buyFood(dairy_map,dairy_prefer,foodOrder);
+			}
 
-			buyFood(grain_map,grain_prefer,foodOrder);
-			buyFood(vegetable_map,vegetable_prefer,foodOrder);
-			buyFood(fruit_map,fruit_prefer,foodOrder);
-			buyFood(dairy_map,dairy_prefer,foodOrder);
-			buyFood(meat_map,meat_prefer,foodOrder);
-
+			List<Food> meat_list = stock.get("meat");
+			if(meat_list != null){
+				System.out.println("meat: "+meat_list.size());
+				HashMap<String, Food> meat_map = toHashMap(meat_list);
+				ArrayList<String> meat_prefer = preference.getMeat_list();
+				buyFood(meat_map,meat_prefer,foodOrder);
+			}
 			return foodOrder;
 	}
 
@@ -467,7 +510,7 @@ public class Consumer implements People {
 		Random r = new Random();
 		for(String name: preference){
 			Food f = foodMap.get(name);
-			if (f.getAmount() > 0){
+			if (f!=null && f.getAmount() > 0){
 				foodOrder.addOrder(f, r.nextDouble()*5);
 			}else{
 				this.satisfaction--;
