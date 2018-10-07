@@ -69,7 +69,6 @@ public class DefaultFoodStock {
 		return food;
 	}
 	public static List<Food> getRandomFoodList()
-	
 	{
 		ArrayList<String> foodTypes=new ArrayList<String>();
 		foodTypes.add("vegetable");
