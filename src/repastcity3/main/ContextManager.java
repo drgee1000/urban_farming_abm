@@ -378,23 +378,23 @@ public class ContextManager implements ContextBuilder<Object> {
 
 	public void recordTicks() {
 		LOGGER.info("Iterations: " + RunEnvironment.getInstance().getCurrentSchedule().getTickCount());
-//
-//		try {
-//			dLogger.recordData(agentContext.getObjects(IAgent.class),Helper.getCurrentTick());
-//			dLogger.recordData(farmContext.getObjects(Farm.class),Helper.getCurrentTick());
-//			dLogger.recordData(supermarketContext.getObjects(Supermarket.class), Helper.getCurrentTick());
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
+
+		try {
+			dLogger.recordData(agentContext.getObjects(IAgent.class),Helper.getCurrentTick());
+			dLogger.recordData(farmContext.getObjects(Farm.class),Helper.getCurrentTick());
+			dLogger.recordData(supermarketContext.getObjects(Supermarket.class), Helper.getCurrentTick());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void stopRecord() {
-//		try {
-//			dLogger.stopRecord();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		try {
+			dLogger.stopRecord();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
