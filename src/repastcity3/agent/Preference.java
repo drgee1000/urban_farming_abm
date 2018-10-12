@@ -2,10 +2,7 @@ package repastcity3.agent;
 
 import repastcity3.environment.food.FoodClassifier;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Random;
+import java.util.*;
 
 public class Preference {
 	//int organicity;
@@ -18,7 +15,12 @@ public class Preference {
 	ArrayList<String> dairy_list;
 	double d_weight = 0; // weight for distance;
 	double s_weight = 0; // weight for score;
-	
+	double personal = 0; // personal preference when selecting food
+	double healthy = 0; // health consideration when selecting food
+	HashMap<String, Integer> prefer_weight;
+	HashMap<String, Integer> good_weight;
+	HashMap<String, Integer> final_weight;
+
 	//public int get_organicity() {
 	//	return organicity;
 	//}
@@ -44,6 +46,38 @@ public class Preference {
 		Random r = new Random();
 		this.d_weight = r.nextDouble();
 		this.s_weight = 1 - this.d_weight;
+		this.prefer_weight = new HashMap<>();
+		int weight = r.nextInt(300)+150;
+		prefer_weight.put("grain", weight);
+		weight = r.nextInt(400)+200;
+		prefer_weight.put("vegetable", weight);
+		weight = r.nextInt(300)+ 100;
+		prefer_weight.put("fruit", weight);
+		weight = r.nextInt(200) + 160;
+		prefer_weight.put("meat", weight);
+		weight = r.nextInt(400)+100;
+		prefer_weight.put("dairy", weight);
+		weight = r.nextInt(200) + 250;
+		good_weight.put("grain", weight);
+		weight = r.nextInt(200)+300;
+		good_weight.put("vegetable", weight);
+		weight = r.nextInt(150)+ 200;
+		good_weight.put("fruit", weight);
+		weight = r.nextInt(80) + 160;
+		good_weight.put("meat", weight);
+		weight = 300;
+		good_weight.put("dairy", weight);
+		personal = r.nextDouble();
+		healthy = 1 - personal;
+		final_weight.put("grain", get_final_weight("grain"));
+		final_weight.put("vegetable", get_final_weight("vegetable"));
+		final_weight.put("fruit", get_final_weight("weight"));
+		final_weight.put("meat", get_final_weight("meat"));
+		final_weight.put("dairy", get_final_weight("dairy"));
+	}
+
+	public int get_final_weight(String s){
+		return (int) (personal*prefer_weight.get(s) + healthy*good_weight.get(s));
 	}
 
 	public double get_d_weight(){

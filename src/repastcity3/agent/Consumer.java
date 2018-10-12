@@ -4,14 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -47,7 +40,7 @@ public class Consumer implements People {
 	private Coordinate destination;
 	private Farm farm;
 	private Residential residential;
-	private int flag; // whether it has got enough food in one farm
+	private int[] flags;
 
 	private boolean goforEat = false;
 	private double defaultHealth = 200;
@@ -58,7 +51,7 @@ public class Consumer implements People {
 	private double mealEnergy;
 	private double deathThreshold;
 	private int satisfaction;
-
+	private Preference preference = null;
 	private static int uniqueID = 0;
 
 	private double thredis = 2; // In kilometer;
@@ -66,7 +59,6 @@ public class Consumer implements People {
 	private int type = 3;
 
 	private int income;
-	private Map<String, Double> preference;
 	private HashMap<String, List<Food>> consumer_food_stock;
 
 	private enum CATAGORY {
@@ -82,11 +74,15 @@ public class Consumer implements People {
 
 	public Consumer() {
 		this.id = uniqueID++;
-		preference = new HashMap<String, Double>();
+		this.preference = new Preference();
 		consumer_food_stock = new HashMap<String, List<Food>>();
 		Random random = new Random();
 		this.residential = ContextManager.residentialContext.getRandomObject();
 		int c = random.nextInt(100);
+		this.flags = new int[5];
+		for (int num: flags){
+			num = 0;
+		}
 		if (c <= 7) {
 			catagory = CATAGORY.CHILD;
 			setSex();
@@ -165,13 +161,26 @@ public class Consumer implements People {
 	public void step() throws Exception {
 		double stock_calory = getStockCalory(consumer_food_stock);
 		if (stock_calory < 1000) {
-			Farm farm = selectFarm();
-			this.destination = ContextManager.farmProjection.getGeometry(farm).getCentroid().getCoordinate();
-			GeometryFactory geomFac = new GeometryFactory();
-			ContextManager.moveAgent(this, geomFac.createPoint(this.destination));
-			FoodOrder foodOrder = this.selectFood(farm);
-			farm.sell(foodOrder);
-			farm.updateScore(this.satisfaction);
+			flags[0] = 0;
+			flags[1] = 0;
+			flags[2] = 0;
+			flags[3] = 0;
+			flags[4] = 0;
+			TreeMap<Double, Supermarket> supermarketTreeMap = selectSupermarket();
+			//System.out.print(supermarketTreeMap.size());
+			for(Double key: supermarketTreeMap.keySet()){
+				Supermarket supermarket = supermarketTreeMap.get(key);
+				this.destination = ContextManager.supermarketProjection.getGeometry(supermarket).getCentroid().getCoordinate();
+				GeometryFactory geomFac = new GeometryFactory();
+				ContextManager.moveAgent(this, geomFac.createPoint(this.destination));
+				FoodOrder foodOrder = this.selectFood(supermarket);
+				supermarket.sell(foodOrder);
+				supermarket.updateScore(this.satisfaction);
+				if(flags[0] == 1 && flags[1] == 1 && flags[2] == 1 && flags[3] == 1 && flags[4] == 1) {
+					break;
+				}
+			}
+
 		} else {
 			goRandomPlace(this.type);
 			setPurpose();
@@ -262,35 +271,35 @@ public class Consumer implements People {
 
 	public void goRandomPlace(int type) throws Exception {
 		switch (type) {
-		case 1: {
-			School S = ContextManager.schoolContext.getRandomObject();
-			// this.route = new Route(this,
-			// ContextManager.schoolProjection.getGeometry(S).getCentroid().getCoordinate(),
-			// S);
-			// this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
-			this.destination = ContextManager.schoolProjection.getGeometry(S).getCentroid().getCoordinate();
-			GeometryFactory geomFac = new GeometryFactory();
-			ContextManager.moveAgent(this, geomFac.createPoint(this.destination));
-			break;
-		}
-		case 2: {
-			Workplace W = ContextManager.workplaceContext.getRandomObject();
-			// this.route = new Route(this,
-			// ContextManager.workplaceProjection.getGeometry(W).getCentroid().getCoordinate(),
-			// W);
-			// this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
-			this.destination = ContextManager.workplaceProjection.getGeometry(W).getCentroid().getCoordinate();
-			GeometryFactory geomFac = new GeometryFactory();
-			ContextManager.moveAgent(this, geomFac.createPoint(this.destination));
-			break;
-		}
-		case 3: {
-			this.destination = ContextManager.residentialProjection.getGeometry(this.residential).getCentroid()
-					.getCoordinate();
-			GeometryFactory geomFac = new GeometryFactory();
-			ContextManager.moveAgent(this, geomFac.createPoint(this.destination));
-			break;
-		}
+			case 1: {
+				School S = ContextManager.schoolContext.getRandomObject();
+				// this.route = new Route(this,
+				// ContextManager.schoolProjection.getGeometry(S).getCentroid().getCoordinate(),
+				// S);
+				// this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
+				this.destination = ContextManager.schoolProjection.getGeometry(S).getCentroid().getCoordinate();
+				GeometryFactory geomFac = new GeometryFactory();
+				ContextManager.moveAgent(this, geomFac.createPoint(this.destination));
+				break;
+			}
+			case 2: {
+				Workplace W = ContextManager.workplaceContext.getRandomObject();
+				// this.route = new Route(this,
+				// ContextManager.workplaceProjection.getGeometry(W).getCentroid().getCoordinate(),
+				// W);
+				// this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
+				this.destination = ContextManager.workplaceProjection.getGeometry(W).getCentroid().getCoordinate();
+				GeometryFactory geomFac = new GeometryFactory();
+				ContextManager.moveAgent(this, geomFac.createPoint(this.destination));
+				break;
+			}
+			case 3: {
+				this.destination = ContextManager.residentialProjection.getGeometry(this.residential).getCentroid()
+						.getCoordinate();
+				GeometryFactory geomFac = new GeometryFactory();
+				ContextManager.moveAgent(this, geomFac.createPoint(this.destination));
+				break;
+			}
 
 		}
 	}
@@ -307,6 +316,33 @@ public class Consumer implements People {
 		return farm;
 	}
 
+	public TreeMap<Double, Supermarket> selectSupermarket(){
+		TreeMap<Double, Supermarket> treeMap = new TreeMap<Double, Supermarket>(
+				new Comparator<Double>() {
+					@Override
+					public int compare(Double o1, Double o2) {
+						return o2.compareTo(o1);
+					}
+				}
+		);
+		Iterator<Supermarket> iterator = ContextManager.supermarketContext.iterator();
+		while(iterator.hasNext()){
+			Supermarket supermarket = iterator.next();
+			double score = getSupermarketScore(supermarket);
+			treeMap.put(score, supermarket);
+		}
+		return treeMap;
+	}
+
+	public double getSupermarketScore(Supermarket supermarket){
+		double d_score = getSupermarketDistanceScore(supermarket);
+		double s_score = getSupermarketRatingScore(supermarket);
+		double d_weight = preference.get_d_weight();
+		double s_weight = preference.get_s_weight();
+		Random random = new Random();
+		double score = d_score*d_weight + s_score*s_weight + random.nextDouble();
+		return score;
+	}
 	public Farm findNearestFarm() {
 		Iterator<Farm> iter = ContextManager.farmContext.iterator();
 		double min = Double.POSITIVE_INFINITY;
@@ -331,7 +367,7 @@ public class Consumer implements People {
 
 	/*
 	 * public Supermarket selectSupermarket() {
-	 * 
+	 *
 	 * }
 	 */
 
@@ -356,8 +392,20 @@ public class Consumer implements People {
 
 	public double getSupermarketRatingScore(Supermarket supermarket) {
 		Iterator<Supermarket> iter = ContextManager.supermarketContext.iterator();
-
-		return 0;
+		double min = Double.POSITIVE_INFINITY;
+		double max = Double.NEGATIVE_INFINITY;
+		double score = getSupermarketScore(supermarket);
+		while (iter.hasNext()){
+			Supermarket s = iter.next();
+			double score2 = getSupermarketScore(supermarket);
+			if(score2 < min){
+				min = score2;
+			}else if(score2 > max) {
+				max = score2;
+			}
+		}
+		double score3 = (score - min) / (max - min);
+		return score3;
 	}
 
 	public double getDistance(Supermarket supermarket) {
@@ -422,7 +470,7 @@ public class Consumer implements People {
 		return PopularSupermarket;
 	}
 
-	double getFoodScore(Food food) {
+	/*double getFoodScore(Food food) {
 		Nutrition ntr = food.getNutrition();
 		// to-do: normalize the value of each kind of nutrition (divide the max-min
 		// value )
@@ -430,7 +478,7 @@ public class Consumer implements People {
 				+ preference.get("protein") * ntr.getprotein() + preference.get("water") * ntr.getwater()
 				+ preference.get("vitamins") * ntr.getvitamins() + preference.get("minerals") * ntr.getminerals();
 		return score;
-	}
+	}*/
 
 	double getStockCalory(HashMap<String, List<Food>> stock) {
 		double calory_sum = 0;
@@ -443,14 +491,14 @@ public class Consumer implements People {
 		}
 		return calory_sum;
 	}
-
+	/*
 	public FoodOrder selectFood(Farm farm) {
 		// System.err.println("enter select food");
 
 		FoodOrder foodOrder = new FoodOrder();
 		this.satisfaction = 100;
 
-		
+
 		synchronized (farm) {
 			HashMap<String, List<Food>> stock = farm.getStock();
 			Preference preference = new Preference();
@@ -491,7 +539,64 @@ public class Consumer implements People {
 				buyFood(meat_map, meat_prefer, foodOrder);
 			}
 		}
-		
+
+		return foodOrder;
+	}*/
+
+	public FoodOrder selectFood(Supermarket supermarket) {
+		// System.err.println("enter select food");
+
+		FoodOrder foodOrder = new FoodOrder();
+		this.satisfaction = 100;
+
+
+		synchronized (supermarket) {
+			HashMap<String, List<Food>> stock = supermarket.getStock();
+			Preference preference = new Preference();
+			List<Food> grain_list = stock.get("grain");
+			if (grain_list != null && flags[1] == 0) {
+				// System.out.println("grain: "+grain_list.size());
+				HashMap<String, Food> grain_map = toHashMap(grain_list);
+				ArrayList<String> grain_prefer = preference.getGrain_list();
+				buyFood("grain", grain_map, grain_prefer, foodOrder);
+				this.flags[0] = 1;
+
+			}
+			List<Food> vegetable_list = stock.get("vegetable");
+			if (vegetable_list != null && flags[1] == 0) {
+				// System.out.println("vegetable: "+vegetable_list.size());
+				HashMap<String, Food> vegetable_map = toHashMap(vegetable_list);
+				ArrayList<String> vegetable_prefer = preference.getVegetable_list();
+				buyFood("vegetable", vegetable_map, vegetable_prefer, foodOrder);
+				this.flags[1] = 1;
+			}
+			List<Food> fruit_list = stock.get("fruit");
+			if (fruit_list != null && flags[1] == 0) {
+				// System.out.println("fruit: "+fruit_list.size());
+				HashMap<String, Food> fruit_map = toHashMap(fruit_list);
+				ArrayList<String> fruit_prefer = preference.getFruit_list();
+				buyFood("fruit", fruit_map, fruit_prefer, foodOrder);
+				this.flags[2] = 1;
+			}
+			List<Food> dairy_list = stock.get("dairy");
+			if (dairy_list != null && flags[1] == 0) {
+				// System.out.println("dairy: "+dairy_list.size());
+				HashMap<String, Food> dairy_map = toHashMap(dairy_list);
+				ArrayList<String> dairy_prefer = preference.getDairy_list();
+				buyFood("dairy", dairy_map, dairy_prefer, foodOrder);
+				this.flags[3] = 1;
+			}
+
+			List<Food> meat_list = stock.get("meat");
+			if (meat_list != null && flags[1] == 0) {
+				// System.out.println("meat: "+meat_list.size());
+				HashMap<String, Food> meat_map = toHashMap(meat_list);
+				ArrayList<String> meat_prefer = preference.getMeat_list();
+				buyFood("meat", meat_map, meat_prefer, foodOrder);
+				this.flags[4] = 1;
+			}
+		}
+
 		return foodOrder;
 	}
 
@@ -528,14 +633,16 @@ public class Consumer implements People {
 		return hour;
 	}
 
-	public void buyFood(HashMap<String, Food> foodMap, ArrayList<String> preference, FoodOrder foodOrder) {
+	public void buyFood(String s, HashMap<String, Food> foodMap, ArrayList<String> preference, FoodOrder foodOrder) {
 		Random r = new Random();
+		int reduce = 2;
 		for (String name : preference) {
 			Food f = foodMap.get(name);
 			if (f != null && f.getAmount() > 0) {
-				foodOrder.addOrder(f, r.nextDouble() * 5);
+				foodOrder.addOrder(f, this.preference.final_weight.get(s));
 			} else {
-				this.satisfaction--;
+				this.satisfaction = this.satisfaction - reduce;
+				reduce = reduce*2;
 			}
 		}
 	}
