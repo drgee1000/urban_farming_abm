@@ -161,11 +161,7 @@ public class Consumer implements People {
 	public void step() throws Exception {
 		double stock_calory = getStockCalory(consumer_food_stock);
 		if (stock_calory < 1000) {
-			flags[0] = 0;
-			flags[1] = 0;
-			flags[2] = 0;
-			flags[3] = 0;
-			flags[4] = 0;
+			int[] flags = {0, 0, 0, 0, 0};
 			TreeMap<Double, Supermarket> supermarketTreeMap = selectSupermarket();
 			//System.out.print(supermarketTreeMap.size());
 			for(Double key: supermarketTreeMap.keySet()){
@@ -394,10 +390,10 @@ public class Consumer implements People {
 		Iterator<Supermarket> iter = ContextManager.supermarketContext.iterator();
 		double min = Double.POSITIVE_INFINITY;
 		double max = Double.NEGATIVE_INFINITY;
-		double score = getSupermarketScore(supermarket);
+		double score = supermarket.getScore();
 		while (iter.hasNext()){
 			Supermarket s = iter.next();
-			double score2 = getSupermarketScore(supermarket);
+			double score2 = supermarket.getScore();
 			if(score2 < min){
 				min = score2;
 			}else if(score2 > max) {
@@ -636,10 +632,12 @@ public class Consumer implements People {
 	public void buyFood(String s, HashMap<String, Food> foodMap, ArrayList<String> preference, FoodOrder foodOrder) {
 		Random r = new Random();
 		int reduce = 2;
+		this.preference.set_final_weight();
+		HashMap<String, Integer> final_weight = this.preference.get_final_weight();
 		for (String name : preference) {
 			Food f = foodMap.get(name);
 			if (f != null && f.getAmount() > 0) {
-				foodOrder.addOrder(f, this.preference.final_weight.get(s));
+				foodOrder.addOrder(f, final_weight.get(s));
 			} else {
 				this.satisfaction = this.satisfaction - reduce;
 				reduce = reduce*2;
