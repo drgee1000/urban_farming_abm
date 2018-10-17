@@ -41,6 +41,11 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 		this.purchasePlan = DefaultFoodStock.getRandomFoodList();
 		initStock();
 		System.out.println("init supermarket "+identifier+" with stockCount " + stock.keySet().size());
+		List<Food> l = this.stock.get("grain");
+		for(Food f:l) {
+			System.out.println(f.getAmount());
+		}
+		
 	}
 	
 	

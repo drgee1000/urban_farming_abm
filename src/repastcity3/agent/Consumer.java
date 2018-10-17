@@ -26,6 +26,7 @@ import repastcity3.environment.food.Food;
 import repastcity3.environment.food.FoodOrder;
 import repastcity3.environment.food.FoodType;
 import repastcity3.environment.food.Nutrition;
+import repastcity3.exceptions.NoIdentifierException;
 import repastcity3.main.ContextManager;
 import repastcity3.utilities.Helper;
 
@@ -40,7 +41,6 @@ public class Consumer implements People {
 	private Coordinate destination;
 	private Farm farm;
 	private Residential residential;
-	private int[] flags;
 
 	private boolean goforEat = false;
 	private double defaultHealth = 200;
@@ -79,10 +79,7 @@ public class Consumer implements People {
 		Random random = new Random();
 		this.residential = ContextManager.residentialContext.getRandomObject();
 		int c = random.nextInt(100);
-		this.flags = new int[5];
-		for (int num: flags){
-			num = 0;
-		}
+		
 		if (c <= 7) {
 			catagory = CATAGORY.CHILD;
 			setSex();
@@ -166,10 +163,11 @@ public class Consumer implements People {
 			//System.out.print(supermarketTreeMap.size());
 			for(Double key: supermarketTreeMap.keySet()){
 				Supermarket supermarket = supermarketTreeMap.get(key);
+				System.out.println("======="+supermarket.getIdentifier()+"===========");
 				this.destination = ContextManager.supermarketProjection.getGeometry(supermarket).getCentroid().getCoordinate();
 				GeometryFactory geomFac = new GeometryFactory();
 				ContextManager.moveAgent(this, geomFac.createPoint(this.destination));
-				FoodOrder foodOrder = this.selectFood(supermarket);
+				FoodOrder foodOrder = this.selectFood(supermarket, flags);
 				supermarket.sell(foodOrder);
 				supermarket.updateScore(this.satisfaction);
 				if(flags[0] == 1 && flags[1] == 1 && flags[2] == 1 && flags[3] == 1 && flags[4] == 1) {
@@ -325,6 +323,12 @@ public class Consumer implements People {
 		while(iterator.hasNext()){
 			Supermarket supermarket = iterator.next();
 			double score = getSupermarketScore(supermarket);
+			try {
+				System.out.println("======"+supermarket.getIdentifier()+" "+score+"=====");
+			} catch (NoIdentifierException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			treeMap.put(score, supermarket);
 		}
 		return treeMap;
@@ -332,7 +336,9 @@ public class Consumer implements People {
 
 	public double getSupermarketScore(Supermarket supermarket){
 		double d_score = getSupermarketDistanceScore(supermarket);
+		System.out.println("dscore:"+d_score);
 		double s_score = getSupermarketRatingScore(supermarket);
+		System.out.println("s_score:"+s_score);
 		double d_weight = preference.get_d_weight();
 		double s_weight = preference.get_s_weight();
 		Random random = new Random();
@@ -369,20 +375,29 @@ public class Consumer implements People {
 
 	public double getSupermarketDistanceScore(Supermarket supermarket) {
 		Iterator<Supermarket> iter = ContextManager.supermarketContext.iterator();
-		double min = Double.POSITIVE_INFINITY;
-		double max = Double.NEGATIVE_INFINITY;
+		double min = 10000000;
+		double max = -10000000;
 		double distance = getDistance(supermarket);
+		System.out.println("distance:"+distance);
+		int count = 0;
 		while (iter.hasNext()) {
+			count++;
 			Supermarket s = iter.next();
-			double dis = getDistance(supermarket);
+			double dis = getDistance(s);
+			System.out.println("min:"+min+"dis:"+dis+"max:"+max);
+			
 			if (dis < min) {
+
 				min = dis;
 			}
 			if (dis > max) {
 				max = dis;
 			}
 		}
-		double score = (distance - min) / (max - min);
+		System.out.println("count"+count);
+		System.out.println("max:"+max+"min:"+min);
+		double score = 1000*(distance - min) / (max - min);
+		System.out.println("score:"+score);
 		return score;
 	}
 
@@ -393,14 +408,14 @@ public class Consumer implements People {
 		double score = supermarket.getScore();
 		while (iter.hasNext()){
 			Supermarket s = iter.next();
-			double score2 = supermarket.getScore();
+			double score2 = s.getScore();
 			if(score2 < min){
 				min = score2;
 			}else if(score2 > max) {
 				max = score2;
 			}
 		}
-		double score3 = (score - min) / (max - min);
+		double score3 = 100*(score - min) / (max - min);
 		return score3;
 	}
 
@@ -409,7 +424,7 @@ public class Consumer implements People {
 		this.destination = ContextManager.supermarketProjection.getGeometry(supermarket).getCentroid().getCoordinate();
 		double dis = (origin.x - destination.x) * (origin.x - destination.x)
 				+ (origin.y - destination.y) * (origin.y - destination.y);
-		return dis;
+		return dis*1000;
 	}
 
 	public Supermarket findNearestSupermarket() {
@@ -539,7 +554,7 @@ public class Consumer implements People {
 		return foodOrder;
 	}*/
 
-	public FoodOrder selectFood(Supermarket supermarket) {
+	public FoodOrder selectFood(Supermarket supermarket, int[] flags) {
 		// System.err.println("enter select food");
 
 		FoodOrder foodOrder = new FoodOrder();
@@ -548,51 +563,52 @@ public class Consumer implements People {
 
 		synchronized (supermarket) {
 			HashMap<String, List<Food>> stock = supermarket.getStock();
+			System.out.println("start selecting food, supermarket stock size:" + stock.keySet().size());
 			Preference preference = new Preference();
 			List<Food> grain_list = stock.get("grain");
 			if (grain_list != null && flags[1] == 0) {
-				// System.out.println("grain: "+grain_list.size());
+				System.out.println("buy grain: "+grain_list.size());
 				HashMap<String, Food> grain_map = toHashMap(grain_list);
 				ArrayList<String> grain_prefer = preference.getGrain_list();
 				buyFood("grain", grain_map, grain_prefer, foodOrder);
-				this.flags[0] = 1;
+				flags[0] = 1;
 
 			}
 			List<Food> vegetable_list = stock.get("vegetable");
 			if (vegetable_list != null && flags[1] == 0) {
-				// System.out.println("vegetable: "+vegetable_list.size());
+				System.out.println("buy vegetable: "+vegetable_list.size());
 				HashMap<String, Food> vegetable_map = toHashMap(vegetable_list);
 				ArrayList<String> vegetable_prefer = preference.getVegetable_list();
 				buyFood("vegetable", vegetable_map, vegetable_prefer, foodOrder);
-				this.flags[1] = 1;
+				flags[1] = 1;
 			}
 			List<Food> fruit_list = stock.get("fruit");
 			if (fruit_list != null && flags[1] == 0) {
-				// System.out.println("fruit: "+fruit_list.size());
+				System.out.println("buy fruit: "+fruit_list.size());
 				HashMap<String, Food> fruit_map = toHashMap(fruit_list);
 				ArrayList<String> fruit_prefer = preference.getFruit_list();
 				buyFood("fruit", fruit_map, fruit_prefer, foodOrder);
-				this.flags[2] = 1;
+				flags[2] = 1;
 			}
 			List<Food> dairy_list = stock.get("dairy");
 			if (dairy_list != null && flags[1] == 0) {
-				// System.out.println("dairy: "+dairy_list.size());
+				System.out.println("buy dairy: "+dairy_list.size());
 				HashMap<String, Food> dairy_map = toHashMap(dairy_list);
 				ArrayList<String> dairy_prefer = preference.getDairy_list();
 				buyFood("dairy", dairy_map, dairy_prefer, foodOrder);
-				this.flags[3] = 1;
+				flags[3] = 1;
 			}
 
 			List<Food> meat_list = stock.get("meat");
 			if (meat_list != null && flags[1] == 0) {
-				// System.out.println("meat: "+meat_list.size());
+				System.out.println("buy meat: "+meat_list.size());
 				HashMap<String, Food> meat_map = toHashMap(meat_list);
 				ArrayList<String> meat_prefer = preference.getMeat_list();
 				buyFood("meat", meat_map, meat_prefer, foodOrder);
-				this.flags[4] = 1;
+				flags[4] = 1;
 			}
 		}
-
+		System.out.println("finish selecting food, with order keys size: "+foodOrder.getList().keySet().size());
 		return foodOrder;
 	}
 
@@ -634,10 +650,16 @@ public class Consumer implements People {
 		int reduce = 2;
 		this.preference.set_final_weight();
 		HashMap<String, Integer> final_weight = this.preference.get_final_weight();
+		System.out.println(s + " "+ final_weight+" buy food");
 		for (String name : preference) {
 			Food f = foodMap.get(name);
+			if (f!=null) {
+				System.out.println("I want to buy "+f.getName() + f.getAmount());
+			}
+			
 			if (f != null && f.getAmount() > 0) {
-				foodOrder.addOrder(f, final_weight.get(s));
+				foodOrder.addOrder(f, final_weight.get(s)/1000+1);
+				System.out.println("order:" + foodOrder.getList().keySet().size());
 			} else {
 				this.satisfaction = this.satisfaction - reduce;
 				reduce = reduce*2;

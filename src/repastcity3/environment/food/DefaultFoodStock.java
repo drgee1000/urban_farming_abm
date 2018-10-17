@@ -87,7 +87,7 @@ public class DefaultFoodStock {
 			double amount,price,productionCost;
 			int productionTime,expireTime;
 			double priceVar;
-			amount=nRand.nextDoubleFromTo(0, 100);
+			amount=nRand.nextDoubleFromTo(100000, 300000);
 			priceVar=nRand.nextDoubleFromTo(80,100);
 			price=srcFood.getPrice()+srcFood.getPrice()/(nRand.nextDoubleFromTo(-1, 1)>0?priceVar:-priceVar);
 			productionCost=srcFood.getPrice()/nRand.nextDoubleFromTo(0.5,0.98);
