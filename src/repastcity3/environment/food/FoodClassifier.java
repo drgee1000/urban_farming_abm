@@ -34,10 +34,12 @@ public class FoodClassifier {
                         fruit_list.add(name);
                         break;
                     case "vegetable":
-                        meat_list.add(name);
+                        vegetable_list.add(name);
                         break;
                     case "dairy":
                         dairy_list.add(name);
+                    case "meat":
+                    		meat_list.add(name);
                 }
             }
 
