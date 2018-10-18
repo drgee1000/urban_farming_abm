@@ -50,7 +50,9 @@ public class Consumer implements People {
 	private double caloryProduction;
 	private double mealEnergy;
 	private double deathThreshold;
-	private int satisfaction;
+	private double satisfaction;
+	private double avg_satisfaction;
+	private int buy_time;
 	private Preference preference = null;
 	private static int uniqueID = 0;
 
@@ -113,7 +115,8 @@ public class Consumer implements People {
 			File jsonFile = Paths.get("./data/agent_data/preference_old.json").toFile();
 			setPreference(jsonFile);
 		}
-
+		this.avg_satisfaction = 0;
+		this.buy_time = 0;
 		setPurpose();
 	}
 
@@ -180,6 +183,9 @@ public class Consumer implements People {
 			setPurpose();
 		}
 		this.health -= caloryConsumption;
+		if(this.buy_time!=0) {
+			this.avg_satisfaction = this.avg_satisfaction/this.buy_time;
+		}
 		consumeRandomFood();
 	}
 
@@ -559,7 +565,7 @@ public class Consumer implements People {
 
 		FoodOrder foodOrder = new FoodOrder();
 		this.satisfaction = 100;
-
+		
 
 		synchronized (supermarket) {
 			HashMap<String, List<Food>> stock = supermarket.getStock();
@@ -614,6 +620,9 @@ public class Consumer implements People {
 				flags[4] = 1;
 			}
 		}
+		this.buy_time++;
+		this.avg_satisfaction += this.satisfaction;
+		
 		System.out.println("finish selecting food, with order keys size: "+foodOrder.getList().keySet().size());
 		return foodOrder;
 	}
@@ -687,5 +696,8 @@ public class Consumer implements People {
 			list.add(f);
 			consumer_food_stock.put(foodtype, list);
 		}
+	}
+	public double getAvgSatisfaction() {
+		return avg_satisfaction;
 	}
 }
