@@ -134,12 +134,40 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 		
 	}
 	private void vaguePurchase() {
+		/* purchase food according to plan
+		 * the loop ends when need is satisfied or there's no other farm to go
+		 */
 		Iterator<Farm> iter = ContextManager.farmContext.iterator();
-		while(iter.hasNext()) {
-			Farm f = iter.next();
-			
-			
-		}
+			while(iter.hasNext()) { // loop through all farms
+				FoodOrder fo = new FoodOrder();
+				Farm f = iter.next();
+				HashMap<String,List<Food>> fStock = f.getStock();
+				for(String type:fStock.keySet()) { //loop through all kinds of stock of a farm
+					double target = vaguePurchasePlan.get(type);
+					List<Food> foodOfType= fStock.get(type);
+					Iterator iter2 = foodOfType.iterator();
+					while(iter2.hasNext()) {
+						if (target > 0.0) {
+							Food fd = (Food) iter2.next();
+							fo.addOrder(fd,fd.getAmount());
+							addStock(fd);
+							target = target - fd.getAmount();
+							if (target <0.0)
+								target = 0.0;
+							vaguePurchasePlan.put(type, target);
+						} else {
+							break;
+						}
+					}
+					
+				}
+				System.out.println("vague purchase fo size: "+fo.getList().size() );
+				f.sell(fo,this.toString());
+				// stop the loop if requirement is met 
+				//if(planEmpty()) {
+				//	break;
+				//}
+			}
 	}
 	public HashMap<String,List<Food>> getStock(){
 		
