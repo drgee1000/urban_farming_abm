@@ -133,6 +133,13 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 		}
 		
 	}
+	private boolean planEmpty() {
+		for (double d:vaguePurchasePlan.values()) {
+			if (d != 0.0) 
+				return false;
+		}
+		return true;
+	}
 	private void vaguePurchase() {
 		/* purchase food according to plan
 		 * the loop ends when need is satisfied or there's no other farm to go
@@ -163,10 +170,10 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 				}
 				System.out.println("vague purchase fo size: "+fo.getList().size() );
 				f.sell(fo,this.toString());
-				// stop the loop if requirement is met 
-				//if(planEmpty()) {
-				//	break;
-				//}
+				 //stop the loop if requirement is met 
+				if(planEmpty()) {
+					break;
+				}
 			}
 	}
 	public HashMap<String,List<Food>> getStock(){
@@ -197,6 +204,10 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 		{
 			checkStock();
 			refreshPurchasePlan();
+			refreshVPurchasePlan();
+			if(!planEmpty()) {
+				vaguePurchase();
+			}
 			
 		}
 
