@@ -218,7 +218,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 		return stock.keySet().size() > 0;
 	}
 
-	public void sell(FoodOrder order) {
+	public void sell(FoodOrder order,String sID) {
 		HashMap<Food, Double> list = order.getList();
 		double totalIncome = this.fund;
 		synchronized (this) {
@@ -231,12 +231,12 @@ public class Farm extends FarmableLocation implements FixedGeography {
 
 		totalIncome = this.fund - totalIncome;
 
-		// try {
-		// ContextManager.dLogger.recordSale(order, Helper.getCurrentTick(),
-		// totalIncome, this.identifier);
-		// } catch (IOException e) {
-		// e.printStackTrace();
-		// }
+		try {
+		ContextManager.dLogger.recordSale(order, Helper.getCurrentTick(),
+		totalIncome, this.toString(),sID);
+		} catch (IOException e) {
+		e.printStackTrace();
+		}
 
 		// let order be collected by GC
 		order = null;

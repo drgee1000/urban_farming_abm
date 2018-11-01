@@ -166,12 +166,12 @@ public class Consumer implements People {
 			//System.out.print(supermarketTreeMap.size());
 			for(Double key: supermarketTreeMap.keySet()){
 				Supermarket supermarket = supermarketTreeMap.get(key);
-				System.out.println("======= go supermarket"+supermarket.getIdentifier()+"===========");
+				//System.out.println("======= go supermarket"+supermarket.getIdentifier()+"===========");
 				this.destination = ContextManager.supermarketProjection.getGeometry(supermarket).getCentroid().getCoordinate();
 				GeometryFactory geomFac = new GeometryFactory();
 				ContextManager.moveAgent(this, geomFac.createPoint(this.destination));
 				FoodOrder foodOrder = this.selectFood(supermarket, flags);
-				supermarket.sell(foodOrder);
+				supermarket.sell(foodOrder,this.toString());
 				supermarket.updateScore(this.satisfaction);
 				if(flags[0] == 1 && flags[1] == 1 && flags[2] == 1 && flags[3] == 1 && flags[4] == 1) {
 					break;
@@ -329,12 +329,12 @@ public class Consumer implements People {
 		while(iterator.hasNext()){
 			Supermarket supermarket = iterator.next();
 			double score = getSupermarketScore(supermarket);
-			try {
+			/*try {
 				System.out.println("======"+supermarket.getIdentifier()+" "+score+"=====");
 			} catch (NoIdentifierException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}*/
 			treeMap.put(score, supermarket);
 		}
 		return treeMap;

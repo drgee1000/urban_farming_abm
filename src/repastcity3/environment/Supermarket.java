@@ -194,7 +194,7 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 		return stock.keySet().size() > 0;
 	}
 
-	public synchronized void sell(FoodOrder order) {
+	public synchronized void sell(FoodOrder order,String consumerID) {
 		HashMap<Food, Double> list = order.getList();
 		double totalIncome = this.fund;
 		list.forEach((food, amount) -> {
@@ -213,7 +213,7 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 		totalIncome = this.fund - totalIncome;
 
 		try {
-			ContextManager.dLogger.recordSale(order, Helper.getCurrentTick(), totalIncome, this.identifier);
+			ContextManager.dLogger.recordSale(order, Helper.getCurrentTick(), totalIncome, this.toString(),consumerID);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

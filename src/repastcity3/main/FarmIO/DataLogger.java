@@ -141,9 +141,9 @@ public class DataLogger {
 		deathRecord dr = new deathRecord(t,i);
 		dRecords.add(dr);
 	}
-	public void recordSale (FoodOrder foodOrder, int tick, double income, String id) throws IOException{
-		saleRecord sr = new saleRecord(foodOrder, income, tick, id);
-		
+	public void recordSale (FoodOrder foodOrder, int tick, double income, String id,String consumerID) throws IOException{
+		saleRecord sr = new saleRecord(foodOrder, income, tick, id,consumerID);
+		System.out.println(id+" sell amount: "+foodOrder.getList().size());
 		//System.out.println("farm" + sr.identifier + " sale income:" + sr.income + " tick: " + tick);
 		String salesJson = gson.toJson(sr);
 		salesFileWriter.write(salesJson);
@@ -234,9 +234,12 @@ public class DataLogger {
 		@Expose()
 		String identifier;
 		@Expose()
+		String consumerID;
+		@Expose()
 		HashMap<String, Double> order;
-		public saleRecord (FoodOrder foodOrder, double i, int t, String id){
+		public saleRecord (FoodOrder foodOrder, double i, int t, String id,String cID){
 			identifier = id;
+			consumerID = cID;
 			income = i;
 			tick = t;
 			Set<Food> fSet = foodOrder.getList().keySet();
