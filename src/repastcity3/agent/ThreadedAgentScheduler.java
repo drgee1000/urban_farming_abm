@@ -79,6 +79,9 @@ public class ThreadedAgentScheduler {
 		for (IAgent farm : ContextManager.getFarmAgents()) {
 			agents.add(farm);
 		}
+		for(IAgent supermarket:ContextManager.getSupermarketAgents()) {
+			agents.add(supermarket);
+		}
 		Collections.shuffle(agents);
 		final CountDownLatch latch = new CountDownLatch(agents.size());
 

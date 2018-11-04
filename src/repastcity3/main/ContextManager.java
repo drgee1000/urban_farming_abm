@@ -556,6 +556,9 @@ public class ContextManager implements ContextBuilder<Object> {
 	public static synchronized Iterable<Farm> getFarmAgents() {
 		return ContextManager.farmContext.getRandomObjects(Farm.class, ContextManager.farmContext.size());
 	}
+	public static synchronized Iterable<Supermarket> getSupermarketAgents(){
+		return ContextManager.supermarketContext.getRandomObjects(Supermarket.class, supermarketContext.size());
+	}
 
 	/**
 	 * Get the geometry of the given agent. This method is required -- rather than

@@ -152,7 +152,7 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 				FoodOrder fo = new FoodOrder();
 				Farm f = iter.next();
 				HashMap<String,List<Food>> fStock = f.getStock();
-				for(String type:fStock.keySet()) { //loop through all kinds of stock of a farm
+				for(String type:vaguePurchasePlan.keySet()) { //loop through all kinds of stock of a farm
 					double target = vaguePurchasePlan.get(type);
 					List<Food> foodOfType= fStock.get(type);
 					Iterator iter2 = foodOfType.iterator();
@@ -185,21 +185,24 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 	}
 
 	public void checkStock() {
-		System.out.println(this.toString() +"  check stock");
-		// move expired food to waste
-		for (String name : stock.keySet()) {
-			List<Food> fes = stock.get(name);
-			Iterator<Food> iter =  fes.iterator();
-			while(iter.hasNext()) {
-				Food fe = (Food) iter.next();
-				fe.check(Helper.getCurrentTick());
-				if(fe.expired()) {
-					fes.remove(fe);
-					addWaste(new FoodEntry(fe));
+		System.out.println(this.toString()+"check stock"		);
+		int tick=Helper.getCurrentTick();
+		synchronized (this) {
+			for (String name : stock.keySet()) {
+				List<Food> foods = stock.get(name);
+				for (int i = 0; i < foods.size(); i++) {
+					Food food=foods.get(i);
+					food.check(tick);
+					if (food.expired()) {
+						foods.remove(food);
+						addWaste(new FoodEntry(food));
+					}
 				}
+			
+				stock.put(name, foods);
 			}
-			stock.put(name, fes);
 		}
+
 	}
 	@Override
 	public void step() {

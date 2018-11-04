@@ -629,10 +629,12 @@ public class Consumer implements People {
 
 	public HashMap<String, Food> toHashMap(List<Food> list) {
 		HashMap<String, Food> foodHashMap = new HashMap<>();
-		for (Food f : list) {
-			foodHashMap.put(f.getName(), f);
+		for (int i = 0; i < list.size(); i++) {
+			Food f = list.get(i);
+			foodHashMap.put(f.getName(),f);
 		}
 		return foodHashMap;
+		
 	}
 
 	public boolean isEatingTime() {
