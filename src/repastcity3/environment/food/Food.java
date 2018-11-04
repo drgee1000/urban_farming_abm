@@ -117,6 +117,9 @@ public class Food implements Comparable<Food>{
 	public int getProductionTick() {
 		return productionTick;
 	}
+	public void setProductionTick(int t) {
+		this.productionTick = t;
+	}
 	public void check(int tick) {
 		if (tick - productionTick > expireTime)
 			isExpired = true;

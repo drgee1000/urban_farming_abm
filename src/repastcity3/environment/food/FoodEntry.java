@@ -1,32 +1,38 @@
 package repastcity3.environment.food;
 
+import com.google.gson.annotations.Expose;
+
 import repastcity3.utilities.Helper;
 
 public class FoodEntry {
-	Food food;
+	//@Expose()
+	//Food food;
+	@Expose()
 	private int productionTick;
-	boolean isExpired;
+	@Expose()
+	String name;
+	@Expose()
+	Double amount;
+	String type;
 	
 	public FoodEntry(Food f) {
-		this.food = f;
-		this.productionTick = Helper.getCurrentTick() + f.getProductionTime();
-		this.isExpired = false;
+		//this.food = f;
+		name = f.getName();
+		type = f.getType();
+		amount = f.getAmount();
+		productionTick = f.getProductionTick();
+		
 	}
 
 	public int getProductionTick() {
 		return productionTick;
 	}
-	public void check(int tick) {
-		if (tick - productionTick > food.getExpireTime())
-			isExpired = true;
+	public String getName() {
+		return name;
 	}
-	public Food getFood(){
-		return this.food;
+	public String getType() {
+		return type;
 	}
-	public boolean expired() {
-		if (this.isExpired)
-			return true;
-		else 
-			return false;
-	}
+	
+	
 }

@@ -51,7 +51,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 		initStock();
 		this.productionQueue = new PriorityQueue<Food>(new fComparator());
 		enqueProductionPlan(this.productionPlan);
-		System.out.println("init farm " + identifier + " with stockCount " + stock.keySet().size());
+		// System.out.println("init farm " + identifier + " with stockCount " + stock.keySet().size());
 	}
 
 	private void enqueProductionPlan(List<Food> plan) {
@@ -79,6 +79,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 		stockThreshold = new HashMap<String, Double>();
 		for (Food food : productionPlan) {
 			String type = food.getType();
+			food.setProductionTick(0);
 			// init stock count
 			if (!stockCount.containsKey(type)) {
 				stockCount.put(type, food.getAmount());
@@ -98,7 +99,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 		}
 		HashMap<String, List<Food>> astock = getStock();
 		for (String t : astock.keySet()) {
-			System.out.println(t + "  has " + astock.get(t).size());
+			// System.out.println(t + "  has " + astock.get(t).size());
 		}
 	}
 
@@ -116,17 +117,17 @@ public class Farm extends FarmableLocation implements FixedGeography {
 	}
 
 	private void addWaste(FoodEntry fe) {
-		Food food = fe.getFood();
-		String name = food.getName();
+		//Food food = fe.getFood();
+		String type = fe.getType();
 		List<FoodEntry> list;
-		if (waste.containsKey(name)) {
-			list = waste.get(name);
-			list.add(new FoodEntry(food));
-			waste.put(name, list);
+		if (waste.containsKey(type)) {
+			list = waste.get(type);
+			list.add(fe);
+			//waste.put(name, list);
 		} else {
 			list = new ArrayList<FoodEntry>();
-			list.add(new FoodEntry(food));
-			waste.put(name, list);
+			list.add(fe);
+			waste.put(type, list);
 		}
 	}
 
@@ -143,6 +144,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 				while (totalAmount < stockThreshold.get(type)) {
 					Food f = DefaultFoodStock.getFoodByType(type);
 					totalAmount += f.getAmount();
+					f.setProductionTick(Helper.getCurrentTick()+f.getProductionTime());
 					foodList.add(f);
 				}
 			}
@@ -156,6 +158,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 	}
 
 	public void checkStock() {
+		System.out.println(this.toString()+"check stock"		);
 		int tick=Helper.getCurrentTick();
 		synchronized (this) {
 			for (String name : stock.keySet()) {
@@ -178,8 +181,9 @@ public class Farm extends FarmableLocation implements FixedGeography {
 	@Override
 	public void step() {
 		tick = Helper.getCurrentTick();
-		if (tick % 144 == 30) {
 			checkStock();
+		if (tick % 144 == 30) {
+		
 			refreshProductionQueue();
 			dequeProductionQueue();
 		}
@@ -194,6 +198,9 @@ public class Farm extends FarmableLocation implements FixedGeography {
 
 	public double getScore() {
 		return this.score;
+	}
+	public HashMap<String,List<FoodEntry>> getWaste(){
+		return this.waste;
 	}
 
 	@Override
@@ -232,8 +239,8 @@ public class Farm extends FarmableLocation implements FixedGeography {
 		totalIncome = this.fund - totalIncome;
 
 		try {
-			System.out.println("====================================");
-			System.out.println("recordSale!" + "   order size:" + order.getList().keySet().size());
+			// System.out.println("====================================");
+			// System.out.println("recordSale!" + "   order size:" + order.getList().keySet().size());
 		ContextManager.dLogger.recordSale(order, Helper.getCurrentTick(),
 		totalIncome, this.toString(),sID);
 		} catch (IOException e) {

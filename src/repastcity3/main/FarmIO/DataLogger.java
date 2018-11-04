@@ -143,7 +143,7 @@ public class DataLogger {
 	}
 	public void recordSale (FoodOrder foodOrder, int tick, double income, String id,String consumerID) throws IOException{
 		saleRecord sr = new saleRecord(foodOrder, income, tick, id,consumerID);
-		System.out.println(id+" sell amount: "+foodOrder.getList().size());
+		// System.out.println(id+" sell amount: "+foodOrder.getList().size());
 		//System.out.println("farm" + sr.identifier + " sale income:" + sr.income + " tick: " + tick);
 		String salesJson = gson.toJson(sr);
 		salesFileWriter.write(salesJson);
@@ -171,17 +171,19 @@ public class DataLogger {
 		int tick;
 		@Expose()
 		int stockNum;
-		@Expose()
-		HashMap<String,List<Food>> stock;
+		//@Expose()
+		//HashMap<String,List<Food>> stock;
 		//@Expose()
 		//double count;
 		@Expose()
 		double fund;
-
+		@Expose()
+		HashMap<String,List<FoodEntry>> waste;
 		public farm(int t, Farm f) {
+			waste = f.getWaste();
 			tick = t;
-			stock = f.getStock();
-			stockNum = stock.size();
+			//stock = f.getStock();
+			stockNum = f.getStock().size();
 			//count = f.getCount();
 			fund = f.getFund();
 			try {
@@ -259,17 +261,20 @@ public class DataLogger {
 		int tick;
 		@Expose()
 		int stockNum;
-		@Expose()
-		HashMap<String,List<Food>> stock;
+		//@Expose()
+		//HashMap<String,List<Food>> stock;
 		//@Expose()
 		//double count;
 		@Expose()
 		double fund;
+		@Expose()
+		HashMap<String,List<FoodEntry>> waste;
 
 		public supermarket(int t, Supermarket s) {
-			tick = t;
-			stock = s.getStock();
-			stockNum = stock.size();
+			waste = s.getWaste();
+			this.tick = t;
+			//stock = s.getStock();
+			stockNum = s.getStock().keySet().size();
 			//count = f.getCount();
 			fund = s.getFund();
 			try {

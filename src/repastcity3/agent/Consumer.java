@@ -573,9 +573,9 @@ public class Consumer implements People {
 			Preference preference = new Preference();
 			List<Food> grain_list = stock.get("grain");
 			//System.out.println("grain:"+grain_list.size());
-			System.out.println(flags[0]+" "+flags[1]+" "+flags[2]+" "+flags[3]+" "+flags[4]);
+			// System.out.println(flags[0]+" "+flags[1]+" "+flags[2]+" "+flags[3]+" "+flags[4]);
 			if (grain_list != null && flags[0] == 0) {
-				System.out.println("buy grain: "+grain_list.size());
+				// System.out.println("buy grain: "+grain_list.size());
 				HashMap<String, Food> grain_map = toHashMap(grain_list);
 				ArrayList<String> grain_prefer = preference.getGrain_list();
 				buyFood("grain", grain_map, grain_prefer, foodOrder);
@@ -585,7 +585,7 @@ public class Consumer implements People {
 			List<Food> vegetable_list = stock.get("vegetable");
 			//System.out.println("vegetable:"+vegetable_list.size());
 			if (vegetable_list != null && flags[1] == 0) {
-				System.out.println("buy vegetable: "+vegetable_list.size());
+				// System.out.println("buy vegetable: "+vegetable_list.size());
 				HashMap<String, Food> vegetable_map = toHashMap(vegetable_list);
 				ArrayList<String> vegetable_prefer = preference.getVegetable_list();
 				buyFood("vegetable", vegetable_map, vegetable_prefer, foodOrder);
@@ -594,7 +594,7 @@ public class Consumer implements People {
 			List<Food> fruit_list = stock.get("fruit");
 			//System.out.println("fruit_list:"+fruit_list.size());
 			if (fruit_list != null && flags[2] == 0) {
-				System.out.println("buy fruit: "+fruit_list.size());
+				// System.out.println("buy fruit: "+fruit_list.size());
 				HashMap<String, Food> fruit_map = toHashMap(fruit_list);
 				ArrayList<String> fruit_prefer = preference.getFruit_list();
 				buyFood("fruit", fruit_map, fruit_prefer, foodOrder);
@@ -603,7 +603,7 @@ public class Consumer implements People {
 			List<Food> dairy_list = stock.get("dairy");
 			//System.out.println("dairy:"+dairy_list.size());
 			if (dairy_list != null && flags[3] == 0) {
-				System.out.println("buy dairy: "+dairy_list.size());
+				// System.out.println("buy dairy: "+dairy_list.size());
 				HashMap<String, Food> dairy_map = toHashMap(dairy_list);
 				ArrayList<String> dairy_prefer = preference.getDairy_list();
 				buyFood("dairy", dairy_map, dairy_prefer, foodOrder);
@@ -613,7 +613,7 @@ public class Consumer implements People {
 			List<Food> meat_list = stock.get("meat");
 			//System.out.println("meat:"+meat_list.size());
 			if (meat_list != null && flags[4] == 0) {
-				System.out.println("buy meat: "+meat_list.size());
+				// System.out.println("buy meat: "+meat_list.size());
 				HashMap<String, Food> meat_map = toHashMap(meat_list);
 				ArrayList<String> meat_prefer = preference.getMeat_list();
 				buyFood("meat", meat_map, meat_prefer, foodOrder);
@@ -623,7 +623,7 @@ public class Consumer implements People {
 		this.buy_time++;
 		this.avg_satisfaction += this.satisfaction;
 		
-		System.out.println("finish selecting food, with order keys size: "+foodOrder.getList().keySet().size());
+		// System.out.println("finish selecting food, with order keys size: "+foodOrder.getList().keySet().size());
 		return foodOrder;
 	}
 
@@ -665,18 +665,18 @@ public class Consumer implements People {
 		int reduce = 2;
 		this.preference.set_final_weight();
 		HashMap<String, Integer> final_weight = this.preference.get_final_weight();
-		System.out.println(s + " "+ final_weight+" buy food");
-		System.out.println("pre:"+preference.size());
+		// System.out.println(s + " "+ final_weight+" buy food");
+		// System.out.println("pre:"+preference.size());
 		for (String name : preference) {
 			Food f = foodMap.get(name);
-			System.out.println("name:"+ name);
-			if (f!=null) {
-				System.out.println("I want to buy "+f.getName() + f.getAmount());
-			}
+			// System.out.println("name:"+ name);
+			// if (f!=null) {
+				// System.out.println("I want to buy "+f.getName() + f.getAmount());
+			// }
 			
 			if (f != null && f.getAmount() > 0) {
 				foodOrder.addOrder(f, final_weight.get(s)/100);
-				System.out.println("order:" + f.getName()+final_weight.get(s)/100+foodOrder.getList().keySet().size());
+				// System.out.println("order:" + f.getName()+final_weight.get(s)/100+foodOrder.getList().keySet().size());
 			} else {
 				this.satisfaction = this.satisfaction - reduce;
 				reduce = reduce*2;

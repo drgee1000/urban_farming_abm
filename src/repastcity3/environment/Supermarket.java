@@ -40,18 +40,21 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 		//this.count = 0;
 		this.purchasePlan = DefaultFoodStock.getRandomFoodList();
 		initStock();
-		System.out.println("init supermarket "+identifier+" with stockCount " + stock.keySet().size());
-		List<Food> l = this.stock.get("grain");
-		for(Food f:l) {
-			System.out.println(f.getAmount());
-		}
+		// System.out.println("init supermarket "+identifier+" with stockCount " + stock.keySet().size());
+		// List<Food> l = this.stock.get("grain");
+		// for(Food f:l) {
+			// System.out.println(f.getAmount());
+		// }
 		
 	}
-	
+	public HashMap<String,List<FoodEntry>> getWaste(){
+		return this.waste;
+	}
 	
 	private void initStock() {
 		stockThreshold = new HashMap<String,Double>();
 		for (Food food : purchasePlan) {
+			food.setProductionTick(0);
 			String type = food.getType();
 			//init stock count
 			if(!stockCount.containsKey(type)){
@@ -72,7 +75,7 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 		}
 		HashMap<String,List<Food>> astock = getStock();
 		for (String t : astock.keySet()) {
-			System.out.println("supermarket"+identifier+"has food in "+ t+":  "+astock.get(t).size());
+			// System.out.println("supermarket"+identifier+"has food in "+ t+":  "+astock.get(t).size());
 		}
 	}
 	private void addStock(Food food) {
@@ -89,16 +92,16 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 		}
 	}
 	private void addWaste(FoodEntry fe) {
-		Food food = fe.getFood();
-		String name = food.getName();
+		//Food food = fe.getFood();
+		String type= fe.getType();
 		List<FoodEntry> list;
-		if (waste.containsKey(name)) {
-			list = waste.get(name);
-			list.add(new FoodEntry(food));
+		if (waste.containsKey(type)) {
+			list = waste.get(type);
+			list.add(fe);
 		} else {
 			list = new ArrayList<FoodEntry>();
-			list.add(new FoodEntry(food));
-			waste.put(name, list);
+			list.add(fe);
+			waste.put(type, list);
 		}
 	}
 	private void refreshPurchasePlan() {
@@ -182,6 +185,7 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 	}
 
 	public void checkStock() {
+		System.out.println(this.toString() +"  check stock");
 		// move expired food to waste
 		for (String name : stock.keySet()) {
 			List<Food> fes = stock.get(name);
@@ -199,10 +203,12 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 	}
 	@Override
 	public void step() {
+		System.out.println("Supermarket" + this.toString() + "step");
 		tick=Helper.getCurrentTick();
+		checkStock();
 		if(tick%144==30)
 		{
-			checkStock();
+			
 			refreshPurchasePlan();
 			refreshVPurchasePlan();
 			if(!planEmpty()) {
