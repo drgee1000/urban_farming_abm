@@ -155,10 +155,10 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 				for(String type:vaguePurchasePlan.keySet()) { //loop through all kinds of stock of a farm
 					double target = vaguePurchasePlan.get(type);
 					List<Food> foodOfType= fStock.get(type);
-					Iterator iter2 = foodOfType.iterator();
-					while(iter2.hasNext()) {
+					int len = foodOfType.size();
+					for (int i = 0; i < len; i++) {
 						if (target > 0.0) {
-							Food fd = (Food) iter2.next();
+							Food fd = (Food) foodOfType.get(i);
 							fo.addOrder(fd,fd.getAmount());
 							addStock(fd);
 							target = target - fd.getAmount();
