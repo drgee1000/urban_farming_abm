@@ -1,6 +1,7 @@
 package repastcity3.environment;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -8,6 +9,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Set;
+
+import repast.simphony.util.collections.IndexedIterable;
 import repastcity3.agent.IAgent;
 import repastcity3.environment.food.DefaultFoodStock;
 import repastcity3.environment.food.Food;
@@ -173,51 +176,51 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 		 * the loop ends when need is satisfied or there's no other farm to go
 		 */
 		printVPlan();
-		Iterator<Farm> iter = ContextManager.farmContext.iterator();
-			while(iter.hasNext()) { // loop through all farms
-				FoodOrder fo = new FoodOrder();
-				Farm f = iter.next();
-				HashMap<String,List<Food>> fStock = f.getStock();
-				for(String type:vaguePurchasePlan.keySet()) { //loop through all kinds of stock of a farm
-					double target = vaguePurchasePlan.get(type);
-					System.out.println();
-					System.out.println("type:  " + type + "  target: " + target);
-					List<Food> foodOfType= fStock.get(type);
-					int len = foodOfType.size();
-					for (int i = 0; i < len; i++) {
-						if (target > 0.0) {
-							Food fd = (Food) foodOfType.get(i);
-							double fdAmount = fd.getAmount();
-							food = new Food(fd);
-							if(fdAmount > target) {
-								food.setAmount(target);
-								fd.setAmount(fdAmount-target);
-							} else {
-								food = fd;
-							}
-							fo.addOrder(food,food.getAmount());
-							food.setSource(f.toString());
-							addStock(food);							
-							stockCount(food);
-							System.out.println(this.toString()+" purchase " + food.getName() + "  amount: " + food.getAmount());
-							target = target - food.getAmount();
-							if (target <0.0)
-								target = 0.0;
-							System.out.println("target after purchase " + target);
-							vaguePurchasePlan.put(type, target);
+		Iterator<Farm> iter = new RandomIterator<Farm>(ContextManager.farmContext.iterator());
+		while(iter.hasNext()) { // loop through all farms
+			FoodOrder fo = new FoodOrder();
+			Farm f = iter.next();
+			HashMap<String,List<Food>> fStock = f.getStock();
+			for(String type:vaguePurchasePlan.keySet()) { //loop through all kinds of stock of a farm
+				double target = vaguePurchasePlan.get(type);
+				System.out.println();
+				System.out.println("type:  " + type + "  target: " + target);
+				List<Food> foodOfType= fStock.get(type);
+				int len = foodOfType.size();
+				for (int i = 0; i < len; i++) {
+					if (target > 0.0) {
+						Food fd = (Food) foodOfType.get(i);
+						double fdAmount = fd.getAmount();
+						food = new Food(fd);
+						if(fdAmount > target) {
+							food.setAmount(target);
+							fd.setAmount(fdAmount-target);
 						} else {
-							break;
+							food = fd;
 						}
+						fo.addOrder(food,food.getAmount());
+						food.setSource(f.toString());
+						addStock(food);							
+						stockCount(food);
+						System.out.println(this.toString()+" purchase " + food.getName() + "  amount: " + food.getAmount());
+						target = target - food.getAmount();
+						if (target <0.0)
+							target = 0.0;
+						System.out.println("target after purchase " + target);
+						vaguePurchasePlan.put(type, target);
+					} else {
+						break;
 					}
-					
 				}
-				System.out.println("vague purchase fo size: "+fo.getList().size() );
-				f.sell(fo,this.toString());
-				 //stop the loop if requirement is met 
-				if(planEmpty()) {
-					break;
-				}
+				
 			}
+			System.out.println("vague purchase fo size: "+fo.getList().size() );
+			f.sell(fo,this.toString());
+			 //stop the loop if requirement is met 
+			if(planEmpty()) {
+				break;
+			}
+		}
 	}
 	public HashMap<String,List<Food>> getStock(){
 		
@@ -332,3 +335,35 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 	
 
 }
+//http://www.java2s.com/Tutorials/Java/Collection_How_to/Iterator/Create_random_Iterator.htm
+class RandomIterator<T> implements Iterator<T> {
+	  private final Iterator<T> iterator;
+
+	  public RandomIterator(final Iterator<T> i) {
+	    final List<T> items;
+
+	    items = new ArrayList<T>();
+
+	    while (i.hasNext()) {
+	      final T item;
+
+	      item = i.next();
+	      items.add(item);
+	    }
+
+	    Collections.shuffle(items);
+	    iterator = items.iterator();
+	  }
+
+	  public boolean hasNext() {
+	    return (iterator.hasNext());
+	  }
+
+	  public T next() {
+	    return (iterator.next());
+	  }
+
+	  public void remove() {
+	    iterator.remove();
+	  }
+	}
