@@ -67,6 +67,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 			Food food = productionQueue.peek();
 			if (food.getProductionTick() <= tick) {
 				productionQueue.poll();
+				//food.setSource(this.toString());
 				addStock(food);
 			} else {
 				break;
@@ -232,6 +233,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 			list.forEach((food, amount) -> {
 				food.setAmount(food.getAmount() - amount);
 				this.fund += amount * food.getPrice();
+				food.setSource(this.toString());
 				// count -= amount;
 			});
 		}

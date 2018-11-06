@@ -196,7 +196,8 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 								food = fd;
 							}
 							fo.addOrder(food,food.getAmount());
-							addStock(food);
+							food.setSource(f.toString());
+							addStock(food);							
 							stockCount(food);
 							System.out.println(this.toString()+" purchase " + food.getName() + "  amount: " + food.getAmount());
 							target = target - food.getAmount();

@@ -250,7 +250,7 @@ public class DataLogger {
 			while(iter.hasNext()) {
 				Food f = (Food) iter.next();
 				Double val = foodOrder.getList().get(f);
-				order.put(f.getName(), val);
+				order.put(f.getSource()+"  "+f.getName(), val);
 			}
 		}
 	}
