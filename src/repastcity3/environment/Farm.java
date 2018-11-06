@@ -92,7 +92,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 			if (!stockThreshold.containsKey(type)) {
 				stockThreshold.put(type, food.getAmount());
 			} else {
-				double x = stockThreshold.get(type) + 3 * food.getAmount();
+				double x = stockThreshold.get(type) + 0.5 * food.getAmount();
 				stockThreshold.put(type, x);
 			}
 			// add to stock
@@ -144,6 +144,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 				typeList.add(type);
 				while (totalAmount < stockThreshold.get(type)) {
 					Food f = DefaultFoodStock.getFoodByType(type);
+					System.out.print("get random food  " + f.getAmount());
 					totalAmount += f.getAmount();
 					f.setProductionTick(Helper.getCurrentTick()+f.getProductionTime());
 					foodList.add(f);
@@ -184,10 +185,9 @@ public class Farm extends FarmableLocation implements FixedGeography {
 		tick = Helper.getCurrentTick();
 			checkStock();
 		if (tick % 144 == 30) {
-		
 			refreshProductionQueue();
-			dequeProductionQueue();
 		}
+		dequeProductionQueue();
 
 	}
 
@@ -231,8 +231,16 @@ public class Farm extends FarmableLocation implements FixedGeography {
 		double totalIncome = this.fund;
 		synchronized (this) {
 			list.forEach((food, amount) -> {
-				food.setAmount(food.getAmount() - amount);
+				String type = food.getType();
+				double newAmount = food.getAmount()-amount;
+				if(newAmount > 0) {
+					food.setAmount(newAmount);	
+				} else {
+					stock.get(type).remove(food);
+				}
 				this.fund += amount * food.getPrice();
+				double stockNum = stockCount.get(type);
+				stockCount.put(type, stockNum-amount);
 				food.setSource(this.toString());
 				// count -= amount;
 			});

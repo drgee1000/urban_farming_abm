@@ -71,7 +71,7 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 			if(!stockThreshold.containsKey(type)){
 				stockThreshold.put(type,food.getAmount());
 			} else {
-				double x = stockThreshold.get(type) +  3*food.getAmount();
+				double x = stockThreshold.get(type) + food.getAmount();
 				stockThreshold.put(type, x);
 			}
 			food.setAmount(0);
@@ -110,7 +110,7 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 			list.add(food);
 			stock.put(type, list);
 		}
-		System.out.println("add stock amount: " + food.getAmount());
+		//System.out.println("add stock amount: " + food.getAmount());
 		}
 	}
 	private void addWaste(FoodEntry fe) {
@@ -136,7 +136,7 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 			if(stockCount.get(type) < stockThreshold.get(type)) {
 				int totalAmount = 0;
 				typeList.add(type);
-				while (totalAmount < 2*stockThreshold.get(type)) {
+				while (totalAmount < stockThreshold.get(type)) {
 					Food f = DefaultFoodStock.getFoodByType(type);
 					totalAmount += f.getAmount();
 					foodList.add(f);
