@@ -61,6 +61,7 @@ public class DefaultFoodStock {
 	}
 	public static List<Food> getRandomFoodList(int min, int max)
 	{
+		//allFood.clear();
 		ArrayList<String> foodTypes=new ArrayList<String>();
 		foodTypes.add("vegetable");
 		foodTypes.add("meat");
@@ -81,8 +82,8 @@ public class DefaultFoodStock {
 			amount=nRand.nextDoubleFromTo(min, max);
 			priceVar=nRand.nextDoubleFromTo(80,100);
 			price=srcFood.getPrice()+srcFood.getPrice()/(nRand.nextDoubleFromTo(-1, 1)>0?priceVar:-priceVar);
-			productionCost=srcFood.getPrice()/nRand.nextDoubleFromTo(0.5,0.98);
-			productionTime=(int)(1/(srcFood.getPrice()*nRand.nextDoubleFromTo(0.001,0.05)));
+			productionCost=srcFood.getPrice()*nRand.nextDoubleFromTo(0.5,0.9);
+			productionTime=(int)(1/(nRand.nextDoubleFromTo(0.001,0.05)));
 			expireTime=(int) (productionTime*nRand.nextDoubleFromTo(1.3,10));
 			Food destFood=new Food(
 					srcFood.getName(),
@@ -95,7 +96,7 @@ public class DefaultFoodStock {
 					productionTime,
 					expireTime
 			);
-			System.out.println("Random Food between " + min + "   "+ max + " amount:" + destFood.getAmount());
+			//System.out.println("Random Food between " + min + "   "+ max + " amount:" + destFood.getAmount());
 			foodList.add(destFood);
 			String type = destFood.getType();
 			/*
@@ -106,15 +107,16 @@ public class DefaultFoodStock {
 			System.out.println();
 			System.out.println("currentType: "+type);
 			*/
+			
 			if (allFood.containsKey(type)) {
 				List<Food> fList = allFood.get(type);
 				fList.add(destFood);
-				allFood.put(type, fList);
 			} else {
 				List<Food> fList = new ArrayList<Food>();
 				fList.add(destFood);
 				allFood.put(type,fList);
 			}
+			
 		}
 		
 

@@ -100,6 +100,7 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 		Food food = new Food(f);
 		String type = food.getType();
 		List<Food> list;
+		if(f.getAmount()>0) {
 		if (stock.containsKey(type)) {
 			list = stock.get(type);
 			list.add(food);
@@ -110,6 +111,7 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 			stock.put(type, list);
 		}
 		System.out.println("add stock amount: " + food.getAmount());
+		}
 	}
 	private void addWaste(FoodEntry fe) {
 		//Food food = fe.getFood();
@@ -153,6 +155,7 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 				double amount = 2*target-base;
 				vaguePurchasePlan.put(type,amount);
 			}
+			
 		}
 		
 	}
@@ -170,12 +173,13 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 			System.out.println(type+"  " + vaguePurchasePlan.get(type));
 		}
 	}
-	private void vaguePurchase() {
+	private  void vaguePurchase() {
 		Food food;
 		/* purchase food according to plan
 		 * the loop ends when need is satisfied or there's no other farm to go
 		 */
 		printVPlan();
+		synchronized(Farm.class) {
 		Iterator<Farm> iter = new RandomIterator<Farm>(ContextManager.farmContext.iterator());
 		while(iter.hasNext()) { // loop through all farms
 			FoodOrder fo = new FoodOrder();
@@ -183,33 +187,37 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 			HashMap<String,List<Food>> fStock = f.getStock();
 			for(String type:vaguePurchasePlan.keySet()) { //loop through all kinds of stock of a farm
 				double target = vaguePurchasePlan.get(type);
-				System.out.println();
-				System.out.println("type:  " + type + "  target: " + target);
+				//System.out.println();
+				//System.out.println("type:  " + type + "  target: " + target);
 				List<Food> foodOfType= fStock.get(type);
 				int len = foodOfType.size();
-				for (int i = 0; i < len; i++) {
-					if (target > 0.0) {
-						Food fd = (Food) foodOfType.get(i);
-						double fdAmount = fd.getAmount();
-						food = new Food(fd);
-						if(fdAmount > target) {
-							food.setAmount(target);
-							fd.setAmount(fdAmount-target);
+				//System.out.println("food of type len:" + len);
+				if(len > 0) {
+					for (int i = 0; i < len; i++) {
+						if (target > 0.0) {
+							//System.out.println("food of type len:" + foodOfType.size() + "i: " + i);
+							Food fd = (Food) foodOfType.get(i);
+							double fdAmount = fd.getAmount();
+							food = new Food(fd);
+							if(fdAmount > target) {
+								food.setAmount(target);
+								fd.setAmount(fdAmount-target);
+							} else {
+								food = fd;
+							}
+							fo.addOrder(food,food.getAmount());
+							food.setSource(f.toString());
+							addStock(food);							
+							stockCount(food);
+							//System.out.println(this.toString()+" purchase " + food.getName() + "  amount: " + food.getAmount());
+							target = target - food.getAmount();
+							if (target <0.0)
+								target = 0.0;
+							//System.out.println("target after purchase " + target);
+							vaguePurchasePlan.put(type, target);
 						} else {
-							food = fd;
+							break;
 						}
-						fo.addOrder(food,food.getAmount());
-						food.setSource(f.toString());
-						addStock(food);							
-						stockCount(food);
-						System.out.println(this.toString()+" purchase " + food.getName() + "  amount: " + food.getAmount());
-						target = target - food.getAmount();
-						if (target <0.0)
-							target = 0.0;
-						System.out.println("target after purchase " + target);
-						vaguePurchasePlan.put(type, target);
-					} else {
-						break;
 					}
 				}
 				
@@ -221,6 +229,7 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 				break;
 			}
 		}
+		}
 	}
 	public HashMap<String,List<Food>> getStock(){
 		
@@ -228,7 +237,7 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 	}
 
 	public void checkStock() {
-		System.out.println(this.toString()+"check stock"		);
+		System.out.println(this.toString()+"check stock");
 		int tick=Helper.getCurrentTick();
 		synchronized (this) {
 			for (String name : stock.keySet()) {
@@ -252,10 +261,10 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 		System.out.println("Supermarket" + this.toString() + "step");
 		tick=Helper.getCurrentTick();
 		checkStock();
-		if(tick%144==30)
+		//if(tick%144==30)
 		{
 			
-			refreshPurchasePlan();
+			//refreshPurchasePlan();
 			refreshVPurchasePlan();
 			if(!planEmpty()) {
 				vaguePurchase();
@@ -295,9 +304,11 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 				food.setAmount(food.getAmount() - amount);
 			} else {
 				List<Food> stockList = stock.get(food.getType());
+				System.out.println("remove stock");
 				stockList.remove(food);
 			}
-			stockCount.put(type, newAmount);
+			double stockCountNum = stockCount.get(type);
+			stockCount.put(type, stockCountNum - newAmount);
 			this.fund += amount * food.getPrice();
 			//count -= amount;
 		});
