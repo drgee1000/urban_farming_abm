@@ -25,7 +25,7 @@ public class Food implements Comparable<Food>{
 	private int productionTime;
 	
 	private int expireTime;
-
+	private String source;
 
 	public Food(String name, String type, double calorie,double amount,double price, double productionCost,Nutrition nutrition,
 			 int productionTime, int expireTime) {
@@ -44,7 +44,26 @@ public class Food implements Comparable<Food>{
 	public Food() {
 	}
 	
+	public Food(Food fd) {
+		// TODO Auto-generated constructor stub
+		this.name = fd.getName();
+		this.type = fd.getType();
+		this.calorie = fd.getCalorie();
+		this.amount = fd.getAmount();
+		this.nutrition = fd.getNutrition();
+		this.productionCost = fd.getProductionCost();
+		this.productionTick = fd.getProductionTick();
+		this.expireTime = fd.expireTime;
+		this.source = fd.getSource();
+		this.price = fd.getPrice();
+	}
 
+	public String getSource() {
+		return source;
+	}
+	public void setSource(String s) {
+		source = s;
+	}
 	public double getCalorie() {
 		return calorie;
 	}

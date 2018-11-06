@@ -261,8 +261,8 @@ public class DataLogger {
 		int tick;
 		@Expose()
 		int stockNum;
-		//@Expose()
-		//HashMap<String,List<Food>> stock;
+		@Expose()
+		HashMap<String,List<Food>> stock;
 		//@Expose()
 		//double count;
 		@Expose()
@@ -273,7 +273,7 @@ public class DataLogger {
 		public supermarket(int t, Supermarket s) {
 			waste = s.getWaste();
 			this.tick = t;
-			//stock = s.getStock();
+			stock = s.getStock();
 			stockNum = s.getStock().keySet().size();
 			//count = f.getCount();
 			fund = s.getFund();

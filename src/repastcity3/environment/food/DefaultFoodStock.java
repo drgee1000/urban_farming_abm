@@ -1,24 +1,15 @@
 package repastcity3.environment.food;
 
-import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
-
-import com.jidesoft.icons.IconSet.File;
-
-import cern.jet.random.Normal;
 import cern.jet.random.Uniform;
-import gov.nasa.worldwind.data.RasterServerConfiguration.Source;
-import gov.nasa.worldwind.formats.shapefile.ShapefilePolygons.Record;
 import repast.simphony.random.*;
-import repastcity3.exceptions.StockCreationException;;
 
 public class DefaultFoodStock {
 
@@ -68,7 +59,7 @@ public class DefaultFoodStock {
 		Food food = fList.get(index);
 		return food;
 	}
-	public static List<Food> getRandomFoodList()
+	public static List<Food> getRandomFoodList(int min, int max)
 	{
 		ArrayList<String> foodTypes=new ArrayList<String>();
 		foodTypes.add("vegetable");
@@ -87,7 +78,7 @@ public class DefaultFoodStock {
 			double amount,price,productionCost;
 			int productionTime,expireTime;
 			double priceVar;
-			amount=nRand.nextDoubleFromTo(100000, 300000);
+			amount=nRand.nextDoubleFromTo(min, max);
 			priceVar=nRand.nextDoubleFromTo(80,100);
 			price=srcFood.getPrice()+srcFood.getPrice()/(nRand.nextDoubleFromTo(-1, 1)>0?priceVar:-priceVar);
 			productionCost=srcFood.getPrice()/nRand.nextDoubleFromTo(0.5,0.98);
@@ -104,6 +95,7 @@ public class DefaultFoodStock {
 					productionTime,
 					expireTime
 			);
+			System.out.println("Random Food between " + min + "   "+ max + " amount:" + destFood.getAmount());
 			foodList.add(destFood);
 			String type = destFood.getType();
 			/*

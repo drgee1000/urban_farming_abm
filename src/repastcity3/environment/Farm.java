@@ -47,7 +47,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 		// this.count = 0;
 
 		variety = stock.size();
-		this.productionPlan = DefaultFoodStock.getRandomFoodList();
+		this.productionPlan = DefaultFoodStock.getRandomFoodList(300000,700000);
 		initStock();
 		this.productionQueue = new PriorityQueue<Food>(new fComparator());
 		enqueProductionPlan(this.productionPlan);
@@ -133,7 +133,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 
 	private void refreshProductionQueue() {
 		// make new production plan and insert them to productionQueue
-		DefaultFoodStock.getRandomFoodList();
+		DefaultFoodStock.getRandomFoodList(300000,700000);
 		Set<String> types = stock.keySet();
 		List<String> typeList = new ArrayList<String>();
 		List<Food> foodList = new ArrayList<Food>();

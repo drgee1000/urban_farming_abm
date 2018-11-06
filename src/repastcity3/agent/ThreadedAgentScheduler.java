@@ -73,16 +73,17 @@ public class ThreadedAgentScheduler {
 	public synchronized void agentStep() {
 		this.burglarsFinishedStepping = false;
 		ArrayList<IAgent> agents = new ArrayList<>(100000);
-		for (IAgent consumer : ContextManager.getAllAgents()) {
-			agents.add(consumer);
-		}
 		for (IAgent farm : ContextManager.getFarmAgents()) {
 			agents.add(farm);
 		}
 		for(IAgent supermarket:ContextManager.getSupermarketAgents()) {
 			agents.add(supermarket);
 		}
-		Collections.shuffle(agents);
+		for (IAgent consumer : ContextManager.getAllAgents()) {
+			agents.add(consumer);
+		}
+		
+		//Collections.shuffle(agents);
 		final CountDownLatch latch = new CountDownLatch(agents.size());
 
 		for (IAgent agent : agents) {
