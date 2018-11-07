@@ -178,7 +178,7 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 		/* purchase food according to plan
 		 * the loop ends when need is satisfied or there's no other farm to go
 		 */
-		printVPlan();
+		//printVPlan();
 		synchronized(Farm.class) {
 		Iterator<Farm> iter = new RandomIterator<Farm>(ContextManager.farmContext.iterator());
 		while(iter.hasNext()) { // loop through all farms
@@ -222,7 +222,7 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 				}
 				
 			}
-			System.out.println("vague purchase fo size: "+fo.getList().size() );
+			//System.out.println("vague purchase fo size: "+fo.getList().size() );
 			f.sell(fo,this.toString());
 			 //stop the loop if requirement is met 
 			if(planEmpty()) {

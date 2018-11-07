@@ -49,7 +49,17 @@ public class Farm extends FarmableLocation implements FixedGeography {
 		variety = stock.size();
 		this.productionPlan = DefaultFoodStock.getRandomFoodList(300000,700000);
 		initStock();
-		this.productionQueue = new PriorityQueue<Food>(new fComparator());
+		this.productionQueue = new PriorityQueue<Food>(new Comparator<Food>() {
+			public int compare(Food f1, Food f2) {
+
+				if (f1.productionTick < f2.productionTick)
+					return -1;
+				else if (f1.productionTick == f2.productionTick)
+					return 0;
+				else
+					return 1;
+			}
+		});
 		enqueProductionPlan(this.productionPlan);
 		// System.out.println("init farm " + identifier + " with stockCount " + stock.keySet().size());
 	}
@@ -62,13 +72,16 @@ public class Farm extends FarmableLocation implements FixedGeography {
 
 	private void dequeProductionQueue() {
 		// food produced is add to stock
-
+		System.out.println();
+		System.out.println(this.toString() + " call deque");
 		while (!productionQueue.isEmpty()) {
 			Food food = productionQueue.peek();
+			System.out.println("deque @ " + Helper.getCurrentTick() + " pTick: " + food.getProductionTick());
 			if (food.getProductionTick() <= tick) {
 				productionQueue.poll();
 				//food.setSource(this.toString());
-				addStock(food);
+				this.addStock(food);
+				
 			} else {
 				break;
 			}
@@ -104,7 +117,8 @@ public class Farm extends FarmableLocation implements FixedGeography {
 		}
 	}
 
-	private synchronized void addStock(Food food) {
+	private void addStock(Food food) {
+		System.out.println(this.toString() + "  add to stock  " + food.getName() + "  " + food.getAmount());
 		String type = food.getType();
 		List<Food> list;
 		if (stock.containsKey(type)) {
@@ -188,6 +202,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 			refreshProductionQueue();
 		}
 		dequeProductionQueue();
+		printStock();
 
 	}
 
@@ -260,17 +275,19 @@ public class Farm extends FarmableLocation implements FixedGeography {
 		// let order be collected by GC
 		order = null;
 	}
-
-	public class fComparator implements Comparator<Food> {
-		public int compare(Food f1, Food f2) {
-
-			if (f1.getProductionTick() < f2.getProductionTick())
-				return -1;
-			else if (f1.getProductionTick() == f2.getProductionTick())
-				return 0;
-			else
-				return 1;
+	private  void printStock() {
+		System.out.println(this.toString()+"  print stock");
+		 synchronized(this) {
+		for (String type:stock.keySet()) {
+			System.out.println(type);
+			int len =stock.get(type).size();
+			for(int i = 0; i < len; i++) {
+				Food f = stock.get(type).get(i);
+				System.out.println(this.toString() + "  " + f.getName() + "  " + f.getAmount() + " @"+ f.getProductionTick());
+			}
 		}
+	 }
 	}
+	
 
 }

@@ -8,11 +8,10 @@ public class Food implements Comparable<Food>{
 	@Expose()
 	private String name;
 	
-	@Expose()
+	//@Expose()
 	private String type;
 	@Expose()
 	private double amount;
-	
 	private double productionCost;
 	
 	private Nutrition nutrition;
@@ -22,11 +21,13 @@ public class Food implements Comparable<Food>{
 	
 	private double calorie;
 	
-	private int productionTime;
+	public int productionTime;
 	
 	private int expireTime;
 	private String source;
-
+	@Expose
+	public int productionTick;
+	boolean isExpired;
 	public Food(String name, String type, double calorie,double amount,double price, double productionCost,Nutrition nutrition,
 			 int productionTime, int expireTime) {
 		super();
@@ -130,8 +131,7 @@ public class Food implements Comparable<Food>{
 		}
 		return -1;
 	}
-	private int productionTick;
-	boolean isExpired;
+	
 
 	public int getProductionTick() {
 		return productionTick;
