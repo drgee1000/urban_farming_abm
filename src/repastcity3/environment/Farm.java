@@ -72,11 +72,11 @@ public class Farm extends FarmableLocation implements FixedGeography {
 
 	private void dequeProductionQueue() {
 		// food produced is add to stock
-		System.out.println();
-		System.out.println(this.toString() + " call deque");
+		//System.out.println();
+		//System.out.println(this.toString() + " call deque");
 		while (!productionQueue.isEmpty()) {
 			Food food = productionQueue.peek();
-			System.out.println("deque @ " + Helper.getCurrentTick() + " pTick: " + food.getProductionTick());
+			//System.out.println("deque @ " + Helper.getCurrentTick() + " pTick: " + food.getProductionTick());
 			if (food.getProductionTick() <= tick) {
 				productionQueue.poll();
 				//food.setSource(this.toString());
@@ -118,7 +118,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 	}
 
 	private void addStock(Food food) {
-		System.out.println(this.toString() + "  add to stock  " + food.getName() + "  " + food.getAmount());
+		//System.out.println(this.toString() + "  add to stock  " + food.getName() + "  " + food.getAmount());
 		String type = food.getType();
 		List<Food> list;
 		if (stock.containsKey(type)) {
@@ -181,6 +181,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 				List<Food> foods = stock.get(name);
 				for (int i = 0; i < foods.size(); i++) {
 					Food food=foods.get(i);
+					System.out.println(this.toString()+ "  check stock @ " + Helper.getCurrentTick() + "  "+food.getName() +" @ "+ food.getProductionTick() +"exp time:"+ food.getExpireTime());
 					food.check(tick);
 					if (food.expired()) {
 						foods.remove(food);
@@ -197,12 +198,12 @@ public class Farm extends FarmableLocation implements FixedGeography {
 	@Override
 	public void step() {
 		tick = Helper.getCurrentTick();
-			checkStock();
+		checkStock();
 		if (tick % 144 == 30) {
 			refreshProductionQueue();
 		}
 		dequeProductionQueue();
-		printStock();
+		//printStock();
 
 	}
 
