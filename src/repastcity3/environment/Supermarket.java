@@ -19,10 +19,6 @@ import repastcity3.environment.food.FoodEntry;
 import repastcity3.main.ContextManager;
 import repastcity3.utilities.Helper;
 
-/**
- * @author CHAO LUO
- *
- */
 public class Supermarket extends FarmableLocation implements FixedGeography{
 
 	private int tick;
@@ -126,6 +122,7 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 			waste.put(type, list);
 		}
 	}
+	//not used...
 	private void refreshPurchasePlan() {
 		// make new production plan and insert them to productionQueue
 		DefaultFoodStock.getRandomFoodList(1000,3000);
@@ -152,7 +149,7 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 			double base = stockCount.get(type);
 			double target = stockThreshold.get(type);
 			if(stockCount.get(type)<stockThreshold.get(type)) {
-				double amount = 2*target-base;
+				double amount = 2*(target-base);
 				vaguePurchasePlan.put(type,amount);
 			}
 			
@@ -179,48 +176,51 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 		 * the loop ends when need is satisfied or there's no other farm to go
 		 */
 		//printVPlan();
-		synchronized(Farm.class) {
+		
 		Iterator<Farm> iter = new RandomIterator<Farm>(ContextManager.farmContext.iterator());
 		while(iter.hasNext()) { // loop through all farms
 			FoodOrder fo = new FoodOrder();
 			Farm f = iter.next();
-			HashMap<String,List<Food>> fStock = f.getStock();
-			for(String type:vaguePurchasePlan.keySet()) { //loop through all kinds of stock of a farm
-				double target = vaguePurchasePlan.get(type);
-				//System.out.println();
-				//System.out.println("type:  " + type + "  target: " + target);
-				List<Food> foodOfType= fStock.get(type);
-				int len = foodOfType.size();
-				//System.out.println("food of type len:" + len);
-				if(len > 0) {
-					for (int i = 0; i < len; i++) {
-						if (target > 0.0) {
-							//System.out.println("food of type len:" + foodOfType.size() + "i: " + i);
-							Food fd = (Food) foodOfType.get(i);
-							double fdAmount = fd.getAmount();
-							food = new Food(fd);
-							if(fdAmount > target) {
-								food.setAmount(target);
-								fd.setAmount(fdAmount-target);
+			synchronized(f) {
+				HashMap<String,List<Food>> fStock = f.getStock();
+				for(String type:vaguePurchasePlan.keySet()) { //loop through all kinds of stock of a farm
+					double target = vaguePurchasePlan.get(type);
+					//System.out.println();
+					//System.out.println("type:  " + type + "  target: " + target);
+					List<Food> foodOfType= fStock.get(type);
+					int len = foodOfType.size();
+					//System.out.println("food of type len:" + len);
+					if(len > 0) {
+						for (int i = 0; i < len; i++) {
+							if (target > 0.0) {
+								//System.out.println("food of type len:" + foodOfType.size() + "i: " + i);
+								Food fd = (Food) foodOfType.get(i);
+								double fdAmount = fd.getAmount();
+								food = new Food(fd);
+								if(fdAmount > target) {
+									food.setAmount(target);
+									fo.addOrder(fd,target);
+									//fd.setAmount(fdAmount-target);
+								} else {
+									food = fd;
+									fo.addOrder(food,food.getAmount());
+								}	
+								food.setSource(f.toString());
+								addStock(food);							
+								stockCount(food);
+								//System.out.println(this.toString()+" purchase " + food.getName() + "  amount: " + food.getAmount());
+								target = target - food.getAmount();
+								if (target < 0.0)
+									target = 0.0;
+								//System.out.println("target after purchase " + target);
+								vaguePurchasePlan.put(type, target);
 							} else {
-								food = fd;
+								break;
 							}
-							fo.addOrder(food,food.getAmount());
-							food.setSource(f.toString());
-							addStock(food);							
-							stockCount(food);
-							//System.out.println(this.toString()+" purchase " + food.getName() + "  amount: " + food.getAmount());
-							target = target - food.getAmount();
-							if (target <0.0)
-								target = 0.0;
-							//System.out.println("target after purchase " + target);
-							vaguePurchasePlan.put(type, target);
-						} else {
-							break;
 						}
 					}
-				}
 				
+				}
 			}
 			//System.out.println("vague purchase fo size: "+fo.getList().size() );
 			f.sell(fo,this.toString());
@@ -228,7 +228,6 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 			if(planEmpty()) {
 				break;
 			}
-		}
 		}
 	}
 	public HashMap<String,List<Food>> getStock(){
@@ -300,11 +299,11 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 		list.forEach((food, amount) -> {
 			String type = food.getType();
 			double newAmount = food.getAmount()-amount;
-			if(amount >0) {
+			if(amount > 0) {
 				food.setAmount(food.getAmount() - amount);
 			} else {
 				List<Food> stockList = stock.get(food.getType());
-				System.out.println("remove stock");
+				//System.out.println("remove stock");
 				stockList.remove(food);
 			}
 			double stockCountNum = stockCount.get(type);
