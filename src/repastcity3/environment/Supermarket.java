@@ -104,7 +104,6 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 		if (stock.containsKey(type)) {
 			list = stock.get(type);
 			list.add(food);
-			
 		} else {
 			list = new ArrayList<Food>();
 			list.add(food);
@@ -251,7 +250,7 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 					}
 				}
 			
-				stock.put(name, foods);
+				//stock.put(name, foods);
 			}
 		}
 

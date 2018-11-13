@@ -189,7 +189,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 					}
 				}
 			
-				stock.put(name, foods);
+				//stock.put(name, foods);
 			}
 		}
 
