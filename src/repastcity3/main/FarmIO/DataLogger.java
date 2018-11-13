@@ -47,6 +47,7 @@ public class DataLogger {
 	Writer salesFileWriter;
 	Writer supermarketFileWriter;
 	ArrayList<deathRecord> dRecords;
+
 	public DataLogger() throws IOException {
 		fileNameFarm = "./output/Farm";
 		fileNameAgent = "./output/Agent";
@@ -55,7 +56,7 @@ public class DataLogger {
 		fileNameSupermarket = "./output/Supermarket";
 		Calendar c = Calendar.getInstance();
 		int year = c.get(Calendar.YEAR);
-		int month = c.get(Calendar.MONTH);
+		int month = c.get(Calendar.MONTH) + 1;
 		int date = c.get(Calendar.DATE);
 		int hour = c.get(Calendar.HOUR_OF_DAY);
 		int minute = c.get(Calendar.MINUTE);
@@ -65,7 +66,7 @@ public class DataLogger {
 		fileNameAgent = fileNameAgent + time + ".json";
 		fileNameDeathRecord = fileNameDeathRecord + time + ".json";
 		fileNameSales = fileNameSales + time + ".json";
-		fileNameSupermarket = fileNameSupermarket+time+".json";
+		fileNameSupermarket = fileNameSupermarket + time + ".json";
 		// f.createNewFile();
 		File f = new File(fileNameFarm);
 		f.createNewFile();
@@ -77,7 +78,7 @@ public class DataLogger {
 		f.createNewFile();
 		f = new File(fileNameSupermarket);
 		f.createNewFile();
-		
+
 		gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();
 		agentFileWriter = new FileWriter(fileNameAgent);
 		agentFileWriter.write('[');
@@ -88,7 +89,7 @@ public class DataLogger {
 		supermarketFileWriter = new FileWriter(fileNameSupermarket);
 		supermarketFileWriter.write('[');
 		drFileWriter = new FileWriter(fileNameDeathRecord);
-		dRecords =  new ArrayList<deathRecord>();
+		dRecords = new ArrayList<deathRecord>();
 	}
 
 	public <T> void recordData(IndexedIterable<T> agentList, int tick) throws IOException {
@@ -114,21 +115,21 @@ public class DataLogger {
 				agent a = new agent(tick, x);
 				agents.add(a);
 			}
-		} else if(t instanceof Supermarket) {
-			
-			for(int i = 0; i < agentList.size();i++) {
-				Supermarket S = (Supermarket)agentList.get(i);
-				supermarket s = new supermarket(tick,S);
+		} else if (t instanceof Supermarket) {
+
+			for (int i = 0; i < agentList.size(); i++) {
+				Supermarket S = (Supermarket) agentList.get(i);
+				supermarket s = new supermarket(tick, S);
 				supermarkets.add(s);
-			}	
-			
+			}
+
 		}
 
 		// printDataToJsonFile
 		String farmJson = gson.toJson(farms);
 		farmFileWriter.write(farmJson);
 		farmFileWriter.write(',');
-		
+
 		String supermarketJson = gson.toJson(supermarkets);
 		supermarketFileWriter.write(supermarketJson);
 		supermarketFileWriter.write(',');
@@ -136,19 +137,23 @@ public class DataLogger {
 		agentFileWriter.write(agentJson);
 		agentFileWriter.write(',');
 	}
-	
+
 	public void recordDeath(int t, int i) {
-		deathRecord dr = new deathRecord(t,i);
+		deathRecord dr = new deathRecord(t, i);
 		dRecords.add(dr);
 	}
-	public void recordSale (FoodOrder foodOrder, int tick, double income, String id,String consumerID) throws IOException{
-		saleRecord sr = new saleRecord(foodOrder, income, tick, id,consumerID);
+
+	public void recordSale(FoodOrder foodOrder, int tick, double income, String id, String consumerID)
+			throws IOException {
+		saleRecord sr = new saleRecord(foodOrder, income, tick, id, consumerID);
 		// System.out.println(id+" sell amount: "+foodOrder.getList().size());
-		//System.out.println("farm" + sr.identifier + " sale income:" + sr.income + " tick: " + tick);
+		// System.out.println("farm" + sr.identifier + " sale income:" + sr.income + "
+		// tick: " + tick);
 		String salesJson = gson.toJson(sr);
 		salesFileWriter.write(salesJson);
 		salesFileWriter.write(',');
 	}
+
 	public void stopRecord() throws IOException {
 		System.out.println("total:" + dRecords.size());
 		String drJson = gson.toJson(dRecords);
@@ -169,22 +174,23 @@ public class DataLogger {
 		String identifier;
 		@Expose()
 		int tick;
-		//@Expose()
-		//int stockNum;
-		//@Expose()
-		//HashMap<String,List<Food>> stock;
-		//@Expose()
-		//double count;
+		// @Expose()
+		// int stockNum;
+		// @Expose()
+		// HashMap<String,List<Food>> stock;
+		// @Expose()
+		// double count;
 		@Expose()
 		double fund;
 		@Expose()
-		HashMap<String,List<FoodEntry>> waste;
+		HashMap<String, List<FoodEntry>> waste;
+
 		public farm(int t, Farm f) {
 			waste = f.getWaste();
 			tick = t;
-			//stock = f.getStock();
-			//stockNum = f.getStock().size();
-			//count = f.getCount();
+			// stock = f.getStock();
+			// stockNum = f.getStock().size();
+			// count = f.getCount();
 			fund = f.getFund();
 			try {
 				identifier = f.getIdentifier();
@@ -193,7 +199,9 @@ public class DataLogger {
 			}
 
 		}
-		public farm() {}
+
+		public farm() {
+		}
 	}
 
 	public static class agent {
@@ -207,7 +215,6 @@ public class DataLogger {
 		double health;
 		@Expose()
 		double satisfaction;
-		
 
 		public agent(int t, Consumer a) {
 			satisfaction = a.getAvgSatisfaction();
@@ -217,18 +224,21 @@ public class DataLogger {
 			health = a.getHealth();
 		}
 	}
+
 	public static class deathRecord {
 		@Expose()
 		int tick;
 		@Expose()
 		int id;
+
 		public deathRecord(int t, int i) {
 			tick = t;
 			id = i;
 		}
 	}
+
 	public static class saleRecord {
-		
+
 		@Expose()
 		double income;
 		@Expose()
@@ -239,8 +249,8 @@ public class DataLogger {
 		String consumerID;
 		@Expose()
 		HashMap<String, Double> order;
-		
-		public saleRecord (FoodOrder foodOrder, double i, int t, String id,String cID){
+
+		public saleRecord(FoodOrder foodOrder, double i, int t, String id, String cID) {
 			identifier = id;
 			consumerID = cID;
 			income = i;
@@ -248,35 +258,36 @@ public class DataLogger {
 			Set<Food> fSet = foodOrder.getList().keySet();
 			order = new HashMap<String, Double>();
 			java.util.Iterator<Food> iter = fSet.iterator();
-			while(iter.hasNext()) {
+			while (iter.hasNext()) {
 				Food f = (Food) iter.next();
 				Double val = foodOrder.getList().get(f);
-				order.put(f.getSource()+"  "+f.getName(), val);
+				order.put(f.getSource() + "  " + f.getName(), val);
 			}
 		}
 	}
+
 	public static class supermarket {
 		@Expose()
 		String identifier;
 		@Expose()
 		int tick;
-		//@Expose()
-		//int stockNum;
-		//@Expose()
-		//HashMap<String,List<Food>> stock;
-		//@Expose()
-		//double count;
+		// @Expose()
+		// int stockNum;
+		// @Expose()
+		// HashMap<String,List<Food>> stock;
+		// @Expose()
+		// double count;
 		@Expose()
 		double fund;
 		@Expose()
-		HashMap<String,List<FoodEntry>> waste;
+		HashMap<String, List<FoodEntry>> waste;
 
 		public supermarket(int t, Supermarket s) {
 			waste = s.getWaste();
 			this.tick = t;
-			//stock = s.getStock();
-			//stockNum = s.getStock().keySet().size();
-			//count = f.getCount();
+			// stock = s.getStock();
+			// stockNum = s.getStock().keySet().size();
+			// count = f.getCount();
 			fund = s.getFund();
 			try {
 				identifier = s.getIdentifier();
@@ -285,7 +296,9 @@ public class DataLogger {
 			}
 
 		}
-		public supermarket() {}
-		
+
+		public supermarket() {
+		}
+
 	}
 }
