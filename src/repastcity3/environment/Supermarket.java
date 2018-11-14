@@ -235,7 +235,7 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 	}
 
 	public void checkStock() {
-		System.out.println(this.toString()+"check stock");
+//		System.out.println(this.toString()+"check stock");
 		int tick=Helper.getCurrentTick();
 		synchronized (this) {
 			for (String name : stock.keySet()) {
@@ -256,7 +256,7 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 	}
 	@Override
 	public void step() {
-		System.out.println("Supermarket" + this.toString() + "step");
+//		System.out.println("Supermarket" + this.toString() + "step");
 		tick=Helper.getCurrentTick();
 		checkStock();
 		//if(tick%144==30)

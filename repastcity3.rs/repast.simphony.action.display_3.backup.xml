@@ -23,6 +23,10 @@
   <layoutInterval>0</layoutInterval>
   <layerOrder>
     <entry>
+      <string>repastcity3.agent.Consumer</string>
+      <int>0</int>
+    </entry>
+    <entry>
       <string>./data/gis_data/shenzhen/farm.shp</string>
       <int>1</int>
     </entry>

@@ -173,14 +173,14 @@ public class Farm extends FarmableLocation implements FixedGeography {
 	}
 
 	public void checkStock() {
-		System.out.println(this.toString()+"check stock"		);
+//		System.out.println(this.toString()+"check stock"		);
 		int tick=Helper.getCurrentTick();
 		synchronized (this) {
 			for (String name : stock.keySet()) {
 				List<Food> foods = stock.get(name);
 				for (int i = 0; i < foods.size(); i++) {
 					Food food=foods.get(i);
-					System.out.println(this.toString()+ "  check stock @ " + Helper.getCurrentTick() + "  "+food.getName() +" @ "+ food.getProductionTick() +"exp time:"+ food.getExpireTime());
+//					System.out.println(this.toString()+ "  check stock @ " + Helper.getCurrentTick() + "  "+food.getName() +" @ "+ food.getProductionTick() +"exp time:"+ food.getExpireTime());
 					food.check(tick);
 					if (food.expired()) {
 						foods.remove(food);
@@ -198,7 +198,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 	public void step() {
 		tick = Helper.getCurrentTick();
 		checkStock();
-		if (tick % 144 == 30) {
+		if (tick % 30 == 0) {
 			refreshProductionQueue();
 		}
 		dequeProductionQueue();
