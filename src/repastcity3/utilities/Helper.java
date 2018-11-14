@@ -1,6 +1,8 @@
 package repastcity3.utilities;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.logging.Level;
 
 import repast.simphony.context.Context;
@@ -29,7 +31,7 @@ public class Helper {
 			}
 		}
 	}
-	
+
 	public static int sizeOfIterable(Iterable i) {
 		int size = 0;
 		Iterator<Object> it = i.iterator();
@@ -39,10 +41,18 @@ public class Helper {
 		}
 		return size;
 	}
-	
-	public static int getCurrentTick()
-	{
-		return (int)RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+
+	public static <E> List<E> iterator2List(Iterator<E> i) {
+		List<E> list = new ArrayList<>();
+		while (i.hasNext())
+			list.add(i.next());
+		return list;
+
+		
+	}
+
+	public static int getCurrentTick() {
+		return (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 	}
 
 }

@@ -212,8 +212,6 @@ public class DataLogger {
 		@Expose()
 		double caloryConsumption;
 		@Expose()
-		double health;
-		@Expose()
 		double satisfaction;
 
 		public agent(int t, Consumer a) {
@@ -221,7 +219,6 @@ public class DataLogger {
 			id = a.toString();
 			tick = t;
 			caloryConsumption = a.getCaloryConsumption();
-			health = a.getHealth();
 		}
 	}
 

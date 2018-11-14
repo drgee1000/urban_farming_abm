@@ -20,7 +20,7 @@ public class DefaultFoodStock {
 	static {
 		allFood = new HashMap<String, List<Food>>();
 		defaultFoodList = new ArrayList<>(50);
-		nRand = RandomHelper.createUniform();
+		nRand = RandomHelper.getUniform();
 		try (Reader in = new FileReader("./data/food_data/food.csv")) {
 			CSVFormat format = CSVFormat.DEFAULT.withFirstRecordAsHeader();
 			Iterable<CSVRecord> records = format.parse(in);

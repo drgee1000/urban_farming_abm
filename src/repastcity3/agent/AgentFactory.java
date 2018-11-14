@@ -1,12 +1,25 @@
 
 package repastcity3.agent;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
 import java.util.Iterator;
+import java.util.List;
 import java.util.logging.Logger;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.vividsolutions.jts.geom.Geometry;
 
+import cern.jet.random.Uniform;
 import repast.simphony.context.Context;
+import repast.simphony.random.RandomHelper;
 import repastcity3.environment.Building;
 import repastcity3.environment.GISFunctions;
 import repastcity3.environment.Residential;
@@ -104,6 +117,12 @@ public class AgentFactory {
 
 	private static Logger LOGGER = Logger.getLogger(AgentFactory.class.getName());
 
+	private static Gson gson = new Gson();
+
+	private static String agentDataPath = "./data/agent_data/agent.json";
+
+	private static Uniform nRand = RandomHelper.getUniform();
+
 	/** The method to use when creating agents (determined in constructor). */
 	private AGENT_FACTORY_METHODS methodToUse;
 
@@ -164,8 +183,9 @@ public class AgentFactory {
 	 *            Whether or not to actually create agents. If this is false then
 	 *            just check that the definition can be parsed.
 	 * @throws AgentCreationException
+	 * @throws IOException
 	 */
-	private void createRandomAgents(boolean dummy) throws AgentCreationException {
+	private void createRandomAgents(boolean dummy) throws AgentCreationException, IOException {
 		// Check the definition is as expected, in this case it should be a number
 		int numAgents = -1;
 		try {
@@ -179,6 +199,21 @@ public class AgentFactory {
 			return;
 		}
 
+		// read agent config file
+		File file = new File(agentDataPath);
+		FileReader fileReader = new FileReader(file);
+		BufferedReader bReader = new BufferedReader(fileReader);
+		String data = bReader.readLine();
+		StringBuffer sb = new StringBuffer();
+		while (data != null) {
+			sb.append(data);
+			data = bReader.readLine();
+		}
+		List<AgentData> agentDatas = gson.fromJson(sb.toString(), new TypeToken<List<AgentData>>() {
+		}.getType());
+		int agentTypeSize = agentDatas.size();
+		System.out.println("agentTypeSize: "+agentTypeSize);
+		AgentDataGenerator agentDataGenerator = new AgentDataGenerator(agentDatas);
 		// Create agents in randomly chosen houses. Use two while loops in case there
 		// are more agents
 		// than houses, so that houses have to be looped over twice.
@@ -189,7 +224,11 @@ public class AgentFactory {
 					.iterator();
 			while (i.hasNext() && agentsCreated < numAgents) {
 				Residential b = i.next(); // Find a building
-				Consumer a = new Consumer(); // Create a new agent
+				double agentTypeProb = nRand.nextDoubleFromTo(0, 1);
+				AgentData agentData = agentDataGenerator.getNext();
+				double agentGenderProb = nRand.nextDoubleFromTo(0, 1);
+				Gender gender = agentGenderProb <= agentData.mfRatio ? Gender.MALE : Gender.FEMALE;
+				Consumer a = new Consumer(agentData.catagory, gender); // Create a new agent
 
 				a.setHome(b); // Tell the agent where it lives
 				b.addAgent(a); // Tell the building that the agent lives there
@@ -292,7 +331,12 @@ public class AgentFactory {
 		RANDOM("random", new CreateAgentMethod() {
 			@Override
 			public void createagents(boolean b, AgentFactory af) throws AgentCreationException {
-				af.createRandomAgents(b);
+				try {
+					af.createRandomAgents(b);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}),
 		/** Specify an agent shapefile, one agent will be created per point */

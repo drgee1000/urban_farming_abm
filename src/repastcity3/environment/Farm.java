@@ -158,7 +158,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 				typeList.add(type);
 				while (totalAmount < stockThreshold.get(type)) {
 					Food f = DefaultFoodStock.getFoodByType(type);
-					System.out.print("get random food  " + f.getAmount());
+//					System.out.print("get random food  " + f.getAmount());
 					totalAmount += f.getAmount();
 					f.setProductionTick(Helper.getCurrentTick()+f.getProductionTime());
 					foodList.add(f);
