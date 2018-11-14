@@ -28,30 +28,30 @@ import repastcity3.agent.Consumer;
 import repastcity3.agent.IAgent;
 import repastcity3.agent.People;
 import repastcity3.environment.Farm;
+import repastcity3.environment.FarmableLocation;
 import repastcity3.environment.FixedGeography;
 import repastcity3.environment.Supermarket;
 import repastcity3.environment.food.*;
 import repastcity3.exceptions.NoIdentifierException;
+import repastcity3.main.ContextManager;
 
 public class DataLogger {
 	String fileNameFarm;
 	String fileNameAgent;
-	String fileNameDeathRecord;
+	String fileNamewaste;
 	String fileNameSales;
 	String fileNameSupermarket;
 
 	Gson gson;
 	Writer agentFileWriter;
 	Writer farmFileWriter;
-	Writer drFileWriter;
+	Writer wasteFileWriter;
 	Writer salesFileWriter;
 	Writer supermarketFileWriter;
-	ArrayList<deathRecord> dRecords;
-
 	public DataLogger() throws IOException {
 		fileNameFarm = "./output/Farm";
 		fileNameAgent = "./output/Agent";
-		fileNameDeathRecord = "./output/Death";
+		fileNamewaste = "./output/Waste";
 		fileNameSales = "./output/Sales";
 		fileNameSupermarket = "./output/Supermarket";
 		Calendar c = Calendar.getInstance();
@@ -64,7 +64,7 @@ public class DataLogger {
 		String time = year + "_" + month + "_" + date + "_" + hour + "_" + minute + "_" + second;
 		fileNameFarm = fileNameFarm + time + ".json";
 		fileNameAgent = fileNameAgent + time + ".json";
-		fileNameDeathRecord = fileNameDeathRecord + time + ".json";
+		fileNamewaste = fileNamewaste + time + ".json";
 		fileNameSales = fileNameSales + time + ".json";
 		fileNameSupermarket = fileNameSupermarket + time + ".json";
 		// f.createNewFile();
@@ -72,7 +72,7 @@ public class DataLogger {
 		f.createNewFile();
 		f = new File(fileNameAgent);
 		f.createNewFile();
-		f = new File(fileNameDeathRecord);
+		f = new File(fileNamewaste);
 		f.createNewFile();
 		f = new File(fileNameSales);
 		f.createNewFile();
@@ -88,8 +88,7 @@ public class DataLogger {
 		salesFileWriter.write('[');
 		supermarketFileWriter = new FileWriter(fileNameSupermarket);
 		supermarketFileWriter.write('[');
-		drFileWriter = new FileWriter(fileNameDeathRecord);
-		dRecords = new ArrayList<deathRecord>();
+		wasteFileWriter = new FileWriter(fileNamewaste);
 	}
 
 	public <T> void recordData(IndexedIterable<T> agentList, int tick) throws IOException {
@@ -137,15 +136,10 @@ public class DataLogger {
 		agentFileWriter.write(agentJson);
 		agentFileWriter.write(',');
 	}
-
-	public void recordDeath(int t, int i) {
-		deathRecord dr = new deathRecord(t, i);
-		dRecords.add(dr);
-	}
-
-	public void recordSale(FoodOrder foodOrder, int tick, double income, String id, String consumerID)
-			throws IOException {
-		saleRecord sr = new saleRecord(foodOrder, income, tick, id, consumerID);
+	
+	
+	public void recordSale (FoodOrder foodOrder, int tick, double income, String id,String consumerID) throws IOException{
+		saleRecord sr = new saleRecord(foodOrder, income, tick, id,consumerID);
 		// System.out.println(id+" sell amount: "+foodOrder.getList().size());
 		// System.out.println("farm" + sr.identifier + " sale income:" + sr.income + "
 		// tick: " + tick);
@@ -155,16 +149,26 @@ public class DataLogger {
 	}
 
 	public void stopRecord() throws IOException {
-		System.out.println("total:" + dRecords.size());
-		String drJson = gson.toJson(dRecords);
-		drFileWriter.write(drJson);
+		List<wasteRecord> wasteList = new ArrayList<>();
+		for (Farm f : ContextManager.getFarmAgents()) {
+			wasteList.add(new wasteRecord(f));
+			
+		}
+		for (Supermarket s : ContextManager.getSupermarketAgents()) {
+			wasteList.add(new wasteRecord(s));
+		}
+		
+		//System.out.println("total:" + dRecords.size());
+		String wstJson = gson.toJson(wasteList);
+		wasteFileWriter.write(wstJson);
+		wasteFileWriter.close();
 		agentFileWriter.write("[]]");
 		agentFileWriter.close();
 		farmFileWriter.write("[]]");
 		farmFileWriter.close();
 		supermarketFileWriter.write("[]]");
 		supermarketFileWriter.close();
-		drFileWriter.close();
+		wasteFileWriter.close();
 		salesFileWriter.write("[]]");
 		salesFileWriter.close();
 	}
@@ -182,11 +186,7 @@ public class DataLogger {
 		// double count;
 		@Expose()
 		double fund;
-		@Expose()
-		HashMap<String, List<FoodEntry>> waste;
-
 		public farm(int t, Farm f) {
-			waste = f.getWaste();
 			tick = t;
 			// stock = f.getStock();
 			// stockNum = f.getStock().size();
@@ -221,16 +221,14 @@ public class DataLogger {
 			caloryConsumption = a.getCaloryConsumption();
 		}
 	}
-
-	public static class deathRecord {
+	public static class wasteRecord {
 		@Expose()
-		int tick;
+		String id;
 		@Expose()
-		int id;
-
-		public deathRecord(int t, int i) {
-			tick = t;
-			id = i;
+		HashMap<String, List<FoodEntry>> waste;
+		public wasteRecord(FarmableLocation f) {
+			this.id = f.toString();
+			waste = f.getWaste();
 		}
 	}
 
@@ -276,11 +274,8 @@ public class DataLogger {
 		// double count;
 		@Expose()
 		double fund;
-		@Expose()
-		HashMap<String, List<FoodEntry>> waste;
 
 		public supermarket(int t, Supermarket s) {
-			waste = s.getWaste();
 			this.tick = t;
 			// stock = s.getStock();
 			// stockNum = s.getStock().keySet().size();

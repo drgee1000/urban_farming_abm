@@ -34,7 +34,6 @@ public class Farm extends FarmableLocation implements FixedGeography {
 	private int score_count;
 	private List<Food> productionPlan;
 	private PriorityQueue<Food> productionQueue;
-	private HashMap<String, List<FoodEntry>> waste;
 	private HashMap<String, Double> stockCount;
 	private HashMap<String, Double> stockThreshold;
 

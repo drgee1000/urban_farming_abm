@@ -19,6 +19,7 @@ public abstract class FarmableLocation extends Building implements IAgent {
 	protected HashMap<String,List<Food>> stock;
 	protected ProductionList productionList;
 	protected double scale;
+	protected HashMap<String,List<FoodEntry>> waste;
 
 	//public  abstract void produce();
 
@@ -62,6 +63,11 @@ public abstract class FarmableLocation extends Building implements IAgent {
 
 	public void setStock(HashMap<String,List<Food>> stock) {
 		this.stock = stock;
+	}
+
+	public HashMap<String, List<FoodEntry>> getWaste() {
+		// TODO Auto-generated method stub
+		return waste;
 	}
 
 

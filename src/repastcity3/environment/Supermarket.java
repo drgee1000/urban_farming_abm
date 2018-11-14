@@ -26,7 +26,7 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 	private int score_count;
 	private List<Food> purchasePlan;
 	//private PriorityQueue<FoodEntry> productionQueue;
-	private HashMap<String,List<FoodEntry>> waste;
+	
 	private HashMap<String,Double> stockCount;
 	private HashMap<String,Double> stockThreshold;
 	private HashMap<String,Double> vaguePurchasePlan;
