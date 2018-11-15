@@ -1,0 +1,23 @@
+[
+    {
+        "catagory":"CHILD",
+        "mf_ratio":0.5,
+        "percentage":0.2
+    },
+    {
+        "catagory":"TEENAGER",
+        "mf_ratio":0.5,
+        "percentage":0.2
+    },
+    {
+        "catagory":"ADULTS",
+        "mf_ratio":0.5,
+        "percentage":0.5
+    },
+    {
+        "catagory":"OLD",
+        "mf_ratio":0.5,
+        "percentage":0.1
+    }
+]
+ 
