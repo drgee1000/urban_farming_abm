@@ -13,7 +13,7 @@ import repast.simphony.random.*;
 
 public class DefaultFoodStock {
 
-	public static ArrayList<Food> defaultFoodList;
+	private static ArrayList<Food> defaultFoodList;
 	private static Uniform nRand;
 	private static HashMap<String, List<Food>> allFood;
 	public static String[] header;
@@ -53,6 +53,8 @@ public class DefaultFoodStock {
 	}
 
 	public static List<Food> getRandomFoodList(int min, int max) {
+		allFood = null;
+		allFood = new HashMap<String, List<Food>>();
 		// allFood.clear();
 		ArrayList<String> foodTypes = new ArrayList<String>();
 		foodTypes.add("vegetable");

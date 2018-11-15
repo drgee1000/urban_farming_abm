@@ -147,6 +147,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 
 	private void refreshProductionQueue() {
 		// make new production plan and insert them to productionQueue
+		synchronized(DefaultFoodStock.class) {
 		DefaultFoodStock.getRandomFoodList(300000,700000);
 		Set<String> types = stock.keySet();
 		List<String> typeList = new ArrayList<String>();
@@ -164,7 +165,9 @@ public class Farm extends FarmableLocation implements FixedGeography {
 				}
 			}
 		}
+		
 		enqueProductionPlan(foodList);
+		}
 		return;
 	}
 
