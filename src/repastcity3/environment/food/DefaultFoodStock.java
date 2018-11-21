@@ -16,9 +16,11 @@ public class DefaultFoodStock {
 	private static ArrayList<Food> defaultFoodList;
 	private static Uniform nRand;
 	private static HashMap<String, List<Food>> allFood;
+	private static HashMap<String, Food> foodData;
 	public static String[] header;
 	static {
 		allFood = new HashMap<String, List<Food>>();
+		foodData = new HashMap<String, Food>();
 		defaultFoodList = new ArrayList<>(50);
 		nRand = RandomHelper.getUniform();
 		try (Reader in = new FileReader("./data/food_data/food.csv")) {
@@ -36,6 +38,7 @@ public class DefaultFoodStock {
 						-1, -1);
 
 				defaultFoodList.add(food);
+				foodData.put(food.getName(),food);
 
 			}
 
@@ -44,7 +47,21 @@ public class DefaultFoodStock {
 		}
 
 	}
-
+	public static Food getFoodByName(String name, double amount) {
+		Food srcFood = foodData.get(name);
+		double price, productionCost;
+		int productionTime, expireTime;
+		double priceVar;
+		priceVar = nRand.nextDoubleFromTo(80, 100);
+		price = srcFood.getPrice()
+				+ srcFood.getPrice() / (nRand.nextDoubleFromTo(-1, 1) > 0 ? priceVar : -priceVar);
+		productionCost = srcFood.getPrice() * nRand.nextDoubleFromTo(0.5, 0.9);
+		productionTime = (int) (nRand.nextDoubleFromTo(15, 60));
+		expireTime = (int) (nRand.nextDoubleFromTo(1, 3));
+		Food destFood = new Food(srcFood.getName(), srcFood.getType(), srcFood.getCalorie(), amount, price,
+				productionCost, srcFood.getNutrition(), productionTime, expireTime);
+		return destFood;
+	}
 	public static Food getFoodByType(String type) {
 		List<Food> fList = allFood.get(type);
 		int index = nRand.nextIntFromTo(0, fList.size() - 1);

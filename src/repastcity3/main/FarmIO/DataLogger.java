@@ -1,23 +1,14 @@
 package repastcity3.main.FarmIO;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.io.Writer;
-import java.lang.reflect.Type;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
-
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVPrinter;
-import org.hsqldb.lib.Iterator;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -25,15 +16,16 @@ import com.google.gson.annotations.Expose;
 
 import repast.simphony.util.collections.IndexedIterable;
 import repastcity3.agent.Consumer;
-import repastcity3.agent.IAgent;
 import repastcity3.agent.People;
 import repastcity3.environment.Farm;
 import repastcity3.environment.FarmableLocation;
-import repastcity3.environment.FixedGeography;
 import repastcity3.environment.Supermarket;
-import repastcity3.environment.food.*;
+import repastcity3.environment.food.Food;
+import repastcity3.environment.food.FoodEntry;
+import repastcity3.environment.food.FoodOrder;
 import repastcity3.exceptions.NoIdentifierException;
 import repastcity3.main.ContextManager;
+import repastcity3.utilities.Helper;
 
 public class DataLogger {
 	String fileNameFarm;
@@ -48,7 +40,10 @@ public class DataLogger {
 	Writer wasteFileWriter;
 	Writer salesFileWriter;
 	Writer supermarketFileWriter;
+	int salesFileCount;
+	String time;
 	public DataLogger() throws IOException {
+		salesFileCount = 1;
 		fileNameFarm = "./output/Farm";
 		fileNameAgent = "./output/Agent";
 		fileNamewaste = "./output/Waste";
@@ -61,11 +56,11 @@ public class DataLogger {
 		int hour = c.get(Calendar.HOUR_OF_DAY);
 		int minute = c.get(Calendar.MINUTE);
 		int second = c.get(Calendar.SECOND);
-		String time = year + "_" + month + "_" + date + "_" + hour + "_" + minute + "_" + second;
+		time = year + "_" + month + "_" + date + "_" + hour + "_" + minute + "_" + second;
 		fileNameFarm = fileNameFarm + time + ".json";
 		fileNameAgent = fileNameAgent + time + ".json";
 		fileNamewaste = fileNamewaste + time + ".json";
-		fileNameSales = fileNameSales + time + ".json";
+		fileNameSales = fileNameSales + time + '_'+new Integer(salesFileCount).toString() +".json";
 		fileNameSupermarket = fileNameSupermarket + time + ".json";
 		// f.createNewFile();
 		File f = new File(fileNameFarm);
@@ -139,13 +134,21 @@ public class DataLogger {
 	
 	
 	public void recordSale (FoodOrder foodOrder, int tick, double income, String id,String consumerID) throws IOException{
+		System.out.println("salesFileCount:"+salesFileCount+"  "+tick+","+((tick/50)+1));
+		if(tick / 50 + 1 > salesFileCount) {
+			salesFileWriter.write("[]]");
+			salesFileWriter.close();
+			salesFileCount++;
+			fileNameSales = fileNameSales + time + '_'+new Integer(salesFileCount).toString() +".json";
+			System.out.println("switch sale file writer to " + fileNameSales);
+			salesFileWriter = new FileWriter(fileNameSales);
+			salesFileWriter.write('[');
+		}
 		saleRecord sr = new saleRecord(foodOrder, income, tick, id,consumerID);
-		// System.out.println(id+" sell amount: "+foodOrder.getList().size());
-		// System.out.println("farm" + sr.identifier + " sale income:" + sr.income + "
-		// tick: " + tick);
 		String salesJson = gson.toJson(sr);
 		salesFileWriter.write(salesJson);
 		salesFileWriter.write(',');
+		
 	}
 
 	public void stopRecord() throws IOException {
