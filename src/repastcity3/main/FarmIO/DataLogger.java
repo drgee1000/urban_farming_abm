@@ -139,7 +139,7 @@ public class DataLogger {
 			salesFileWriter.write("[]]");
 			salesFileWriter.close();
 			salesFileCount++;
-			fileNameSales = fileNameSales + time + '_'+new Integer(salesFileCount).toString() +".json";
+			fileNameSales = "./output/Sales"+ time + '_'+new Integer(salesFileCount).toString() +".json";
 			System.out.println("switch sale file writer to " + fileNameSales);
 			salesFileWriter = new FileWriter(fileNameSales);
 			salesFileWriter.write('[');
