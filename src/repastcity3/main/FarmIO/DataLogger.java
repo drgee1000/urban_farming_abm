@@ -134,13 +134,13 @@ public class DataLogger {
 	
 	
 	public void recordSale (FoodOrder foodOrder, int tick, double income, String id,String consumerID) throws IOException{
-		System.out.println("salesFileCount:"+salesFileCount+"  "+tick+","+((tick/50)+1));
+		//System.out.println("salesFileCount:"+salesFileCount+"  "+tick+","+((tick/50)+1));
 		if(tick / 50 + 1 > salesFileCount) {
 			salesFileWriter.write("[]]");
 			salesFileWriter.close();
 			salesFileCount++;
 			fileNameSales = "./output/Sales"+ time + '_'+new Integer(salesFileCount).toString() +".json";
-			System.out.println("switch sale file writer to " + fileNameSales);
+			//System.out.println("switch sale file writer to " + fileNameSales);
 			salesFileWriter = new FileWriter(fileNameSales);
 			salesFileWriter.write('[');
 		}

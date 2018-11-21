@@ -265,15 +265,17 @@ public class Farm extends FarmableLocation implements FixedGeography {
 		}
 
 		totalIncome = this.fund - totalIncome;
-
-		try {
-			// System.out.println("====================================");
-			// System.out.println("recordSale!" + "   order size:" + order.getList().keySet().size());
-		ContextManager.dLogger.recordSale(order, Helper.getCurrentTick(),
-		totalIncome, this.toString(),sID);
-		} catch (IOException e) {
-		e.printStackTrace();
+		synchronized(ContextManager.dLogger) {
+			try {
+				// System.out.println("====================================");
+				// System.out.println("recordSale!" + "   order size:" + order.getList().keySet().size());
+			ContextManager.dLogger.recordSale(order, Helper.getCurrentTick(),
+			totalIncome, this.toString(),sID);
+			} catch (IOException e) {
+			e.printStackTrace();
+			}
 		}
+		
 
 		// let order be collected by GC
 		order = null;
