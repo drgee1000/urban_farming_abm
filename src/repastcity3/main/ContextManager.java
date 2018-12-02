@@ -136,11 +136,11 @@ public class ContextManager implements ContextBuilder<Object> {
 
 	@Override
 	public Context<Object> build(Context<Object> con) {
-//		try {
-//			dLogger = new DataLogger();
-//		} catch (IOException e) {
-//			LOGGER.log(Level.SEVERE, "DataLogger create failed", e);
-//		}
+		// try {
+		// dLogger = new DataLogger();
+		// } catch (IOException e) {
+		// LOGGER.log(Level.SEVERE, "DataLogger create failed", e);
+		// }
 
 		RepastCityLogging.init();
 
@@ -303,21 +303,24 @@ public class ContextManager implements ContextBuilder<Object> {
 					GlobalVars.CONTEXT_NAMES.AGENT_GEOGRAPHY, agentContext,
 					new GeographyParameters<Consumer>(new SimpleAdder<Consumer>()));
 
-			String agentDefn = Helper.getParameter(MODEL_PARAMETERS.AGENT_DEFINITION.toString());
+			int agentNum = Integer.parseInt(Helper.getParameter(MODEL_PARAMETERS.AGENT_NUM.toString()));
 
-			LOGGER.log(Level.INFO, "Creating agents with the agent definition: '" + agentDefn + "'");
+			LOGGER.log(Level.INFO, "Creating agents with the agent definition: '" + agentNum + "'");
 
-			AgentFactory agentFactory = new AgentFactory(agentDefn);
-			agentFactory.createAgents(agentContext);
+			AgentFactory agentFactory = new AgentFactory();
+			agentFactory.createAgents(agentNum);
 
+		} catch (NumberFormatException e) {
+			LOGGER.log(Level.SEVERE, "cannot convert agent_num into an integer.", e);
 		} catch (ParameterNotFoundException e) {
 			LOGGER.log(Level.SEVERE,
 					"Could not find the parameter which defines how agents should be "
-							+ "created. The parameter is called " + MODEL_PARAMETERS.AGENT_DEFINITION
+							+ "created. The parameter is called " + MODEL_PARAMETERS.AGENT_NUM
 							+ " and should be added to the parameters.xml file.",
 					e);
-		} catch (AgentCreationException e) {
-			LOGGER.log(Level.SEVERE, "", e);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
@@ -380,13 +383,16 @@ public class ContextManager implements ContextBuilder<Object> {
 	public void recordTicks() {
 		LOGGER.info("Iterations: " + RunEnvironment.getInstance().getCurrentSchedule().getTickCount());
 
-		try {
-			dLogger.recordData(agentContext.getObjects(IAgent.class), Helper.getCurrentTick());
-			dLogger.recordData(farmContext.getObjects(Farm.class), Helper.getCurrentTick());
-			dLogger.recordData(supermarketContext.getObjects(Supermarket.class), Helper.getCurrentTick());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		// try {
+		// dLogger.recordData(agentContext.getObjects(IAgent.class),
+		// Helper.getCurrentTick());
+		// dLogger.recordData(farmContext.getObjects(Farm.class),
+		// Helper.getCurrentTick());
+		// dLogger.recordData(supermarketContext.getObjects(Supermarket.class),
+		// Helper.getCurrentTick());
+		// } catch (Exception e) {
+		// e.printStackTrace();
+		// }
 	}
 
 	public void stopRecord() {
@@ -515,7 +521,7 @@ public class ContextManager implements ContextBuilder<Object> {
 	 * @param agent
 	 *            The agent to add.
 	 */
-	public static synchronized void addAgentToContext(Consumer agent) {
+	public static synchronized void addConsumerToContext(Consumer agent) {
 		ContextManager.agentContext.add(agent);
 	}
 
@@ -529,7 +535,7 @@ public class ContextManager implements ContextBuilder<Object> {
 	 *         <code>getRandomObjects</code> function in <code>DefaultContext</code>
 	 * @see DefaultContext
 	 */
-	public static synchronized IndexedIterable<Consumer> getAllAgents() {
+	public static synchronized IndexedIterable<Consumer> getConsumerAgents() {
 		return ContextManager.agentContext.getObjects(Consumer.class);
 	}
 

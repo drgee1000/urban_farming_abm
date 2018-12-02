@@ -28,7 +28,7 @@ public class ThreadedAgentScheduler {
 
 		agentStep(ContextManager.getFarmAgents());
 		agentStep(ContextManager.getSupermarketAgents());
-		agentStep(ContextManager.getAllAgents());
+		agentStep(ContextManager.getConsumerAgents());
 
 	}
 
@@ -69,6 +69,11 @@ class AgentTask implements Runnable {
 	@Override
 	public void run() {
 		try {
+//			if(agent instanceof Consumer)
+//			{
+//				Consumer tmp=(Consumer)agent;
+//				System.out.println("current agent_id: "+tmp.getId());
+//			}
 			this.agent.step();
 
 		} catch (Exception ex) {

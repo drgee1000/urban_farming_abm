@@ -311,13 +311,13 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 			//count -= amount;
 		});
 		totalIncome = this.fund - totalIncome;
-		synchronized(ContextManager.dLogger) {
-			try {
-				ContextManager.dLogger.recordSale(order, Helper.getCurrentTick(), totalIncome, this.toString(),consumerID);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
+//		synchronized(ContextManager.dLogger) {
+//			try {
+//				ContextManager.dLogger.recordSale(order, Helper.getCurrentTick(), totalIncome, this.toString(),consumerID);
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//		}
 		
 		// let order be collected by GC
 		order = null;

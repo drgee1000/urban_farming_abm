@@ -54,6 +54,8 @@ public class Consumer implements People {
 
 	private double thredis = 2; // In kilometer;
 	private int id;
+
+
 	private int type = 3;
 
 	private int income;
@@ -670,5 +672,13 @@ public class Consumer implements People {
 
 	public double getAvgSatisfaction() {
 		return avg_satisfaction;
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }

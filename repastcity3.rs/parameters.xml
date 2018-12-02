@@ -6,8 +6,8 @@
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
-				<parameter name="AGENT_DEFINITION" displayName="Agent Definition" type="java.lang.String" 
-						defaultValue="random:1000" 
+				<parameter name="AGENT_NUM" displayName="Agent Num" type="java.lang.String" 
+						defaultValue="1000" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
 									

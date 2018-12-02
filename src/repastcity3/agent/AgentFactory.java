@@ -33,8 +33,7 @@ public class AgentFactory {
 
 	private static Uniform nRand = RandomHelper.getUniform();
 
-	/** The method to use when creating agents (determined in constructor). */
-	private AGENT_FACTORY_METHODS methodToUse;
+
 
 	/** The definition of the agents - specific to the method being used */
 	private String definition;
@@ -44,45 +43,12 @@ public class AgentFactory {
 	 * 
 	 * @param agentDefinition
 	 */
-	public AgentFactory(String agentDefinition) throws AgentCreationException {
+	public AgentFactory(){
 
-		// First try to parse the definition
-		String[] split = agentDefinition.split(":");
-		if (split.length != 2) {
-			throw new AgentCreationException("Problem parsin the definition string '" + agentDefinition
-					+ "': it split into " + split.length + " parts but should split into 2.");
-		}
-		String method = split[0]; // The method to create agents
-		String defn = split[1]; // Information about the agents themselves
-
-		if (method.equals(AGENT_FACTORY_METHODS.RANDOM.toString())) {
-			this.methodToUse = AGENT_FACTORY_METHODS.RANDOM;
-
-		} else if (method.equals(AGENT_FACTORY_METHODS.POINT_FILE.toString())) {
-			this.methodToUse = AGENT_FACTORY_METHODS.POINT_FILE;
-		}
-
-		else if (method.equals(AGENT_FACTORY_METHODS.AREA_FILE.toString())) {
-			this.methodToUse = AGENT_FACTORY_METHODS.AREA_FILE;
-		}
-
-		else {
-			throw new AgentCreationException("Unrecognised method of creating agents: '" + method
-					+ "'. Method must be one of " + AGENT_FACTORY_METHODS.RANDOM.toString() + ", "
-					+ AGENT_FACTORY_METHODS.POINT_FILE.toString() + " or "
-					+ AGENT_FACTORY_METHODS.AREA_FILE.toString());
-		}
-
-		this.definition = defn; // Method is OK, save the definition for creating agents later.
-
-		// Check the rest of the definition is also correct (passing false means don't
-		// create agents)
-		// An exception will be thrown if it doesn't work.
-		this.methodToUse.createAgMeth().createagents(false, this);
 	}
 
-	public void createAgents(Context<? extends IAgent> context) throws AgentCreationException {
-		this.methodToUse.createAgMeth().createagents(true, this);
+	public void createAgents(int agentNum) throws IOException {
+		createRandomAgents(agentNum);
 	}
 
 	/**
@@ -95,20 +61,7 @@ public class AgentFactory {
 	 * @throws AgentCreationException
 	 * @throws IOException
 	 */
-	private void createRandomAgents(boolean dummy) throws AgentCreationException, IOException {
-		// Check the definition is as expected, in this case it should be a number
-		int numAgents = -1;
-		try {
-			numAgents = Integer.parseInt(this.definition);
-		} catch (NumberFormatException ex) {
-			throw new AgentCreationException("Using " + this.methodToUse + " method to create "
-					+ "agents but cannot convert " + this.definition + " into an integer.");
-		}
-		// The definition has been parsed OK, no can either stop or create the agents
-		if (dummy) {
-			return;
-		}
-
+	private void createRandomAgents(int agentNum) throws IOException {
 		// read agent config file
 		File file = new File(agentDataPath);
 		FileReader fileReader = new FileReader(file);
@@ -127,12 +80,12 @@ public class AgentFactory {
 		// Create agents in randomly chosen houses. Use two while loops in case there
 		// are more agents
 		// than houses, so that houses have to be looped over twice.
-		LOGGER.info("Creating " + numAgents + " agents using " + this.methodToUse + " method.");
+		LOGGER.info("Creating " + agentNum + " agents using random method.");
 		int agentsCreated = 0;
-		while (agentsCreated < numAgents) {
-			Iterator<Residential> i = ContextManager.residentialContext.getRandomObjects(Residential.class, numAgents)
+		while (agentsCreated < agentNum) {
+			Iterator<Residential> i = ContextManager.residentialContext.getRandomObjects(Residential.class, agentNum)
 					.iterator();
-			while (i.hasNext() && agentsCreated < numAgents) {
+			while (i.hasNext() && agentsCreated < agentNum) {
 				Residential b = i.next(); // Find a building
 				double agentTypeProb = nRand.nextDoubleFromTo(0, 1);
 				AgentData agentData = agentDataGenerator.getNext();
@@ -142,7 +95,7 @@ public class AgentFactory {
 
 				a.setHome(b); // Tell the agent where it lives
 				b.addAgent(a); // Tell the building that the agent lives there
-				ContextManager.addAgentToContext(a); // Add the agent to the context
+				ContextManager.addConsumerToContext(a); // Add the agent to the context
 				// Finally move the agent to the place where it lives.
 				ContextManager.moveAgent(a, ContextManager.residentialProjection.getGeometry(b).getCentroid());
 				agentsCreated++;
@@ -202,7 +155,7 @@ public class AgentFactory {
 
 		// Assign agents to houses
 		int numAgents = 0;
-		for (Consumer a : ContextManager.getAllAgents()) {
+		for (Consumer a : ContextManager.getConsumerAgents()) {
 			numAgents++;
 			// System.out.print(numAgents + "\n");
 			Geometry g = ContextManager.getAgentGeometry(a);
@@ -229,69 +182,7 @@ public class AgentFactory {
 		throw new AgentCreationException("Have not implemented the createAreaAgents method yet.");
 	}
 
-	/**
-	 * The methods that can be used to create agents. The CreateAgentMethod stuff is
-	 * just a long-winded way of hard-coding the specific method to use for creating
-	 * agents into the enum (much simpler in python).
-	 * 
-	 * @author Nick Malleson
-	 */
-	private enum AGENT_FACTORY_METHODS {
-		/** Default: create a number of agents randomly assigned to buildings */
-		RANDOM("random", new CreateAgentMethod() {
-			@Override
-			public void createagents(boolean b, AgentFactory af) throws AgentCreationException {
-				try {
-					af.createRandomAgents(b);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}),
-		/** Specify an agent shapefile, one agent will be created per point */
-		POINT_FILE("point", new CreateAgentMethod() {
-			@Override
-			public void createagents(boolean b, AgentFactory af) throws AgentCreationException {
-				af.createPointAgents(b);
-			}
-		}),
-		/**
-		 * Specify the number of agents per area as a shaefile. Agents will be randomly
-		 * assigned to houses within the area.
-		 */
-		AREA_FILE("area", new CreateAgentMethod() {
-			@Override
-			public void createagents(boolean b, AgentFactory af) throws AgentCreationException {
-				af.createAreaAgents(b);
-			}
-		});
 
-		String stringVal;
-		CreateAgentMethod meth;
-
-		/**
-		 * @param val
-		 *            The string representation of the enum which must match the method
-		 *            given in the 'agent_definition' parameter in parameters.xml.
-		 * @param f
-		 */
-		AGENT_FACTORY_METHODS(String val, CreateAgentMethod f) {
-			this.stringVal = val;
-			this.meth = f;
-		}
-
-		public String toString() {
-			return this.stringVal;
-		}
-
-		public CreateAgentMethod createAgMeth() {
-			return this.meth;
-		}
-
-		interface CreateAgentMethod {
-			void createagents(boolean dummy, AgentFactory af) throws AgentCreationException;
-		}
-	}
+	
 
 }
