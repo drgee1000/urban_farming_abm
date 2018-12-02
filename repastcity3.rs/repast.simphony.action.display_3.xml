@@ -1,12 +1,7 @@
 <repast.simphony.gis.visualization.engine.GISDisplayDescriptor simphonyVersion="2.5.0">
   <name>shenzhen display</name>
   <type>GIS</type>
-  <styles>
-    <entry>
-      <string>repastcity3.agent.Consumer</string>
-      <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;sld:UserStyle xmlns=&quot;http://www.opengis.net/sld&quot; xmlns:sld=&quot;http://www.opengis.net/sld&quot; xmlns:gml=&quot;http://www.opengis.net/gml&quot; xmlns:ogc=&quot;http://www.opengis.net/ogc&quot;&gt;&lt;sld:Name&gt;Default Styler&lt;/sld:Name&gt;&lt;sld:Title&gt;repastcity3.agent.Consumer.FeatureType&lt;/sld:Title&gt;&lt;sld:FeatureTypeStyle&gt;&lt;sld:Name&gt;name&lt;/sld:Name&gt;&lt;sld:Title&gt;repastcity3.agent.Consumer.FeatureType&lt;/sld:Title&gt;&lt;sld:FeatureTypeName&gt;repastcity3.agent.Consumer.FeatureType&lt;/sld:FeatureTypeName&gt;&lt;sld:Rule&gt;&lt;sld:Title&gt; &lt;/sld:Title&gt;&lt;sld:PointSymbolizer&gt;&lt;sld:Graphic&gt;&lt;sld:Mark&gt;&lt;sld:WellKnownName&gt;circle&lt;/sld:WellKnownName&gt;&lt;sld:Fill&gt;&lt;sld:CssParameter name=&quot;fill&quot;&gt;#000000&lt;/sld:CssParameter&gt;&lt;/sld:Fill&gt;&lt;sld:Stroke&gt;&lt;sld:CssParameter name=&quot;stroke-opacity&quot;&gt;0.0&lt;/sld:CssParameter&gt;&lt;sld:CssParameter name=&quot;stroke-width&quot;&gt;0.0&lt;/sld:CssParameter&gt;&lt;/sld:Stroke&gt;&lt;/sld:Mark&gt;&lt;sld:Size&gt;4&lt;/sld:Size&gt;&lt;/sld:Graphic&gt;&lt;/sld:PointSymbolizer&gt;&lt;/sld:Rule&gt;&lt;/sld:FeatureTypeStyle&gt;&lt;/sld:UserStyle&gt;</string>
-    </entry>
-  </styles>
+  <styles/>
   <editedStyles/>
   <netStyles/>
   <editedNetStyles/>

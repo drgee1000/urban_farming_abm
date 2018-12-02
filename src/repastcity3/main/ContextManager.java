@@ -42,6 +42,7 @@ import repast.simphony.space.gis.Geography;
 import repast.simphony.space.gis.GeographyParameters;
 import repast.simphony.space.gis.SimpleAdder;
 import repast.simphony.space.graph.Network;
+import repast.simphony.util.collections.IndexedIterable;
 import repastcity3.agent.AgentFactory;
 import repastcity3.agent.Consumer;
 import repastcity3.agent.IAgent;
@@ -95,7 +96,7 @@ public class ContextManager implements ContextBuilder<Object> {
 
 	private static Properties properties;
 
-	public static final double MAX_ITERATIONS = 10000;
+	public static final double MAX_ITERATIONS = 1000;
 
 	/*
 	 * Pointers to contexts and projections (for convenience). Most of these can be
@@ -135,12 +136,12 @@ public class ContextManager implements ContextBuilder<Object> {
 
 	@Override
 	public Context<Object> build(Context<Object> con) {
-		try {
-			dLogger = new DataLogger();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+//		try {
+//			dLogger = new DataLogger();
+//		} catch (IOException e) {
+//			LOGGER.log(Level.SEVERE, "DataLogger create failed", e);
+//		}
+
 		RepastCityLogging.init();
 
 		// Keep a useful static link to the main context
@@ -150,17 +151,33 @@ public class ContextManager implements ContextBuilder<Object> {
 		mainContext.setId(GlobalVars.CONTEXT_NAMES.MAIN_CONTEXT);
 
 		// Read in the model properties
-		try {
-			readProperties();
-		} catch (IOException ex) {
-			throw new RuntimeException("Could not read model properties,  reason: " + ex.toString(), ex);
-		}
+		readProperties();
 
 		// Configure the environment
-		String gisDataDir = ContextManager.getProperty(GlobalVars.GISDataDirectory);
-		LOGGER.log(Level.INFO, "Configuring the environment with data from " + gisDataDir);
+		buildEnv();
 
+		// Useless test :(
+		// TODO: write some real test
 		try {
+			TestEnv.testEnvironment(mainContext);
+		} catch (EnvironmentError | NoIdentifierException | StockCreationException e) {
+			LOGGER.severe("Environment Test failed");
+			return null;
+		}
+
+		// Now create the agents (note that their step methods are scheduled later
+		createAgent();
+
+		// Create the schedule
+		createSchedule();
+
+		return mainContext;
+	}
+
+	private void buildEnv() {
+		try {
+			String gisDataDir = ContextManager.getProperty(GlobalVars.GISDataDirectory);
+			LOGGER.log(Level.INFO, "Configuring the environment with data from " + gisDataDir);
 			// Create the Farm - context and geography projection
 			farmContext = new FarmContext();
 			farmProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
@@ -181,8 +198,8 @@ public class ContextManager implements ContextBuilder<Object> {
 			GISFunctions.readShapefile(Supermarket.class, supermarketFile, supermarketProjection, supermarketContext);
 			mainContext.addSubContext(supermarketContext);
 			SpatialIndexManager.createIndex(supermarketProjection, Supermarket.class);
-			LOGGER.log(Level.INFO, "Read " + supermarketContext.getObjects(Supermarket.class).size() + " supermarkets from "
-					+ supermarketFile);
+			LOGGER.log(Level.INFO, "Read " + supermarketContext.getObjects(Supermarket.class).size()
+					+ " supermarkets from " + supermarketFile);
 			// Create the residential - context and geography projection
 			residentialContext = new ResidentialContext();
 			residentialProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
@@ -219,14 +236,28 @@ public class ContextManager implements ContextBuilder<Object> {
 			LOGGER.log(Level.INFO, "Read " + workplaceContext.getObjects(Workplace.class).size() + " workplaces from "
 					+ workplaceFile);
 
+			// Create
+			buildRoad();
+		} catch (MalformedURLException e) {
+			LOGGER.log(Level.SEVERE, "", e);
+		} catch (FileNotFoundException e) {
+			LOGGER.log(Level.SEVERE, "Could not find an input shapefile to read builds from.", e);
+		}
 
+	}
+
+	private void buildRoad() {
+		try {
+			String gisDataDir = ContextManager.getProperty(GlobalVars.GISDataDirectory);
 			// Create the Roads - context and geography
 			roadContext = new RoadContext();
 			roadProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
 					GlobalVars.CONTEXT_NAMES.ROAD_GEOGRAPHY, roadContext,
 					new GeographyParameters<Road>(new SimpleAdder<Road>()));
 			String roadFile = gisDataDir + getProperty(GlobalVars.RoadShapefile);
+
 			GISFunctions.readShapefile(Road.class, roadFile, roadProjection, roadContext);
+
 			mainContext.addSubContext(roadContext);
 			SpatialIndexManager.createIndex(roadProjection, Road.class);
 			LOGGER.log(Level.INFO, "Read " + roadContext.getObjects(Road.class).size() + " roads from " + roadFile);
@@ -246,44 +277,33 @@ public class ContextManager implements ContextBuilder<Object> {
 			builder.setEdgeCreator(new NetworkEdgeCreator<Junction>());
 			roadNetwork = builder.buildNetwork();
 			GISFunctions.buildGISRoadNetwork(roadProjection, junctionContext, junctionGeography, roadNetwork);
-			//
-			// Add the junctions to a spatial index (couldn't do this until the
-			// road network had been created).
+
+			// Add the junctions to a spatial index (couldn't do this until the road network
+			// had been created).
 			SpatialIndexManager.createIndex(junctionGeography, Junction.class);
-
-			TestEnv.testEnvironment(mainContext);
-
 		} catch (MalformedURLException e) {
-			LOGGER.log(Level.SEVERE, "", e);
-			return null;
-		} catch (EnvironmentError e) {
-			LOGGER.log(Level.SEVERE, "There is an error with the environment, cannot start simulation", e);
-			return null;
-		} catch (NoIdentifierException e) {
-			LOGGER.log(Level.SEVERE, "One of the input buildings had no identifier (this should be read"
-					+ "from the 'identifier' column in an input GIS file)", e);
-			return null;
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} catch (FileNotFoundException e) {
-			LOGGER.log(Level.SEVERE, "Could not find an input shapefile to read objects from.", e);
-			return null;
-		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (StockCreationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (NoIdentifierException e) {
+			LOGGER.log(Level.SEVERE,
+					"One of the input roads had no identifier (this should be read from the 'identifier' column in an input GIS file)",
+					e);
 		}
 
-		// Now create the agents (note that their step methods are scheduled later
-		try {
+	}
 
+	private void createAgent() {
+		try {
 			agentContext = new AgentContext();
 			mainContext.addSubContext(agentContext);
 			agentGeography = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
 					GlobalVars.CONTEXT_NAMES.AGENT_GEOGRAPHY, agentContext,
 					new GeographyParameters<Consumer>(new SimpleAdder<Consumer>()));
 
-			String agentDefn = ContextManager.getParameter(MODEL_PARAMETERS.AGENT_DEFINITION.toString());
+			String agentDefn = Helper.getParameter(MODEL_PARAMETERS.AGENT_DEFINITION.toString());
 
 			LOGGER.log(Level.INFO, "Creating agents with the agent definition: '" + agentDefn + "'");
 
@@ -296,36 +316,17 @@ public class ContextManager implements ContextBuilder<Object> {
 							+ "created. The parameter is called " + MODEL_PARAMETERS.AGENT_DEFINITION
 							+ " and should be added to the parameters.xml file.",
 					e);
-			return null;
 		} catch (AgentCreationException e) {
 			LOGGER.log(Level.SEVERE, "", e);
-			return null;
 		}
-		// recordTicks();
-		// Create the schedule
-		createSchedule();
-
-		return mainContext;
-	}
-
-	private static <T> List<T> toList(Iterable i) {
-		List<T> l = new ArrayList<T>();
-		Iterator<T> it = i.iterator();
-		while (it.hasNext()) {
-			l.add(it.next());
-		}
-		return l;
 	}
 
 	private void createSchedule() {
 		RunEnvironment model_core = RunEnvironment.getInstance();
 		model_core.endAt(MAX_ITERATIONS);
 		ISchedule schedule = model_core.getCurrentSchedule();
-		// ScheduleParameters stop =
-		// ScheduleParameters.createAtEnd(ScheduleParameters.LAST_PRIORITY);
-		// schedule.schedule(stop, this, "calculateStation");
 
-		// Schedule something that outputs ticks every 10 iterations.
+		// Schedule that outputs ticks every 10 iterations.
 		schedule.schedule(ScheduleParameters.createRepeating(0, 1, ScheduleParameters.LAST_PRIORITY), this,
 				"recordTicks");
 		schedule.schedule(ScheduleParameters.createAtEnd(ScheduleParameters.LAST_PRIORITY), this, "stopRecord");
@@ -345,7 +346,7 @@ public class ContextManager implements ContextBuilder<Object> {
 			}
 		}
 
-		if (ContextManager.TURN_OFF_THREADING) { // Overide threading?
+		if (ContextManager.TURN_OFF_THREADING) {
 			isThreadable = false;
 		}
 
@@ -357,21 +358,21 @@ public class ContextManager implements ContextBuilder<Object> {
 			 */
 			LOGGER.info("The multi-threaded scheduler will be used.");
 			ThreadedAgentScheduler s = new ThreadedAgentScheduler();
-			ScheduleParameters agentStepParams = ScheduleParameters.createRepeating(1, 1, 0);
+			ScheduleParameters agentStepParams = ScheduleParameters.createRepeating(1, 1, 10);
 			schedule.schedule(agentStepParams, s, "agentStep");
-//			ScheduleParameters agentStepParams = ScheduleParameters.createRepeating(1, 1, 0);
-//			for (IAgent a : agentContext.getObjects(IAgent.class)) {
-//				schedule.schedule(agentStepParams, a, "step");
-//			}
-//			for(IAgent a : farmContext.getObjects(IAgent.class)) {
-//				schedule.schedule(agentStepParams, a, "step");
-//			}
 		} else { // Agents will execute in serial, use the repast scheduler.
 			LOGGER.log(Level.INFO, "The single-threaded scheduler will be used.");
-			ScheduleParameters agentStepParams = ScheduleParameters.createRepeating(1, 1, 0);
 			// Schedule the agents' step methods.
 			for (IAgent a : agentContext.getObjects(IAgent.class)) {
-				schedule.schedule(agentStepParams, a, "step");
+				schedule.schedule(ScheduleParameters.createRepeating(1, 1, 10), a, "step");
+			}
+
+			for (IAgent a : farmContext.getObjects(IAgent.class)) {
+				schedule.schedule(ScheduleParameters.createRepeating(1, 1, 12), a, "step");
+			}
+
+			for (IAgent a : supermarketContext.getObjects(IAgent.class)) {
+				schedule.schedule(ScheduleParameters.createRepeating(1, 1, 11), a, "step");
 			}
 		}
 	}
@@ -380,8 +381,8 @@ public class ContextManager implements ContextBuilder<Object> {
 		LOGGER.info("Iterations: " + RunEnvironment.getInstance().getCurrentSchedule().getTickCount());
 
 		try {
-			dLogger.recordData(agentContext.getObjects(IAgent.class),Helper.getCurrentTick());
-			dLogger.recordData(farmContext.getObjects(Farm.class),Helper.getCurrentTick());
+			dLogger.recordData(agentContext.getObjects(IAgent.class), Helper.getCurrentTick());
+			dLogger.recordData(farmContext.getObjects(Farm.class), Helper.getCurrentTick());
 			dLogger.recordData(supermarketContext.getObjects(Supermarket.class), Helper.getCurrentTick());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -395,31 +396,6 @@ public class ContextManager implements ContextBuilder<Object> {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-
-	/**
-	 * Convenience function to get a Simphony parameter
-	 * 
-	 * @param <T>
-	 *            The type of the parameter
-	 * @param paramName
-	 *            The name of the parameter
-	 * @return The parameter.
-	 * @throws ParameterNotFoundException
-	 *             If the parameter could not be found.
-	 */
-	public static <V> V getParameter(String paramName) throws ParameterNotFoundException {
-		Parameters p = RunEnvironment.getInstance().getParameters();
-		Object val = p.getValue(paramName);
-
-		if (val == null) {
-			throw new ParameterNotFoundException(paramName);
-		}
-
-		// Try to cast the value and return it
-		@SuppressWarnings("unchecked")
-		V value = (V) val;
-		return value;
 	}
 
 	/**
@@ -455,37 +431,41 @@ public class ContextManager implements ContextBuilder<Object> {
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
-	private void readProperties() throws FileNotFoundException, IOException {
+	private void readProperties() {
+		try {
+			File propFile = new File("./repastcity.properties");
+			if (!propFile.exists()) {
+				throw new FileNotFoundException(
+						"Could not find properties file in the default location: " + propFile.getAbsolutePath());
+			}
 
-		File propFile = new File("./repastcity.properties");
-		if (!propFile.exists()) {
-			throw new FileNotFoundException(
-					"Could not find properties file in the default location: " + propFile.getAbsolutePath());
+			LOGGER.log(Level.INFO, "Initialising properties from file " + propFile.toString());
+
+			ContextManager.properties = new Properties();
+
+			FileInputStream in = new FileInputStream(propFile.getAbsolutePath());
+			ContextManager.properties.load(in);
+			in.close();
+
+			// See if any properties are being overridden by command-line arguments
+			for (Enumeration<?> e = properties.propertyNames(); e.hasMoreElements();) {
+				String k = (String) e.nextElement();
+				String newVal = System.getProperty(k);
+				if (newVal != null) {
+					// The system property has the same name as the one from the
+					// properties file, replace the one in the properties file.
+					LOGGER.log(Level.INFO,
+							"Found a system property '" + k + "->" + newVal + "' which matches a NeissModel property '"
+									+ k + "->" + properties.getProperty(k) + "', replacing the non-system one.");
+					properties.setProperty(k, newVal);
+				}
+			}
+
+		} catch (IOException e) {
+			throw new RuntimeException("Could not read model properties,  reason: " + e.toString(), e);
 		}
 
-		LOGGER.log(Level.INFO, "Initialising properties from file " + propFile.toString());
-
-		ContextManager.properties = new Properties();
-
-		FileInputStream in = new FileInputStream(propFile.getAbsolutePath());
-		ContextManager.properties.load(in);
-		in.close();
-
-		// See if any properties are being overridden by command-line arguments
-		for (Enumeration<?> e = properties.propertyNames(); e.hasMoreElements();) {
-			String k = (String) e.nextElement();
-			String newVal = System.getProperty(k);
-			if (newVal != null) {
-				// The system property has the same name as the one from the
-				// properties file, replace the one in the properties file.
-				LOGGER.log(Level.INFO,
-						"Found a system property '" + k + "->" + newVal + "' which matches a NeissModel property '" + k
-								+ "->" + properties.getProperty(k) + "', replacing the non-system one.");
-				properties.setProperty(k, newVal);
-			}
-		} // for
-		return;
-	} // readProperties
+	}
 
 	public static void stopSim(Exception ex, Class<?> clazz) {
 		ISchedule sched = RunEnvironment.getInstance().getCurrentSchedule();
@@ -549,19 +529,20 @@ public class ContextManager implements ContextBuilder<Object> {
 	 *         <code>getRandomObjects</code> function in <code>DefaultContext</code>
 	 * @see DefaultContext
 	 */
-	public static synchronized Iterable<Consumer> getAllAgents() {
-		return ContextManager.agentContext.getRandomObjects(Consumer.class, ContextManager.agentContext.size());
+	public static synchronized IndexedIterable<Consumer> getAllAgents() {
+		return ContextManager.agentContext.getObjects(Consumer.class);
 	}
 
-	public static synchronized Iterable<Farm> getFarmAgents() {
-		return ContextManager.farmContext.getRandomObjects(Farm.class, ContextManager.farmContext.size());
+	public static synchronized IndexedIterable<Farm> getFarmAgents() {
+		return ContextManager.farmContext.getObjects(Farm.class);
 	}
-	public static synchronized Iterable<Supermarket> getSupermarketAgents(){
-		return ContextManager.supermarketContext.getRandomObjects(Supermarket.class, supermarketContext.size());
+
+	public static synchronized IndexedIterable<Supermarket> getSupermarketAgents() {
+		return ContextManager.supermarketContext.getObjects(Supermarket.class);
 	}
-	
-	public static synchronized Iterable<Residential> getResidentials(){
-		return ContextManager.residentialContext.getRandomObjects(Residential.class, residentialContext.size());
+
+	public static synchronized IndexedIterable<Residential> getResidentials() {
+		return ContextManager.residentialContext.getObjects(Residential.class);
 	}
 
 	/**

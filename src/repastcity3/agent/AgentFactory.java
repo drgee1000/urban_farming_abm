@@ -3,12 +3,8 @@ package repastcity3.agent;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.Reader;
 import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Logger;
@@ -20,7 +16,6 @@ import com.vividsolutions.jts.geom.Geometry;
 import cern.jet.random.Uniform;
 import repast.simphony.context.Context;
 import repast.simphony.random.RandomHelper;
-import repastcity3.environment.Building;
 import repastcity3.environment.GISFunctions;
 import repastcity3.environment.Residential;
 import repastcity3.environment.SpatialIndexManager;
@@ -28,91 +23,6 @@ import repastcity3.exceptions.AgentCreationException;
 import repastcity3.main.ContextManager;
 import repastcity3.main.GlobalVars;
 
-/**
- * Create agents. There are three methods that can be used to create agents:
- * randomly create a number of agents, create agents from a point shapefile or
- * create a certain number of agents per neighbourhood specified in an area
- * shapefile.
- * 
- * <P>
- * The method to use is specified by the 'agent_definition' parameter in
- * <code>parameters.xml</code>. The parameter takes the following form:
- * </P>
- * 
- * <pre>
- * {@code
- * <method>:<definition>
- * }
- * </pre>
- * 
- * <P>
- * where method and can be one of the following:
- * </P>
- * 
- * <ul>
- * <li>
- * 
- * <pre>
- * {@code random:<num_agents>}
- * </pre>
- * 
- * Create 'num_agents' agents in randomly chosen houses. The agents are of type
- * <code>DefaultAgent</code>. For example, this will create 10 agents in
- * randomly chosen houses: '<code>random:1</code>'. See the
- * <code>createRandomAgents</code> function for implementation details.</li>
- * 
- * <li>
- * 
- * <pre>
- * {@code point:<filename>%<agent_class>}
- * </pre>
- * 
- * Create agents from the given point shapefile (one agent per point). If a
- * point in the agent shapefile is within a building object then the agent's
- * home will be set to that building. The type of the agent can be given in two
- * ways:
- * <ol>
- * <li>The 'agent_class' parameter can be used - this is the fully qualified
- * (e.g. including package) name of a class that will be used to create all the
- * agents. For example the following will create instances of
- * <code>MyAgent</code> at each point in the shapefile
- * '<code>point:data/my_shapefile.shp$my_package.agents.MyAgent</code>'.</li>
- * <li>A String column in the input shapefile called 'agent_type' provides the
- * class of the agents. IIn this manner agents of different types can be created
- * from the same input. For example, the following will read the shapefile and
- * look at the values in the 'agent_type' column to create agents:
- * '<code>point:data/my_shapefile.shp</code>' (note that unlike the previous
- * method there is no '$').</li>
- * </ol>
- * 
- * See the <code>createPointAgents</code> function for implementation details.
- * 
- * <li>
- * 
- * <pre>
- * {@code area:<filename>$BglrC1%<agent_class1>$ .. $BglrC5%<agent_class5>}
- * </pre>
- * 
- * Create agents from the given areas shapefile. Up to five different types of
- * agents can be created. Columns in the shapefile specify how many agents of
- * each type to create per area and the agents created are randomly assigned to
- * houses withing their area. The columns names must follow the format 'BglrCX'
- * where 1 <= X <= 5. For example the following string:<br>
- * 
- * <pre>
- * {@code area:area.shp$BglrC1%BurglarAgent$BglrC2%EmployedAgent}
- * </pre>
- * 
- * will read the <code>area.shp</code> and, for each area, create a number of
- * <code>BurglarAgent</code> and <code>EmployedAgent</code> agents in each area,
- * the number being specied by columns called <code>BglrC1</code> and
- * <code>BglrC2</code> respectively. See the <code>createAreaAgents</code>
- * function for implementation details.</li>
- * </ul>
- * 
- * @author Nick Malleson
- * @see Consumer
- */
 public class AgentFactory {
 
 	private static Logger LOGGER = Logger.getLogger(AgentFactory.class.getName());

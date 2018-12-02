@@ -8,9 +8,11 @@ import java.util.logging.Level;
 import repast.simphony.context.Context;
 import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.engine.schedule.ISchedule;
+import repast.simphony.parameter.Parameters;
 import repastcity3.environment.Farm;
 import repastcity3.environment.Route;
 import repastcity3.exceptions.EnvironmentError;
+import repastcity3.exceptions.ParameterNotFoundException;
 import repastcity3.main.ContextManager;
 
 import static repastcity3.main.ContextManager.LOGGER;
@@ -53,6 +55,31 @@ public class Helper {
 
 	public static int getCurrentTick() {
 		return (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+	}
+	
+	/**
+	 * Convenience function to get a Simphony parameter
+	 * 
+	 * @param <T>
+	 *            The type of the parameter
+	 * @param paramName
+	 *            The name of the parameter
+	 * @return The parameter.
+	 * @throws ParameterNotFoundException
+	 *             If the parameter could not be found.
+	 */
+	public static <V> V getParameter(String paramName) throws ParameterNotFoundException {
+		Parameters p = RunEnvironment.getInstance().getParameters();
+		Object val = p.getValue(paramName);
+
+		if (val == null) {
+			throw new ParameterNotFoundException(paramName);
+		}
+
+		// Try to cast the value and return it
+		@SuppressWarnings("unchecked")
+		V value = (V) val;
+		return value;
 	}
 
 }
