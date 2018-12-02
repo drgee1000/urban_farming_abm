@@ -332,7 +332,7 @@ public class ContextManager implements ContextBuilder<Object> {
 		// Schedule that outputs ticks every 10 iterations.
 		schedule.schedule(ScheduleParameters.createRepeating(0, 1, ScheduleParameters.LAST_PRIORITY), this,
 				"recordTicks");
-		schedule.schedule(ScheduleParameters.createAtEnd(ScheduleParameters.LAST_PRIORITY), this, "stopRecord");
+//		schedule.schedule(ScheduleParameters.createAtEnd(ScheduleParameters.LAST_PRIORITY), this, "stopRecord");
 
 		/*
 		 * Schedule the agents. This is slightly complicated because if all the agents
