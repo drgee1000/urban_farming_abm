@@ -21,6 +21,7 @@ public abstract class GlobalVars {
 	
 	/* These are strings that match entries in the repastcity.properties file.*/
 	public static final String GISDataDirectory = "GISDataDirectory";
+	public static final String ConsumerShapefile = "ConsumerShapefile";
 	public static final String BuildingShapefile = "BuildingShapefile";
 	public static final String RoadShapefile = "RoadShapefile";
 	public static final String ResidentialShapefile = "ResidentialShapefile";

@@ -1,7 +1,7 @@
 /**
  *
  */
-package repastcity3.environment;
+package repastcity3.agent;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,19 +12,17 @@ import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Set;
 
-import repastcity3.agent.IAgent;
+import repastcity3.environment.SaleLocation;
 import repastcity3.environment.food.DefaultFoodStock;
 import repastcity3.environment.food.Food;
 import repastcity3.environment.food.FoodEntry;
 import repastcity3.environment.food.FoodOrder;
+import repastcity3.environment.food.ProductionList;
 import repastcity3.main.ContextManager;
 import repastcity3.utilities.Helper;
 
-/**
- * @author CHAO LUO
- *
- */
-public class Farm extends FarmableLocation implements FixedGeography {
+
+public class Farm extends SaleLocation {
 	// #type of food
 	private int variety;
 	// amount of all food
@@ -32,6 +30,7 @@ public class Farm extends FarmableLocation implements FixedGeography {
 	private int tick;
 	private double score;
 	private int score_count;
+	protected ProductionList productionList;
 	private List<Food> productionPlan;
 	private PriorityQueue<Food> productionQueue;
 	private HashMap<String, Double> stockCount;
@@ -39,10 +38,11 @@ public class Farm extends FarmableLocation implements FixedGeography {
 
 	public Farm() {
 		// double setupCost,double dailyMaintenanceCost, double fund,List<Food> stock
-		super(1000, 100, 50000, new HashMap<String, List<Food>>());
+		super(1000, 100, 50000);
 		waste = new HashMap<String, List<FoodEntry>>();
 		stockCount = new HashMap<String, Double>();
 		this.agents = new ArrayList<IAgent>();
+		this.productionList=new ProductionList();
 		// this.count = 0;
 
 		variety = stock.size();

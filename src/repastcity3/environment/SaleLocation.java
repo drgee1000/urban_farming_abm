@@ -9,28 +9,25 @@ import repastcity3.environment.food.Food;
 import repastcity3.environment.food.FoodEntry;
 import repastcity3.environment.food.ProductionList;
 
-
-
-public abstract class FarmableLocation extends Building implements IAgent {
+public abstract class SaleLocation extends Building implements IAgent {
 	// for farm data
 	protected double setupCost;
 	protected double dailyMaintenanceCost;
 	protected double fund;
-	protected HashMap<String,List<Food>> stock;
-	protected ProductionList productionList;
+	protected HashMap<String, List<Food>> stock;
+
 	protected double scale;
-	protected HashMap<String,List<FoodEntry>> waste;
+	protected HashMap<String, List<FoodEntry>> waste;
 
-	//public  abstract void produce();
+	// public abstract void produce();
 
-	public FarmableLocation(double setupCost, double dailyMaintenanceCost, double fund,
-							HashMap<String,List<Food>> stock) {
+	public SaleLocation(double setupCost, double dailyMaintenanceCost, double fund) {
 		this.setupCost = setupCost;
 		this.dailyMaintenanceCost = dailyMaintenanceCost;
 		this.fund = fund;
-		this.stock = stock;
-		this.scale=1;
-		this.productionList=new ProductionList();
+		this.stock = new HashMap<String, List<Food>>();
+		this.scale = 1;
+
 	}
 
 	public double getSetupCost() {
@@ -57,11 +54,11 @@ public abstract class FarmableLocation extends Building implements IAgent {
 		this.fund = fund;
 	}
 
-	//public HashMap<String,List<FoodEntry>> getStock() {
-	//	return stock;
-	//}
+	// public HashMap<String,List<FoodEntry>> getStock() {
+	// return stock;
+	// }
 
-	public void setStock(HashMap<String,List<Food>> stock) {
+	public void setStock(HashMap<String, List<Food>> stock) {
 		this.stock = stock;
 	}
 
@@ -69,8 +66,5 @@ public abstract class FarmableLocation extends Building implements IAgent {
 		// TODO Auto-generated method stub
 		return waste;
 	}
-
-
-
 
 }

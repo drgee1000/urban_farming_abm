@@ -45,6 +45,8 @@ import repast.simphony.space.graph.Network;
 import repast.simphony.util.collections.IndexedIterable;
 import repastcity3.agent.AgentFactory;
 import repastcity3.agent.Consumer;
+import repastcity3.agent.Farm;
+import repastcity3.agent.FarmFactory;
 import repastcity3.agent.IAgent;
 import repastcity3.agent.People;
 import repastcity3.agent.ThreadedAgentScheduler;
@@ -62,7 +64,6 @@ import repastcity3.environment.Shoppingcenter;
 import repastcity3.environment.SpatialIndexManager;
 import repastcity3.environment.Substation;
 import repastcity3.environment.Supermarket;
-import repastcity3.environment.Farm;
 import repastcity3.environment.Workplace;
 import repastcity3.environment.contexts.AgentContext;
 import repastcity3.environment.contexts.JunctionContext;
@@ -94,7 +95,7 @@ public class ContextManager implements ContextBuilder<Object> {
 	// Optionally force agent threading off (good for debugging)
 	private static final boolean TURN_OFF_THREADING = false;
 
-	private static Properties properties;
+	public static Properties properties;
 
 	public static final double MAX_ITERATIONS = 1000;
 
@@ -129,8 +130,8 @@ public class ContextManager implements ContextBuilder<Object> {
 	public static Geography<Junction> junctionGeography;
 	public static Network<Junction> roadNetwork;
 
-	private static Context<Consumer> agentContext;
-	private static Geography<Consumer> agentGeography;
+	public static Context<Consumer> agentContext;
+	public static Geography<Consumer> agentGeography;
 
 	public static DataLogger dLogger;
 
@@ -178,16 +179,16 @@ public class ContextManager implements ContextBuilder<Object> {
 		try {
 			String gisDataDir = ContextManager.getProperty(GlobalVars.GISDataDirectory);
 			LOGGER.log(Level.INFO, "Configuring the environment with data from " + gisDataDir);
-			// Create the Farm - context and geography projection
-			farmContext = new FarmContext();
-			farmProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
-					GlobalVars.CONTEXT_NAMES.Farm_GEOGRAPHY, farmContext,
-					new GeographyParameters<Farm>(new SimpleAdder<Farm>()));
-			String FarmFile = gisDataDir + getProperty(GlobalVars.FarmShapefile);
-			GISFunctions.readShapefile(Farm.class, FarmFile, farmProjection, farmContext);
-			mainContext.addSubContext(farmContext);
-			SpatialIndexManager.createIndex(farmProjection, Farm.class);
-			LOGGER.log(Level.INFO, "Read " + farmContext.getObjects(Farm.class).size() + "farms from " + FarmFile);
+//			// Create the Farm - context and geography projection
+//			farmContext = new FarmContext();
+//			farmProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
+//					GlobalVars.CONTEXT_NAMES.Farm_GEOGRAPHY, farmContext,
+//					new GeographyParameters<Farm>(new SimpleAdder<Farm>()));
+//			String FarmFile = gisDataDir + getProperty(GlobalVars.FarmShapefile);
+//			GISFunctions.readShapefile(Farm.class, FarmFile, farmProjection, farmContext);
+//			mainContext.addSubContext(farmContext);
+//			SpatialIndexManager.createIndex(farmProjection, Farm.class);
+//			LOGGER.log(Level.INFO, "Read " + farmContext.getObjects(Farm.class).size() + "farms from " + FarmFile);
 
 			// Create the supermarket - context and geography projection
 			supermarketContext = new SupermarketContext();
@@ -297,6 +298,17 @@ public class ContextManager implements ContextBuilder<Object> {
 
 	private void createAgent() {
 		try {
+			//farm agent create
+			farmContext = new FarmContext();
+			mainContext.addSubContext(farmContext);
+			farmProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
+					GlobalVars.CONTEXT_NAMES.Farm_GEOGRAPHY, farmContext,
+					new GeographyParameters<Farm>(new SimpleAdder<Farm>()));
+			
+			FarmFactory farmFactory=new FarmFactory();
+			farmFactory.createAgents();
+			
+			//Consumer agent create
 			agentContext = new AgentContext();
 			mainContext.addSubContext(agentContext);
 			agentGeography = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
@@ -318,9 +330,9 @@ public class ContextManager implements ContextBuilder<Object> {
 							+ "created. The parameter is called " + MODEL_PARAMETERS.AGENT_NUM
 							+ " and should be added to the parameters.xml file.",
 					e);
-		} catch (IOException e) {
+		} catch (AgentCreationException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOGGER.log(Level.SEVERE, "Agent creation process failed", e);
 		}
 	}
 
@@ -409,8 +421,7 @@ public class ContextManager implements ContextBuilder<Object> {
 	 * null or if there is no property with a matching name, throw a
 	 * RuntimeException.
 	 * 
-	 * @param property
-	 *            The property to look for.
+	 * @param property The property to look for.
 	 * @return A value for the property with the given name.
 	 */
 	public static String getProperty(String property) {
@@ -486,12 +497,9 @@ public class ContextManager implements ContextBuilder<Object> {
 	 * are used they can interfere with each other and agents end up moving
 	 * incorrectly.
 	 * 
-	 * @param agent
-	 *            The agent to move.
-	 * @param distToTravel
-	 *            The distance that they will travel
-	 * @param angle
-	 *            The angle at which to travel.
+	 * @param agent        The agent to move.
+	 * @param distToTravel The distance that they will travel
+	 * @param angle        The angle at which to travel.
 	 * @see Geography
 	 */
 	public static synchronized void moveAgentByVector(Consumer agent, double distToTravel, double angle) {
@@ -503,10 +511,8 @@ public class ContextManager implements ContextBuilder<Object> {
 	 * access to the agentGeography -- because when multiple threads are used they
 	 * can interfere with each other and agents end up moving incorrectly.
 	 * 
-	 * @param agent
-	 *            The agent to move.
-	 * @param point
-	 *            The point to move the agent to
+	 * @param agent The agent to move.
+	 * @param point The point to move the agent to
 	 */
 	public static synchronized void moveAgent(Consumer agent, Point point) {
 		ContextManager.agentGeography.move(agent, point);
@@ -518,8 +524,7 @@ public class ContextManager implements ContextBuilder<Object> {
 	 * threads are used they can interfere with each other and agents end up moving
 	 * incorrectly.
 	 * 
-	 * @param agent
-	 *            The agent to add.
+	 * @param agent The agent to add.
 	 */
 	public static synchronized void addConsumerToContext(Consumer agent) {
 		ContextManager.agentContext.add(agent);

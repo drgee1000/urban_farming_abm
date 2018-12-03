@@ -9,7 +9,7 @@ import repast.simphony.context.Context;
 import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.engine.schedule.ISchedule;
 import repast.simphony.parameter.Parameters;
-import repastcity3.environment.Farm;
+import repastcity3.agent.Farm;
 import repastcity3.environment.Route;
 import repastcity3.exceptions.EnvironmentError;
 import repastcity3.exceptions.ParameterNotFoundException;
@@ -80,6 +80,31 @@ public class Helper {
 		@SuppressWarnings("unchecked")
 		V value = (V) val;
 		return value;
+	}
+	
+	
+	/**
+	 * Get the value of a property in the properties file. If the input is empty or
+	 * null or if there is no property with a matching name, throw a
+	 * RuntimeException.
+	 * 
+	 * @param property
+	 *            The property to look for.
+	 * @return A value for the property with the given name.
+	 */
+	public static String getProperty(String property) {
+		if (property == null || property.equals("")) {
+			throw new RuntimeException("getProperty() error, input parameter (" + property + ") is "
+					+ (property == null ? "null" : "empty"));
+		} else {
+			String val = ContextManager.properties.getProperty(property);
+			if (val == null || val.equals("")) { // No value exists in the
+													// properties file
+				throw new RuntimeException("checkProperty() error, the required property (" + property + ") is "
+						+ (property == null ? "null" : "empty"));
+			}
+			return val;
+		}
 	}
 
 }

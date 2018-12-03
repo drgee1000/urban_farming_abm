@@ -15,7 +15,6 @@ import com.google.gson.JsonSyntaxException;
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.GeometryFactory;
 
-import repastcity3.environment.Farm;
 import repastcity3.environment.Residential;
 
 import repastcity3.environment.Route;

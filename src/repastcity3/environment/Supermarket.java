@@ -11,6 +11,7 @@ import java.util.PriorityQueue;
 import java.util.Set;
 
 import repast.simphony.util.collections.IndexedIterable;
+import repastcity3.agent.Farm;
 import repastcity3.agent.IAgent;
 import repastcity3.environment.food.DefaultFoodStock;
 import repastcity3.environment.food.Food;
@@ -19,7 +20,7 @@ import repastcity3.environment.food.FoodEntry;
 import repastcity3.main.ContextManager;
 import repastcity3.utilities.Helper;
 
-public class Supermarket extends FarmableLocation implements FixedGeography{
+public class Supermarket extends SaleLocation implements FixedGeography{
 
 	private int tick;
 	private double score;
@@ -33,7 +34,7 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 	private Set<String> types;
 	public Supermarket() {
 		// double setupCost,double dailyMaintenanceCost, double fund,List<Food> stock
-		super(1000, 100, 50000, new HashMap<String,List<Food>>());
+		super(1000, 100, 50000);
 		types = new HashSet<String>();
 		waste = new HashMap<String,List<FoodEntry>>();
 		stockCount = new HashMap<String,Double>();
@@ -77,7 +78,7 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 		}
 		
 		refreshVPurchasePlan();
-		vaguePurchase();
+//		vaguePurchase();
 		HashMap<String,List<Food>> astock = getStock();
 		for (String t : astock.keySet()) {
 			// System.out.println("supermarket"+identifier+"has food in "+ t+":  "+astock.get(t).size());
@@ -261,7 +262,6 @@ public class Supermarket extends FarmableLocation implements FixedGeography{
 		checkStock();
 		//if(tick%144==30)
 		{
-			
 			//refreshPurchasePlan();
 			refreshVPurchasePlan();
 			if(!planEmpty()) {

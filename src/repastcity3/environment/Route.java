@@ -37,6 +37,7 @@ import repast.simphony.space.gis.Geography;
 import repast.simphony.space.graph.RepastEdge;
 import repast.simphony.space.graph.ShortestPath;
 import repastcity3.agent.Consumer;
+import repastcity3.agent.Farm;
 import repastcity3.agent.People;
 import repastcity3.exceptions.RoutingException;
 import repastcity3.main.ContextManager;

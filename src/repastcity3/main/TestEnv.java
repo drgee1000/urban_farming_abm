@@ -6,7 +6,7 @@ import java.util.logging.Level;
 
 import repast.simphony.context.Context;
 import repast.simphony.space.graph.Network;
-import repastcity3.environment.Farm;
+import repastcity3.agent.Farm;
 import repastcity3.environment.Junction;
 import repastcity3.environment.Residential;
 import repastcity3.environment.Restaurant;

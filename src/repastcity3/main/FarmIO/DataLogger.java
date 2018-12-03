@@ -16,9 +16,9 @@ import com.google.gson.annotations.Expose;
 
 import repast.simphony.util.collections.IndexedIterable;
 import repastcity3.agent.Consumer;
+import repastcity3.agent.Farm;
 import repastcity3.agent.People;
-import repastcity3.environment.Farm;
-import repastcity3.environment.FarmableLocation;
+import repastcity3.environment.SaleLocation;
 import repastcity3.environment.Supermarket;
 import repastcity3.environment.food.Food;
 import repastcity3.environment.food.FoodEntry;
@@ -229,7 +229,7 @@ public class DataLogger {
 		String id;
 		@Expose()
 		HashMap<String, List<FoodEntry>> waste;
-		public wasteRecord(FarmableLocation f) {
+		public wasteRecord(SaleLocation f) {
 			this.id = f.toString();
 			waste = f.getWaste();
 		}
