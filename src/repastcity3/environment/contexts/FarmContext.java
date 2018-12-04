@@ -14,7 +14,7 @@ import repastcity3.main.GlobalVars;
 public class FarmContext extends DefaultContext<Farm>{
 	
 	public FarmContext() {
-		super(GlobalVars.CONTEXT_NAMES.Farm_CONTEXT);
+		super(GlobalVars.CONTEXT_NAMES.FARM_CONTEXT);
 	}
 
 }

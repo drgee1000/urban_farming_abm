@@ -54,7 +54,6 @@ public class Consumer implements People {
 	private double thredis = 2; // In kilometer;
 	private int id;
 
-
 	private int type = 3;
 
 	private int income;
@@ -156,6 +155,7 @@ public class Consumer implements People {
 
 	@Override
 	public void step() throws Exception {
+		System.out.println("consumer "+this.id+" start");
 		double stock_calory = getStockCalory(consumer_food_stock);
 		if (stock_calory < 1000) {
 			int[] flags = { 0, 0, 0, 0, 0 };
@@ -185,6 +185,7 @@ public class Consumer implements People {
 			this.avg_satisfaction = this.avg_satisfaction / this.buy_time;
 		}
 		consumeRandomFood();
+		System.out.println("consumer "+this.id+" end");
 	}
 
 	/**
@@ -243,7 +244,6 @@ public class Consumer implements People {
 		return caloryProduction;
 	}
 
-	
 	public double getHealthThreshold() {
 		return this.healthThreshold;
 	}
@@ -251,7 +251,6 @@ public class Consumer implements People {
 	public void setHealthThreshold(double healthThreshold) {
 		this.healthThreshold = healthThreshold;
 	}
-
 
 	public void goRandomPlace(int type) throws Exception {
 		switch (type) {
@@ -532,61 +531,60 @@ public class Consumer implements People {
 		FoodOrder foodOrder = new FoodOrder();
 		this.satisfaction = 100;
 
-		synchronized (supermarket) {
-			HashMap<String, List<Food>> stock = supermarket.getStock();
-			// System.out.println("start selecting food, supermarket stock size:" +
-			// stock.keySet().size());
-			Preference preference = new Preference();
-			List<Food> grain_list = stock.get("grain");
-			// System.out.println("grain:"+grain_list.size());
-			// System.out.println(flags[0]+" "+flags[1]+" "+flags[2]+" "+flags[3]+"
-			// "+flags[4]);
-			if (grain_list != null && flags[0] == 0) {
-				// System.out.println("buy grain: "+grain_list.size());
-				HashMap<String, Food> grain_map = toHashMap(grain_list);
-				ArrayList<String> grain_prefer = preference.getGrain_list();
-				buyFood("grain", grain_map, grain_prefer, foodOrder);
-				flags[0] = 1;
+		HashMap<String, List<Food>> stock = supermarket.getStock();
+		// System.out.println("start selecting food, supermarket stock size:" +
+		// stock.keySet().size());
+		Preference preference = new Preference();
+		List<Food> grain_list = stock.get("grain");
+		// System.out.println("grain:"+grain_list.size());
+		// System.out.println(flags[0]+" "+flags[1]+" "+flags[2]+" "+flags[3]+"
+		// "+flags[4]);
+		if (grain_list != null && flags[0] == 0) {
+			// System.out.println("buy grain: "+grain_list.size());
+			HashMap<String, Food> grain_map = toHashMap(grain_list);
+			ArrayList<String> grain_prefer = preference.getGrain_list();
+			buyFood("grain", grain_map, grain_prefer, foodOrder);
+			flags[0] = 1;
 
-			}
-			List<Food> vegetable_list = stock.get("vegetable");
-			// System.out.println("vegetable:"+vegetable_list.size());
-			if (vegetable_list != null && flags[1] == 0) {
-				// System.out.println("buy vegetable: "+vegetable_list.size());
-				HashMap<String, Food> vegetable_map = toHashMap(vegetable_list);
-				ArrayList<String> vegetable_prefer = preference.getVegetable_list();
-				buyFood("vegetable", vegetable_map, vegetable_prefer, foodOrder);
-				flags[1] = 1;
-			}
-			List<Food> fruit_list = stock.get("fruit");
-			// System.out.println("fruit_list:"+fruit_list.size());
-			if (fruit_list != null && flags[2] == 0) {
-				// System.out.println("buy fruit: "+fruit_list.size());
-				HashMap<String, Food> fruit_map = toHashMap(fruit_list);
-				ArrayList<String> fruit_prefer = preference.getFruit_list();
-				buyFood("fruit", fruit_map, fruit_prefer, foodOrder);
-				flags[2] = 1;
-			}
-			List<Food> dairy_list = stock.get("dairy");
-			// System.out.println("dairy:"+dairy_list.size());
-			if (dairy_list != null && flags[3] == 0) {
-				// System.out.println("buy dairy: "+dairy_list.size());
-				HashMap<String, Food> dairy_map = toHashMap(dairy_list);
-				ArrayList<String> dairy_prefer = preference.getDairy_list();
-				buyFood("dairy", dairy_map, dairy_prefer, foodOrder);
-				flags[3] = 1;
-			}
-
-			List<Food> meat_list = stock.get("meat");
-			// System.out.println("meat:"+meat_list.size());
-			if (meat_list != null && flags[4] == 0) {
-				// System.out.println("buy meat: "+meat_list.size());
-				HashMap<String, Food> meat_map = toHashMap(meat_list);
-				ArrayList<String> meat_prefer = preference.getMeat_list();
-				buyFood("meat", meat_map, meat_prefer, foodOrder);
-				flags[4] = 1;
-			}
 		}
+		List<Food> vegetable_list = stock.get("vegetable");
+		// System.out.println("vegetable:"+vegetable_list.size());
+		if (vegetable_list != null && flags[1] == 0) {
+			// System.out.println("buy vegetable: "+vegetable_list.size());
+			HashMap<String, Food> vegetable_map = toHashMap(vegetable_list);
+			ArrayList<String> vegetable_prefer = preference.getVegetable_list();
+			buyFood("vegetable", vegetable_map, vegetable_prefer, foodOrder);
+			flags[1] = 1;
+		}
+		List<Food> fruit_list = stock.get("fruit");
+		// System.out.println("fruit_list:"+fruit_list.size());
+		if (fruit_list != null && flags[2] == 0) {
+			// System.out.println("buy fruit: "+fruit_list.size());
+			HashMap<String, Food> fruit_map = toHashMap(fruit_list);
+			ArrayList<String> fruit_prefer = preference.getFruit_list();
+			buyFood("fruit", fruit_map, fruit_prefer, foodOrder);
+			flags[2] = 1;
+		}
+		List<Food> dairy_list = stock.get("dairy");
+		// System.out.println("dairy:"+dairy_list.size());
+		if (dairy_list != null && flags[3] == 0) {
+			// System.out.println("buy dairy: "+dairy_list.size());
+			HashMap<String, Food> dairy_map = toHashMap(dairy_list);
+			ArrayList<String> dairy_prefer = preference.getDairy_list();
+			buyFood("dairy", dairy_map, dairy_prefer, foodOrder);
+			flags[3] = 1;
+		}
+
+		List<Food> meat_list = stock.get("meat");
+		// System.out.println("meat:"+meat_list.size());
+		if (meat_list != null && flags[4] == 0) {
+			// System.out.println("buy meat: "+meat_list.size());
+			HashMap<String, Food> meat_map = toHashMap(meat_list);
+			ArrayList<String> meat_prefer = preference.getMeat_list();
+			buyFood("meat", meat_map, meat_prefer, foodOrder);
+			flags[4] = 1;
+		}
+
 		this.buy_time++;
 		this.avg_satisfaction += this.satisfaction;
 
@@ -672,7 +670,7 @@ public class Consumer implements People {
 	public double getAvgSatisfaction() {
 		return avg_satisfaction;
 	}
-	
+
 	public int getId() {
 		return id;
 	}

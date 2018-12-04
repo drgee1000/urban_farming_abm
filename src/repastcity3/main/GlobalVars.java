@@ -108,8 +108,9 @@ public abstract class GlobalVars {
 		public static final String RESTAURANT_CONTEXT = "RestaurantContext";
 		public static final String RESTAURANT_GEOGRAPHY = "RestaurantGeography";
 		
-		public static final String Farm_CONTEXT = "FarmContext";
-		public static final String Farm_GEOGRAPHY = "FarmGeography";
+		public static final String FARM_CONTEXT = "FarmContext";
+		public static final String FARM_GEOGRAPHY = "FarmGeography";
+		public static final String FARM_GRID = "FarmGrid";
 		
 		public static final String SUBSTATION_CONTEXT = "SubstationContext";
 		public static final String SUBSTATION_GEOGRAPHY = "SubstationGeography";
@@ -119,6 +120,7 @@ public abstract class GlobalVars {
 		
 		public static final String SUPERMARKET_CONTEXT = "SupermarketContext";
 		public static final String SUPERMARKET_GEOGRAPHY = "SupermarketGeography";
+		public static final String SUPERMARKET_GRID = "SupermarketGrid";
 	
 	}
 	

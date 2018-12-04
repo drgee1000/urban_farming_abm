@@ -32,6 +32,8 @@ import repast.simphony.context.Context;
 import repast.simphony.context.DefaultContext;
 import repast.simphony.context.space.gis.GeographyFactoryFinder;
 import repast.simphony.context.space.graph.NetworkBuilder;
+import repast.simphony.context.space.grid.GridFactory;
+import repast.simphony.context.space.grid.GridFactoryFinder;
 import repast.simphony.dataLoader.ContextBuilder;
 import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.engine.schedule.ISchedule;
@@ -42,6 +44,10 @@ import repast.simphony.space.gis.Geography;
 import repast.simphony.space.gis.GeographyParameters;
 import repast.simphony.space.gis.SimpleAdder;
 import repast.simphony.space.graph.Network;
+import repast.simphony.space.grid.Grid;
+import repast.simphony.space.grid.GridBuilderParameters;
+import repast.simphony.space.grid.SimpleGridAdder;
+import repast.simphony.space.grid.StrictBorders;
 import repast.simphony.util.collections.IndexedIterable;
 import repastcity3.agent.AgentFactory;
 import repastcity3.agent.Consumer;
@@ -93,7 +99,7 @@ public class ContextManager implements ContextBuilder<Object> {
 	public static Logger LOGGER = Logger.getLogger(ContextManager.class.getName());
 
 	// Optionally force agent threading off (good for debugging)
-	private static final boolean TURN_OFF_THREADING = false;
+	private static final boolean TURN_OFF_THREADING = true;
 
 	public static Properties properties;
 
@@ -113,6 +119,7 @@ public class ContextManager implements ContextBuilder<Object> {
 
 	public static Context<Farm> farmContext;
 	public static Geography<Farm> farmProjection;
+	public static Grid<Farm> farmGridProjection;
 
 	public static Context<School> schoolContext;
 	public static Geography<School> schoolProjection;
@@ -125,6 +132,7 @@ public class ContextManager implements ContextBuilder<Object> {
 
 	public static Context<Supermarket> supermarketContext;
 	public static Geography<Supermarket> supermarketProjection;
+	public static Grid<Supermarket> supermarketGridProjection;
 
 	public static Context<Junction> junctionContext;
 	public static Geography<Junction> junctionGeography;
@@ -298,17 +306,23 @@ public class ContextManager implements ContextBuilder<Object> {
 
 	private void createAgent() {
 		try {
-			//farm agent create
+			GridFactory gridFactory = GridFactoryFinder.createGridFactory(new HashMap<>());
+			GridBuilderParameters<Farm> gridBuilderParameters = GridBuilderParameters
+					.singleOccupancy2D(new SimpleGridAdder<>(), new StrictBorders(), 400, 1800);
+			// farm agent create
 			farmContext = new FarmContext();
 			mainContext.addSubContext(farmContext);
 			farmProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
-					GlobalVars.CONTEXT_NAMES.Farm_GEOGRAPHY, farmContext,
+					GlobalVars.CONTEXT_NAMES.FARM_GEOGRAPHY, farmContext,
 					new GeographyParameters<Farm>(new SimpleAdder<Farm>()));
+			farmGridProjection = gridFactory.createGrid(GlobalVars.CONTEXT_NAMES.FARM_GRID, farmContext,
+					GridBuilderParameters.singleOccupancy2D(new SimpleGridAdder<Farm>(), new StrictBorders(), 400, 1800));
 			
-			FarmFactory farmFactory=new FarmFactory();
+
+			FarmFactory farmFactory = new FarmFactory();
 			farmFactory.createAgents();
-			
-			//Consumer agent create
+
+			// Consumer agent create
 			agentContext = new AgentContext();
 			mainContext.addSubContext(agentContext);
 			agentGeography = GeographyFactoryFinder.createGeographyFactory(null).createGeography(

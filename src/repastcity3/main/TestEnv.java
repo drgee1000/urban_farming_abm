@@ -38,7 +38,7 @@ public class TestEnv {
 				.getSubContext(GlobalVars.CONTEXT_NAMES.RESIDENTIAL_CONTEXT);
 		Context<Road> roc = (Context<Road>) mainContext.getSubContext(GlobalVars.CONTEXT_NAMES.ROAD_CONTEXT);
 		Context<Junction> jc = (Context<Junction>) mainContext.getSubContext(GlobalVars.CONTEXT_NAMES.JUNCTION_CONTEXT);
-		Context<Farm> fm = (Context<Farm>) mainContext.getSubContext(GlobalVars.CONTEXT_NAMES.Farm_CONTEXT);
+		Context<Farm> fm = (Context<Farm>) mainContext.getSubContext(GlobalVars.CONTEXT_NAMES.FARM_CONTEXT);
 		/*
 		for (Farm farm : fm.getObjects(Farm.class)) {
 			for (Food food:farm.getStock()) {
