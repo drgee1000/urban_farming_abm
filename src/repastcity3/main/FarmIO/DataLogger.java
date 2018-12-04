@@ -24,6 +24,7 @@ import repastcity3.environment.food.Food;
 import repastcity3.environment.food.FoodEntry;
 import repastcity3.environment.food.FoodOrder;
 import repastcity3.exceptions.NoIdentifierException;
+import repastcity3.main.AgentControl;
 import repastcity3.main.ContextManager;
 import repastcity3.utilities.Helper;
 
@@ -153,11 +154,11 @@ public class DataLogger {
 
 	public void stopRecord() throws IOException {
 		List<wasteRecord> wasteList = new ArrayList<>();
-		for (Farm f : ContextManager.getFarmAgents()) {
+		for (Farm f : AgentControl.getFarmAgents()) {
 			wasteList.add(new wasteRecord(f));
 			
 		}
-		for (Supermarket s : ContextManager.getSupermarketAgents()) {
+		for (Supermarket s : AgentControl.getSupermarketAgents()) {
 			wasteList.add(new wasteRecord(s));
 		}
 		

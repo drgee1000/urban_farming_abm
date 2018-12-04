@@ -1,17 +1,10 @@
 package repastcity3.agent;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.nio.file.Paths;
 import java.util.*;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonIOException;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSyntaxException;
+
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.GeometryFactory;
 
@@ -23,9 +16,7 @@ import repastcity3.environment.Supermarket;
 import repastcity3.environment.Workplace;
 import repastcity3.environment.food.Food;
 import repastcity3.environment.food.FoodOrder;
-import repastcity3.environment.food.FoodType;
-import repastcity3.environment.food.Nutrition;
-import repastcity3.exceptions.NoIdentifierException;
+import repastcity3.main.AgentControl;
 import repastcity3.main.ContextManager;
 import repastcity3.utilities.Helper;
 
@@ -168,7 +159,7 @@ public class Consumer implements People {
 				this.destination = ContextManager.supermarketProjection.getGeometry(supermarket).getCentroid()
 						.getCoordinate();
 				GeometryFactory geomFac = new GeometryFactory();
-				ContextManager.moveAgent(this, geomFac.createPoint(this.destination));
+				AgentControl.moveAgent(this, geomFac.createPoint(this.destination));
 				FoodOrder foodOrder = this.selectFood(supermarket, flags);
 				supermarket.sell(foodOrder, this.toString());
 				supermarket.updateScore(this.satisfaction);
@@ -259,10 +250,10 @@ public class Consumer implements People {
 			// this.route = new Route(this,
 			// ContextManager.schoolProjection.getGeometry(S).getCentroid().getCoordinate(),
 			// S);
-			// this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
+			// this.origin = AgentControl.getAgentGeometry(this).getCoordinate();
 			this.destination = ContextManager.schoolProjection.getGeometry(S).getCentroid().getCoordinate();
 			GeometryFactory geomFac = new GeometryFactory();
-			ContextManager.moveAgent(this, geomFac.createPoint(this.destination));
+			AgentControl.moveAgent(this, geomFac.createPoint(this.destination));
 			break;
 		}
 		case 2: {
@@ -270,17 +261,17 @@ public class Consumer implements People {
 			// this.route = new Route(this,
 			// ContextManager.workplaceProjection.getGeometry(W).getCentroid().getCoordinate(),
 			// W);
-			// this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
+			// this.origin = AgentControl.getAgentGeometry(this).getCoordinate();
 			this.destination = ContextManager.workplaceProjection.getGeometry(W).getCentroid().getCoordinate();
 			GeometryFactory geomFac = new GeometryFactory();
-			ContextManager.moveAgent(this, geomFac.createPoint(this.destination));
+			AgentControl.moveAgent(this, geomFac.createPoint(this.destination));
 			break;
 		}
 		case 3: {
 			this.destination = ContextManager.residentialProjection.getGeometry(this.residential).getCentroid()
 					.getCoordinate();
 			GeometryFactory geomFac = new GeometryFactory();
-			ContextManager.moveAgent(this, geomFac.createPoint(this.destination));
+			AgentControl.moveAgent(this, geomFac.createPoint(this.destination));
 			break;
 		}
 
@@ -343,7 +334,7 @@ public class Consumer implements People {
 			Farm farm = iter.next();
 			Route r = new Route(this, ContextManager.farmProjection.getGeometry(farm).getCentroid().getCoordinate(),
 					farm);
-			this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
+			this.origin = AgentControl.getAgentGeometry(this).getCoordinate();
 			this.destination = ContextManager.farmProjection.getGeometry(farm).getCentroid().getCoordinate();
 			double dis = (origin.x - destination.x) * (origin.x - destination.x)
 					+ (origin.y - destination.y) * (origin.y - destination.y);
@@ -408,7 +399,7 @@ public class Consumer implements People {
 	}
 
 	public double getDistance(Supermarket supermarket) {
-		this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
+		this.origin = AgentControl.getAgentGeometry(this).getCoordinate();
 		this.destination = ContextManager.supermarketProjection.getGeometry(supermarket).getCentroid().getCoordinate();
 		double dis = (origin.x - destination.x) * (origin.x - destination.x)
 				+ (origin.y - destination.y) * (origin.y - destination.y);
@@ -426,7 +417,7 @@ public class Consumer implements People {
 			Route r = new Route(this,
 					ContextManager.supermarketProjection.getGeometry(supermarket).getCentroid().getCoordinate(),
 					supermarket);
-			this.origin = ContextManager.getAgentGeometry(this).getCoordinate();
+			this.origin = AgentControl.getAgentGeometry(this).getCoordinate();
 			this.destination = ContextManager.supermarketProjection.getGeometry(supermarket).getCentroid()
 					.getCoordinate();
 			double dis = (origin.x - destination.x) * (origin.x - destination.x)

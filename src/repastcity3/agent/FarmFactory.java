@@ -3,12 +3,18 @@ package repastcity3.agent;
 import java.io.IOException;
 import java.util.logging.Logger;
 
-import com.vividsolutions.jts.geom.Geometry;
+import org.geotools.geometry.jts.ReferencedEnvelope;
 
+import com.vividsolutions.jts.geom.Coordinate;
+import com.vividsolutions.jts.geom.Geometry;
+import com.vividsolutions.jts.geom.Point;
+
+import repast.simphony.space.grid.GridPoint;
 import repastcity3.environment.GISFunctions;
 import repastcity3.environment.Residential;
 import repastcity3.environment.SpatialIndexManager;
 import repastcity3.exceptions.AgentCreationException;
+import repastcity3.main.AgentControl;
 import repastcity3.main.ContextManager;
 import repastcity3.main.GlobalVars;
 
@@ -38,8 +44,17 @@ public class FarmFactory {
 		} catch (Exception e) {
 			throw new AgentCreationException(e);
 		}
+		
+		
+		
+//		for(Farm farm :AgentControl.getFarmAgents())
+//		{
+//			Geometry geometry = ContextManager.farmProjection.getGeometry(farm);
+//			Coordinate coordinate = geometry.getCoordinate();
+////			ContextManager.farmGridProjection.moveTo(farm)
+//		}
 
-		int numAgents = ContextManager.getFarmAgents().size();
+		int numAgents = AgentControl.getFarmAgents().size();
 
 		LOGGER.info("Have created " + numAgents + " of type " + clazz.getName().toString() + " from file " + fileName);
 

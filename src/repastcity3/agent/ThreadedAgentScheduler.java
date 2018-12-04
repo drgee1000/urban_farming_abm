@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import repast.simphony.util.collections.IndexedIterable;
+import repastcity3.main.AgentControl;
 import repastcity3.main.ContextManager;
 
 public class ThreadedAgentScheduler {
@@ -26,9 +27,9 @@ public class ThreadedAgentScheduler {
 
 	public synchronized void agentStep() {
 
-		agentStep(ContextManager.getFarmAgents());
-		agentStep(ContextManager.getSupermarketAgents());
-		agentStep(ContextManager.getConsumerAgents());
+		agentStep(AgentControl.getFarmAgents());
+		agentStep(AgentControl.getSupermarketAgents());
+		agentStep(AgentControl.getConsumerAgents());
 
 	}
 

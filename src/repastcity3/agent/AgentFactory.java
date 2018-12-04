@@ -20,6 +20,7 @@ import repastcity3.environment.GISFunctions;
 import repastcity3.environment.Residential;
 import repastcity3.environment.SpatialIndexManager;
 import repastcity3.exceptions.AgentCreationException;
+import repastcity3.main.AgentControl;
 import repastcity3.main.ContextManager;
 import repastcity3.main.GlobalVars;
 
@@ -93,9 +94,9 @@ public class AgentFactory {
 
 					a.setHome(b); // Tell the agent where it lives
 					b.addAgent(a); // Tell the building that the agent lives there
-					ContextManager.addConsumerToContext(a); // Add the agent to the context
+					AgentControl.addConsumerToContext(a); // Add the agent to the context
 					// Finally move the agent to the place where it lives.
-					ContextManager.moveAgent(a, ContextManager.residentialProjection.getGeometry(b).getCentroid());
+					AgentControl.moveAgent(a, ContextManager.residentialProjection.getGeometry(b).getCentroid());
 					agentsCreated++;
 				}
 			}
@@ -128,10 +129,10 @@ public class AgentFactory {
 
 		// Assign agents to houses
 		int numAgents = 0;
-		for (Consumer a : ContextManager.getConsumerAgents()) {
+		for (Consumer a : AgentControl.getConsumerAgents()) {
 			numAgents++;
 			// System.out.print(numAgents + "\n");
-			Geometry g = ContextManager.getAgentGeometry(a);
+			Geometry g = AgentControl.getAgentGeometry(a);
 			for (Residential b : SpatialIndexManager.search(ContextManager.residentialProjection, g)) {
 				if (ContextManager.residentialProjection.getGeometry(b).contains(g)) {
 					b.addAgent(a);
