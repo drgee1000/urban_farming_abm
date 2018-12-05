@@ -10,7 +10,7 @@ import java.util.Map;
 import com.google.gson.Gson;
 import com.google.gson.internal.LinkedTreeMap;
 
-import repastcity3.environment.food.DefaultFoodStock;
+import repastcity3.environment.food.FoodUtility;
 import repastcity3.environment.food.Food;
 
 public  class JsonDataLoader {
@@ -26,7 +26,7 @@ public  class JsonDataLoader {
 				System.out.println(p.getTick());
 				for(String name:foods.keySet()) {
 					double amount = foods.get(name);
-					Food destFood = DefaultFoodStock.getFoodByName(name, amount);
+					Food destFood = FoodUtility.getFoodByName(name, amount);
 					System.out.println("name: "+ destFood.getName()+"amount:"+ destFood.getAmount());
 					System.out.println("price: "+ destFood.getPrice()+"cost:" + destFood.getProductionCost()+" production time:"+ destFood.getProductionTime());
 				}

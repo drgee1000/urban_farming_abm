@@ -476,7 +476,7 @@ public class Consumer implements People {
 		for (String foodType : key) {
 			List<Food> list = stock.get(foodType);
 			for (Food f : list) {
-				calory_sum += f.getCalorie() * f.getAmount();
+				calory_sum += f.getDensity() * f.getAmount();
 			}
 		}
 		return calory_sum;

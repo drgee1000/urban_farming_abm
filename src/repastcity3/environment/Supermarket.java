@@ -8,13 +8,11 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.PriorityQueue;
 import java.util.Set;
 
-import repast.simphony.util.collections.IndexedIterable;
 import repastcity3.agent.Farm;
 import repastcity3.agent.IAgent;
-import repastcity3.environment.food.DefaultFoodStock;
+import repastcity3.environment.food.FoodUtility;
 import repastcity3.environment.food.Food;
 import repastcity3.environment.food.FoodOrder;
 import repastcity3.environment.food.FoodEntry;
@@ -29,9 +27,9 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 	private List<Food> purchasePlan;
 	// private PriorityQueue<FoodEntry> productionQueue;
 
-	private HashMap<String, Double> stockCount;
+	private HashMap<String, Double> stockCalorieCount;
 	private HashMap<String, Double> stockThreshold;
-	private HashMap<String, Double> vaguePurchasePlan;
+	private HashMap<String, Double> sourcingPlan;
 	private Set<String> types;
 	
 	private static int uniqueID = 0;
@@ -43,11 +41,11 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 		this.id = uniqueID++;
 		types = new HashSet<String>();
 		waste = new HashMap<String, List<FoodEntry>>();
-		stockCount = new HashMap<String, Double>();
-		vaguePurchasePlan = new HashMap<String, Double>();
+		stockCalorieCount = new HashMap<String, Double>();
+		sourcingPlan = new HashMap<String, Double>();
 		this.agents = new ArrayList<IAgent>();
 		// this.count = 0;
-		this.purchasePlan = DefaultFoodStock.getRandomFoodList(1000, 3000);
+		this.purchasePlan = FoodUtility.getRandomFoodList(1000, 3000);
 		// for (Food f:purchasePlan) {
 		// System.out.println("plan, amount: " + f.getAmount());
 		// }
@@ -66,6 +64,7 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 	}
 
 	private void initStock() {
+		// set threshould as initial stock level and add food in purchasePlan to stock
 		stockThreshold = new HashMap<String, Double>();
 		for (Food food : purchasePlan) {
 			food.setProductionTick(0);
@@ -74,33 +73,31 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 			types.add(type);
 			// init threshold
 			if (!stockThreshold.containsKey(type)) {
-				stockThreshold.put(type, food.getAmount());
+				stockThreshold.put(type, food.getAmount()*food.getDensity());
 			} else {
-				double x = stockThreshold.get(type) + food.getAmount();
+				double x = stockThreshold.get(type) + food.getAmount()*food.getDensity();
 				stockThreshold.put(type, x);
 			}
 			food.setAmount(0);
-			stockCount(food);
+			countStockCalorie(food);
 			// add to stock
 			// addStock(food);
 		}
 
-		refreshVPurchasePlan();
-//		vaguePurchase();
-		HashMap<String, List<Food>> astock = getStock();
-		for (String t : astock.keySet()) {
+		//HashMap<String, List<Food>> astock = getStock();
+		//for (String t : astock.keySet()) {
 			// System.out.println("supermarket"+identifier+"has food in "+ t+":
 			// "+astock.get(t).size());
-		}
+		//}
 	}
 
-	private void stockCount(Food food) {
+	private void countStockCalorie(Food food) {
 		String type = food.getType();
-		if (!stockCount.containsKey(type)) {
-			stockCount.put(type, food.getAmount());
+		if (!stockCalorieCount.containsKey(type)) {
+			stockCalorieCount.put(type, food.getDensity()*food.getAmount());
 		} else {
-			double x = stockCount.get(type) + food.getAmount();
-			stockCount.put(type, x);
+			double x = stockCalorieCount.get(type) + food.getDensity()*food.getAmount();
+			stockCalorieCount.put(type, x);
 		}
 	}
 
@@ -135,36 +132,13 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 		}
 	}
 
-	// not used...
-	private void refreshPurchasePlan() {
-		// make new production plan and insert them to productionQueue
-		DefaultFoodStock.getRandomFoodList(1000, 3000);
-		Set<String> types = stock.keySet();
-		List<String> typeList = new ArrayList<String>();
-		List<Food> foodList = new ArrayList<Food>();
-		for (String type : types) {
-			if (stockCount.get(type) < stockThreshold.get(type)) {
-				int totalAmount = 0;
-				typeList.add(type);
-				while (totalAmount < stockThreshold.get(type)) {
-					Food f = DefaultFoodStock.getFoodByType(type);
-					totalAmount += f.getAmount();
-					foodList.add(f);
-				}
-			}
-		}
-		purchasePlan = foodList;
-		return;
-	}
-
-	private void refreshVPurchasePlan() {
+	private void refreshSourcingPlan() {
 		// Set<String> types = stockCount.keySet();
 		for (String type : types) {
-			double base = stockCount.get(type);
+			double base = stockCalorieCount.get(type);
 			double target = stockThreshold.get(type);
-			if (stockCount.get(type) < stockThreshold.get(type)) {
-				double amount = 2 * (target - base);
-				vaguePurchasePlan.put(type, amount);
+			if (stockCalorieCount.get(type) < stockThreshold.get(type)) {
+				sourcingPlan.put(type, 2*(target-base));
 			}
 
 		}
@@ -172,7 +146,7 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 	}
 
 	private boolean planEmpty() {
-		for (double d : vaguePurchasePlan.values()) {
+		for (double d : sourcingPlan.values()) {
 			if (d != 0.0)
 				return false;
 		}
@@ -182,17 +156,18 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 	private void printVPlan() {
 		System.out.println("=======================");
 		System.out.println(this.toString());
-		for (String type : vaguePurchasePlan.keySet()) {
-			System.out.println(type + "  " + vaguePurchasePlan.get(type));
+		for (String type : sourcingPlan.keySet()) {
+			System.out.println(type + "  " + sourcingPlan.get(type));
 		}
 	}
 
-	private void vaguePurchase() {
+	private void sourceFromUrbanFarm() {
 		Food food;
 		/*
 		 * purchase food according to plan the loop ends when need is satisfied or
 		 * there's no other farm to go
 		 */
+		
 		// printVPlan();
 
 		Iterator<Farm> iter = new RandomIterator<Farm>(ContextManager.farmContext.iterator());
@@ -200,8 +175,8 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 			FoodOrder fo = new FoodOrder();
 			Farm f = iter.next();
 			HashMap<String, List<Food>> fStock = f.getStock();
-			for (String type : vaguePurchasePlan.keySet()) { // loop through all kinds of stock of a farm
-				double target = vaguePurchasePlan.get(type);
+			for (String type : sourcingPlan.keySet()) { // loop through all kinds of stock of a farm
+				double target = sourcingPlan.get(type);
 				// System.out.println();
 				// System.out.println("type: " + type + " target: " + target);
 				List<Food> foodOfType = fStock.get(type);
@@ -212,26 +187,26 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 						if (target > 0.0) {
 							// System.out.println("food of type len:" + foodOfType.size() + "i: " + i);
 							Food fd = (Food) foodOfType.get(i);
-							double fdAmount = fd.getAmount();
+							double fdCalorie = fd.getDensity()*fd.getAmount();
 							food = new Food(fd);
-							if (fdAmount > target) {
-								food.setAmount(target);
-								fo.addOrder(fd, target);
-								// fd.setAmount(fdAmount-target);
-							} else {
+							if (fdCalorie > target) { // buy part of that food
+								double amount = (double)(Math.round((target/fd.getDensity())*100)/100.0);
+								food.setAmount(target/fd.getDensity());
+								fo.addOrder(fd, amount);
+							} else { //buy all of that food
 								food = fd;
 								fo.addOrder(food, food.getAmount());
 							}
 							food.setSource(f.toString());
 							addStock(food);
-							stockCount(food);
+							countStockCalorie(food);
 							// System.out.println(this.toString()+" purchase " + food.getName() + " amount:
 							// " + food.getAmount());
-							target = target - food.getAmount();
+							target = target - food.getDensity()*food.getAmount();
 							if (target < 0.0)
 								target = 0.0;
 							// System.out.println("target after purchase " + target);
-							vaguePurchasePlan.put(type, target);
+							sourcingPlan.put(type, target);
 						} else {
 							break;
 						}
@@ -281,9 +256,9 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 		// if(tick%144==30)
 		{
 			// refreshPurchasePlan();
-			refreshVPurchasePlan();
+			refreshSourcingPlan();
 			if (!planEmpty()) {
-				vaguePurchase();
+				sourceFromUrbanFarm();
 			}
 
 		}
@@ -312,23 +287,23 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 
 	public void sell(FoodOrder order, String consumerID) {
 		HashMap<Food, Double> list = order.getList();
-		double totalIncome = this.fund;
+		double income = this.fund;
 		list.forEach((food, amount) -> {
 			String type = food.getType();
 			double newAmount = food.getAmount() - amount;
-			if (amount > 0) {
-				food.setAmount(food.getAmount() - amount);
-			} else {
+			if (newAmount > 0) { // food bought partially
+				food.setAmount(newAmount);
+			} else { // food bought
 				List<Food> stockList = stock.get(food.getType());
 				// System.out.println("remove stock");
 				stockList.remove(food);
 			}
-			double stockCountNum = stockCount.get(type);
-			stockCount.put(type, stockCountNum - newAmount);
+			double stockCountNum = stockCalorieCount.get(type);
+			stockCalorieCount.put(type, stockCountNum - food.getDensity()*food.getAmount());
 			this.fund += amount * food.getPrice();
-			// count -= amount;
 		});
-		totalIncome = this.fund - totalIncome;
+		income = this.fund - income;
+		//record sales
 //		synchronized(ContextManager.dLogger) {
 //			try {
 //				ContextManager.dLogger.recordSale(order, Helper.getCurrentTick(), totalIncome, this.toString(),consumerID);
@@ -342,6 +317,7 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 	}
 
 	public class feComparator implements Comparator<FoodEntry> {
+		//compare food according to productionTick
 		public int compare(FoodEntry fe1, FoodEntry fe2) {
 
 			if (fe1.getProductionTick() < fe2.getProductionTick())
@@ -364,6 +340,13 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 			return false;
 		Supermarket b = (Supermarket) obj;
 		return this.identifier.equals(b.identifier);
+	}
+	public double getStockCalorie() {
+		double calory = 0;
+		for (double clry:stockCalorieCount.values()) {
+			calory += clry;
+		}
+		return calory;
 	}
 
 }
@@ -391,7 +374,7 @@ class RandomIterator<T> implements Iterator<T> {
 	public boolean hasNext() {
 		return (iterator.hasNext());
 	}
-
+	
 	public T next() {
 		return (iterator.next());
 	}

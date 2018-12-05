@@ -28,16 +28,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </interface>  
-  <class id="4" language="java" name="repastcity3.environment.Farm" project="urban_farming_abm" 
-    file="/urban_farming_abm/src/repastcity3/environment/Farm.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="702" y="410"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
-      <operations public="false" package="false" protected="false" private="false" static="true"/>    
-    </display>  
-  </class>  
-  <class id="5" language="java" name="repastcity3.environment.Supermarket" project="urban_farming_abm" 
+  <class id="4" language="java" name="repastcity3.environment.Supermarket" project="urban_farming_abm" 
     file="/urban_farming_abm/src/repastcity3/environment/Supermarket.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="705" y="552"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -46,16 +37,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="repastcity3.environment.FarmableLocation" project="urban_farming_abm" 
-    file="/urban_farming_abm/src/repastcity3/environment/FarmableLocation.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1107" y="472"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
-      <operations public="false" package="false" protected="false" private="false" static="true"/>    
-    </display>  
-  </class>  
-  <class id="7" language="java" name="repastcity3.agent.Consumer" project="urban_farming_abm" 
+  <class id="5" language="java" name="repastcity3.agent.Consumer" project="urban_farming_abm" 
     file="/urban_farming_abm/src/repastcity3/agent/Consumer.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="699" y="307"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -64,7 +46,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="repastcity3.main.ContextManager" project="urban_farming_abm" 
+  <class id="6" language="java" name="repastcity3.main.ContextManager" project="urban_farming_abm" 
     file="/urban_farming_abm/src/repastcity3/main/ContextManager.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="479" y="448"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -73,7 +55,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="repastcity3.environment.food.Food" project="urban_farming_abm" 
+  <class id="7" language="java" name="repastcity3.environment.food.Food" project="urban_farming_abm" 
     file="/urban_farming_abm/src/repastcity3/environment/food/Food.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="61" width="144" x="1033" y="573"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -82,9 +64,8 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="repastcity3.environment.food.DefaultFoodStock" project="urban_farming_abm" 
-    file="/urban_farming_abm/src/repastcity3/environment/food/DefaultFoodStock.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
+  <class id="8" language="java" name="repastcity3.environment.food.FoodUtility" project="urban_farming_abm" 
+    file="/urban_farming_abm/src/repastcity3/environment/food/FoodUtility.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="878" y="715"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -92,7 +73,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="repastcity3.main.FarmIO.DataLogger" project="urban_farming_abm" 
+  <class id="9" language="java" name="repastcity3.main.FarmIO.DataLogger" project="urban_farming_abm" 
     file="/urban_farming_abm/src/repastcity3/main/FarmIO/DataLogger.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="266" y="449"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -101,7 +82,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="repastcity3.environment.food.FoodOrder" project="urban_farming_abm" 
+  <class id="10" language="java" name="repastcity3.environment.food.FoodOrder" project="urban_farming_abm" 
     file="/urban_farming_abm/src/repastcity3/environment/food/FoodOrder.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="859" y="189"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -110,7 +91,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="repastcity3.environment.food.Nutrition" project="urban_farming_abm" 
+  <class id="11" language="java" name="repastcity3.environment.food.Nutrition" project="urban_farming_abm" 
     file="/urban_farming_abm/src/repastcity3/environment/food/Nutrition.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1356" y="604"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -119,7 +100,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="repastcity3.environment.School" project="urban_farming_abm" 
+  <class id="12" language="java" name="repastcity3.environment.School" project="urban_farming_abm" 
     file="/urban_farming_abm/src/repastcity3/environment/School.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="693" y="174"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -128,7 +109,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="repastcity3.environment.Workplace" project="urban_farming_abm" 
+  <class id="13" language="java" name="repastcity3.environment.Workplace" project="urban_farming_abm" 
     file="/urban_farming_abm/src/repastcity3/environment/Workplace.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="707" y="664"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -137,189 +118,124 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <association id="16">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="17" name="supermarketContext">        
+  <association id="14">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="15" name="supermarketContext">        
         <position height="18" width="107" x="627" y="484"/>      
       </attribute>      
-      <multiplicity id="18" minimum="0" maximum="2147483647">        
+      <multiplicity id="16" minimum="0" maximum="2147483647">        
         <position height="16" width="21" x="622" y="514"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="17">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="18" name="schoolContext">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="19" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="20">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="21" name="agentContext">        
+        <position height="18" width="72" x="561" y="340"/>      
+      </attribute>      
+      <multiplicity id="22" minimum="0" maximum="2147483647">        
+        <position height="16" width="21" x="637" y="354"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="19">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="20" name="nutrition">        
+  <generalization id="23">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <realization id="24">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="2"/>  
+  </realization>  
+  <association id="25">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="26" name="workplaceContext">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="21" minimum="0" maximum="1">        
+      <multiplicity id="27" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="13" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="22">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="23" name="schoolContext">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="24" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="25">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="26" name="defaultFoodList">        
-        <position height="18" width="84" x="937" y="637"/>      
-      </attribute>      
-      <multiplicity id="27" minimum="0" maximum="2147483647">        
-        <position height="16" width="21" x="1027" y="653"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
   <association id="28">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="29" name="agent">        
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="29" name="purchasePlan">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="30" minimum="0" maximum="1">        
+      <multiplicity id="30" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="31">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="32" name="agent">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="33" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="31">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="2"/>  
-  </realization>  
-  <association id="32">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="33" name="dLogger">        
+  <association id="34">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="35" name="dLogger">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="34" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="35">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="6"/>  
-  </generalization>  
-  <association id="36">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="37" name="purchasePlan">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="38" minimum="0" maximum="2147483647">        
+      <multiplicity id="36" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="39">    
+  <association id="37">    
     <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="40" name="workplaceContext">        
-        <position height="0" width="0" x="0" y="0"/>      
+      <attribute id="38" name="defaultFoodList">        
+        <position height="18" width="84" x="937" y="637"/>      
       </attribute>      
-      <multiplicity id="41" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="42">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="1"/>  
-  </realization>  
-  <association id="43">    
-    <bendpoint x="960" y="502"/>    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="44" name="productionQueue">        
-        <position height="18" width="91" x="885" y="531"/>      
-      </attribute>      
-      <multiplicity id="45" minimum="0" maximum="2147483647">        
-        <position height="16" width="21" x="991" y="531"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="46">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="3"/>  
-  </realization>  
-  <generalization id="47">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
-  <association id="48">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="49" name="agentContext">        
-        <position height="18" width="72" x="561" y="340"/>      
-      </attribute>      
-      <multiplicity id="50" minimum="0" maximum="2147483647">        
-        <position height="16" width="21" x="637" y="354"/>      
+      <multiplicity id="39" minimum="0" maximum="2147483647">        
+        <position height="16" width="21" x="1027" y="653"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="51">    
-    <end type="SOURCE" refId="5"/>    
+  <realization id="40">    
+    <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="3"/>  
   </realization>  
-  <association id="52">    
+  <association id="41">    
     <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="53" name="farm">        
+      <attribute id="42" name="nutrition">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="54" minimum="0" maximum="1">        
+      <multiplicity id="43" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="55">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="56" name="farmContext">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="57" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="58">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="6"/>  
-  </generalization>  
-  <association id="59">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="60" name="productionPlan">        
-        <position height="18" width="79" x="1033" y="523"/>      
-      </attribute>      
-      <multiplicity id="61" minimum="0" maximum="2147483647">        
-        <position height="16" width="21" x="1019" y="544"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
+    <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

@@ -13,7 +13,7 @@ import java.util.PriorityQueue;
 import java.util.Set;
 
 import repastcity3.environment.SaleLocation;
-import repastcity3.environment.food.DefaultFoodStock;
+import repastcity3.environment.food.FoodUtility;
 import repastcity3.environment.food.Food;
 import repastcity3.environment.food.FoodEntry;
 import repastcity3.environment.food.FoodOrder;
@@ -49,7 +49,7 @@ public class Farm extends SaleLocation {
 		// this.count = 0;
 
 		variety = stock.size();
-		this.productionPlan = DefaultFoodStock.getRandomFoodList(300000, 700000);
+		this.productionPlan = FoodUtility.getRandomFoodList(300000, 700000);
 		initStock();
 		this.productionQueue = new PriorityQueue<Food>(new Comparator<Food>() {
 			public int compare(Food f1, Food f2) {
@@ -153,7 +153,7 @@ public class Farm extends SaleLocation {
 
 	private void refreshProductionQueue() {
 		// make new production plan and insert them to productionQueue
-		DefaultFoodStock.getRandomFoodList(300000, 700000);
+		FoodUtility.getRandomFoodList(300000, 700000);
 		Set<String> types = stock.keySet();
 		List<String> typeList = new ArrayList<String>();
 		List<Food> foodList = new ArrayList<Food>();
@@ -162,7 +162,7 @@ public class Farm extends SaleLocation {
 				int totalAmount = 0;
 				typeList.add(type);
 				while (totalAmount < stockThreshold.get(type)) {
-					Food f = DefaultFoodStock.getFoodByType(type);
+					Food f = FoodUtility.getFoodByType(type);
 //					System.out.print("get random food  " + f.getAmount());
 					totalAmount += f.getAmount();
 					f.setProductionTick(Helper.getCurrentTick() + f.getProductionTime());
