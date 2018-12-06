@@ -8,8 +8,11 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.RandomAccess;
 import java.util.Set;
 
+import cern.jet.random.Uniform;
+import repast.simphony.random.RandomHelper;
 import repastcity3.agent.Farm;
 import repastcity3.agent.IAgent;
 import repastcity3.environment.food.FoodUtility;
@@ -25,6 +28,8 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 	private double score;
 	private int score_count;
 	private List<Food> purchasePlan;
+	private int urbanSourcePeriod;
+	private int externalSourcePeriod;
 	// private PriorityQueue<FoodEntry> productionQueue;
 
 	private HashMap<String, Double> stockCalorieCount;
@@ -39,6 +44,10 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 		// double setupCost,double dailyMaintenanceCost, double fund,List<Food> stock
 		super(1000, 100, 50000);
 		this.id = uniqueID++;
+		
+		urbanSourcePeriod = 7;
+		externalSourcePeriod = getExternalSourcePeriod();
+		
 		types = new HashSet<String>();
 		waste = new HashMap<String, List<FoodEntry>>();
 		stockCalorieCount = new HashMap<String, Double>();
@@ -57,6 +66,14 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 		// System.out.println(f.getAmount());
 		// }
 
+	}
+	private int getExternalSourcePeriod() {
+		Uniform nRand = RandomHelper.getUniform();
+		if(nRand.nextBoolean()) {
+			return nRand.nextIntFromTo(4, 7);
+		}else {
+			return nRand.nextIntFromTo(1, 3);
+		}
 	}
 
 	public HashMap<String, List<FoodEntry>> getWaste() {
@@ -106,6 +123,7 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 		String type = food.getType();
 		List<Food> list;
 		if (f.getAmount() > 0) {
+			food.setPrice(food.getPrice()*1.1);
 			if (stock.containsKey(type)) {
 				list = stock.get(type);
 				list.add(food);
@@ -160,7 +178,9 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 			System.out.println(type + "  " + sourcingPlan.get(type));
 		}
 	}
+	private void sourceFromExternalFarm() {
 
+	}
 	private void sourceFromUrbanFarm() {
 		Food food;
 		/*
@@ -253,9 +273,15 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 //		System.out.println("Supermarket" + this.toString() + "step");
 		tick = Helper.getCurrentTick();
 		checkStock();
-		// if(tick%144==30)
+		// source from urban farm
+		if(tick%this.externalSourcePeriod == 1) {
+			refreshSourcingPlan();
+			if(!planEmpty()) {
+				sourceFromExternalFarm();
+			}
+		}
+		if(tick% this.externalSourcePeriod == 1)
 		{
-			// refreshPurchasePlan();
 			refreshSourcingPlan();
 			if (!planEmpty()) {
 				sourceFromUrbanFarm();

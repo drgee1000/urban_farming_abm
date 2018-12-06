@@ -90,8 +90,8 @@ import repastcity3.exceptions.EnvironmentError;
 import repastcity3.exceptions.NoIdentifierException;
 import repastcity3.exceptions.ParameterNotFoundException;
 import repastcity3.exceptions.StockCreationException;
-import repastcity3.main.FarmIO.DataLogger;
 import repastcity3.utilities.Helper;
+import repastcity3.utilities.ioUtility.DataLogger;
 
 public class ContextManager implements ContextBuilder<Object> {
 

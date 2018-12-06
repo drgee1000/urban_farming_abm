@@ -28,11 +28,7 @@ public class FoodUtility {
 			Iterable<CSVRecord> records = format.parse(in);
 			for (CSVRecord record : records) {
 				Food food = new Food(record.get("name"), record.get("type"), Double.valueOf(record.get("calorie")),
-						-1, Double.valueOf(record.get("avg_price")), -1,
-						new Nutrition(Double.valueOf(record.get("carbohydrate")), Double.valueOf(record.get("protein")),
-								Double.valueOf(record.get("lipid")), Double.valueOf(record.get("water")),
-								Double.valueOf(record.get("vitamins")), Double.valueOf(record.get("minerals"))),
-						-1, -1);
+						-1, Double.valueOf(record.get("avg_price")), -1,-1, -1);
 
 				defaultFoodList.add(food);
 				foodData.put(food.getName(),food);
@@ -56,7 +52,7 @@ public class FoodUtility {
 		productionTime = (int) (nRand.nextDoubleFromTo(15, 60));
 		expireTime = (int) (nRand.nextDoubleFromTo(1, 3));
 		Food destFood = new Food(srcFood.getName(), srcFood.getType(), srcFood.getDensity(), amount, price,
-				productionCost, srcFood.getNutrition(), productionTime, expireTime);
+				productionCost, productionTime, expireTime);
 		return destFood;
 	}
 	public static Food getFoodByType(String type) {
@@ -93,7 +89,7 @@ public class FoodUtility {
 			productionTime = (int) (nRand.nextDoubleFromTo(15, 60));
 			expireTime = (int) (nRand.nextDoubleFromTo(1, 3));
 			Food destFood = new Food(srcFood.getName(), srcFood.getType(), srcFood.getDensity(), amount, price,
-					productionCost, srcFood.getNutrition(), productionTime, expireTime);
+					productionCost, productionTime, expireTime);
 			foodList.add(destFood);
 			String type = destFood.getType();
 

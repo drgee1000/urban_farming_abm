@@ -23,17 +23,15 @@ import repastcity3.utilities.Helper;
 
 public class Farm extends SaleLocation {
 	// #type of food
-	private int variety;
 	// amount of all food
 	// private double count;
 	private int tick;
 	private double score;
 	private int score_count;
-	protected ProductionList productionList;
 	private List<Food> productionPlan;
-	private PriorityQueue<Food> productionQueue;
-	private HashMap<String, Double> stockCount;
-	private HashMap<String, Double> stockThreshold;
+	private PriorityQueue<Food> productionQueue; 
+	private HashMap<String, Double> stockCount; // count calory of each food category
+	private HashMap<String, Double> stockThreshold; // threshold for each food category
 	
 	private static int uniqueID = 0;
 	private int id;
@@ -45,10 +43,8 @@ public class Farm extends SaleLocation {
 		waste = new HashMap<String, List<FoodEntry>>();
 		stockCount = new HashMap<String, Double>();
 		this.agents = new ArrayList<IAgent>();
-		this.productionList = new ProductionList();
 		// this.count = 0;
 
-		variety = stock.size();
 		this.productionPlan = FoodUtility.getRandomFoodList(300000, 700000);
 		initStock();
 		this.productionQueue = new PriorityQueue<Food>(new Comparator<Food>() {
@@ -74,16 +70,10 @@ public class Farm extends SaleLocation {
 	}
 
 	private void dequeProductionQueue() {
-		// food produced is add to stock
-		// System.out.println();
-		// System.out.println(this.toString() + " call deque");
 		while (!productionQueue.isEmpty()) {
 			Food food = productionQueue.peek();
-			// System.out.println("deque @ " + Helper.getCurrentTick() + " pTick: " +
-			// food.getProductionTick());
 			if (food.getProductionTick() <= tick) {
 				productionQueue.poll();
-				// food.setSource(this.toString());
 				this.addStock(food);
 
 			} else {
