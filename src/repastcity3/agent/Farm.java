@@ -17,7 +17,6 @@ import repastcity3.environment.food.FoodUtility;
 import repastcity3.environment.food.Food;
 import repastcity3.environment.food.FoodEntry;
 import repastcity3.environment.food.FoodOrder;
-import repastcity3.environment.food.ProductionList;
 import repastcity3.main.ContextManager;
 import repastcity3.utilities.Helper;
 

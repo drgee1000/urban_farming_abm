@@ -7,7 +7,6 @@ import java.util.List;
 import repastcity3.agent.IAgent;
 import repastcity3.environment.food.Food;
 import repastcity3.environment.food.FoodEntry;
-import repastcity3.environment.food.ProductionList;
 
 public abstract class SaleLocation extends Building implements IAgent {
 	// for farm data

@@ -34,9 +34,6 @@ public class AgentFactory {
 
 	private static Uniform nRand = RandomHelper.getUniform();
 
-	/** The definition of the agents - specific to the method being used */
-	private String definition;
-
 	/**
 	 * Create a new agent factory from the given definition.
 	 * 
