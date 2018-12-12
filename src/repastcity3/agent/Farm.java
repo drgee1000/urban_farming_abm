@@ -17,7 +17,6 @@ import repastcity3.environment.food.FoodUtility;
 import repastcity3.environment.food.Food;
 import repastcity3.environment.food.FoodEntry;
 import repastcity3.environment.food.FoodOrder;
-import repastcity3.environment.food.ProductionList;
 import repastcity3.main.ContextManager;
 import repastcity3.utilities.Helper;
 
@@ -251,10 +250,10 @@ public class Farm extends SaleLocation {
 			} else {
 				stock.get(type).remove(food);
 			}
-			this.fund += amount * food.getPrice();
+			this.fund += amount * food.getPrice(); //here price is "$ per g"
 			double stockNum = stockCount.get(type);
 			stockCount.put(type, stockNum - amount);
-			food.setSource(this.toString());
+			//food.setSource(this.toString());
 			// count -= amount;
 		});
 
