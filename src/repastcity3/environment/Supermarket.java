@@ -322,7 +322,7 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 	}
 
 	public void sell(FoodOrder order, String consumerID) {
-		//System.out.println("====================="+this.toString()+"sell");
+		System.out.println("====================="+this.toString()+"sell");
 		HashMap<Food, Double> list = order.getList();
 		double income = this.fund;
 		list.forEach((food, amount) -> {
@@ -341,13 +341,13 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 		});
 		income = this.fund - income;
 		//record sales
-//		synchronized(ContextManager.dLogger) {
-//			try {
-//				ContextManager.dLogger.recordSale(order, Helper.getCurrentTick(), totalIncome, this.toString(),consumerID);
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
-//		}
+		synchronized(ContextManager.dLogger) {
+			try {
+				ContextManager.dLogger.recordSale(order, Helper.getCurrentTick(), income, this.toString(),consumerID);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 
 		// let order be collected by GC
 		order = null;
@@ -393,8 +393,7 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 			int len = stock.get(type).size();
 			for (int i = 0; i < len; i++) {
 				Food f = stock.get(type).get(i);
-				//System.out.println(
-						this.toString() + "  " + f.getName() + "  " + (int)f.getAmount() + " @" + f.getProductionTick()+" from "+f.getSource());
+				//System.out.println(this.toString() + "  " + f.getName() + "  " + (int)f.getAmount() + " @" + f.getProductionTick()+" from "+f.getSource());
 			}
 		}
 

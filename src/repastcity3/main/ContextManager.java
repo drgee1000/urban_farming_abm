@@ -148,11 +148,11 @@ public class ContextManager implements ContextBuilder<Object> {
 
 	@Override
 	public Context<Object> build(Context<Object> con) {
-		// try {
-		// dLogger = new DataLogger();
-		// } catch (IOException e) {
-		// LOGGER.log(Level.SEVERE, "DataLogger create failed", e);
-		// }
+		 try {
+		 dLogger = new DataLogger();
+		 } catch (IOException e) {
+		 LOGGER.log(Level.SEVERE, "DataLogger create failed", e);
+		 }
 
 		RepastCityLogging.init();
 
@@ -363,7 +363,7 @@ public class ContextManager implements ContextBuilder<Object> {
 		// Schedule that outputs ticks every 10 iterations.
 		schedule.schedule(ScheduleParameters.createRepeating(0, 1, ScheduleParameters.LAST_PRIORITY), this,
 				"recordTicks");
-//		schedule.schedule(ScheduleParameters.createAtEnd(ScheduleParameters.LAST_PRIORITY), this, "stopRecord");
+		schedule.schedule(ScheduleParameters.createAtEnd(ScheduleParameters.LAST_PRIORITY), this, "stopRecord");
 
 		/*
 		 * Schedule the agents. This is slightly complicated because if all the agents
@@ -414,16 +414,16 @@ public class ContextManager implements ContextBuilder<Object> {
 	public void recordTicks() {
 		LOGGER.info("Iterations: " + RunEnvironment.getInstance().getCurrentSchedule().getTickCount());
 
-		// try {
-		// dLogger.recordData(agentContext.getObjects(IAgent.class),
-		// Helper.getCurrentTick());
-		// dLogger.recordData(farmContext.getObjects(Farm.class),
-		// Helper.getCurrentTick());
-		// dLogger.recordData(supermarketContext.getObjects(Supermarket.class),
-		// Helper.getCurrentTick());
-		// } catch (Exception e) {
-		// e.printStackTrace();
-		// }
+		 try {
+		 dLogger.recordData(agentContext.getObjects(IAgent.class),
+		 Helper.getCurrentTick());
+		 dLogger.recordData(farmContext.getObjects(Farm.class),
+		 Helper.getCurrentTick());
+		 dLogger.recordData(supermarketContext.getObjects(Supermarket.class),
+		 Helper.getCurrentTick());
+		 } catch (Exception e) {
+		 e.printStackTrace();
+		 }
 	}
 
 	public void stopRecord() {
