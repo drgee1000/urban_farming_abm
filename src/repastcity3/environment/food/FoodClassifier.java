@@ -38,8 +38,9 @@ public class FoodClassifier {
                         break;
                     case "dairy":
                         dairy_list.add(name);
+                        break;
                     case "meat":
-                    		meat_list.add(name);
+                    	meat_list.add(name);
                 }
             }
 

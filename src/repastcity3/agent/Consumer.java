@@ -34,6 +34,8 @@ public class Consumer implements People {
 
 	private boolean goforEat = false;
 	private double healthThreshold;
+	
+	private double stockThreshold;
 	private double caloryConsumption;
 	private double caloryProduction;
 	private double satisfaction;
@@ -148,14 +150,13 @@ public class Consumer implements People {
 	public void step() throws Exception {
 		System.out.println("consumer "+this.id+" start");
 		double stock_calory = getStockCalory(consumer_food_stock);
-		if (stock_calory < 1000) {
+		if (stock_calory < this.stockThreshold) {
 			int[] flags = { 0, 0, 0, 0, 0 };
 			TreeMap<Double, Supermarket> supermarketTreeMap = selectSupermarket();
 			// System.out.print(supermarketTreeMap.size());
 			for (Double key : supermarketTreeMap.keySet()) {
 				Supermarket supermarket = supermarketTreeMap.get(key);
-				// System.out.println("======= go
-				// supermarket"+supermarket.getIdentifier()+"===========");
+				
 				this.destination = ContextManager.supermarketProjection.getGeometry(supermarket).getCentroid()
 						.getCoordinate();
 				GeometryFactory geomFac = new GeometryFactory();

@@ -1,0 +1,32 @@
+Dec 12, 2018 8:20:58 PM repastcity3.main.ContextManager readProperties
+INFO: Initialising properties from file ./repastcity.properties
+Dec 12, 2018 8:20:58 PM repastcity3.main.ContextManager buildEnv
+INFO: Configuring the environment with data from ./data/gis_data/shenzhen/
+Dec 12, 2018 8:21:00 PM repastcity3.main.ContextManager buildEnv
+INFO: Read 6 supermarkets from ./data/gis_data/shenzhen/supermarket.shp
+Dec 12, 2018 8:21:00 PM repastcity3.main.ContextManager buildEnv
+INFO: Read 9 residentials from ./data/gis_data/shenzhen/residential.shp
+Dec 12, 2018 8:21:00 PM repastcity3.main.ContextManager buildEnv
+INFO: Read 6 schools from ./data/gis_data/shenzhen/school.shp
+Dec 12, 2018 8:21:00 PM repastcity3.main.ContextManager buildEnv
+INFO: Read 9 workplaces from ./data/gis_data/shenzhen/workplace.shp
+Dec 12, 2018 8:21:00 PM repastcity3.main.ContextManager buildRoad
+INFO: Read 86 roads from ./data/gis_data/shenzhen/street.shp
+Dec 12, 2018 8:21:00 PM repastcity3.main.TestEnv testEnvironment
+INFO: Testing the environment
+Dec 12, 2018 8:21:00 PM repastcity3.main.TestEnv testEnvironment
+INFO: The road network has 73 nodes and 86 edges.
+Dec 12, 2018 8:21:00 PM repastcity3.agent.FarmFactory createPointAgents
+INFO: Have created 6 of type repastcity3.agent.Farm from file ./data/gis_data/shenzhen/farm.shp
+Dec 12, 2018 8:21:00 PM repastcity3.main.ContextManager createAgent
+INFO: Creating agents with the agent definition: '1000'
+Dec 12, 2018 8:21:00 PM repastcity3.agent.AgentFactory createRandomAgents
+INFO: Creating 1000 agents using random method.
+Dec 12, 2018 8:21:00 PM repastcity3.main.ContextManager createSchedule
+INFO: The single-threaded scheduler will be used.
+Dec 12, 2018 8:21:04 PM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 0.0
+Dec 12, 2018 8:21:05 PM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 1.0
+Dec 12, 2018 8:21:06 PM repastcity3.main.ContextManager recordTicks
+INFO: Iterations: 2.0

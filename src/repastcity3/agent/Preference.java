@@ -13,6 +13,13 @@ public class Preference {
 	ArrayList<String> fruit_list;
 	ArrayList<String> meat_list;
 	ArrayList<String> dairy_list;
+	/*----------------------------*/
+	HashMap<String, Double> grain_prefer;
+	HashMap<String, Double> vegetable_prefer;
+	HashMap<String, Double> fruit_prefer;
+	HashMap<String, Double> meat_prefer;
+	HashMap<String, Double> dairy_prefer;
+	/*----------------------------*/
 	double d_weight = 0; // weight for distance;
 	double s_weight = 0; // weight for score;
 	double personal = 0; // personal preference when selecting food
@@ -38,12 +45,23 @@ public class Preference {
 		fruit_list = foodClassifier.getFruit_list();
 		meat_list = foodClassifier.getMeat_list();
 		dairy_list = foodClassifier.getDairy_list();
+		Random r = new Random();
+		grain_prefer = new HashMap<String, Double>();
+		vegetable_prefer = new HashMap<String, Double>();
+		fruit_prefer = new HashMap<String, Double>();
+		meat_prefer = new HashMap<String, Double>();
+		dairy_prefer = new HashMap<String, Double>();
+		set_prefer_list(grain_list, grain_prefer);
+		set_prefer_list(vegetable_list, vegetable_prefer);
+		set_prefer_list(fruit_list, fruit_prefer);
+		set_prefer_list(meat_list, meat_prefer);
+		set_prefer_list(dairy_list, dairy_prefer);
 		Collections.shuffle(grain_list);
 		Collections.shuffle(vegetable_list);
 		Collections.shuffle(fruit_list);
 		Collections.shuffle(meat_list);
 		Collections.shuffle(dairy_list);
-		Random r = new Random();
+		
 		this.d_weight = r.nextDouble();
 		this.s_weight = 1 - this.d_weight;
 		this.prefer_weight = new HashMap<>();
@@ -73,7 +91,37 @@ public class Preference {
 		healthy = 1 - personal;
 		this.final_weight = new HashMap<>();
 	}
-
+	
+	public void set_prefer_list(ArrayList<String> food_list, HashMap<String, Double> food_prefer) {
+		Random r = new Random();
+		double prefer_sum = 0;
+		int rand_num = food_list.size();
+		List<Double> rand_list = new ArrayList<Double>();
+		for(int i=0; i<rand_num-1; i++) {
+			rand_list.add(r.nextDouble());
+		}
+		Collections.sort(rand_list);
+		System.out.println(rand_list);
+		int i = 0;
+		
+		for(i=0; i<rand_list.size(); i++) {
+			double res = 0;
+			if (i==0)
+				res = rand_list.get(i);
+			else
+				res = rand_list.get(i) - rand_list.get(i-1);
+			String food_name = food_list.get(i);
+			food_prefer.put(food_name, res);
+		}
+		String food_name = food_list.get(i);
+		if (rand_list.size() == 0)
+			food_prefer.put(food_name, r.nextDouble());
+		else
+			food_prefer.put(food_name, 1-rand_list.get(i-1));
+		System.out.println(food_prefer);
+		//System.out.println(rand_list);
+		
+	}
 	public void set_final_weight(){
 		final_weight.put("grain", get_final_weight_value("grain"));
 		final_weight.put("vegetable", get_final_weight_value("vegetable"));
