@@ -44,9 +44,7 @@ public class FarmFactory {
 		} catch (Exception e) {
 			throw new AgentCreationException(e);
 		}
-		
-		
-		
+
 //		for(Farm farm :AgentControl.getFarmAgents())
 //		{
 //			Geometry geometry = ContextManager.farmProjection.getGeometry(farm);
@@ -58,6 +56,10 @@ public class FarmFactory {
 
 		LOGGER.info("Have created " + numAgents + " of type " + clazz.getName().toString() + " from file " + fileName);
 
+	}
+
+	private void createRandomAgents() throws AgentCreationException {
+		
 	}
 
 }
