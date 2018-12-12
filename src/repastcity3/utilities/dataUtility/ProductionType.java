@@ -11,4 +11,9 @@ public class ProductionType {
 		this.period = period;
 		this.price = price;
 	}
+	public String toString() {
+		String s ="type:"+ Integer.toString(this.type)+"density:"+Double.toString(density)+"period:"+Integer.toString(this.period)+"price"+Double.toString(this.price);
+		return s;
+		
+	}
 }

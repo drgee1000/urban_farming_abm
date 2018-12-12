@@ -19,11 +19,14 @@ import repastcity3.environment.food.FoodEntry;
 import repastcity3.environment.food.FoodOrder;
 import repastcity3.main.ContextManager;
 import repastcity3.utilities.Helper;
+import repastcity3.utilities.dataUtility.ProductionType;
+import repastcity3.utilities.ioUtility.*;
 
 public class Farm extends SaleLocation {
 	// #type of food
 	// amount of all food
 	// private double count;
+	private static List<ProductionType> productionTypes = DataLoader.loadProductionType() ;
 	private int tick;
 	private double score;
 	private int score_count;
@@ -37,7 +40,11 @@ public class Farm extends SaleLocation {
 
 	public Farm() {
 		// double setupCost,double dailyMaintenanceCost, double fund,List<Food> stock
+		
 		super(1000, 100, 50000);
+		for (ProductionType pt:productionTypes) {
+			System.out.println(pt.toString());
+		}
 		this.id = uniqueID++;
 		waste = new HashMap<String, List<FoodEntry>>();
 		stockCount = new HashMap<String, Double>();
