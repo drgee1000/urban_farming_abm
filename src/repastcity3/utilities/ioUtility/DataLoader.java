@@ -81,7 +81,7 @@ public  class DataLoader {
 	}
 	public static ArrayList<ProductionType> loadProductionType(){
 		ArrayList<ProductionType> typeList = new ArrayList<>();
-		fileName = "./data/food/productiontype.csv";
+		fileName = "./data/food_data/productiontype.csv";
 		try (Reader in = new FileReader(fileName)) {
 			CSVFormat format = CSVFormat.DEFAULT.withFirstRecordAsHeader();
 			Iterable<CSVRecord> records = format.parse(in);

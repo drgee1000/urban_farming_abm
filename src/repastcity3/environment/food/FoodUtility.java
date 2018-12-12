@@ -98,7 +98,7 @@ public class FoodUtility {
 					+ srcFood.getPrice() / (nRand.nextDoubleFromTo(-1, 1) > 0 ? priceVar : -priceVar);
 			productionCost = srcFood.getPrice() * nRand.nextDoubleFromTo(0.5, 0.9);
 			productionTime = (int) (nRand.nextDoubleFromTo(15, 60));
-			expireTime = (int) (nRand.nextDoubleFromTo(1, 3));
+			expireTime = (int) (nRand.nextDoubleFromTo(5, 10));
 			Food destFood = new Food(srcFood.getName(), srcFood.getType(), srcFood.getDensity(), amount, price,
 					productionCost, productionTime, expireTime);
 			foodList.add(destFood);

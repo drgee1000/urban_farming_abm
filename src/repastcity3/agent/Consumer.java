@@ -148,7 +148,7 @@ public class Consumer implements People {
 
 	@Override
 	public void step() throws Exception {
-		System.out.println("consumer "+this.id+" start");
+		//System.out.println("consumer "+this.id+" start");
 		double stock_calory = getStockCalory(consumer_food_stock);
 		if (stock_calory < this.stockThreshold) {
 			int[] flags = { 0, 0, 0, 0, 0 };
@@ -162,6 +162,7 @@ public class Consumer implements People {
 				GeometryFactory geomFac = new GeometryFactory();
 				AgentControl.moveAgent(this, geomFac.createPoint(this.destination));
 				FoodOrder foodOrder = this.selectFood(supermarket, flags);
+				System.out.println("----------"+this.toString()+ " buy from " + supermarket.toString());
 				supermarket.sell(foodOrder, this.toString());
 				supermarket.updateScore(this.satisfaction);
 				if (flags[0] == 1 && flags[1] == 1 && flags[2] == 1 && flags[3] == 1 && flags[4] == 1) {
@@ -177,7 +178,7 @@ public class Consumer implements People {
 			this.avg_satisfaction = this.avg_satisfaction / this.buy_time;
 		}
 		consumeRandomFood();
-		System.out.println("consumer "+this.id+" end");
+		//System.out.println("consumer "+this.id+" end");
 	}
 
 	/**
