@@ -101,7 +101,7 @@ public class Preference {
 			rand_list.add(r.nextDouble());
 		}
 		Collections.sort(rand_list);
-		System.out.println(rand_list);
+		// System.out.println(rand_list);
 		int i = 0;
 		
 		for(i=0; i<rand_list.size(); i++) {
