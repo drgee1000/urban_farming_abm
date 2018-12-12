@@ -20,7 +20,7 @@ import repastcity3.utilities.dataUtility.ProductionType;
 import repastcity3.environment.food.Food;
 
 public  class DataLoader {
-	String fileName;
+	static String fileName;
 	String[] headers;
 	public static void main(String[] args) {
 		System.out.println("hello");
@@ -79,7 +79,7 @@ public  class DataLoader {
 		}
 	return productionPlans;
 	}
-	public ArrayList<ProductionType> loadProductionType(){
+	public static ArrayList<ProductionType> loadProductionType(){
 		ArrayList<ProductionType> typeList = new ArrayList<>();
 		fileName = "./data/food/productiontype.csv";
 		try (Reader in = new FileReader(fileName)) {

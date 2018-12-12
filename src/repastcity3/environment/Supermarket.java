@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 import java.util.RandomAccess;
 import java.util.Set;
 
@@ -33,15 +34,17 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 	// private PriorityQueue<FoodEntry> productionQueue;
 
 	private HashMap<String, Double> stockCalorieCount;
-	private HashMap<String, Double> stockThreshold;
+	//private HashMap<String, Double> stockThreshold;
+	private double stockThreshold;
 	private HashMap<String, Double> sourcingPlan;
 	private Set<String> types;
 	
 	private static int uniqueID = 0;
 	private int id;
+	private static double urbanPriceFactor = 1.1; //price = originalPrice * priceFactor
 
 	public Supermarket() {
-		// double setupCost,double dailyMaintenanceCost, double fund,List<Food> stock
+		// setup Cost, daily maintainance cost, fund
 		super(1000, 100, 50000);
 		this.id = uniqueID++;
 		
@@ -53,18 +56,10 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 		stockCalorieCount = new HashMap<String, Double>();
 		sourcingPlan = new HashMap<String, Double>();
 		this.agents = new ArrayList<IAgent>();
-		// this.count = 0;
-		this.purchasePlan = FoodUtility.getRandomFoodList(1000, 3000);
-		// for (Food f:purchasePlan) {
-		// System.out.println("plan, amount: " + f.getAmount());
-		// }
+		
+		this.stockThreshold = 20000;
 		initStock();
-		// System.out.println("init supermarket "+identifier+" with stockCount " +
-		// stock.keySet().size());
-		// List<Food> l = this.stock.get("grain");
-		// for(Food f:l) {
-		// System.out.println(f.getAmount());
-		// }
+		
 
 	}
 	private int getExternalSourcePeriod() {
@@ -81,31 +76,12 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 	}
 
 	private void initStock() {
-		// set threshould as initial stock level and add food in purchasePlan to stock
-		stockThreshold = new HashMap<String, Double>();
-		for (Food food : purchasePlan) {
-			food.setProductionTick(0);
-
-			String type = food.getType();
-			types.add(type);
-			// init threshold
-			if (!stockThreshold.containsKey(type)) {
-				stockThreshold.put(type, food.getAmount()*food.getDensity());
-			} else {
-				double x = stockThreshold.get(type) + food.getAmount()*food.getDensity();
-				stockThreshold.put(type, x);
-			}
-			food.setAmount(0);
-			countStockCalorie(food);
-			// add to stock
-			// addStock(food);
-		}
-
-		//HashMap<String, List<Food>> astock = getStock();
-		//for (String t : astock.keySet()) {
-			// System.out.println("supermarket"+identifier+"has food in "+ t+":
-			// "+astock.get(t).size());
-		//}
+		// initially, food are from external sources
+		System.out.println("init stock");
+		sourcingPlan.put("vegetable", stockThreshold);
+		sourceFromExternalFarm();
+		System.out.println("init stock finish");
+		printStock();
 	}
 
 	private void countStockCalorie(Food food) {
@@ -154,9 +130,9 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 		// Set<String> types = stockCount.keySet();
 		for (String type : types) {
 			double base = stockCalorieCount.get(type);
-			double target = stockThreshold.get(type);
-			if (stockCalorieCount.get(type) < stockThreshold.get(type)) {
-				sourcingPlan.put(type, 2*(target-base));
+			double target = stockThreshold;
+			if (stockCalorieCount.get(type) < stockThreshold) {
+				sourcingPlan.put(type, 1.2*(target-base));
 			}
 
 		}
@@ -171,7 +147,7 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 		return true;
 	}
 
-	private void printVPlan() {
+	private void printSourcingPlan() {
 		System.out.println("=======================");
 		System.out.println(this.toString());
 		for (String type : sourcingPlan.keySet()) {
@@ -179,7 +155,23 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 		}
 	}
 	private void sourceFromExternalFarm() {
-
+		List<Food> foodList = FoodUtility.getSupermarketFoodList();
+		Random r = new Random();
+		double target = sourcingPlan.get("vegetable"); 
+		Food f = new Food();
+		int size = foodList.size();
+		for (int i = 0; i < size-1;i++) {
+			f = foodList.get(i);
+			int x = r.nextInt((int)target);
+			target -= x;
+			f.setAmount(x/f.getDensity());
+			f.setSource("external");
+			addStock(f);
+		}
+		f = foodList.get(size-1);
+		f.setAmount(target/f.getDensity());
+		f.setSource("external");
+		addStock(f);
 	}
 	private void sourceFromUrbanFarm() {
 		Food food;
@@ -187,8 +179,6 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 		 * purchase food according to plan the loop ends when need is satisfied or
 		 * there's no other farm to go
 		 */
-		
-		// printVPlan();
 
 		Iterator<Farm> iter = new RandomIterator<Farm>(ContextManager.farmContext.iterator());
 		while (iter.hasNext()) { // loop through all farms
@@ -214,10 +204,11 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 								food.setAmount(target/fd.getDensity());
 								fo.addOrder(fd, amount);
 							} else { //buy all of that food
-								food = fd;
-								fo.addOrder(food, food.getAmount());
+								//food = fd;
+								fo.addOrder(fd, fd.getAmount());
 							}
 							food.setSource(f.toString());
+							food.setPrice(food.getPrice()*urbanPriceFactor);
 							addStock(food);
 							countStockCalorie(food);
 							// System.out.println(this.toString()+" purchase " + food.getName() + " amount:
@@ -226,6 +217,7 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 							if (target < 0.0)
 								target = 0.0;
 							// System.out.println("target after purchase " + target);
+							//update targets in sourceing plan 
 							sourcingPlan.put(type, target);
 						} else {
 							break;
@@ -280,7 +272,7 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 				sourceFromExternalFarm();
 			}
 		}
-		if(tick% this.externalSourcePeriod == 1)
+		if(tick% this.urbanSourcePeriod == 1)
 		{
 			refreshSourcingPlan();
 			if (!planEmpty()) {
@@ -288,6 +280,7 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 			}
 
 		}
+		printStock();
 		System.out.println("supermarket "+this.id+" end");
 
 	}
@@ -375,6 +368,19 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 		return calory;
 	}
 
+	private void printStock() {
+		System.out.println(this.toString() + "  print stock");
+		for (String type : stock.keySet()) {
+			System.out.println(type);
+			int len = stock.get(type).size();
+			for (int i = 0; i < len; i++) {
+				Food f = stock.get(type).get(i);
+				System.out.println(
+						this.toString() + "  " + f.getName() + "  " + (int)f.getAmount() + " @" + f.getProductionTick()+" from "+f.getSource());
+			}
+		}
+
+	}
 }
 
 //http://www.java2s.com/Tutorials/Java/Collection_How_to/Iterator/Create_random_Iterator.htm
@@ -408,4 +414,5 @@ class RandomIterator<T> implements Iterator<T> {
 	public void remove() {
 		iterator.remove();
 	}
+	
 }

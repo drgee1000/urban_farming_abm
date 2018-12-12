@@ -38,6 +38,7 @@ public class FoodUtility {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		getRandomFoodList(1000,2000);
 
 	}
 	public static Food getFoodByName(String name, double amount) {
@@ -61,7 +62,17 @@ public class FoodUtility {
 		Food food = fList.get(index);
 		return food;
 	}
-
+	public static List<Food> getSupermarketFoodList(){
+		ArrayList<Food> foodList = new ArrayList<>();
+		List<Food> fList = allFood.get("vegetable");
+		System.out.println("get supermarket list, len:"+fList.size());
+		Collections.shuffle(foodList);
+		foodList.add(new Food(fList.get(0)));
+		foodList.add(new Food(fList.get(1)));
+		foodList.add(new Food(fList.get(2)));
+		//System.out.println("return supermarket list, len:"+fL.size());
+		return foodList;
+	}
 	public static List<Food> getRandomFoodList(int min, int max) {
 		allFood = null;
 		allFood = new HashMap<String, List<Food>>();
