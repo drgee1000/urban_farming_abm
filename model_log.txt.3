@@ -1,0 +1,89 @@
+Dec 13, 2018 1:13:45 AM repastcity3.main.ContextManager readProperties
+INFO: Initialising properties from file .\repastcity.properties
+Dec 13, 2018 1:13:45 AM repastcity3.main.ContextManager buildEnv
+INFO: Configuring the environment with data from ./data/gis_data/shenzhen/
+Dec 13, 2018 1:13:48 AM repastcity3.main.ContextManager buildEnv
+INFO: Read 6 supermarkets from ./data/gis_data/shenzhen/supermarket.shp
+Dec 13, 2018 1:13:48 AM repastcity3.main.ContextManager buildEnv
+INFO: Read 9 residentials from ./data/gis_data/shenzhen/residential.shp
+Dec 13, 2018 1:13:48 AM repastcity3.main.ContextManager buildEnv
+INFO: Read 6 schools from ./data/gis_data/shenzhen/school.shp
+Dec 13, 2018 1:13:48 AM repastcity3.main.ContextManager buildEnv
+INFO: Read 9 workplaces from ./data/gis_data/shenzhen/workplace.shp
+Dec 13, 2018 1:13:48 AM repastcity3.main.ContextManager buildRoad
+INFO: Read 86 roads from ./data/gis_data/shenzhen/street.shp
+Dec 13, 2018 1:13:48 AM repastcity3.main.TestEnv testEnvironment
+INFO: Testing the environment
+Dec 13, 2018 1:13:48 AM repastcity3.main.TestEnv testEnvironment
+INFO: The road network has 73 nodes and 86 edges.
+Dec 13, 2018 1:13:48 AM repastcity3.main.ContextManager createAgent
+SEVERE: Agent creation process failed
+repastcity3.exceptions.AgentCreationException: java.lang.NullPointerException
+	at repastcity3.agent.FarmFactory.createPointAgents(FarmFactory.java:45)
+	at repastcity3.agent.FarmFactory.createAgents(FarmFactory.java:30)
+	at repastcity3.main.ContextManager.createAgent(ContextManager.java:328)
+	at repastcity3.main.ContextManager.build(ContextManager.java:181)
+	at repast.simphony.dataLoader.engine.ClassNameContextBuilder.build(ClassNameContextBuilder.java:41)
+	at repast.simphony.dataLoader.engine.DataLoaderControllerAction.runInitialize(DataLoaderControllerAction.java:48)
+	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:214)
+	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:1)
+	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:292)
+	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
+	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
+	at repast.simphony.util.collections.NaryTree.preOrderTraversal(NaryTree.java:288)
+	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:212)
+	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:383)
+	at repast.simphony.ui.RSApplication.initSim(RSApplication.java:157)
+	at repast.simphony.ui.action.InitRun.actionPerformed(InitRun.java:17)
+	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(Unknown Source)
+	at java.awt.AWTEventMulticaster.mouseReleased(Unknown Source)
+	at java.awt.Component.processMouseEvent(Unknown Source)
+	at javax.swing.JComponent.processMouseEvent(Unknown Source)
+	at java.awt.Component.processEvent(Unknown Source)
+	at java.awt.Container.processEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.awt.EventQueue.access$500(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+Caused by: java.lang.NullPointerException
+	at repastcity3.agent.Farm.enqueProductionPlan(Farm.java:89)
+	at repastcity3.agent.Farm.refreshProductionQueue(Farm.java:208)
+	at repastcity3.agent.Farm.initStock(Farm.java:139)
+	at repastcity3.agent.Farm.<init>(Farm.java:68)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at java.lang.Class.newInstance(Unknown Source)
+	at repast.simphony.space.gis.ShapefileLoader.next(ShapefileLoader.java:177)
+	at repastcity3.environment.GISFunctions.readAgentShapefile(GISFunctions.java:219)
+	at repastcity3.agent.FarmFactory.createPointAgents(FarmFactory.java:43)
+	... 52 more
+

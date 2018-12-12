@@ -73,6 +73,13 @@ public class FoodUtility {
 		//System.out.println("return supermarket list, len:"+fL.size());
 		return foodList;
 	}
+	public static List<Food> getLargeFarmFoodList(){
+		List<Food> list = new ArrayList<>();
+		for (Food f:allFood.get("vegetable")) {
+			list.add(new Food(f));
+		}
+		return list;
+	}
 	public static List<Food> getRandomFoodList(int min, int max) {
 		allFood = null;
 		allFood = new HashMap<String, List<Food>>();
@@ -94,8 +101,8 @@ public class FoodUtility {
 			double priceVar;
 			amount = nRand.nextDoubleFromTo(min, max);
 			priceVar = nRand.nextDoubleFromTo(80, 100);
-			price = srcFood.getPrice()
-					+ srcFood.getPrice() / (nRand.nextDoubleFromTo(-1, 1) > 0 ? priceVar : -priceVar);
+			price = srcFood.getPrice();
+				//	+ srcFood.getPrice() / (nRand.nextDoubleFromTo(-1, 1) > 0 ? priceVar : -priceVar);
 			productionCost = srcFood.getPrice() * nRand.nextDoubleFromTo(0.5, 0.9);
 			productionTime = (int) (nRand.nextDoubleFromTo(15, 60));
 			expireTime = (int) (nRand.nextDoubleFromTo(5, 10));

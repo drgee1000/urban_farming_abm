@@ -184,15 +184,15 @@ public class DataLogger {
 		int tick;
 		// @Expose()
 		// int stockNum;
-		// @Expose()
-		// HashMap<String,List<Food>> stock;
+		 @Expose()
+		 HashMap<String,List<Food>> stock;
 		// @Expose()
 		// double count;
 		@Expose()
 		double fund;
 		public farm(int t, Farm f) {
 			tick = t;
-			// stock = f.getStock();
+			stock = f.getStock();
 			// stockNum = f.getStock().size();
 			// count = f.getCount();
 			fund = f.getFund();
@@ -277,10 +277,13 @@ public class DataLogger {
 		// @Expose()
 		// double count;
 		@Expose()
+		double StockLevel;
+		@Expose()
 		double fund;
 
 		public supermarket(int t, Supermarket s) {
 			this.tick = t;
+			this.StockLevel = s.getStockCalorie();
 			// stock = s.getStock();
 			// stockNum = s.getStock().keySet().size();
 			// count = f.getCount();
