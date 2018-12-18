@@ -1,4 +1,4 @@
-package repastcity3.environment;
+package repastcity3.agent;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,9 +14,9 @@ import java.util.Set;
 
 import cern.jet.random.Uniform;
 import repast.simphony.random.RandomHelper;
-import repastcity3.agent.Farm;
-import repastcity3.agent.IAgent;
 import repastcity3.environment.food.FoodUtility;
+import repastcity3.environment.FixedGeography;
+import repastcity3.environment.SaleLocation;
 import repastcity3.environment.food.Food;
 import repastcity3.environment.food.FoodOrder;
 import repastcity3.environment.food.FoodEntry;

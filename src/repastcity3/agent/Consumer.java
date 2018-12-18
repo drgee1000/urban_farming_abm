@@ -12,7 +12,6 @@ import repastcity3.environment.Residential;
 
 import repastcity3.environment.Route;
 import repastcity3.environment.School;
-import repastcity3.environment.Supermarket;
 import repastcity3.environment.Workplace;
 import repastcity3.environment.food.Food;
 import repastcity3.environment.food.FoodOrder;

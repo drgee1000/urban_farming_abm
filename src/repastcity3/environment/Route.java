@@ -39,6 +39,7 @@ import repast.simphony.space.graph.ShortestPath;
 import repastcity3.agent.Consumer;
 import repastcity3.agent.Farm;
 import repastcity3.agent.People;
+import repastcity3.agent.Supermarket;
 import repastcity3.exceptions.RoutingException;
 import repastcity3.main.AgentControl;
 import repastcity3.main.ContextManager;

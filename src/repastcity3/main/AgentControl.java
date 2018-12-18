@@ -10,8 +10,8 @@ import repast.simphony.util.collections.IndexedIterable;
 import repastcity3.agent.Consumer;
 import repastcity3.agent.Farm;
 import repastcity3.agent.IAgent;
+import repastcity3.agent.Supermarket;
 import repastcity3.environment.Residential;
-import repastcity3.environment.Supermarket;
 
 public class AgentControl {
 	/**
