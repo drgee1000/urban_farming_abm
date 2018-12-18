@@ -34,8 +34,8 @@ public class Consumer implements People {
 	private boolean goforEat = false;
 	private double healthThreshold;
 	
-	private double stockThreshold;
-	private double caloryConsumption;
+	private double stockThreshold = 1000;
+	private double caloryConsumption = 0;
 	private double caloryProduction;
 	private double satisfaction;
 	private double avg_satisfaction;
@@ -147,9 +147,11 @@ public class Consumer implements People {
 
 	@Override
 	public void step() throws Exception {
-		//System.out.println("consumer "+this.id+" start");
+		// System.out.println("consumer "+this.id+" start");
 		double stock_calory = getStockCalory(consumer_food_stock);
+		
 		if (stock_calory < this.stockThreshold) {
+			// System.out.println("========"+ this.toString()+"enter==========");
 			int[] flags = { 0, 0, 0, 0, 0 };
 			TreeMap<Double, Supermarket> supermarketTreeMap = selectSupermarket();
 			// System.out.print(supermarketTreeMap.size());
@@ -161,7 +163,7 @@ public class Consumer implements People {
 				GeometryFactory geomFac = new GeometryFactory();
 				AgentControl.moveAgent(this, geomFac.createPoint(this.destination));
 				FoodOrder foodOrder = this.selectFood(supermarket, flags);
-				System.out.println("----------"+this.toString()+ " buy from " + supermarket.toString());
+				// System.out.println("----------"+this.toString()+ " buy from " + supermarket.toString());
 				supermarket.sell(foodOrder, this.toString());
 				supermarket.updateScore(this.satisfaction);
 				if (flags[0] == 1 && flags[1] == 1 && flags[2] == 1 && flags[3] == 1 && flags[4] == 1) {
@@ -653,7 +655,8 @@ public class Consumer implements People {
 			int i = r.nextInt(list.size());
 			Food f = list.get(i);
 			list.remove(f);
-			f.setAmount(f.getAmount() - 1);
+			this.caloryConsumption = f.getDensity()*100;
+			f.setAmount(f.getAmount() - 100);
 			list.add(f);
 			consumer_food_stock.put(foodtype, list);
 		}

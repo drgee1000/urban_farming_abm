@@ -118,7 +118,7 @@ public class Preference {
 			food_prefer.put(food_name, r.nextDouble());
 		else
 			food_prefer.put(food_name, 1-rand_list.get(i-1));
-		System.out.println(food_prefer);
+		// System.out.println(food_prefer);
 		//System.out.println(rand_list);
 		
 	}

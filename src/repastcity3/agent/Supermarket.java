@@ -200,7 +200,7 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 			for (String type : sourcingPlan.keySet()) { // loop through all kinds of stock of a farm
 				double target = sourcingPlan.get(type);
 				// //System.out.println();
-				// //System.out.println("type: " + type + " target: " + target);
+				System.out.println("type: " + type + " target: " + target);
 				List<Food> foodOfType = fStock.get(type);
 				int len = foodOfType.size();
 				// //System.out.println("food of type len:" + len);
@@ -379,11 +379,11 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 		return this.identifier.equals(b.identifier);
 	}
 	public double getStockCalorie() {
-		double calory = 0;
-		for (double clry:stockCalorieCount.values()) {
-			calory += clry;
-		}
-		return calory;
+		//double calory = 0;
+		//for (double clry:stockCalorieCount.values()) {
+//			calory += clry;
+		//}
+		return stockCalorieCount.get("vegetable");
 	}
 
 	private void printStock() {

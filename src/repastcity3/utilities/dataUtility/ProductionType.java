@@ -11,6 +11,18 @@ public class ProductionType {
 		this.period = period;
 		this.price = price;
 	}
+	public int getType() {
+		return type;
+	}
+	public double getDensity() {
+		return density;
+	}
+	public int getPeriod() {
+		return period;
+	}
+	public double getPrice() {
+		return price;
+	}
 	public String toString() {
 		String s ="type:"+ Integer.toString(this.type)+"density:"+Double.toString(density)+"period:"+Integer.toString(this.period)+"price"+Double.toString(this.price);
 		return s;
