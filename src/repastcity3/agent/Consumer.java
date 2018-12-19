@@ -163,7 +163,9 @@ public class Consumer implements People {
 						.getCoordinate();
 				GeometryFactory geomFac = new GeometryFactory();
 				AgentControl.moveAgent(this, geomFac.createPoint(this.destination));
-				FoodOrder foodOrder = this.selectFood(supermarket, flags);
+				FoodOrder foodOrder = new FoodOrder();
+				if(supermarket.isAvailable()) 
+					foodOrder = this.selectFood(supermarket, flags);
 				// System.out.println("----------"+this.toString()+ " buy from " + supermarket.toString());
 				supermarket.sell(foodOrder, this.toString());
 				supermarket.updateScore(this.satisfaction);
@@ -637,7 +639,7 @@ public class Consumer implements People {
 			// System.out.println("I want to buy "+f.getName() + f.getAmount());
 			// }
 
-			if (f != null && f.getAmount() > 0) {
+			if (f != null && f.getAmount() > final_weight.get(s)/100) {
 				foodOrder.addOrder(f, final_weight.get(s) / 100);
 				// System.out.println("order:" +
 				// f.getName()+final_weight.get(s)/100+foodOrder.getList().keySet().size());
