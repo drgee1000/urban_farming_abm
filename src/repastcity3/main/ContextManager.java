@@ -52,14 +52,15 @@ import repast.simphony.space.grid.GridBuilderParameters;
 import repast.simphony.space.grid.SimpleGridAdder;
 import repast.simphony.space.grid.StrictBorders;
 import repast.simphony.util.collections.IndexedIterable;
-import repastcity3.agent.AgentFactory;
 import repastcity3.agent.Consumer;
 import repastcity3.agent.Farm;
-import repastcity3.agent.FarmFactory;
 import repastcity3.agent.IAgent;
 import repastcity3.agent.People;
 import repastcity3.agent.Supermarket;
 import repastcity3.agent.ThreadedAgentScheduler;
+import repastcity3.agent.factory.AgentFactory;
+import repastcity3.agent.factory.FarmFactory;
+import repastcity3.agent.factory.SupermarketFactory;
 //import repastcity3.environment.Candidate1;
 //import repastcity3.environment.Candidate2;
 //import repastcity3.environment.Candidate3;
@@ -148,11 +149,11 @@ public class ContextManager implements ContextBuilder<Object> {
 
 	@Override
 	public Context<Object> build(Context<Object> con) {
-		 try {
-		 dLogger = new DataLogger();
-		 } catch (IOException e) {
-		 LOGGER.log(Level.SEVERE, "DataLogger create failed", e);
-		 }
+		try {
+			dLogger = new DataLogger();
+		} catch (IOException e) {
+			LOGGER.log(Level.SEVERE, "DataLogger create failed", e);
+		}
 
 		RepastCityLogging.init();
 
@@ -183,6 +184,8 @@ public class ContextManager implements ContextBuilder<Object> {
 		// Create the schedule
 		createSchedule();
 
+		System.out.println("***********Build complete**********");
+
 		return mainContext;
 	}
 
@@ -190,67 +193,10 @@ public class ContextManager implements ContextBuilder<Object> {
 		try {
 			String gisDataDir = ContextManager.getProperty(GlobalVars.GISDataDirectory);
 			LOGGER.log(Level.INFO, "Configuring the environment with data from " + gisDataDir);
-//			// Create the Farm - context and geography projection
-//			farmContext = new FarmContext();
-//			farmProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
-//					GlobalVars.CONTEXT_NAMES.Farm_GEOGRAPHY, farmContext,
-//					new GeographyParameters<Farm>(new SimpleAdder<Farm>()));
-//			String FarmFile = gisDataDir + getProperty(GlobalVars.FarmShapefile);
-//			GISFunctions.readShapefile(Farm.class, FarmFile, farmProjection, farmContext);
-//			mainContext.addSubContext(farmContext);
-//			SpatialIndexManager.createIndex(farmProjection, Farm.class);
-//			LOGGER.log(Level.INFO, "Read " + farmContext.getObjects(Farm.class).size() + "farms from " + FarmFile);
-
-			// Create the supermarket - context and geography projection
-			supermarketContext = new SupermarketContext();
-			supermarketProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
-					GlobalVars.CONTEXT_NAMES.WORKPLACE_GEOGRAPHY, supermarketContext,
-					new GeographyParameters<Supermarket>(new SimpleAdder<Supermarket>()));
-			String supermarketFile = gisDataDir + getProperty(GlobalVars.SupermarketShapefile);
-			GISFunctions.readShapefile(Supermarket.class, supermarketFile, supermarketProjection, supermarketContext);
-			mainContext.addSubContext(supermarketContext);
-			SpatialIndexManager.createIndex(supermarketProjection, Supermarket.class);
-			LOGGER.log(Level.INFO, "Read " + supermarketContext.getObjects(Supermarket.class).size()
-					+ " supermarkets from " + supermarketFile);
-			
-			// Create the residential - context and geography projection
-			residentialContext = new ResidentialContext();
-			residentialProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
-					GlobalVars.CONTEXT_NAMES.RESIDENTIAL_GEOGRAPHY, residentialContext,
-					new GeographyParameters<Residential>(new SimpleAdder<Residential>()));
-			String residentialFile = gisDataDir + getProperty(GlobalVars.ResidentialShapefile);
-			GISFunctions.readShapefile(Residential.class, residentialFile, residentialProjection, residentialContext);
-			mainContext.addSubContext(residentialContext);
-			SpatialIndexManager.createIndex(residentialProjection, Residential.class);
-			LOGGER.log(Level.INFO, "Read " + residentialContext.getObjects(Residential.class).size()
-					+ " residentials from " + residentialFile);
-
-			// Create the school - context and geography projection
-			schoolContext = new SchoolContext();
-			schoolProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
-					GlobalVars.CONTEXT_NAMES.SCHOOL_GEOGRAPHY, schoolContext,
-					new GeographyParameters<School>(new SimpleAdder<School>()));
-			String schoolFile = gisDataDir + getProperty(GlobalVars.SchoolShapefile);
-			GISFunctions.readShapefile(School.class, schoolFile, schoolProjection, schoolContext);
-			mainContext.addSubContext(schoolContext);
-			SpatialIndexManager.createIndex(schoolProjection, School.class);
-			LOGGER.log(Level.INFO,
-					"Read " + schoolContext.getObjects(School.class).size() + " schools from " + schoolFile);
-
-			// Create the workplace - context and geography projection
-			workplaceContext = new WorkplaceContext();
-			workplaceProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
-					GlobalVars.CONTEXT_NAMES.WORKPLACE_GEOGRAPHY, workplaceContext,
-					new GeographyParameters<Workplace>(new SimpleAdder<Workplace>()));
-			String workplaceFile = gisDataDir + getProperty(GlobalVars.WorkplaceShapefile);
-			GISFunctions.readShapefile(Workplace.class, workplaceFile, workplaceProjection, workplaceContext);
-			mainContext.addSubContext(workplaceContext);
-			SpatialIndexManager.createIndex(workplaceProjection, Workplace.class);
-			LOGGER.log(Level.INFO, "Read " + workplaceContext.getObjects(Workplace.class).size() + " workplaces from "
-					+ workplaceFile);
-
+			buildStaticBuilding(gisDataDir);
 			// Create
-			buildRoad();
+			buildRoad(gisDataDir);
+			createAgent();
 		} catch (MalformedURLException e) {
 			LOGGER.log(Level.SEVERE, "", e);
 		} catch (FileNotFoundException e) {
@@ -259,9 +205,69 @@ public class ContextManager implements ContextBuilder<Object> {
 
 	}
 
-	private void buildRoad() {
+	private void buildStaticBuilding(String gisDataDir) throws MalformedURLException,FileNotFoundException {
+//		// Create the Farm - context and geography projection
+//		farmContext = new FarmContext();
+//		farmProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
+//				GlobalVars.CONTEXT_NAMES.Farm_GEOGRAPHY, farmContext,
+//				new GeographyParameters<Farm>(new SimpleAdder<Farm>()));
+//		String FarmFile = gisDataDir + getProperty(GlobalVars.FarmShapefile);
+//		GISFunctions.readShapefile(Farm.class, FarmFile, farmProjection, farmContext);
+//		mainContext.addSubContext(farmContext);
+//		SpatialIndexManager.createIndex(farmProjection, Farm.class);
+//		LOGGER.log(Level.INFO, "Read " + farmContext.getObjects(Farm.class).size() + "farms from " + FarmFile);
+
+		// Create the supermarket - context and geography projection
+//		supermarketContext = new SupermarketContext();
+//		supermarketProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
+//				GlobalVars.CONTEXT_NAMES.WORKPLACE_GEOGRAPHY, supermarketContext,
+//				new GeographyParameters<Supermarket>(new SimpleAdder<Supermarket>()));
+//		String supermarketFile = gisDataDir + getProperty(GlobalVars.SupermarketShapefile);
+//		GISFunctions.readShapefile(Supermarket.class, supermarketFile, supermarketProjection, supermarketContext);
+//		mainContext.addSubContext(supermarketContext);
+//		SpatialIndexManager.createIndex(supermarketProjection, Supermarket.class);
+//		LOGGER.log(Level.INFO, "Read " + supermarketContext.getObjects(Supermarket.class).size()
+//				+ " supermarkets from " + supermarketFile);
+//		
+		// Create the residential - context and geography projection
+		residentialContext = new ResidentialContext();
+		residentialProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
+				GlobalVars.CONTEXT_NAMES.RESIDENTIAL_GEOGRAPHY, residentialContext,
+				new GeographyParameters<Residential>(new SimpleAdder<Residential>()));
+		String residentialFile = gisDataDir + getProperty(GlobalVars.ResidentialShapefile);
+		GISFunctions.readShapefile(Residential.class, residentialFile, residentialProjection, residentialContext);
+		mainContext.addSubContext(residentialContext);
+		SpatialIndexManager.createIndex(residentialProjection, Residential.class);
+		LOGGER.log(Level.INFO, "Read " + residentialContext.getObjects(Residential.class).size()
+				+ " residentials from " + residentialFile);
+//
+//		// Create the school - context and geography projection
+//		schoolContext = new SchoolContext();
+//		schoolProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
+//				GlobalVars.CONTEXT_NAMES.SCHOOL_GEOGRAPHY, schoolContext,
+//				new GeographyParameters<School>(new SimpleAdder<School>()));
+//		String schoolFile = gisDataDir + getProperty(GlobalVars.SchoolShapefile);
+//		GISFunctions.readShapefile(School.class, schoolFile, schoolProjection, schoolContext);
+//		mainContext.addSubContext(schoolContext);
+//		SpatialIndexManager.createIndex(schoolProjection, School.class);
+//		LOGGER.log(Level.INFO,
+//				"Read " + schoolContext.getObjects(School.class).size() + " schools from " + schoolFile);
+//
+//		// Create the workplace - context and geography projection
+//		workplaceContext = new WorkplaceContext();
+//		workplaceProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
+//				GlobalVars.CONTEXT_NAMES.WORKPLACE_GEOGRAPHY, workplaceContext,
+//				new GeographyParameters<Workplace>(new SimpleAdder<Workplace>()));
+//		String workplaceFile = gisDataDir + getProperty(GlobalVars.WorkplaceShapefile);
+//		GISFunctions.readShapefile(Workplace.class, workplaceFile, workplaceProjection, workplaceContext);
+//		mainContext.addSubContext(workplaceContext);
+//		SpatialIndexManager.createIndex(workplaceProjection, Workplace.class);
+//		LOGGER.log(Level.INFO, "Read " + workplaceContext.getObjects(Workplace.class).size() + " workplaces from "
+//				+ workplaceFile);
+	}
+
+	private void buildRoad(String gisDataDir) {
 		try {
-			String gisDataDir = ContextManager.getProperty(GlobalVars.GISDataDirectory);
 			// Create the Roads - context and geography
 			roadContext = new RoadContext();
 			roadProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
@@ -315,17 +321,21 @@ public class ContextManager implements ContextBuilder<Object> {
 					.singleOccupancy2D(new SimpleGridAdder<>(), new StrictBorders(), 400, 1800);
 			// farm agent create
 			farmContext = new FarmContext();
-			mainContext.addSubContext(farmContext);
 			farmProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
 					GlobalVars.CONTEXT_NAMES.FARM_GEOGRAPHY, farmContext,
 					new GeographyParameters<Farm>(new SimpleAdder<Farm>()));
-			farmGridProjection = gridFactory.createGrid(GlobalVars.CONTEXT_NAMES.FARM_GRID, farmContext,
-					GridBuilderParameters.singleOccupancy2D(new SimpleGridAdder<Farm>(), new StrictBorders(), 400, 1800));
-			
-			ReferencedEnvelope gridBound=new ReferencedEnvelope();
-			
+			mainContext.addSubContext(farmContext);
 			FarmFactory farmFactory = new FarmFactory();
 			farmFactory.createAgents();
+			
+			//supermartket agent create
+			supermarketContext=new SupermarketContext();
+			supermarketProjection=GeographyFactoryFinder.createGeographyFactory(null).createGeography(
+					GlobalVars.CONTEXT_NAMES.SUPERMARKET_GEOGRAPHY, supermarketContext,
+					new GeographyParameters<Supermarket>(new SimpleAdder<Supermarket>()));
+			mainContext.addSubContext(supermarketContext);
+			SupermarketFactory supermarketFactory=new SupermarketFactory();
+			supermarketFactory.createAgents();
 
 			// Consumer agent create
 			agentContext = new AgentContext();
@@ -336,7 +346,7 @@ public class ContextManager implements ContextBuilder<Object> {
 
 			int agentNum = Integer.parseInt(Helper.getParameter(MODEL_PARAMETERS.AGENT_NUM.toString()));
 
-			LOGGER.log(Level.INFO, "Creating agents with the agent definition: '" + agentNum + "'");
+			LOGGER.log(Level.INFO, "Creating " + agentNum + " consumers.");
 
 			AgentFactory agentFactory = new AgentFactory();
 			agentFactory.createAgents(agentNum);
@@ -414,16 +424,13 @@ public class ContextManager implements ContextBuilder<Object> {
 	public void recordTicks() {
 		LOGGER.info("Iterations: " + RunEnvironment.getInstance().getCurrentSchedule().getTickCount());
 
-		 try {
-		 dLogger.recordData(agentContext.getObjects(IAgent.class),
-		 Helper.getCurrentTick());
-		 dLogger.recordData(farmContext.getObjects(Farm.class),
-		 Helper.getCurrentTick());
-		 dLogger.recordData(supermarketContext.getObjects(Supermarket.class),
-		 Helper.getCurrentTick());
-		 } catch (Exception e) {
-		 e.printStackTrace();
-		 }
+		try {
+			dLogger.recordData(agentContext.getObjects(IAgent.class), Helper.getCurrentTick());
+			dLogger.recordData(farmContext.getObjects(Farm.class), Helper.getCurrentTick());
+			dLogger.recordData(supermarketContext.getObjects(Supermarket.class), Helper.getCurrentTick());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void stopRecord() {
@@ -510,7 +517,4 @@ public class ContextManager implements ContextBuilder<Object> {
 		LOGGER.log(Level.SEVERE, "ContextManager has been told to stop by " + clazz.getName(), ex);
 	}
 
-
-
-	
 }

@@ -1,4 +1,4 @@
-package repastcity3.agent;
+package repastcity3.agent.factory;
 
 import java.util.ArrayList;
 import java.util.List;

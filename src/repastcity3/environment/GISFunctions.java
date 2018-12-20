@@ -19,6 +19,7 @@ import repast.simphony.space.gis.Geography;
 import repast.simphony.space.gis.ShapefileLoader;
 import repast.simphony.space.graph.Network;
 import repastcity3.exceptions.NoIdentifierException;
+import repastcity3.utilities.Helper;
 
 /**
  * Class with useful GIS functions for configuring the GIS model environment.
@@ -124,7 +125,7 @@ public class GISFunctions {
 			//System.out.print("Edge number is " + roadNetwork.size() + "\n");
 			if (!roadNetwork.containsEdge(edge)) {
 				roadNetwork.addEdge(edge);
-				if (last != sizeOfIterable(roadNetwork.getEdges())){
+				if (last != Helper.sizeOfIterable(roadNetwork.getEdges())){
 					System.out.print(road.getIdentifier()+"\n");
 					last--;
 				}
@@ -179,6 +180,8 @@ public class GISFunctions {
 		while (loader.hasNext()) {
 			loader.next();
 		}
+		
+		// for FixedGeography interface
 		for (T obj : context.getObjects(cl)) {
 			obj.setCoords(geog.getGeometry(obj).getCentroid().getCoordinate());
 		}
@@ -215,19 +218,9 @@ public class GISFunctions {
 			throw new FileNotFoundException("Could not find the given shapefile: " + shapefile.getAbsolutePath());
 		}
 		loader = new ShapefileLoader<T>(cl, shapefile.toURI().toURL(), geog, context);
-		while (loader.hasNext()) {
-			loader.next();
-		}
+		loader.load();
 	}
 	
-	public static int sizeOfIterable(Iterable i) {
-		int size = 0;
-		Iterator<Object> it = i.iterator();
-		while (it.hasNext()) {
-			size++;
-			it.next();
-		}
-		return size;
-	}
+
 
 }

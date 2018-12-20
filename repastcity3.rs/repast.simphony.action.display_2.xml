@@ -1,10 +1,10 @@
 <repast.simphony.gis.visualization.engine.GISDisplayDescriptor simphonyVersion="2.6.0">
-  <name>Supermarket Display</name>
+  <name>Farm Display</name>
   <type>GIS</type>
   <styles>
     <entry>
-      <string>repastcity3.agent.Supermarket</string>
-      <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;sld:UserStyle xmlns=&quot;http://www.opengis.net/sld&quot; xmlns:sld=&quot;http://www.opengis.net/sld&quot; xmlns:gml=&quot;http://www.opengis.net/gml&quot; xmlns:ogc=&quot;http://www.opengis.net/ogc&quot;&gt;&lt;sld:Name&gt;Default Styler&lt;/sld:Name&gt;&lt;sld:Title&gt;repastcity3.agent.Supermarket.FeatureType&lt;/sld:Title&gt;&lt;sld:FeatureTypeStyle&gt;&lt;sld:Name&gt;name&lt;/sld:Name&gt;&lt;sld:Title&gt;repastcity3.agent.Supermarket.FeatureType&lt;/sld:Title&gt;&lt;sld:FeatureTypeName&gt;repastcity3.agent.Supermarket.FeatureType&lt;/sld:FeatureTypeName&gt;&lt;sld:Rule&gt;&lt;sld:Title&gt; &lt;/sld:Title&gt;&lt;sld:PointSymbolizer&gt;&lt;sld:Graphic&gt;&lt;sld:Mark&gt;&lt;sld:Fill&gt;&lt;sld:CssParameter name=&quot;fill&quot;&gt;#0099FF&lt;/sld:CssParameter&gt;&lt;/sld:Fill&gt;&lt;sld:Stroke&gt;&lt;sld:CssParameter name=&quot;stroke-opacity&quot;&gt;0.0&lt;/sld:CssParameter&gt;&lt;sld:CssParameter name=&quot;stroke-width&quot;&gt;0.0&lt;/sld:CssParameter&gt;&lt;/sld:Stroke&gt;&lt;/sld:Mark&gt;&lt;sld:Size&gt;15&lt;/sld:Size&gt;&lt;/sld:Graphic&gt;&lt;/sld:PointSymbolizer&gt;&lt;/sld:Rule&gt;&lt;/sld:FeatureTypeStyle&gt;&lt;/sld:UserStyle&gt;</string>
+      <string>repastcity3.agent.Farm</string>
+      <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;sld:UserStyle xmlns=&quot;http://www.opengis.net/sld&quot; xmlns:sld=&quot;http://www.opengis.net/sld&quot; xmlns:gml=&quot;http://www.opengis.net/gml&quot; xmlns:ogc=&quot;http://www.opengis.net/ogc&quot;&gt;&lt;sld:Name&gt;Default Styler&lt;/sld:Name&gt;&lt;sld:Title&gt;repastcity3.agent.Farm.FeatureType&lt;/sld:Title&gt;&lt;sld:FeatureTypeStyle&gt;&lt;sld:Name&gt;name&lt;/sld:Name&gt;&lt;sld:Title&gt;repastcity3.agent.Farm.FeatureType&lt;/sld:Title&gt;&lt;sld:FeatureTypeName&gt;repastcity3.agent.Farm.FeatureType&lt;/sld:FeatureTypeName&gt;&lt;sld:Rule&gt;&lt;sld:Title&gt; &lt;/sld:Title&gt;&lt;sld:PointSymbolizer&gt;&lt;sld:Graphic&gt;&lt;sld:Mark&gt;&lt;sld:Fill&gt;&lt;sld:CssParameter name=&quot;fill&quot;&gt;#66FF66&lt;/sld:CssParameter&gt;&lt;/sld:Fill&gt;&lt;sld:Stroke&gt;&lt;sld:CssParameter name=&quot;stroke-opacity&quot;&gt;0.0&lt;/sld:CssParameter&gt;&lt;sld:CssParameter name=&quot;stroke-width&quot;&gt;0.0&lt;/sld:CssParameter&gt;&lt;/sld:Stroke&gt;&lt;/sld:Mark&gt;&lt;sld:Size&gt;15&lt;/sld:Size&gt;&lt;/sld:Graphic&gt;&lt;/sld:PointSymbolizer&gt;&lt;/sld:Rule&gt;&lt;/sld:FeatureTypeStyle&gt;&lt;/sld:UserStyle&gt;</string>
     </entry>
   </styles>
   <editedStyles/>
@@ -18,29 +18,29 @@
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>-1877436278</hashCode>
+    <hashCode>-1102911105</hashCode>
   </schedParams>
   <layoutInterval>0</layoutInterval>
   <layerOrder>
     <entry>
-      <string>.\data\gis_data\shenzhen\street.1.shp</string>
-      <int>1</int>
+      <string>repastcity3.agent.Farm</string>
+      <int>0</int>
     </entry>
     <entry>
-      <string>repastcity3.agent.Supermarket</string>
-      <int>0</int>
+      <string>.\data\gis_data\shenzhen\street.shp</string>
+      <int>1</int>
     </entry>
   </layerOrder>
   <projections>
     <repast.simphony.scenario.data.ProjectionData>
-      <id>SupermarketGeography</id>
+      <id>FarmGeography</id>
       <attributes/>
       <type>geography</type>
     </repast.simphony.scenario.data.ProjectionData>
   </projections>
   <projectionDescriptors>
     <entry>
-      <string>SupermarketGeography</string>
+      <string>FarmGeography</string>
       <repast.simphony.visualization.gis.GisProjectionDescriptor>
         <proj reference="../../../../projections/repast.simphony.scenario.data.ProjectionData"/>
         <props/>
@@ -52,7 +52,7 @@
       <string>class repast.simphony.visualization.gis.DisplayGIS.SHP_FILE_STYLE_PROP</string>
       <map>
         <entry>
-          <string>.\data\gis_data\shenzhen\street.1.shp</string>
+          <string>.\data\gis_data\shenzhen\street.shp</string>
           <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;sld:UserStyle xmlns=&quot;http://www.opengis.net/sld&quot; xmlns:sld=&quot;http://www.opengis.net/sld&quot; xmlns:gml=&quot;http://www.opengis.net/gml&quot; xmlns:ogc=&quot;http://www.opengis.net/ogc&quot;&gt;&lt;sld:Name&gt;Default Styler&lt;/sld:Name&gt;&lt;sld:FeatureTypeStyle&gt;&lt;sld:Name&gt;name&lt;/sld:Name&gt;&lt;sld:Rule&gt;&lt;sld:LineSymbolizer&gt;&lt;sld:Stroke&gt;&lt;sld:CssParameter name=&quot;stroke&quot;&gt;#FF0000&lt;/sld:CssParameter&gt;&lt;/sld:Stroke&gt;&lt;/sld:LineSymbolizer&gt;&lt;/sld:Rule&gt;&lt;/sld:FeatureTypeStyle&gt;&lt;/sld:UserStyle&gt;</string>
         </entry>
       </map>

@@ -1,5 +1,5 @@
 
-package repastcity3.agent;
+package repastcity3.agent.factory;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -16,6 +16,8 @@ import com.vividsolutions.jts.geom.Geometry;
 import cern.jet.random.Uniform;
 import repast.simphony.context.Context;
 import repast.simphony.random.RandomHelper;
+import repastcity3.agent.Consumer;
+import repastcity3.agent.Gender;
 import repastcity3.environment.GISFunctions;
 import repastcity3.environment.Residential;
 import repastcity3.environment.SpatialIndexManager;

@@ -1,6 +1,8 @@
-package repastcity3.agent;
+package repastcity3.agent.factory;
 
 import com.google.gson.annotations.SerializedName;
+
+import repastcity3.agent.Catagory;
 
 public class AgentData {
 	
