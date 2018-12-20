@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.util.logging.Logger;
 
 import org.antlr.runtime.tree.DoubleLinkTree;
+import org.geotools.factory.Hints;
 import org.geotools.geometry.jts.JTSFactoryFinder;
 import org.geotools.geometry.jts.ReferencedEnvelope;
+import org.geotools.referencing.crs.DefaultGeographicCRS;
 
 import com.l2fprod.common.swing.ComponentFactory.Helper;
 import com.vividsolutions.jts.geom.Coordinate;
@@ -35,9 +37,13 @@ public class FarmFactory {
 
 	}
 
-	public void createAgents() throws AgentCreationException {
-//		createPointAgents();
-		createRandomAgents();
+	public void createAgents(int num) throws AgentCreationException {
+		if(num<0)
+		{
+			createPointAgents();
+		}else {
+			createRandomAgents(num);
+		}
 	}
 
 	private void createPointAgents() throws AgentCreationException {
@@ -60,7 +66,6 @@ public class FarmFactory {
 
 			System.out.println("farm loc:" + coordinate.x + " " + coordinate.y);
 
-//			ContextManager.farmGridProjection.moveTo(farm)
 		}
 
 		int numAgents = AgentControl.getFarmAgents().size();
@@ -69,23 +74,26 @@ public class FarmFactory {
 
 	}
 
-	private void createRandomAgents() throws AgentCreationException {
+	private void createRandomAgents(int num) throws AgentCreationException {
 		Uniform nRand = RandomHelper.getUniform();
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i <num; i++) {
 			Farm farm=new Farm();
 			AgentControl.addFarmToContext(farm);
-			
 		}
-		GeometryFactory geometryFactory = JTSFactoryFinder.getGeometryFactory();
+		
+		
+		Hints hints = new Hints( Hints.CRS, DefaultGeographicCRS.WGS84 );
+		GeometryFactory geometryFactory = JTSFactoryFinder.getGeometryFactory(hints);
 		for (Farm farm : AgentControl.getFarmAgents()) {
 			double longitude=nRand.nextDoubleFromTo(114.1450, 133.8333);
 			double latitude=nRand.nextDoubleFromTo(22.6362, 22.6087);
-			Point p = geometryFactory.createPoint(new Coordinate(latitude, longitude));
-			
-			System.out.println("farm loc:" + latitude + " " + longitude);
+			Point p = geometryFactory.createPoint(new Coordinate(longitude, latitude));
+			Coordinate coordinate = p.getCoordinate();
+			System.out.println("farm loc:" + coordinate.x + " " + coordinate.y);
 			ContextManager.farmProjection.move(farm, p);
-//			ContextManager.farmGridProjection.moveTo(farm)
+			
 		}
+
 		
 	
 	}

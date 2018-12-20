@@ -58,6 +58,11 @@ public class AgentControl {
 	{
 		ContextManager.farmContext.add(farm);
 	}
+	
+	public static synchronized void addSupermarketToContext(Supermarket supermarket)
+	{
+		ContextManager.supermarketContext.add(supermarket);
+	}
 
 	/**
 	 * Get all the agents in the agent context. This method is required -- rather

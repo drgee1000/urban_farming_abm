@@ -9,9 +9,15 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Logger;
 
+import org.geotools.factory.Hints;
+import org.geotools.geometry.jts.JTSFactoryFinder;
+import org.geotools.referencing.crs.DefaultGeographicCRS;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.Geometry;
+import com.vividsolutions.jts.geom.GeometryFactory;
 
 import cern.jet.random.Uniform;
 import repast.simphony.context.Context;
@@ -75,6 +81,10 @@ public class AgentFactory {
 			int agentTypeSize = agentDatas.size();
 			System.out.println("agentTypeSize: " + agentTypeSize);
 			AgentDataGenerator agentDataGenerator = new AgentDataGenerator(agentDatas);
+			
+			Hints hints = new Hints( Hints.CRS, DefaultGeographicCRS.WGS84 );
+			GeometryFactory geometryFactory = JTSFactoryFinder.getGeometryFactory(hints);
+			
 			// Create agents in randomly chosen houses. Use two while loops in case there
 			// are more agents
 			// than houses, so that houses have to be looped over twice.
@@ -95,7 +105,9 @@ public class AgentFactory {
 					b.addAgent(a); // Tell the building that the agent lives there
 					AgentControl.addConsumerToContext(a); // Add the agent to the context
 					// Finally move the agent to the place where it lives.
-					AgentControl.moveAgent(a, ContextManager.residentialProjection.getGeometry(b).getCentroid());
+					double longitude=nRand.nextDoubleFromTo(114.1450, 133.8333);
+					double latitude=nRand.nextDoubleFromTo(22.6362, 22.6087);
+					AgentControl.moveAgent(a, geometryFactory.createPoint(new Coordinate(longitude, latitude)));
 					agentsCreated++;
 				}
 			}

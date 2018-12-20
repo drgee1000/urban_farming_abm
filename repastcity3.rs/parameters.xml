@@ -6,6 +6,21 @@
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
+				<parameter name="FARM_NUM" displayName="Farm Num" type="java.lang.String" 
+						defaultValue="100" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
+									
+		/>
+
+				<parameter name="SUPERMARKET_NUM" displayName="Supermarket Num" type="java.lang.String" 
+								defaultValue="100" 
+								isReadOnly="false" 
+								converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
+
+				/>
+
+		
 				<parameter name="AGENT_NUM" displayName="Agent Num" type="java.lang.String" 
 						defaultValue="1000" 
 						isReadOnly="false" 

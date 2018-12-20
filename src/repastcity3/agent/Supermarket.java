@@ -12,6 +12,7 @@ import java.util.Random;
 import java.util.RandomAccess;
 import java.util.Set;
 
+import antlr.Utils;
 import cern.jet.random.Uniform;
 import repast.simphony.random.RandomHelper;
 import repastcity3.environment.food.FoodUtility;
@@ -47,7 +48,7 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 		// setup Cost, daily maintainance cost, fund
 		super(1000, 100, 50000);
 		this.id = uniqueID++;
-		
+		super.identifier=Integer.toString(this.id);
 		urbanSourcePeriod = 7;
 		externalSourcePeriod = getExternalSourcePeriod();
 		

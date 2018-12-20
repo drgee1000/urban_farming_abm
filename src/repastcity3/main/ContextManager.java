@@ -27,6 +27,7 @@ import java.util.logging.Logger;
 
 import org.geotools.coverage.GridSampleDimension;
 import org.geotools.geometry.jts.ReferencedEnvelope;
+import org.opengis.referencing.crs.CoordinateReferenceSystem;
 
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.Point;
@@ -325,8 +326,9 @@ public class ContextManager implements ContextBuilder<Object> {
 					GlobalVars.CONTEXT_NAMES.FARM_GEOGRAPHY, farmContext,
 					new GeographyParameters<Farm>(new SimpleAdder<Farm>()));
 			mainContext.addSubContext(farmContext);
+			int farmNum = Integer.parseInt(Helper.getParameter(MODEL_PARAMETERS.FARM_NUM.toString()));
 			FarmFactory farmFactory = new FarmFactory();
-			farmFactory.createAgents();
+			farmFactory.createAgents(farmNum);
 			
 			//supermartket agent create
 			supermarketContext=new SupermarketContext();
@@ -334,8 +336,9 @@ public class ContextManager implements ContextBuilder<Object> {
 					GlobalVars.CONTEXT_NAMES.SUPERMARKET_GEOGRAPHY, supermarketContext,
 					new GeographyParameters<Supermarket>(new SimpleAdder<Supermarket>()));
 			mainContext.addSubContext(supermarketContext);
+			int supermarketNum = Integer.parseInt(Helper.getParameter(MODEL_PARAMETERS.SUPERMARKET_NUM.toString()));
 			SupermarketFactory supermarketFactory=new SupermarketFactory();
-			supermarketFactory.createAgents();
+			supermarketFactory.createAgents(supermarketNum);
 
 			// Consumer agent create
 			agentContext = new AgentContext();
