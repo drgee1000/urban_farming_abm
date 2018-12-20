@@ -17,6 +17,8 @@ public abstract class SaleLocation extends Building implements IAgent {
 
 	protected double scale;
 	protected HashMap<String, List<FoodEntry>> waste;
+	
+	
 
 	// public abstract void produce();
 

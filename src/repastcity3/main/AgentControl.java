@@ -3,6 +3,7 @@ package repastcity3.main;
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.Point;
 
+import cern.colt.matrix.doublealgo.Statistic;
 import repast.simphony.context.Context;
 import repast.simphony.context.DefaultContext;
 import repast.simphony.space.gis.Geography;
@@ -51,6 +52,11 @@ public class AgentControl {
 	 */
 	public static synchronized void addConsumerToContext(Consumer agent) {
 		ContextManager.agentContext.add(agent);
+	}
+	
+	public static synchronized void addFarmToContext(Farm farm)
+	{
+		ContextManager.farmContext.add(farm);
 	}
 
 	/**

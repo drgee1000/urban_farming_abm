@@ -54,11 +54,12 @@ public class Farm extends SaleLocation {
 			area = 2;
 		}
 		productionTypes = DataLoader.loadProductionType() ;
-		System.out.println(this.toString()+"init");
+		//System.out.println(this.toString()+"init");
 		for (ProductionType pt:productionTypes) {
-			System.out.println(pt.toString());
+			//System.out.println(pt.toString());
 		}
 		this.id = uniqueID++;
+		super.identifier=Integer.toString(this.id);
 		waste = new HashMap<String, List<FoodEntry>>();
 		stockCount = new HashMap<String, Double>();
 		this.agents = new ArrayList<IAgent>();
@@ -79,7 +80,7 @@ public class Farm extends SaleLocation {
 		});
 		initStock();
 		//enqueProductionPlan(this.productionPlan);
-		// System.out.println("init farm " + identifier + " with stockCount " +
+		// //System.out.println("init farm " + identifier + " with stockCount " +
 		// stock.keySet().size());
 	}
 
@@ -136,14 +137,14 @@ public class Farm extends SaleLocation {
 		}
 		HashMap<String, List<Food>> astock = getStock();
 		for (String t : astock.keySet()) {
-			// System.out.println(t + " has " + astock.get(t).size());
+			// //System.out.println(t + " has " + astock.get(t).size());
 		}
 		*/
 		refreshProductionQueue();
 	}
 
 	private void addStock(Food food) {
-		// System.out.println(this.toString() + " add to stock " + food.getName() + " "
+		// //System.out.println(this.toString() + " add to stock " + food.getName() + " "
 		// + food.getAmount());
 		String type = food.getType();
 		List<Food> list;
@@ -185,7 +186,7 @@ public class Farm extends SaleLocation {
 				typeList.add(type);
 				while (totalAmount < stockThreshold.get(type)) {
 					Food f = FoodUtility.getFoodByType(type);
-//					System.out.print("get random food  " + f.getAmount());
+//					//System.out.print("get random food  " + f.getAmount());
 					totalAmount += f.getAmount();
 					f.setProductionTick(Helper.getCurrentTick() + f.getProductionTime());
 					foodList.add(f);
@@ -201,7 +202,7 @@ public class Farm extends SaleLocation {
 		for (int i = 0; i < len; i++) {
 			Food f = foodList.get(i);
 			t=r.nextInt(productionTypes.size());
-			System.out.println("i"+i);
+			////System.out.println("i"+i);
 			ProductionType pt = productionTypes.get(t);
 			f.setProductionTick(tick+pt.getPeriod()*7);
 			f.setAmount(pt.getDensity()*area*1000);
@@ -218,13 +219,13 @@ public class Farm extends SaleLocation {
 	}
 
 	public void checkStock() {
-//		System.out.println(this.toString()+"check stock"		);
+//		//System.out.println(this.toString()+"check stock"		);
 		int tick = Helper.getCurrentTick();
 		for (String name : stock.keySet()) {
 			List<Food> foods = stock.get(name);
 			for (int i = 0; i < foods.size(); i++) {
 				Food food = foods.get(i);
-//					System.out.println(this.toString()+ "  check stock @ " + Helper.getCurrentTick() + "  "+food.getName() +" @ "+ food.getProductionTick() +"exp time:"+ food.getExpireTime());
+//					//System.out.println(this.toString()+ "  check stock @ " + Helper.getCurrentTick() + "  "+food.getName() +" @ "+ food.getProductionTick() +"exp time:"+ food.getExpireTime());
 				food.check(tick);
 				if (food.expired()) {
 					foods.remove(food);
@@ -239,7 +240,7 @@ public class Farm extends SaleLocation {
 
 	@Override
 	public void step() {
-		System.out.println("farm "+this.id+" start");
+		//System.out.println("farm "+this.id+" start");
 		//int tick = Helper.getCurrentTick();
 		checkStock();
 		//if (tick % 30 == 0) {
@@ -250,7 +251,7 @@ public class Farm extends SaleLocation {
 		if(productionQueue.size() == 0) {
 			refreshProductionQueue();
 		}
-		System.out.println("farm "+this.id+" end");
+		//System.out.println("farm "+this.id+" end");
 
 	}
 
@@ -311,8 +312,8 @@ public class Farm extends SaleLocation {
 		totalIncome = this.fund - totalIncome;
 		synchronized(ContextManager.dLogger) {
 			try {
-				// System.out.println("====================================");
-				// System.out.println("recordSale!" + "   order size:" + order.getList().keySet().size());
+				// //System.out.println("====================================");
+				// //System.out.println("recordSale!" + "   order size:" + order.getList().keySet().size());
 			ContextManager.dLogger.recordSale(order, Helper.getCurrentTick(),
 			totalIncome, this.toString(),sID);
 			} catch (IOException e) {

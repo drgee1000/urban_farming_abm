@@ -82,7 +82,7 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 		sourcingPlan.put("vegetable", stockThreshold);
 		sourceFromExternalFarm();
 		//System.out.println("init stock finish, stock level: " + stockCalorieCount.get("vegetable"));
-		printStock();
+		// printStock();
 	}
 
 	private void countStockCalorie(Food food) {
@@ -93,6 +93,7 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 			double x = stockCalorieCount.get(type) + food.getDensity()*food.getAmount();
 			stockCalorieCount.put(type, x);
 		}
+		
 	}
 
 	private void addStock(Food f) {
@@ -138,7 +139,7 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 			double base = stockCalorieCount.get(type);
 			double target = stockThreshold;
 			//System.out.println("type:"+type+"base:"+base+" target"+target);
-			if (stockCalorieCount.get(type) < stockThreshold) {
+			if (base < stockThreshold) {
 				sourcingPlan.put(type, 1.2*(target-base));
 			}
 
@@ -200,11 +201,10 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 			for (String type : sourcingPlan.keySet()) { // loop through all kinds of stock of a farm
 				double target = sourcingPlan.get(type);
 				// //System.out.println();
-				System.out.println("type: " + type + " target: " + target);
+				// System.out.println("type: " + type + " target: " + target);
 				List<Food> foodOfType = fStock.get(type);
-				int len = foodOfType.size();
-				// //System.out.println("food of type len:" + len);
-				if (len > 0) {
+				if(foodOfType != null) {
+					int len = foodOfType.size();
 					for (int i = 0; i < len; i++) {
 						if (target > 0.0) {
 							// //System.out.println("food of type len:" + foodOfType.size() + "i: " + i);
@@ -222,7 +222,6 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 							food.setSource(f.toString());
 							food.setPrice(food.getPrice()*urbanPriceFactor);
 							addStock(food);
-							countStockCalorie(food);
 							// //System.out.println(this.toString()+" purchase " + food.getName() + " amount:
 							// " + food.getAmount());
 							target = target - food.getDensity()*food.getAmount();
@@ -263,9 +262,9 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 				if (food.expired()) {
 					foods.remove(food);
 					//System.out.println("------------"+this.toString()+" expires "+food.getDensity()*food.getAmount());
-					double n1 = stockCalorieCount.get(food.getType());
-					stockCalorieCount.put(food.getType(), stockCalorieCount.get(food.getType())-food.getDensity()*food.getAmount());
-					double n2 = stockCalorieCount.get(food.getType());
+					//double n1 = stockCalorieCount.get(food.getType());
+					double n2 = stockCalorieCount.get(food.getType())-food.getDensity()*food.getAmount();
+					stockCalorieCount.put(food.getType(),n2);
 					//System.out.println("------------"+this.toString()+ "  "+n1+"->"+n2);
 					addWaste(new FoodEntry(food));
 				}
@@ -297,7 +296,7 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 			}
 
 		}
-		printStock();
+		//printStock();
 		//System.out.println("supermarket "+this.id+" end");
 
 	}
@@ -322,11 +321,15 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 	}
 
 	public void sell(FoodOrder order, String consumerID) {
-		System.out.println("====================="+this.toString()+"sell");
+		if(order.getList().size() == 0)
+			return;
+		//System.out.println("====================="+this.toString()+"sell");
+		
 		HashMap<Food, Double> list = order.getList();
 		double income = this.fund;
 		list.forEach((food, amount) -> {
 			String type = food.getType();
+			//System.out.println(food.getName()+": "+food.getAmount()+" ordered: "+amount);
 			double newAmount = food.getAmount() - amount;
 			if (newAmount > 0) { // food bought partially
 				food.setAmount(newAmount);
@@ -336,7 +339,10 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 				stockList.remove(food);
 			}
 			double stockCountNum = stockCalorieCount.get(type);
-			stockCalorieCount.put(type, stockCountNum - food.getDensity()*food.getAmount());
+			
+			
+			stockCalorieCount.put(type, stockCountNum - food.getDensity()*amount);
+			//System.out.println(this.toString()+"sell,  stock:"+stockCountNum +"->"+(stockCountNum - food.getDensity()*amount));
 			this.fund += amount * food.getPrice();
 		});
 		income = this.fund - income;
@@ -387,13 +393,13 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 	}
 
 	private void printStock() {
-		//System.out.println(this.toString() + "  print stock");
+		System.out.println(this.toString() + "  print stock");
 		for (String type : stock.keySet()) {
-			//System.out.println(type);
+			System.out.println(type);
 			int len = stock.get(type).size();
 			for (int i = 0; i < len; i++) {
 				Food f = stock.get(type).get(i);
-				//System.out.println(this.toString() + "  " + f.getName() + "  " + (int)f.getAmount() + " @" + f.getProductionTick()+" from "+f.getSource());
+				System.out.println(this.toString() + "  " + f.getName() + "  " + (int)f.getAmount() + " @" + f.getProductionTick()+" from "+f.getSource());
 			}
 		}
 
