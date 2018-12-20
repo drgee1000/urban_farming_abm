@@ -59,6 +59,7 @@ public class Farm extends SaleLocation {
 			//System.out.println(pt.toString());
 		}
 		this.id = uniqueID++;
+		super.identifier=Integer.toString(this.id);
 		waste = new HashMap<String, List<FoodEntry>>();
 		stockCount = new HashMap<String, Double>();
 		this.agents = new ArrayList<IAgent>();

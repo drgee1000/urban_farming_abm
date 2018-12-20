@@ -319,10 +319,10 @@ public class ContextManager implements ContextBuilder<Object> {
 			farmProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(
 					GlobalVars.CONTEXT_NAMES.FARM_GEOGRAPHY, farmContext,
 					new GeographyParameters<Farm>(new SimpleAdder<Farm>()));
-			farmGridProjection = gridFactory.createGrid(GlobalVars.CONTEXT_NAMES.FARM_GRID, farmContext,
-					GridBuilderParameters.singleOccupancy2D(new SimpleGridAdder<Farm>(), new StrictBorders(), 400, 1800));
-			
-			ReferencedEnvelope gridBound=new ReferencedEnvelope();
+//			farmGridProjection = gridFactory.createGrid(GlobalVars.CONTEXT_NAMES.FARM_GRID, farmContext,
+//					GridBuilderParameters.singleOccupancy2D(new SimpleGridAdder<Farm>(), new StrictBorders(), 400, 1800));
+//			
+//			ReferencedEnvelope gridBound=new ReferencedEnvelope();
 			
 			FarmFactory farmFactory = new FarmFactory();
 			farmFactory.createAgents();
