@@ -2,22 +2,30 @@
     {
         "catagory":"CHILD",
         "mf_ratio":0.5,
-        "percentage":0.2
+        "percentage":0.2,
+        "income": "LOW",
+        "consumption_rate": 0.1
     },
     {
         "catagory":"TEENAGER",
         "mf_ratio":0.5,
-        "percentage":0.2
+        "percentage":0.2,
+        "income": "LOW",
+        "consumption_rate": 0.2
     },
     {
         "catagory":"ADULTS",
         "mf_ratio":0.5,
-        "percentage":0.5
+        "percentage":0.5,
+        "income": "HIGH",
+        "consumption_rate": 0.3
     },
     {
         "catagory":"OLD",
         "mf_ratio":0.5,
-        "percentage":0.1
+        "percentage":0.1,
+        "income": "MEDIUM",
+        "consumption_rate": 0.4
     }
 ]
  

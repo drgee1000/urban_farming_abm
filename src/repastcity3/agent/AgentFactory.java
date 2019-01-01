@@ -70,6 +70,7 @@ public class AgentFactory {
 			}
 			List<AgentData> agentDatas = gson.fromJson(sb.toString(), new TypeToken<List<AgentData>>() {
 			}.getType());
+			System.out.println(agentDatas.get(0).income);
 			int agentTypeSize = agentDatas.size();
 			System.out.println("agentTypeSize: " + agentTypeSize);
 			AgentDataGenerator agentDataGenerator = new AgentDataGenerator(agentDatas);
@@ -87,7 +88,7 @@ public class AgentFactory {
 					AgentData agentData = agentDataGenerator.getNext();
 					double agentGenderProb = nRand.nextDoubleFromTo(0, 1);
 					Gender gender = agentGenderProb <= agentData.mfRatio ? Gender.MALE : Gender.FEMALE;
-					Consumer a = new Consumer(agentData.catagory, gender); // Create a new agent
+					Consumer a = new Consumer(agentData.catagory, gender, agentData.income, agentData.consumption_rate); // Create a new agent
 
 					a.setHome(b); // Tell the agent where it lives
 					b.addAgent(a); // Tell the building that the agent lives there

@@ -10,6 +10,9 @@ public class AgentData {
 	public double mfRatio;
 	
 	public double percentage;
-
+	
+	public Income income;
+	
+	public Double consumption_rate;
 	
 }

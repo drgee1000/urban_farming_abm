@@ -26,6 +26,7 @@ public class Consumer implements People {
 
 	private Residential home; // Where the agent lives
 	private Route route; // An object to move the agent around the world
+	private Double distance;
 
 	private Coordinate origin;
 	private Coordinate destination;
@@ -35,6 +36,8 @@ public class Consumer implements People {
 	private boolean goforEat = false;
 	private double healthThreshold;
 	
+	private double default_health = 1000;
+	private double default_consumption_rate = 5;
 	private double stockThreshold = 1000;
 	private double caloryConsumption = 0;
 	private double caloryProduction;
@@ -49,13 +52,15 @@ public class Consumer implements People {
 
 	private int type = 3;
 
-	private int income;
+	private Income income;
+	private Double consumption_rate;
 	private HashMap<String, List<Food>> consumer_food_stock;
 
 	private Catagory catagory;
 	private Gender gender;
+	
 
-	public Consumer(Catagory catagory, Gender gender) {
+	public Consumer(Catagory catagory, Gender gender, Income income, Double consumption_rate) {
 		this.id = uniqueID++;
 		this.preference = new Preference();
 		this.consumer_food_stock = new HashMap<String, List<Food>>();
@@ -65,7 +70,9 @@ public class Consumer implements People {
 		// -------------------
 		this.catagory = catagory;
 		this.preference = preference;
+		this.consumption_rate = consumption_rate;
 		this.gender = gender;
+		this.income = income;
 		// -----------
 		setPurpose();
 	}
@@ -153,18 +160,20 @@ public class Consumer implements People {
 		
 		if (stock_calory < this.stockThreshold) {
 			// System.out.println("========"+ this.toString()+"enter==========");
+			this.distance = 0.0;
 			int[] flags = { 0, 0, 0, 0, 0 };
 			TreeMap<Double, Supermarket> supermarketTreeMap = selectSupermarket();
 			// System.out.print(supermarketTreeMap.size());
 			for (Double key : supermarketTreeMap.keySet()) {
 				Supermarket supermarket = supermarketTreeMap.get(key);
-				
-				this.destination = ContextManager.supermarketProjection.getGeometry(supermarket).getCentroid()
+				Coordinate o = AgentControl.getAgentGeometry(this).getCoordinate();
+				Coordinate d = ContextManager.supermarketProjection.getGeometry(supermarket).getCentroid()
 						.getCoordinate();
+				this.distance += Math.sqrt((o.x-d.x)*(o.x-d.x)+(o.y-d.y)*(o.y-d.y));
 				GeometryFactory geomFac = new GeometryFactory();
 				AgentControl.moveAgent(this, geomFac.createPoint(this.destination));
 				FoodOrder foodOrder = new FoodOrder();
-				if(supermarket.isAvailable()) 
+				if(supermarket.isAvailable())
 					foodOrder = this.selectFood(supermarket, flags);
 				// System.out.println("----------"+this.toString()+ " buy from " + supermarket.toString());
 				supermarket.sell(foodOrder, this.toString());
@@ -181,7 +190,9 @@ public class Consumer implements People {
 		if (this.buy_time != 0) {
 			this.avg_satisfaction = this.avg_satisfaction / this.buy_time;
 		}
+		this.default_health -= this.default_consumption_rate*this.consumption_rate;
 		consumeRandomFood();
+		
 		//System.out.println("consumer "+this.id+" end");
 	}
 
@@ -229,7 +240,7 @@ public class Consumer implements People {
 		return this.id;
 	}
 
-	public int getIncome() {
+	public Income getIncome() {
 		return income;
 	}
 
@@ -658,6 +669,7 @@ public class Consumer implements People {
 			int i = r.nextInt(list.size());
 			Food f = list.get(i);
 			list.remove(f);
+			this.default_health += f.getAmount()*f.getDensity();
 			this.caloryConsumption = f.getDensity()*100;
 			f.setAmount(f.getAmount() - 100);
 			list.add(f);
