@@ -5,19 +5,13 @@ import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
 import java.io.IOException;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.geotools.data.shapefile.ShapefileDataStore;
-import org.geotools.data.simple.SimpleFeatureIterator;
-import org.geotools.geometry.jts.JTS;
 import org.geotools.referencing.CRS;
 import org.geotools.referencing.ReferencingFactoryFinder;
 import org.opengis.feature.simple.SimpleFeature;
@@ -27,29 +21,14 @@ import org.opengis.feature.type.GeometryType;
 import org.opengis.referencing.FactoryException;
 import org.opengis.referencing.operation.MathTransform;
 import org.opengis.referencing.operation.OperationNotFoundException;
-import org.opengis.referencing.operation.TransformException;
-
-import repast.simphony.context.Context;
 import repast.simphony.space.gis.Geography;
-import simphony.util.messages.MessageCenter;
 
-import com.vividsolutions.jts.geom.Geometry;
-
-public class GISHelper {
+public class GISTransformHelper {
 	private MathTransform transform;
-	private Geography geography;
-	private Context context;
-	private Class agentClass;
+	private AttributeType type;
 
-	private Iterator<SimpleFeature> featureIterator;
-
-	public GISHelper(Class clazz, URL shapefile, Geography geography, Context context) {
-		this.geography = geography;
-		this.agentClass = clazz;
-		this.context = context;
-
+	public GISTransformHelper(Class clazz, URL shapefile) {
 		ShapefileDataStore store = null;
-		SimpleFeatureIterator iter = null;
 		try {
 			BeanInfo info = Introspector.getBeanInfo(clazz, Object.class);
 			Map<String, Method> methodMap = new HashMap<String, Method>();
@@ -64,29 +43,20 @@ public class GISHelper {
 			SimpleFeatureType schema = store.getSchema(store.getTypeNames()[0]);
 
 			// First attribute at index 0 is always the Geometry
-			AttributeType type = schema.getType(0);
+			type = schema.getType(0);
 			String name = type.getName().getLocalPart();
-			initTransform(geography, type);
-
-			List<SimpleFeature> features = new ArrayList<SimpleFeature>();
-			while (iter.hasNext()) {
-				features.add(iter.next());
-			}
-			featureIterator = features.iterator();
+			System.out.println("Load shapefile format:" + name);
 
 		} catch (IntrospectionException ex) {
 //			msg.error("Error while introspecting class", ex);
 		} catch (IOException e) {
 //			msg.error(String.format("Error opening shapefile '%S'", shapefile), e);
-		} catch (FactoryException e) {
-//			msg.error(String.format("Error creating transform between shapefile CRS and Geography CRS"), e);
 		} finally {
-			iter.close();
 			store.dispose();
 		}
 	}
 
-	private void initTransform(Geography geography, AttributeType type) throws FactoryException {
+	public void transform(Geography geography) throws FactoryException {
 		GeometryType gType = (GeometryType) type;
 		if (geography != null) {
 			try {

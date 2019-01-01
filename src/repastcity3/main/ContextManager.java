@@ -1,39 +1,17 @@
-
 package repastcity3.main;
 
-import static repastcity3.main.ContextManager.LOGGER;
-
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.MalformedURLException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.geotools.coverage.GridSampleDimension;
-import org.geotools.geometry.jts.ReferencedEnvelope;
-import org.opengis.referencing.crs.CoordinateReferenceSystem;
-
-import com.vividsolutions.jts.geom.Geometry;
-import com.vividsolutions.jts.geom.Point;
-
 import repast.simphony.context.Context;
-import repast.simphony.context.DefaultContext;
 import repast.simphony.context.space.gis.GeographyFactoryFinder;
 import repast.simphony.context.space.graph.NetworkBuilder;
 import repast.simphony.context.space.grid.GridFactory;
@@ -42,8 +20,6 @@ import repast.simphony.dataLoader.ContextBuilder;
 import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.engine.schedule.ISchedule;
 import repast.simphony.engine.schedule.ScheduleParameters;
-import repast.simphony.parameter.Parameters;
-import repast.simphony.random.RandomHelper;
 import repast.simphony.space.gis.Geography;
 import repast.simphony.space.gis.GeographyParameters;
 import repast.simphony.space.gis.SimpleAdder;
@@ -52,41 +28,28 @@ import repast.simphony.space.grid.Grid;
 import repast.simphony.space.grid.GridBuilderParameters;
 import repast.simphony.space.grid.SimpleGridAdder;
 import repast.simphony.space.grid.StrictBorders;
-import repast.simphony.util.collections.IndexedIterable;
 import repastcity3.agent.Consumer;
 import repastcity3.agent.Farm;
 import repastcity3.agent.IAgent;
-import repastcity3.agent.People;
 import repastcity3.agent.Supermarket;
 import repastcity3.agent.ThreadedAgentScheduler;
 import repastcity3.agent.factory.AgentFactory;
 import repastcity3.agent.factory.FarmFactory;
 import repastcity3.agent.factory.SupermarketFactory;
-//import repastcity3.environment.Candidate1;
-//import repastcity3.environment.Candidate2;
-//import repastcity3.environment.Candidate3;
 import repastcity3.environment.GISFunctions;
 import repastcity3.environment.Junction;
 import repastcity3.environment.NetworkEdgeCreator;
 import repastcity3.environment.Residential;
-import repastcity3.environment.Restaurant;
 import repastcity3.environment.Road;
 import repastcity3.environment.School;
-import repastcity3.environment.Shoppingcenter;
 import repastcity3.environment.SpatialIndexManager;
-import repastcity3.environment.Substation;
 import repastcity3.environment.Workplace;
 import repastcity3.environment.contexts.AgentContext;
 import repastcity3.environment.contexts.JunctionContext;
 import repastcity3.environment.contexts.ResidentialContext;
-import repastcity3.environment.contexts.RestaurantContext;
 import repastcity3.environment.contexts.RoadContext;
-import repastcity3.environment.contexts.SchoolContext;
-import repastcity3.environment.contexts.ShoppingcenterContext;
-import repastcity3.environment.contexts.SubstationContext;
 import repastcity3.environment.contexts.SupermarketContext;
 import repastcity3.environment.contexts.FarmContext;
-import repastcity3.environment.contexts.WorkplaceContext;
 import repastcity3.exceptions.AgentCreationException;
 import repastcity3.exceptions.EnvironmentError;
 import repastcity3.exceptions.NoIdentifierException;
@@ -94,6 +57,7 @@ import repastcity3.exceptions.ParameterNotFoundException;
 import repastcity3.exceptions.StockCreationException;
 import repastcity3.utilities.Helper;
 import repastcity3.utilities.ioUtility.DataLogger;
+
 
 public class ContextManager implements ContextBuilder<Object> {
 
@@ -145,6 +109,8 @@ public class ContextManager implements ContextBuilder<Object> {
 
 	public static Context<Consumer> agentContext;
 	public static Geography<Consumer> agentGeography;
+	
+	public static Geography<IAgent> map;
 
 	public static DataLogger dLogger;
 
