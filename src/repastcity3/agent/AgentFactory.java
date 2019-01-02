@@ -70,7 +70,6 @@ public class AgentFactory {
 			}
 			List<AgentData> agentDatas = gson.fromJson(sb.toString(), new TypeToken<List<AgentData>>() {
 			}.getType());
-			System.out.println(agentDatas.get(0).income);
 			int agentTypeSize = agentDatas.size();
 			System.out.println("agentTypeSize: " + agentTypeSize);
 			AgentDataGenerator agentDataGenerator = new AgentDataGenerator(agentDatas);
@@ -88,7 +87,22 @@ public class AgentFactory {
 					AgentData agentData = agentDataGenerator.getNext();
 					double agentGenderProb = nRand.nextDoubleFromTo(0, 1);
 					Gender gender = agentGenderProb <= agentData.mfRatio ? Gender.MALE : Gender.FEMALE;
-					Consumer a = new Consumer(agentData.catagory, gender, agentData.income, agentData.consumption_rate); // Create a new agent
+					String[] food_preference_tmp = agentData.food_preference.split(" ");
+					Double[] food_preference = new Double[5];
+					int ii = 0;
+					for(String fp : food_preference_tmp) {
+						food_preference[ii] = Double.valueOf(fp);
+						ii++;
+					}
+					String[] price_preference_tmp = agentData.price_preference.split(" ");
+					Double[] price_preference = new Double[5];
+					int jj = 0;
+					for(String pp : price_preference_tmp) {
+						price_preference[jj] = Double.valueOf(pp);
+						jj++;
+					}
+					// System.out.println(price_preference[0]);
+					Consumer a = new Consumer(agentData.catagory, gender, agentData.income, agentData.consumption_rate, food_preference, price_preference); // Create a new agent
 
 					a.setHome(b); // Tell the agent where it lives
 					b.addAgent(a); // Tell the building that the agent lives there
@@ -98,6 +112,7 @@ public class AgentFactory {
 					agentsCreated++;
 				}
 			}
+			// System.out.println(agentsCreated);
 		} catch (IOException e) {
 			throw new AgentCreationException("Create Consumer Failed: config file error");
 		}

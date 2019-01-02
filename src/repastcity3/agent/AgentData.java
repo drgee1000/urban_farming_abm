@@ -15,4 +15,8 @@ public class AgentData {
 	
 	public Double consumption_rate;
 	
+	public String food_preference;
+	
+	public String price_preference;
+	
 }

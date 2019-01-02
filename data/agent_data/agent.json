@@ -4,28 +4,36 @@
         "mf_ratio":0.5,
         "percentage":0.2,
         "income": "LOW",
-        "consumption_rate": 0.1
+        "consumption_rate": 0.1,
+        "food_preference": "0.1 0.2 0.3 0.4 0.5",
+        "price_preference": "1.5 1.5 1.5 1.5 1.5"
     },
     {
         "catagory":"TEENAGER",
         "mf_ratio":0.5,
         "percentage":0.2,
         "income": "LOW",
-        "consumption_rate": 0.2
+        "consumption_rate": 0.2,
+        "food_preference": "0.1 0.2 0.3 0.4 0.5",
+        "price_preference": "1.5 1.5 1.5 1.5 1.5"
     },
     {
         "catagory":"ADULTS",
         "mf_ratio":0.5,
         "percentage":0.5,
         "income": "HIGH",
-        "consumption_rate": 0.3
+        "consumption_rate": 0.3,
+        "food_preference": "0.1 0.2 0.3 0.4 0.5",
+        "price_preference": "1.5 1.5 1.5 1.5 1.5"
     },
     {
         "catagory":"OLD",
         "mf_ratio":0.5,
         "percentage":0.1,
         "income": "MEDIUM",
-        "consumption_rate": 0.4
+        "consumption_rate": 0.4,
+        "food_preference": "0.1 0.2 0.3 0.4 0.5",
+        "price_preference": "1.5 1.5 1.5 1.5 1.5"
     }
 ]
  
