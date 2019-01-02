@@ -59,8 +59,12 @@ public class Consumer implements People {
 
 	private Catagory catagory;
 	private Gender gender;
+	
+	private Double[] food_preference;
+	private Double[] price_preference;
+	
 
-	public Consumer(Catagory catagory, Gender gender, Income income, Double consumption_rate) {
+	public Consumer(Catagory catagory, Gender gender, Income income, Double consumption_rate, Double[] food_preference, Double[] price_preference) {
 		this.id = uniqueID++;
 		this.preference = new Preference();
 		this.consumer_food_stock = new HashMap<String, List<Food>>();
@@ -73,6 +77,8 @@ public class Consumer implements People {
 		this.gender = gender;
 		this.income = income;
 		// -----------
+		this.food_preference = food_preference;
+		this.price_preference = price_preference;
 		setPurpose();
 	}
 
@@ -174,8 +180,8 @@ public class Consumer implements People {
 				FoodOrder foodOrder = new FoodOrder();
 				if (supermarket.isAvailable())
 					foodOrder = this.selectFood(supermarket, flags);
-				// System.out.println("----------"+this.toString()+ " buy from " +
-				// supermarket.toString());
+					updateSatisfaction(foodOrder);
+				// System.out.println("----------"+this.toString()+ " buy from " + supermarket.toString());
 				supermarket.sell(foodOrder, this.toString());
 				supermarket.updateScore(this.satisfaction);
 				if (flags[0] == 1 && flags[1] == 1 && flags[2] == 1 && flags[3] == 1 && flags[4] == 1) {
@@ -391,7 +397,7 @@ public class Consumer implements People {
 		}
 		// System.out.println("count"+count);
 		// System.out.println("max:"+max+"min:"+min);
-		double score = 1000 * (distance - min) / (max - min);
+		double score = 1000 * (max - min)/(distance - min + 5);
 		// System.out.println("score:"+score);
 		return score;
 	}
@@ -633,7 +639,7 @@ public class Consumer implements People {
 		return hour;
 	}
 
-	public void buyFood(String s, HashMap<String, Food> foodMap, ArrayList<String> preference, FoodOrder foodOrder) {
+	/*public void buyFood(String s, HashMap<String, Food> foodMap, ArrayList<String> preference, FoodOrder foodOrder) {
 		Random r = new Random();
 		int reduce = 2;
 		this.preference.set_final_weight();
@@ -656,8 +662,74 @@ public class Consumer implements People {
 				reduce = reduce * 2;
 			}
 		}
+	}*/
+	
+	public void buyFood(String s, HashMap<String, Food> foodMap, ArrayList<String> preference, FoodOrder foodOrder) {
+		Random r = new Random();
+		this.preference.set_final_weight();
+		HashMap<String, Integer> final_weight = this.preference.get_final_weight();
+		for (String name : preference) {
+			Food f = foodMap.get(name);
+			if (f != null && f.getAmount() > final_weight.get(s)/100) {
+				foodOrder.addOrder(f, final_weight.get(s) / 100);
+			} 
+		}
 	}
-
+	
+	public void updateSatisfaction(FoodOrder foodOrder) {
+		HashMap<Food, Double> foodmap = foodOrder.getList();
+		int farm_grain_count = 0;
+		int grain_sum = 0;
+		int farm_vegetable_count = 0;
+		int vegetable_sum = 0;
+		int farm_meat_count = 0;
+		int meat_sum = 0;
+		int farm_dairy_count = 0;
+		int dairy_sum = 0;
+		int farm_fruit_count = 0;
+		int fruit_sum = 0;
+		for(Food food: foodmap.keySet()) {
+			switch(food.getType()) {
+				case "grain":
+					grain_sum++;
+					if (! food.getSource().equals("external"))
+						farm_grain_count++;
+					break;
+				case "vegetable":
+					vegetable_sum++;
+					if (! food.getSource().equals("external"))
+						farm_vegetable_count++;
+					break;
+				case "meat":
+					meat_sum++;
+					if (! food.getSource().equals("external"))
+						farm_meat_count++;
+					break;
+				case "dairy":
+					dairy_sum++;
+					if (! food.getSource().equals("external"))
+						farm_dairy_count++;
+					break;
+				case "fruit":
+					fruit_sum++;
+					if (! food.getSource().equals("external"))
+						farm_fruit_count++;
+					break;
+			}
+		}
+		if (grain_sum != 0 && farm_grain_count/grain_sum < this.food_preference[0])
+			this.satisfaction--;
+		if (vegetable_sum != 0 && farm_vegetable_count/vegetable_sum < this.food_preference[1])
+			this.satisfaction--;
+		if (meat_sum != 0 && farm_meat_count/meat_sum < this.food_preference[2])
+			this.satisfaction--;
+		if (dairy_sum != 0 && farm_dairy_count/dairy_sum < this.food_preference[3])
+			this.satisfaction--;
+		if (fruit_sum != 0 && farm_fruit_count/fruit_sum < this.food_preference[4])
+			this.satisfaction--;
+		
+		
+	}
 	public void consumeRandomFood() {
 		Set<String> key = consumer_food_stock.keySet();
 		Random r = new Random();

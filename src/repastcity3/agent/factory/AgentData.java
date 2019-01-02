@@ -1,21 +1,22 @@
-package repastcity3.agent.factory;
+package repastcity3.agent;
 
 import com.google.gson.annotations.SerializedName;
 
-import repastcity3.agent.Catagory;
-import repastcity3.agent.Income;
-
 public class AgentData {
-
+	
 	public Catagory catagory;
-
+	
 	@SerializedName("mf_ratio")
 	public double mfRatio;
-
+	
 	public double percentage;
-
+	
 	public Income income;
-
+	
 	public Double consumption_rate;
-
+	
+	public String food_preference;
+	
+	public String price_preference;
+	
 }
