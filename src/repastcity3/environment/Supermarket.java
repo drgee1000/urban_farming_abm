@@ -16,12 +16,14 @@ import cern.jet.random.Uniform;
 import repast.simphony.random.RandomHelper;
 import repastcity3.agent.Farm;
 import repastcity3.agent.IAgent;
-import repastcity3.environment.food.FoodUtility;
 import repastcity3.environment.food.Food;
 import repastcity3.environment.food.FoodOrder;
-import repastcity3.environment.food.FoodEntry;
+import repastcity3.environment.food.Waste;
 import repastcity3.main.ContextManager;
 import repastcity3.utilities.Helper;
+import repastcity3.utilities.dataUtility.SupermarketType;
+import repastcity3.utilities.ioUtility.DataLoader;
+import repastcity3.utilities.ioUtility.FoodUtility;
 
 public class Supermarket extends SaleLocation implements FixedGeography {
 
@@ -48,12 +50,17 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 		super(1000, 100, 50000);
 		this.id = uniqueID++;
 		
-		urbanSourcePeriod = 7;
-		externalSourcePeriod = getExternalSourcePeriod();
+		
+		SupermarketType st = DataLoader.loadSupermarketType().get(0);
+		urbanSourcePeriod = st.getUrbanPeriod();
+		externalSourcePeriod = st.getExPeriod();
+		stockThreshold = st.getStockThreshold();
+		urbanPriceFactor = st.getPriceFactor();
 		
 		types = new HashSet<String>();
 		types.add("vegetable");
-		waste = new HashMap<String, List<FoodEntry>>();
+		
+		waste = new HashMap<String, List<Waste>>();
 		stockCalorieCount = new HashMap<String, Double>();
 		sourcingPlan = new HashMap<String, Double>();
 		this.agents = new ArrayList<IAgent>();
@@ -72,7 +79,7 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 		}
 	}
 
-	public HashMap<String, List<FoodEntry>> getWaste() {
+	public HashMap<String, List<Waste>> getWaste() {
 		return this.waste;
 	}
 
@@ -116,16 +123,16 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 		}
 	}
 
-	private void addWaste(FoodEntry fe) {
+	private void addWaste(Waste fe) {
 		// Food food = fe.getFood();
 		//System.out.println(this.toString()+"add waste "+fe.getName()+ " @ " + fe.getProductionTick());
 		String type = fe.getType();
-		List<FoodEntry> list;
+		List<Waste> list;
 		if (waste.containsKey(type)) {
 			list = waste.get(type);
 			list.add(fe);
 		} else {
-			list = new ArrayList<FoodEntry>();
+			list = new ArrayList<Waste>();
 			list.add(fe);
 			waste.put(type, list);
 		}
@@ -266,7 +273,7 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 					double n2 = stockCalorieCount.get(food.getType())-food.getDensity()*food.getAmount();
 					stockCalorieCount.put(food.getType(),n2);
 					//System.out.println("------------"+this.toString()+ "  "+n1+"->"+n2);
-					addWaste(new FoodEntry(food));
+					addWaste(new Waste(food));
 				}
 			}
 
@@ -359,9 +366,9 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 		order = null;
 	}
 
-	public class feComparator implements Comparator<FoodEntry> {
+	public class feComparator implements Comparator<Waste> {
 		//compare food according to productionTick
-		public int compare(FoodEntry fe1, FoodEntry fe2) {
+		public int compare(Waste fe1, Waste fe2) {
 
 			if (fe1.getProductionTick() < fe2.getProductionTick())
 				return -1;

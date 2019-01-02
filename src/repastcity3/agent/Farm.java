@@ -7,22 +7,19 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Random;
-import java.util.Set;
-
 
 import repastcity3.environment.SaleLocation;
-import repastcity3.environment.food.FoodUtility;
 import repastcity3.environment.food.Food;
-import repastcity3.environment.food.FoodEntry;
 import repastcity3.environment.food.FoodOrder;
+import repastcity3.environment.food.Waste;
 import repastcity3.main.ContextManager;
 import repastcity3.utilities.Helper;
 import repastcity3.utilities.dataUtility.ProductionType;
-import repastcity3.utilities.ioUtility.*;
+import repastcity3.utilities.ioUtility.DataLoader;
+import repastcity3.utilities.ioUtility.FoodUtility;
 
 public class Farm extends SaleLocation {
 	// #type of food
@@ -38,6 +35,11 @@ public class Farm extends SaleLocation {
 	private int area;
 	private static int uniqueID = 0;
 	private int id;
+	private double tech;
+	private double capacity;
+	private double priceFactor;
+	private double totalCost;
+	private double totalEnergyCost;
 
 	public Farm() {
 		// double setupCost,double dailyMaintenanceCost, double fund,List<Food> stock
@@ -54,12 +56,18 @@ public class Farm extends SaleLocation {
 			area = 2;
 		}
 		productionTypes = DataLoader.loadProductionType() ;
+		ProductionType pT = productionTypes.get(0);
 		//System.out.println(this.toString()+"init");
 		for (ProductionType pt:productionTypes) {
 			//System.out.println(pt.toString());
 		}
+		this.tech = pT.getTech();
+		this.capacity = pT.getCapacity();
+		this.priceFactor = pT.getPriceFactor();
+		
 		this.id = uniqueID++;
-		waste = new HashMap<String, List<FoodEntry>>();
+		waste = new HashMap<String, List<Waste>>();
+		
 		stockCount = new HashMap<String, Double>();
 		this.agents = new ArrayList<IAgent>();
 		// this.count = 0;
@@ -78,9 +86,7 @@ public class Farm extends SaleLocation {
 			}
 		});
 		initStock();
-		//enqueProductionPlan(this.productionPlan);
-		// //System.out.println("init farm " + identifier + " with stockCount " +
-		// stock.keySet().size());
+	
 	}
 
 	private void enqueProductionPlan(List<Food> plan) {
@@ -98,6 +104,7 @@ public class Farm extends SaleLocation {
 				productionQueue.poll();
 				food.setProductionTick(tick);
 				food.setSource(this.toString());
+				food.setPrice(tech*food.getValue());
 				this.addStock(food);
 				countStock(food);
 
@@ -117,28 +124,7 @@ public class Farm extends SaleLocation {
 		}
 	}
 	private void initStock() {
-		/*
-		stockThreshold = new HashMap<String, Double>();
-		for (Food food : productionPlan) {
-			String type = food.getType();
-			food.setProductionTick(0);
-			// init stock count
-			
-			// init threshold
-			if (!stockThreshold.containsKey(type)) {
-				stockThreshold.put(type, food.getAmount());
-			} else {
-				double x = stockThreshold.get(type) + 0.5 * food.getAmount();
-				stockThreshold.put(type, x);
-			}
-			// add to stock
-			addStock(food);
-		}
-		HashMap<String, List<Food>> astock = getStock();
-		for (String t : astock.keySet()) {
-			// //System.out.println(t + " has " + astock.get(t).size());
-		}
-		*/
+		
 		refreshProductionQueue();
 	}
 
@@ -157,41 +143,23 @@ public class Farm extends SaleLocation {
 		}
 	}
 
-	private void addWaste(FoodEntry fe) {
+	private void addWaste(Waste fe) {
 		// Food food = fe.getFood();
 		String type = fe.getType();
-		List<FoodEntry> list;
+		List<Waste> list;
 		if (waste.containsKey(type)) {
 			list = waste.get(type);
 			list.add(fe);
 			// waste.put(name, list);
 		} else {
-			list = new ArrayList<FoodEntry>();
+			list = new ArrayList<Waste>();
 			list.add(fe);
 			waste.put(type, list);
 		}
 	}
 
 	private void refreshProductionQueue() {
-		// make new production plan and insert them to productionQueue
-		/*
-		FoodUtility.getRandomFoodList(300000, 700000);
-		Set<String> types = stock.keySet();
-		List<String> typeList = new ArrayList<String>();
-		List<Food> foodList = new ArrayList<Food>();
-		for (String type : types) {
-			if (stockCount.get(type) < stockThreshold.get(type)) {
-				int totalAmount = 0;
-				typeList.add(type);
-				while (totalAmount < stockThreshold.get(type)) {
-					Food f = FoodUtility.getFoodByType(type);
-//					//System.out.print("get random food  " + f.getAmount());
-					totalAmount += f.getAmount();
-					f.setProductionTick(Helper.getCurrentTick() + f.getProductionTime());
-					foodList.add(f);
-				}
-			}
-		}*/
+		
 		int tick = Helper.getCurrentTick();
 		int t;
 		Random r = new Random();
@@ -228,7 +196,7 @@ public class Farm extends SaleLocation {
 				food.check(tick);
 				if (food.expired()) {
 					foods.remove(food);
-					addWaste(new FoodEntry(food));
+					addWaste(new Waste(food));
 				}
 			}
 
@@ -264,7 +232,7 @@ public class Farm extends SaleLocation {
 		return this.score;
 	}
 
-	public HashMap<String, List<FoodEntry>> getWaste() {
+	public HashMap<String, List<Waste>> getWaste() {
 		return this.waste;
 	}
 

@@ -6,7 +6,7 @@ import java.util.List;
 
 import repastcity3.agent.IAgent;
 import repastcity3.environment.food.Food;
-import repastcity3.environment.food.FoodEntry;
+import repastcity3.environment.food.Waste;
 
 public abstract class SaleLocation extends Building implements IAgent {
 	// for farm data
@@ -16,7 +16,7 @@ public abstract class SaleLocation extends Building implements IAgent {
 	protected HashMap<String, List<Food>> stock;
 
 	protected double scale;
-	protected HashMap<String, List<FoodEntry>> waste;
+	protected HashMap<String, List<Waste>> waste;
 
 	// public abstract void produce();
 
@@ -61,7 +61,7 @@ public abstract class SaleLocation extends Building implements IAgent {
 		this.stock = stock;
 	}
 
-	public HashMap<String, List<FoodEntry>> getWaste() {
+	public HashMap<String, List<Waste>> getWaste() {
 		// TODO Auto-generated method stub
 		return waste;
 	}

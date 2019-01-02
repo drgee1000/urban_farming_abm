@@ -21,7 +21,7 @@ import repastcity3.agent.People;
 import repastcity3.environment.SaleLocation;
 import repastcity3.environment.Supermarket;
 import repastcity3.environment.food.Food;
-import repastcity3.environment.food.FoodEntry;
+import repastcity3.environment.food.Waste;
 import repastcity3.environment.food.FoodOrder;
 import repastcity3.exceptions.NoIdentifierException;
 import repastcity3.main.AgentControl;
@@ -229,7 +229,7 @@ public class DataLogger {
 		@Expose()
 		String id;
 		@Expose()
-		HashMap<String, List<FoodEntry>> waste;
+		HashMap<String, List<Waste>> waste;
 		public wasteRecord(SaleLocation f) {
 			this.id = f.toString();
 			waste = f.getWaste();

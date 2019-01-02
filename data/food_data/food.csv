@@ -1,20 +1,20 @@
-name,type,avg_price,carbohydrate,protein,lipid,water,vitamins,minerals,calorie
-"potato","grain",3,10, 12, 22, 44, 33, 22,76
-"soybean","grain",3,10, 12, 22, 44, 33, 22,76
-"bread","grain",3,10, 12, 22, 44, 33, 22,76
-"wheat","grain",3,10, 12, 22, 44, 33, 22,76
-"rice","grain",3,44, 0, 0, 10, 0, 0,116
-"cabbage","vegetable",3.5,10, 3, 0, 10, 15, 5,12
-"spinach","vegetable",3.5,10, 3, 0, 10, 15, 5,12
-"broccoli","vegetable",3.5,10, 3, 0, 10, 15, 5,12
-"cabbage","vegetable",3.5,10, 3, 0, 10, 15, 5,12
-"tomato","vegetable",3.5,10, 3, 0, 10, 15, 5,12
-"beaf","meat",50,25, 20, 20, 5, 10, 5,125
-"pork","meat",15,25, 10, 20, 5, 5, 3,143
-"chicken","meat",15,25, 10, 20, 5, 5, 3,143
-"mutton","meat",15,25, 10, 20, 5, 5, 3,143
-"fish","meat",15,25, 10, 20, 5, 5, 3,143
-"milk","dairy",25,25, 5, 15, 25, 10, 5,54
-"cheese","dairy",25,25, 5, 15, 25, 10, 5,54
-"cream","dairy",25,25, 5, 15, 25, 10, 5,54
-"apple","fruit",23,23,1,2,40,50,20,120
+name,type,avg_price,carbohydrate,protein,lipid,water,vitamins,minerals,calorie,cost,energyCost,value
+potato,grain,3,10,12,22,44,33,22,76,4,2,2
+soybean,grain,3,10,12,22,44,33,22,76,3,2,2
+bread,grain,3,10,12,22,44,33,22,76,4,2,2
+wheat,grain,3,10,12,22,44,33,22,76,5,2,2
+rice,grain,3,44,0,0,10,0,0,116,5,2,2
+cabbage,vegetable,3.5,10,3,0,10,15,5,12,3,2,2
+spinach,vegetable,3.5,10,3,0,10,15,5,12,5,2,2
+broccoli,vegetable,3.5,10,3,0,10,15,5,12,4,2,2
+cabbage,vegetable,3.5,10,3,0,10,15,5,12,2,2,2
+tomato,vegetable,3.5,10,3,0,10,15,5,12,4,2,2
+beaf,meat,50,25,20,20,5,10,5,125,4,2,2
+pork,meat,15,25,10,20,5,5,3,143,5,2,2
+chicken,meat,15,25,10,20,5,5,3,143,5,2,2
+mutton,meat,15,25,10,20,5,5,3,143,4,2,2
+fish,meat,15,25,10,20,5,5,3,143,4,2,2
+milk,dairy,25,25,5,15,25,10,5,54,2,2,2
+cheese,dairy,25,25,5,15,25,10,5,54,4,2,2
+cream,dairy,25,25,5,15,25,10,5,54,4,2,2
+apple,fruit,23,23,1,2,40,50,20,120,3,2,2

@@ -14,9 +14,9 @@ import org.apache.commons.csv.CSVRecord;
 import com.google.gson.Gson;
 import com.google.gson.internal.LinkedTreeMap;
 
-import repastcity3.environment.food.FoodUtility;
 import repastcity3.utilities.dataUtility.ProductionPlan;
 import repastcity3.utilities.dataUtility.ProductionType;
+import repastcity3.utilities.dataUtility.SupermarketType;
 import repastcity3.environment.food.Food;
 
 public  class DataLoader {
@@ -81,7 +81,7 @@ public  class DataLoader {
 	}
 	public static ArrayList<ProductionType> loadProductionType(){
 		ArrayList<ProductionType> typeList = new ArrayList<>();
-		fileName = "./data/food_data/productiontype.csv";
+		fileName = "./data/food_data/productionType.csv";
 		try (Reader in = new FileReader(fileName)) {
 			CSVFormat format = CSVFormat.DEFAULT.withFirstRecordAsHeader();
 			Iterable<CSVRecord> records = format.parse(in);
@@ -89,8 +89,33 @@ public  class DataLoader {
 				ProductionType pt = new ProductionType(Integer.valueOf(record.get("num")),
 													   Double.valueOf(record.get("density")),
 													   Integer.valueOf(record.get("period")),
-													   Double.valueOf(record.get("price")));
+													   Double.valueOf(record.get("price")),
+													   Double.valueOf(record.get("tech")),
+													   Double.valueOf(record.get("capacity")),
+														Double.valueOf(record.get("priceFactor")));
 				typeList.add(pt);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return typeList;
+	}
+	public static ArrayList<SupermarketType> loadSupermarketType(){
+		ArrayList<SupermarketType> typeList = new ArrayList();
+		fileName = "./data/agent_data/supermarketType.csv";
+		try (Reader in = new FileReader(fileName)) {
+			CSVFormat format = CSVFormat.DEFAULT.withFirstRecordAsHeader();
+			Iterable<CSVRecord> records = format.parse(in);
+			for (CSVRecord record : records) {
+				SupermarketType st = new SupermarketType(Double.valueOf(record.get("ratio")),
+														Integer.valueOf(record.get("urbanPeriod")),
+														Integer.valueOf(record.get("exPeriod")),
+													   Double.valueOf(record.get("sourcingPlan")),
+													   Double.valueOf(record.get("stockThreshold")),
+													   Double.valueOf(record.get("radius")),
+														Double.valueOf(record.get("priceFactor")));
+				typeList.add(st);
 			}
 
 		} catch (Exception e) {

@@ -13,13 +13,13 @@ public class Food implements Comparable<Food>{
 	@Expose()
 	private double amount;
 	private double productionCost;
-	
+	private double value;
 	private double price;
 	// unit: tick
 	
 	private double density;
-	
-	public int productionTime;
+	private double energyCost;
+	private int productionTime;
 	
 	private int expireTime;
 	private String source;
@@ -27,7 +27,7 @@ public class Food implements Comparable<Food>{
 	public int productionTick;
 	boolean isExpired;
 	public Food(String name, String type, double density,double amount,double price, double productionCost,
-			 int productionTime, int expireTime) {
+			 int productionTime, int expireTime, double value, double energyCost) {
 		super();
 		this.name = name;
 		this.type = type;
@@ -37,6 +37,8 @@ public class Food implements Comparable<Food>{
 		this.price = price;
 		this.productionTime = productionTime;
 		this.expireTime = expireTime;
+		this.value = value;
+		this.energyCost = energyCost;
 	}
 	
 	public Food() {
@@ -53,8 +55,14 @@ public class Food implements Comparable<Food>{
 		this.expireTime = fd.expireTime;
 		this.source = fd.getSource();
 		this.price = fd.getPrice();
+		this.productionTime = fd.productionTime;
+		this.value = fd.value;
+		this.energyCost = fd.energyCost;
+		this.productionCost = fd.productionCost;
 	}
-
+	public double getEnergyCost() {
+		return energyCost;
+	}
 	public String getSource() {
 		return source;
 	}
@@ -138,5 +146,7 @@ public class Food implements Comparable<Food>{
 		else 
 			return false;
 	}
-	
+	public double getValue() {
+		return value;
+	}
 }
