@@ -18,37 +18,35 @@ import repast.simphony.util.collections.IndexedIterable;
 import repastcity3.agent.Consumer;
 import repastcity3.agent.Farm;
 import repastcity3.agent.IAgent;
-import repastcity3.agent.People;
 import repastcity3.agent.Supermarket;
 import repastcity3.environment.SaleLocation;
 import repastcity3.environment.food.Food;
-import repastcity3.environment.food.Waste;
 import repastcity3.environment.food.FoodOrder;
+import repastcity3.environment.food.Waste;
 import repastcity3.exceptions.NoIdentifierException;
 import repastcity3.main.AgentControl;
-import repastcity3.main.ContextManager;
-import repastcity3.utilities.Helper;
 
 public class DataLogger {
 	String fileNameFarm;
 	String fileNameAgent;
-	String fileNamewaste;
+	String fileNameEnding;
 	String fileNameSales;
 	String fileNameSupermarket;
 
 	Gson gson;
 	Writer agentFileWriter;
 	Writer farmFileWriter;
-	Writer wasteFileWriter;
+	Writer endingFileWriter;
 	Writer salesFileWriter;
 	Writer supermarketFileWriter;
 	int salesFileCount;
 	String time;
+
 	public DataLogger() throws IOException {
 		salesFileCount = 1;
 		fileNameFarm = "./output/Farm";
 		fileNameAgent = "./output/Agent";
-		fileNamewaste = "./output/Waste";
+		fileNameEnding = "./output/End";
 		fileNameSales = "./output/Sales";
 		fileNameSupermarket = "./output/Supermarket";
 		Calendar c = Calendar.getInstance();
@@ -61,15 +59,15 @@ public class DataLogger {
 		time = year + "_" + month + "_" + date + "_" + hour + "_" + minute + "_" + second;
 		fileNameFarm = fileNameFarm + time + ".json";
 		fileNameAgent = fileNameAgent + time + ".json";
-		fileNamewaste = fileNamewaste + time + ".json";
-		fileNameSales = fileNameSales + time + '_'+new Integer(salesFileCount).toString() +".json";
+		fileNameEnding = fileNameEnding + time + ".json";
+		fileNameSales = fileNameSales + time + '_' + new Integer(salesFileCount).toString() + ".json";
 		fileNameSupermarket = fileNameSupermarket + time + ".json";
 		// f.createNewFile();
 		File f = new File(fileNameFarm);
 		f.createNewFile();
 		f = new File(fileNameAgent);
 		f.createNewFile();
-		f = new File(fileNamewaste);
+		f = new File(fileNameEnding);
 		f.createNewFile();
 		f = new File(fileNameSales);
 		f.createNewFile();
@@ -85,7 +83,7 @@ public class DataLogger {
 		salesFileWriter.write('[');
 		supermarketFileWriter = new FileWriter(fileNameSupermarket);
 		supermarketFileWriter.write('[');
-		wasteFileWriter = new FileWriter(fileNamewaste);
+		endingFileWriter = new FileWriter(fileNameEnding);
 	}
 
 	public void recordData(IndexedIterable<? extends IAgent> agentList, int tick) throws IOException {
@@ -133,47 +131,48 @@ public class DataLogger {
 		agentFileWriter.write(agentJson);
 		agentFileWriter.write(',');
 	}
-	
-	
-	public void recordSale (FoodOrder foodOrder, int tick, double income, String id,String consumerID) throws IOException{
-		//System.out.println("salesFileCount:"+salesFileCount+"  "+tick+","+((tick/50)+1));
-		if(tick / 50 + 1 > salesFileCount) {
+
+	public void recordSale(FoodOrder foodOrder, int tick, double income, String id, String consumerID)
+			throws IOException {
+		// System.out.println("salesFileCount:"+salesFileCount+"
+		// "+tick+","+((tick/50)+1));
+		if (tick / 50 + 1 > salesFileCount) {
 			salesFileWriter.write("[]]");
 			salesFileWriter.close();
 			salesFileCount++;
-			fileNameSales = "./output/Sales"+ time + '_'+new Integer(salesFileCount).toString() +".json";
-			//System.out.println("switch sale file writer to " + fileNameSales);
+			fileNameSales = "./output/Sales" + time + '_' + new Integer(salesFileCount).toString() + ".json";
+			// System.out.println("switch sale file writer to " + fileNameSales);
 			salesFileWriter = new FileWriter(fileNameSales);
 			salesFileWriter.write('[');
 		}
-		saleRecord sr = new saleRecord(foodOrder, income, tick, id,consumerID);
+		saleRecord sr = new saleRecord(foodOrder, income, tick, id, consumerID);
 		String salesJson = gson.toJson(sr);
 		salesFileWriter.write(salesJson);
 		salesFileWriter.write(',');
-		
+
 	}
 
 	public void stopRecord() throws IOException {
-		List<wasteRecord> wasteList = new ArrayList<>();
+		List<endingRecord> endingRecordList = new ArrayList<>();
 		for (Farm f : AgentControl.getFarmAgents()) {
-			wasteList.add(new wasteRecord(f));
-			
+			endingRecordList.add(new endingRecord(f));
+
 		}
 		for (Supermarket s : AgentControl.getSupermarketAgents()) {
-			wasteList.add(new wasteRecord(s));
+			endingRecordList.add(new endingRecord(s));
 		}
-		
-		//System.out.println("total:" + dRecords.size());
-		String wstJson = gson.toJson(wasteList);
-		wasteFileWriter.write(wstJson);
-		wasteFileWriter.close();
+
+		// System.out.println("total:" + dRecords.size());
+		String endingJson = gson.toJson(endingRecordList);
+		endingFileWriter.write(endingJson);
+		endingFileWriter.close();
 		agentFileWriter.write("[]]");
 		agentFileWriter.close();
 		farmFileWriter.write("[]]");
 		farmFileWriter.close();
 		supermarketFileWriter.write("[]]");
 		supermarketFileWriter.close();
-		wasteFileWriter.close();
+		endingFileWriter.close();
 		salesFileWriter.write("[]]");
 		salesFileWriter.close();
 	}
@@ -185,12 +184,13 @@ public class DataLogger {
 		int tick;
 		// @Expose()
 		// int stockNum;
-		 @Expose()
-		 HashMap<String,List<Food>> stock;
+		@Expose()
+		HashMap<String, List<Food>> stock;
 		// @Expose()
 		// double count;
 		@Expose()
 		double fund;
+
 		public farm(int t, Farm f) {
 			tick = t;
 			stock = f.getStock();
@@ -226,14 +226,27 @@ public class DataLogger {
 			caloryConsumption = a.getCaloryConsumption();
 		}
 	}
-	public static class wasteRecord {
+
+	public static class endingRecord {
 		@Expose()
 		String id;
 		@Expose()
 		HashMap<String, List<Waste>> waste;
-		public wasteRecord(SaleLocation f) {
+		@Expose()
+		double totalEnergyCost;
+		@Expose()
+		double totalCost;
+
+		public endingRecord(SaleLocation f) {
 			this.id = f.toString();
 			waste = f.getWaste();
+			if (f instanceof Farm) {
+				this.totalCost = ((Farm) f).getTotalCost();
+				this.totalEnergyCost = ((Farm) f).getTotalEnergyCost();
+			} else {
+				this.totalCost = 0;
+				this.totalEnergyCost = 0;
+			}
 		}
 	}
 
@@ -273,8 +286,8 @@ public class DataLogger {
 		int tick;
 		// @Expose()
 		// int stockNum;
-		//@Expose()
-		//HashMap<String,List<Food>> stock;
+		// @Expose()
+		// HashMap<String,List<Food>> stock;
 		// @Expose()
 		// double count;
 		@Expose()
@@ -285,7 +298,7 @@ public class DataLogger {
 		public supermarket(int t, Supermarket s) {
 			this.tick = t;
 			this.StockLevel = s.getStockCalorie();
-			//stock = s.getStock();
+			// stock = s.getStock();
 			// stockNum = s.getStock().keySet().size();
 			// count = f.getCount();
 			fund = s.getFund();

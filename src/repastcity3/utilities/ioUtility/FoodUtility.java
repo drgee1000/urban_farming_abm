@@ -6,10 +6,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
+
 import cern.jet.random.Uniform;
-import repast.simphony.random.*;
+import repast.simphony.random.RandomHelper;
 import repastcity3.environment.food.Food;
 
 public class FoodUtility {
@@ -28,59 +30,64 @@ public class FoodUtility {
 			CSVFormat format = CSVFormat.DEFAULT.withFirstRecordAsHeader();
 			Iterable<CSVRecord> records = format.parse(in);
 			for (CSVRecord record : records) {
-				Food food = new Food(record.get("name"), record.get("type"), Double.valueOf(record.get("calorie")),
-						-1, Double.valueOf(record.get("avg_price")), -1,-1, -1,Double.valueOf(record.get("value")),Double.valueOf(record.get("energyCost")));
+				Food food = new Food(record.get("name"), record.get("type"), Double.valueOf(record.get("calorie")), -1,
+						Double.valueOf(record.get("avg_price")), Double.valueOf(record.get("cost")), -1, -1,
+						Double.valueOf(record.get("value")), Double.valueOf(record.get("energyCost")));
 
 				defaultFoodList.add(food);
-				foodData.put(food.getName(),food);
+				foodData.put(food.getName(), food);
 
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		getRandomFoodList(1000,2000);
+		getRandomFoodList(1000, 2000);
 
 	}
+
 	public static Food getFoodByName(String name, double amount) {
 		Food srcFood = foodData.get(name);
 		double price, productionCost;
 		int productionTime, expireTime;
 		double priceVar;
 		priceVar = nRand.nextDoubleFromTo(80, 100);
-		price = srcFood.getPrice()
-				+ srcFood.getPrice() / (nRand.nextDoubleFromTo(-1, 1) > 0 ? priceVar : -priceVar);
+		price = srcFood.getPrice() + srcFood.getPrice() / (nRand.nextDoubleFromTo(-1, 1) > 0 ? priceVar : -priceVar);
 		productionCost = srcFood.getPrice() * nRand.nextDoubleFromTo(0.5, 0.9);
 		productionTime = (int) (nRand.nextDoubleFromTo(15, 60));
 		expireTime = (int) (nRand.nextDoubleFromTo(1, 3));
 		Food destFood = new Food(srcFood.getName(), srcFood.getType(), srcFood.getDensity(), amount, price,
-				productionCost, productionTime, expireTime,srcFood.getValue(),srcFood.getEnergyCost());
+				productionCost, productionTime, expireTime, srcFood.getValue(), srcFood.getEnergyCost());
 		return destFood;
 	}
+
 	public static Food getFoodByType(String type) {
 		List<Food> fList = allFood.get(type);
 		int index = nRand.nextIntFromTo(0, fList.size() - 1);
 		Food food = fList.get(index);
 		return food;
 	}
-	public static List<Food> getSupermarketFoodList(){
+
+	public static List<Food> getSupermarketFoodList() {
 		ArrayList<Food> foodList = new ArrayList<>();
 		List<Food> fList = allFood.get("vegetable");
-		System.out.println("get supermarket list, len:"+fList.size());
+		System.out.println("get supermarket list, len:" + fList.size());
 		Collections.shuffle(foodList);
 		foodList.add(new Food(fList.get(0)));
 		foodList.add(new Food(fList.get(1)));
 		foodList.add(new Food(fList.get(2)));
-		//System.out.println("return supermarket list, len:"+fL.size());
+		// System.out.println("return supermarket list, len:"+fL.size());
 		return foodList;
 	}
-	public static List<Food> getLargeFarmFoodList(){
+
+	public static List<Food> getLargeFarmFoodList() {
 		List<Food> list = new ArrayList<>();
-		for (Food f:allFood.get("vegetable")) {
+		for (Food f : allFood.get("vegetable")) {
 			list.add(new Food(f));
 		}
 		return list;
 	}
+
 	public static List<Food> getRandomFoodList(int min, int max) {
 		allFood = null;
 		allFood = new HashMap<String, List<Food>>();
@@ -103,12 +110,13 @@ public class FoodUtility {
 			amount = nRand.nextDoubleFromTo(min, max);
 			priceVar = nRand.nextDoubleFromTo(80, 100);
 			price = srcFood.getPrice();
-				//	+ srcFood.getPrice() / (nRand.nextDoubleFromTo(-1, 1) > 0 ? priceVar : -priceVar);
+			// + srcFood.getPrice() / (nRand.nextDoubleFromTo(-1, 1) > 0 ? priceVar :
+			// -priceVar);
 			productionCost = srcFood.getPrice() * nRand.nextDoubleFromTo(0.5, 0.9);
 			productionTime = (int) (nRand.nextDoubleFromTo(15, 60));
 			expireTime = (int) (nRand.nextDoubleFromTo(5, 10));
 			Food destFood = new Food(srcFood.getName(), srcFood.getType(), srcFood.getDensity(), amount, price,
-					productionCost, productionTime, expireTime,srcFood.getValue(),srcFood.getEnergyCost());
+					productionCost, productionTime, expireTime, srcFood.getValue(), srcFood.getEnergyCost());
 			foodList.add(destFood);
 			String type = destFood.getType();
 

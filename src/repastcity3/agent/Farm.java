@@ -28,13 +28,10 @@ public class Farm extends SaleLocation {
 	private List<ProductionType> productionTypes;
 	private double score;
 	private int score_count;
-	private List<Food> productionPlan;
 	private PriorityQueue<Food> productionQueue;
 	private HashMap<String, Double> stockCount; // count calory of each food category
-	private HashMap<String, Double> stockThreshold; // threshold for each food category
 	private int area;
 	private static int uniqueID = 0;
-	private int id;
 	private double tech;
 	private double capacity;
 	private double priceFactor;
@@ -43,8 +40,8 @@ public class Farm extends SaleLocation {
 
 	public Farm() {
 		// double setupCost,double dailyMaintenanceCost, double fund,List<Food> stock
-
 		super(1000, 100, 50000);
+		System.out.println("call constructor");
 		this.identifier = Integer.toString(uniqueID++);
 		Random r = new Random();
 		int type = r.nextInt(3);
@@ -64,8 +61,8 @@ public class Farm extends SaleLocation {
 		this.tech = pT.getTech();
 		this.capacity = pT.getCapacity();
 		this.priceFactor = pT.getPriceFactor();
-
-		this.id = uniqueID;
+		this.totalCost = 0;
+		this.totalEnergyCost = 0;
 		waste = new HashMap<String, List<Waste>>();
 
 		stockCount = new HashMap<String, Double>();
@@ -91,7 +88,14 @@ public class Farm extends SaleLocation {
 
 	private void enqueProductionPlan(List<Food> plan) {
 		for (Food food : plan) {
+			food.setProductionTick((int) (food.getProductionTick() * tech) + 1);
 			productionQueue.add(food);
+			System.out.println("food: " + food.getName() + "  amount: " + food.getAmount() + " Ecost: "
+					+ food.getEnergyCost() + " cost: " + food.getProductionCost());
+			System.out.println("tech:" + tech);
+			totalCost += food.getAmount() * food.getProductionCost() * tech;
+			totalEnergyCost += (getTotalEnergyCost() + food.getEnergyCost() * food.getAmount() * tech);
+			System.out.println("total:" + totalCost + "  total E: " + totalEnergyCost);
 		}
 	}
 
@@ -104,7 +108,7 @@ public class Farm extends SaleLocation {
 				productionQueue.poll();
 				food.setProductionTick(tick);
 				food.setSource(this.toString());
-				food.setPrice(tech * food.getValue());
+				food.setPrice(priceFactor * food.getValue());
 				this.addStock(food);
 				countStock(food);
 
@@ -307,6 +311,22 @@ public class Farm extends SaleLocation {
 			}
 		}
 
+	}
+
+	public double getTotalCost() {
+		return totalCost;
+	}
+
+	public void setTotalCost(double totalCost) {
+		this.totalCost = totalCost;
+	}
+
+	public double getTotalEnergyCost() {
+		return totalEnergyCost;
+	}
+
+	public void setTotalEnergyCost(double totalEnergyCost) {
+		this.totalEnergyCost = totalEnergyCost;
 	}
 
 }
