@@ -1,23 +1,24 @@
 package repastcity3.agent;
 
 import java.io.File;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
+import java.util.TreeMap;
 import java.util.logging.Logger;
-
 
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.GeometryFactory;
 
 import repastcity3.environment.Residential;
-
 import repastcity3.environment.Route;
-import repastcity3.environment.School;
-import repastcity3.environment.Supermarket;
-import repastcity3.environment.Workplace;
 import repastcity3.environment.food.Food;
 import repastcity3.environment.food.FoodOrder;
 import repastcity3.main.AgentControl;
-import repastcity3.main.ContextManager;
 import repastcity3.utilities.Helper;
 
 public class Consumer implements People {
@@ -35,7 +36,7 @@ public class Consumer implements People {
 
 	private boolean goforEat = false;
 	private double healthThreshold;
-	
+
 	private double default_health = 1000;
 	private double default_consumption_rate = 5;
 	private double stockThreshold = 1000;
@@ -58,7 +59,6 @@ public class Consumer implements People {
 
 	private Catagory catagory;
 	private Gender gender;
-	
 
 	public Consumer(Catagory catagory, Gender gender, Income income, Double consumption_rate) {
 		this.id = uniqueID++;
@@ -66,7 +66,6 @@ public class Consumer implements People {
 		this.consumer_food_stock = new HashMap<String, List<Food>>();
 		this.avg_satisfaction = 0;
 		this.buy_time = 0;
-		this.residential = ContextManager.residentialContext.getRandomObject();
 		// -------------------
 		this.catagory = catagory;
 		this.preference = preference;
@@ -82,7 +81,6 @@ public class Consumer implements People {
 		this.preference = new Preference();
 		this.consumer_food_stock = new HashMap<String, List<Food>>();
 		Random random = new Random();
-		this.residential = ContextManager.residentialContext.getRandomObject();
 		int c = random.nextInt(100);
 
 		// if (c <= 7) {
@@ -157,7 +155,7 @@ public class Consumer implements People {
 	public void step() throws Exception {
 		// System.out.println("consumer "+this.id+" start");
 		double stock_calory = getStockCalory(consumer_food_stock);
-		
+
 		if (stock_calory < this.stockThreshold) {
 			// System.out.println("========"+ this.toString()+"enter==========");
 			this.distance = 0.0;
@@ -167,15 +165,17 @@ public class Consumer implements People {
 			for (Double key : supermarketTreeMap.keySet()) {
 				Supermarket supermarket = supermarketTreeMap.get(key);
 				Coordinate o = AgentControl.getAgentGeometry(this).getCoordinate();
-				Coordinate d = ContextManager.supermarketProjection.getGeometry(supermarket).getCentroid()
-						.getCoordinate();
-				this.distance += Math.sqrt((o.x-d.x)*(o.x-d.x)+(o.y-d.y)*(o.y-d.y));
+				Coordinate d = AgentControl.getAgentGeometry(supermarket).getCoordinate();
+
+				this.destination = AgentControl.getAgentGeometry(supermarket).getCentroid().getCoordinate();
+				this.distance += Math.sqrt((o.x - d.x) * (o.x - d.x) + (o.y - d.y) * (o.y - d.y));
 				GeometryFactory geomFac = new GeometryFactory();
 				AgentControl.moveAgent(this, geomFac.createPoint(this.destination));
 				FoodOrder foodOrder = new FoodOrder();
-				if(supermarket.isAvailable())
+				if (supermarket.isAvailable())
 					foodOrder = this.selectFood(supermarket, flags);
-				// System.out.println("----------"+this.toString()+ " buy from " + supermarket.toString());
+				// System.out.println("----------"+this.toString()+ " buy from " +
+				// supermarket.toString());
 				supermarket.sell(foodOrder, this.toString());
 				supermarket.updateScore(this.satisfaction);
 				if (flags[0] == 1 && flags[1] == 1 && flags[2] == 1 && flags[3] == 1 && flags[4] == 1) {
@@ -184,16 +184,16 @@ public class Consumer implements People {
 			}
 
 		} else {
-			goRandomPlace(this.type);
+//			goRandomPlace(this.type);
 			setPurpose();
 		}
 		if (this.buy_time != 0) {
 			this.avg_satisfaction = this.avg_satisfaction / this.buy_time;
 		}
-		this.default_health -= this.default_consumption_rate*this.consumption_rate;
+		this.default_health -= this.default_consumption_rate * this.consumption_rate;
 		consumeRandomFood();
-		
-		//System.out.println("consumer "+this.id+" end");
+
+		// System.out.println("consumer "+this.id+" end");
 	}
 
 	/**
@@ -260,40 +260,40 @@ public class Consumer implements People {
 		this.healthThreshold = healthThreshold;
 	}
 
-	public void goRandomPlace(int type) throws Exception {
-		switch (type) {
-		case 1: {
-			School S = ContextManager.schoolContext.getRandomObject();
-			// this.route = new Route(this,
-			// ContextManager.schoolProjection.getGeometry(S).getCentroid().getCoordinate(),
-			// S);
-			// this.origin = AgentControl.getAgentGeometry(this).getCoordinate();
-			this.destination = ContextManager.schoolProjection.getGeometry(S).getCentroid().getCoordinate();
-			GeometryFactory geomFac = new GeometryFactory();
-			AgentControl.moveAgent(this, geomFac.createPoint(this.destination));
-			break;
-		}
-		case 2: {
-			Workplace W = ContextManager.workplaceContext.getRandomObject();
-			// this.route = new Route(this,
-			// ContextManager.workplaceProjection.getGeometry(W).getCentroid().getCoordinate(),
-			// W);
-			// this.origin = AgentControl.getAgentGeometry(this).getCoordinate();
-			this.destination = ContextManager.workplaceProjection.getGeometry(W).getCentroid().getCoordinate();
-			GeometryFactory geomFac = new GeometryFactory();
-			AgentControl.moveAgent(this, geomFac.createPoint(this.destination));
-			break;
-		}
-		case 3: {
-			this.destination = ContextManager.residentialProjection.getGeometry(this.residential).getCentroid()
-					.getCoordinate();
-			GeometryFactory geomFac = new GeometryFactory();
-			AgentControl.moveAgent(this, geomFac.createPoint(this.destination));
-			break;
-		}
-
-		}
-	}
+//	public void goRandomPlace(int type) throws Exception {
+//		switch (type) {
+//		case 1: {
+//			School S = ContextManager.schoolContext.getRandomObject();
+//			// this.route = new Route(this,
+//			// ContextManager.schoolProjection.getGeometry(S).getCentroid().getCoordinate(),
+//			// S);
+//			// this.origin = AgentControl.getAgentGeometry(this).getCoordinate();
+//			this.destination = ContextManager.schoolProjection.getGeometry(S).getCentroid().getCoordinate();
+//			GeometryFactory geomFac = new GeometryFactory();
+//			AgentControl.moveAgent(this, geomFac.createPoint(this.destination));
+//			break;
+//		}
+//		case 2: {
+//			Workplace W = ContextManager.workplaceContext.getRandomObject();
+//			// this.route = new Route(this,
+//			// ContextManager.workplaceProjection.getGeometry(W).getCentroid().getCoordinate(),
+//			// W);
+//			// this.origin = AgentControl.getAgentGeometry(this).getCoordinate();
+//			this.destination = ContextManager.workplaceProjection.getGeometry(W).getCentroid().getCoordinate();
+//			GeometryFactory geomFac = new GeometryFactory();
+//			AgentControl.moveAgent(this, geomFac.createPoint(this.destination));
+//			break;
+//		}
+//		case 3: {
+//			this.destination = ContextManager.residentialProjection.getGeometry(this.residential).getCentroid()
+//					.getCoordinate();
+//			GeometryFactory geomFac = new GeometryFactory();
+//			AgentControl.moveAgent(this, geomFac.createPoint(this.destination));
+//			break;
+//		}
+//
+//		}
+//	}
 
 	public Farm selectFarm() {
 		Random random = new Random();
@@ -314,7 +314,7 @@ public class Consumer implements People {
 				return o2.compareTo(o1);
 			}
 		});
-		Iterator<Supermarket> iterator = ContextManager.supermarketContext.iterator();
+		Iterator<Supermarket> iterator = AgentControl.getSupermarketAgents().iterator();
 		while (iterator.hasNext()) {
 			Supermarket supermarket = iterator.next();
 			double score = getSupermarketScore(supermarket);
@@ -342,17 +342,16 @@ public class Consumer implements People {
 	}
 
 	public Farm findNearestFarm() {
-		Iterator<Farm> iter = ContextManager.farmContext.iterator();
+		Iterator<Farm> iter = AgentControl.getFarmAgents().iterator();
 		double min = Double.POSITIVE_INFINITY;
 		Farm nearestFarm = null;
 		// may not iterate all the farms.
 		int iterTime = 100;
 		while (iter.hasNext()) {
 			Farm farm = iter.next();
-			Route r = new Route(this, ContextManager.farmProjection.getGeometry(farm).getCentroid().getCoordinate(),
-					farm);
+			Route r = new Route(this, AgentControl.getAgentGeometry(farm).getCentroid().getCoordinate(), farm);
 			this.origin = AgentControl.getAgentGeometry(this).getCoordinate();
-			this.destination = ContextManager.farmProjection.getGeometry(farm).getCentroid().getCoordinate();
+			this.destination = AgentControl.getAgentGeometry(farm).getCentroid().getCoordinate();
 			double dis = (origin.x - destination.x) * (origin.x - destination.x)
 					+ (origin.y - destination.y) * (origin.y - destination.y);
 			if (dis < min) {
@@ -370,7 +369,7 @@ public class Consumer implements People {
 	 */
 
 	public double getSupermarketDistanceScore(Supermarket supermarket) {
-		Iterator<Supermarket> iter = ContextManager.supermarketContext.iterator();
+		Iterator<Supermarket> iter = AgentControl.getSupermarketAgents().iterator();
 		double min = 10000000;
 		double max = -10000000;
 		double distance = getDistance(supermarket);
@@ -398,7 +397,7 @@ public class Consumer implements People {
 	}
 
 	public double getSupermarketRatingScore(Supermarket supermarket) {
-		Iterator<Supermarket> iter = ContextManager.supermarketContext.iterator();
+		Iterator<Supermarket> iter = AgentControl.getSupermarketAgents().iterator();
 		double min = Double.POSITIVE_INFINITY;
 		double max = Double.NEGATIVE_INFINITY;
 		double score = supermarket.getScore();
@@ -417,26 +416,24 @@ public class Consumer implements People {
 
 	public double getDistance(Supermarket supermarket) {
 		this.origin = AgentControl.getAgentGeometry(this).getCoordinate();
-		this.destination = ContextManager.supermarketProjection.getGeometry(supermarket).getCentroid().getCoordinate();
+		this.destination = AgentControl.getAgentGeometry(supermarket).getCentroid().getCoordinate();
 		double dis = (origin.x - destination.x) * (origin.x - destination.x)
 				+ (origin.y - destination.y) * (origin.y - destination.y);
 		return dis * 1000;
 	}
 
 	public Supermarket findNearestSupermarket() {
-		Iterator<Supermarket> iter = ContextManager.supermarketContext.iterator();
+		Iterator<Supermarket> iter = AgentControl.getSupermarketAgents().iterator();
 		double min = Double.POSITIVE_INFINITY;
 		Supermarket nearestSupermarket = null;
 		// may not iterate all the farms.
 		int iterTime = 100;
 		while (iter.hasNext()) {
 			Supermarket supermarket = iter.next();
-			Route r = new Route(this,
-					ContextManager.supermarketProjection.getGeometry(supermarket).getCentroid().getCoordinate(),
+			Route r = new Route(this, AgentControl.getAgentGeometry(supermarket).getCentroid().getCoordinate(),
 					supermarket);
 			this.origin = AgentControl.getAgentGeometry(this).getCoordinate();
-			this.destination = ContextManager.supermarketProjection.getGeometry(supermarket).getCentroid()
-					.getCoordinate();
+			this.destination = AgentControl.getAgentGeometry(supermarket).getCentroid().getCoordinate();
 			double dis = (origin.x - destination.x) * (origin.x - destination.x)
 					+ (origin.y - destination.y) * (origin.y - destination.y);
 			if (dis < min) {
@@ -448,7 +445,7 @@ public class Consumer implements People {
 	}
 
 	public Farm findPopularFarm() {
-		Iterator<Farm> iter = ContextManager.farmContext.iterator();
+		Iterator<Farm> iter = AgentControl.getFarmAgents().iterator();
 		double max = 0;
 		Farm PopularFarm = null;
 		while (iter.hasNext()) {
@@ -463,7 +460,7 @@ public class Consumer implements People {
 	}
 
 	public Supermarket findPopularSupermarket() {
-		Iterator<Supermarket> iter = ContextManager.supermarketContext.iterator();
+		Iterator<Supermarket> iter = AgentControl.getSupermarketAgents().iterator();
 		double max = 0;
 		Supermarket PopularSupermarket = null;
 		while (iter.hasNext()) {
@@ -650,7 +647,7 @@ public class Consumer implements People {
 			// System.out.println("I want to buy "+f.getName() + f.getAmount());
 			// }
 
-			if (f != null && f.getAmount() > final_weight.get(s)/100) {
+			if (f != null && f.getAmount() > final_weight.get(s) / 100) {
 				foodOrder.addOrder(f, final_weight.get(s) / 100);
 				// System.out.println("order:" +
 				// f.getName()+final_weight.get(s)/100+foodOrder.getList().keySet().size());
@@ -669,8 +666,8 @@ public class Consumer implements People {
 			int i = r.nextInt(list.size());
 			Food f = list.get(i);
 			list.remove(f);
-			this.default_health += f.getAmount()*f.getDensity();
-			this.caloryConsumption = f.getDensity()*100;
+			this.default_health += f.getAmount() * f.getDensity();
+			this.caloryConsumption = f.getDensity() * 100;
 			f.setAmount(f.getAmount() - 100);
 			list.add(f);
 			consumer_food_stock.put(foodtype, list);

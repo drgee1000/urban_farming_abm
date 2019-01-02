@@ -17,9 +17,10 @@ import com.google.gson.annotations.Expose;
 import repast.simphony.util.collections.IndexedIterable;
 import repastcity3.agent.Consumer;
 import repastcity3.agent.Farm;
+import repastcity3.agent.IAgent;
 import repastcity3.agent.People;
+import repastcity3.agent.Supermarket;
 import repastcity3.environment.SaleLocation;
-import repastcity3.environment.Supermarket;
 import repastcity3.environment.food.Food;
 import repastcity3.environment.food.Waste;
 import repastcity3.environment.food.FoodOrder;
@@ -87,14 +88,14 @@ public class DataLogger {
 		wasteFileWriter = new FileWriter(fileNamewaste);
 	}
 
-	public <T> void recordData(IndexedIterable<T> agentList, int tick) throws IOException {
+	public void recordData(IndexedIterable<? extends IAgent> agentList, int tick) throws IOException {
 		if (agentList.size() == 0)
 			return;
 
 		ArrayList<farm> farms = new ArrayList<>();
 		ArrayList<agent> agents = new ArrayList<>();
 		ArrayList<supermarket> supermarkets = new ArrayList<>();
-		T t = agentList.get(0);
+		IAgent t = agentList.get(0);
 		if (t instanceof Farm) {
 			Farm x = new Farm();
 			farm f = new farm();
@@ -104,7 +105,7 @@ public class DataLogger {
 				farms.add(f);
 			}
 
-		} else if (t instanceof People) {
+		} else if (t instanceof Consumer) {
 			for (int i = 0; i < agentList.size(); i++) {
 				Consumer x = (Consumer) agentList.get(i);
 				agent a = new agent(tick, x);

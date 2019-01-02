@@ -25,11 +25,11 @@ public class Farm extends SaleLocation {
 	// #type of food
 	// amount of all food
 	// private double count;
-	private List<ProductionType> productionTypes; 
+	private List<ProductionType> productionTypes;
 	private double score;
 	private int score_count;
 	private List<Food> productionPlan;
-	private PriorityQueue<Food> productionQueue; 
+	private PriorityQueue<Food> productionQueue;
 	private HashMap<String, Double> stockCount; // count calory of each food category
 	private HashMap<String, Double> stockThreshold; // threshold for each food category
 	private int area;
@@ -43,37 +43,37 @@ public class Farm extends SaleLocation {
 
 	public Farm() {
 		// double setupCost,double dailyMaintenanceCost, double fund,List<Food> stock
-		
+
 		super(1000, 100, 50000);
-		
+		this.identifier = Integer.toString(uniqueID++);
 		Random r = new Random();
 		int type = r.nextInt(3);
-		if(type == 0) {
+		if (type == 0) {
 			area = 5000;
-		} else if(type == 1) {
+		} else if (type == 1) {
 			area = 1000;
-		} else if(type == 2){
+		} else if (type == 2) {
 			area = 2;
 		}
-		productionTypes = DataLoader.loadProductionType() ;
+		productionTypes = DataLoader.loadProductionType();
 		ProductionType pT = productionTypes.get(0);
-		//System.out.println(this.toString()+"init");
-		for (ProductionType pt:productionTypes) {
-			//System.out.println(pt.toString());
+		// System.out.println(this.toString()+"init");
+		for (ProductionType pt : productionTypes) {
+			// System.out.println(pt.toString());
 		}
 		this.tech = pT.getTech();
 		this.capacity = pT.getCapacity();
 		this.priceFactor = pT.getPriceFactor();
-		
-		this.id = uniqueID++;
+
+		this.id = uniqueID;
 		waste = new HashMap<String, List<Waste>>();
-		
+
 		stockCount = new HashMap<String, Double>();
 		this.agents = new ArrayList<IAgent>();
 		// this.count = 0;
-		
-		//this.productionPlan = FoodUtility.getRandomFoodList(300000, 700000);
-		
+
+		// this.productionPlan = FoodUtility.getRandomFoodList(300000, 700000);
+
 		this.productionQueue = new PriorityQueue<Food>(new Comparator<Food>() {
 			public int compare(Food f1, Food f2) {
 
@@ -86,7 +86,7 @@ public class Farm extends SaleLocation {
 			}
 		});
 		initStock();
-	
+
 	}
 
 	private void enqueProductionPlan(List<Food> plan) {
@@ -98,13 +98,13 @@ public class Farm extends SaleLocation {
 	private void dequeProductionQueue() {
 		int tick = Helper.getCurrentTick();
 		while (!productionQueue.isEmpty()) {
-			
+
 			Food food = productionQueue.peek();
-			if (food.getProductionTick() <= tick){
+			if (food.getProductionTick() <= tick) {
 				productionQueue.poll();
 				food.setProductionTick(tick);
 				food.setSource(this.toString());
-				food.setPrice(tech*food.getValue());
+				food.setPrice(tech * food.getValue());
 				this.addStock(food);
 				countStock(food);
 
@@ -114,6 +114,7 @@ public class Farm extends SaleLocation {
 		}
 
 	}
+
 	private void countStock(Food food) {
 		String type = food.getType();
 		if (!stockCount.containsKey(type)) {
@@ -123,13 +124,15 @@ public class Farm extends SaleLocation {
 			stockCount.put(type, x);
 		}
 	}
+
 	private void initStock() {
-		
+
 		refreshProductionQueue();
 	}
 
 	private void addStock(Food food) {
-		// //System.out.println(this.toString() + " add to stock " + food.getName() + " "
+		// //System.out.println(this.toString() + " add to stock " + food.getName() + "
+		// "
 		// + food.getAmount());
 		String type = food.getType();
 		List<Food> list;
@@ -159,7 +162,7 @@ public class Farm extends SaleLocation {
 	}
 
 	private void refreshProductionQueue() {
-		
+
 		int tick = Helper.getCurrentTick();
 		int t;
 		Random r = new Random();
@@ -168,11 +171,11 @@ public class Farm extends SaleLocation {
 		int len = foodList.size();
 		for (int i = 0; i < len; i++) {
 			Food f = foodList.get(i);
-			t=r.nextInt(productionTypes.size());
-			////System.out.println("i"+i);
+			t = r.nextInt(productionTypes.size());
+			//// System.out.println("i"+i);
 			ProductionType pt = productionTypes.get(t);
-			f.setProductionTick(tick+pt.getPeriod()*7);
-			f.setAmount(pt.getDensity()*area*1000);
+			f.setProductionTick(tick + pt.getPeriod() * 7);
+			f.setAmount(pt.getDensity() * area * 1000);
 			f.setPrice(pt.getPrice());
 			list.add(f);
 		}
@@ -207,18 +210,18 @@ public class Farm extends SaleLocation {
 
 	@Override
 	public void step() {
-		//System.out.println("farm "+this.id+" start");
-		//int tick = Helper.getCurrentTick();
+		// System.out.println("farm "+this.id+" start");
+		// int tick = Helper.getCurrentTick();
 		checkStock();
-		//if (tick % 30 == 0) {
-			//refreshProductionQueue();
-		//}
+		// if (tick % 30 == 0) {
+		// refreshProductionQueue();
+		// }
 		dequeProductionQueue();
 		// printStock();
-		if(productionQueue.size() == 0) {
+		if (productionQueue.size() == 0) {
 			refreshProductionQueue();
 		}
-		//System.out.println("farm "+this.id+" end");
+		// System.out.println("farm "+this.id+" end");
 
 	}
 
@@ -269,22 +272,22 @@ public class Farm extends SaleLocation {
 			} else {
 				stock.get(type).remove(food);
 			}
-			this.fund += amount * food.getPrice(); //here price is "$ per g"
+			this.fund += amount * food.getPrice(); // here price is "$ per g"
 			double stockNum = stockCount.get(type);
 			stockCount.put(type, stockNum - amount);
-			//food.setSource(this.toString());
+			// food.setSource(this.toString());
 			// count -= amount;
 		});
 
 		totalIncome = this.fund - totalIncome;
-		synchronized(ContextManager.dLogger) {
+		synchronized (ContextManager.dLogger) {
 			try {
 				// //System.out.println("====================================");
-				// //System.out.println("recordSale!" + "   order size:" + order.getList().keySet().size());
-			ContextManager.dLogger.recordSale(order, Helper.getCurrentTick(),
-			totalIncome, this.toString(),sID);
+				// //System.out.println("recordSale!" + " order size:" +
+				// order.getList().keySet().size());
+				ContextManager.dLogger.recordSale(order, Helper.getCurrentTick(), totalIncome, this.toString(), sID);
 			} catch (IOException e) {
-			e.printStackTrace();
+				e.printStackTrace();
 			}
 		}
 
