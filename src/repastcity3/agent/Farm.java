@@ -150,17 +150,21 @@ public class Farm extends SaleLocation {
 		}
 	}
 
-	private void addWaste(Waste fe) {
+	private void addWaste(Food f) {
+		String type = f.getType();
+		double stockNum = stockCount.get(type);
+		stockCount.put(type, stockNum - f.getAmount());
+		Waste wst = new Waste(f);
 		// Food food = fe.getFood();
-		String type = fe.getType();
+
 		List<Waste> list;
 		if (waste.containsKey(type)) {
 			list = waste.get(type);
-			list.add(fe);
+			list.add(wst);
 			// waste.put(name, list);
 		} else {
 			list = new ArrayList<Waste>();
-			list.add(fe);
+			list.add(wst);
 			waste.put(type, list);
 		}
 	}
@@ -192,7 +196,7 @@ public class Farm extends SaleLocation {
 		return stock;
 	}
 
-	public void checkStock() {
+	public void checkExpiredStock() {
 //		//System.out.println(this.toString()+"check stock"		);
 		int tick = Helper.getCurrentTick();
 		for (String name : stock.keySet()) {
@@ -203,20 +207,34 @@ public class Farm extends SaleLocation {
 				food.check(tick);
 				if (food.expired()) {
 					foods.remove(food);
-					addWaste(new Waste(food));
+					addWaste(food);
 				}
 			}
-
 			// stock.put(name, foods);
 		}
 
+	}
+
+	public void checkCapacityStock() {
+		List<Food> fList = stock.get("vegetable");
+
+		int length = fList.size();
+		for (int i = length - 1; i >= 0; i--) {
+			Food f = fList.get(i);
+			if (stockCount.get("vegetable") > capacity) {
+				fList.remove(f);
+				addWaste(f);
+			} else {
+				break;
+			}
+		}
 	}
 
 	@Override
 	public void step() {
 		// System.out.println("farm "+this.id+" start");
 		// int tick = Helper.getCurrentTick();
-		checkStock();
+		checkExpiredStock();
 		// if (tick % 30 == 0) {
 		// refreshProductionQueue();
 		// }
