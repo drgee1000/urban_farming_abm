@@ -46,21 +46,20 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 	private static int uniqueID = 0;
 	private int id;
 	private HashMap<String, List<Waste>> waste;
-	private static double urbanPriceFactor = 1.1; // price = originalPrice * priceFactor
+	private double urbanPriceFactor = 1.1; // price = originalPrice * priceFactor
 
-	public Supermarket() {
+	public Supermarket(int urbanSourcePeriod,int externalSourcePeriod,double stockThreshold,double urbanPriceFactor,double radius) {
 		// setup Cost, daily maintainance cost, fund
 		super(1000, 100, 50000);
 		this.id = uniqueID++;
 		this.identifier = Integer.toString(id);
-		SupermarketType st = DataLoader.loadSupermarketType().get(0);
-		urbanSourcePeriod = st.getUrbanPeriod();
-		externalSourcePeriod = st.getExPeriod();
-		stockThreshold = st.getStockThreshold();
-		urbanPriceFactor = st.getPriceFactor();
-		radius = st.getRadius();
-		totalPurchaseCost = 0;
-		types = new HashSet<String>();
+		this.urbanSourcePeriod = urbanSourcePeriod;
+		this.externalSourcePeriod = externalSourcePeriod;
+		this.stockThreshold = stockThreshold;
+		this.urbanPriceFactor = urbanPriceFactor;
+		this.radius = radius;
+		this.totalPurchaseCost = 0;
+		this.types = new HashSet<String>();
 		types.add("vegetable");
 
 		waste = new HashMap<String, List<Waste>>();

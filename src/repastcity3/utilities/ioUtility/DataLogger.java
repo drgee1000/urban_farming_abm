@@ -95,11 +95,9 @@ public class DataLogger {
 		ArrayList<supermarket> supermarkets = new ArrayList<>();
 		IAgent t = agentList.get(0);
 		if (t instanceof Farm) {
-			Farm x = new Farm();
-			farm f = new farm();
 			for (int i = 0; i < agentList.size(); i++) {
-				x = (Farm) (agentList.get(i));
-				f = new farm(tick, x);
+				Farm x = (Farm) (agentList.get(i));
+				farm f = new farm(tick, x);
 				farms.add(f);
 			}
 
