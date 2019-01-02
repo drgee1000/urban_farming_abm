@@ -21,8 +21,8 @@ import repast.simphony.space.gis.Geography;
 import repast.simphony.space.gis.GeographyParameters;
 import repast.simphony.space.gis.SimpleAdder;
 import repast.simphony.space.graph.Network;
-import repastcity3.agent.Farm;
 import repastcity3.agent.IAgent;
+import repastcity3.agent.Supermarket;
 import repastcity3.agent.ThreadedAgentScheduler;
 import repastcity3.agent.factory.ConsumerFactory;
 import repastcity3.agent.factory.FarmFactory;
@@ -39,10 +39,8 @@ import repastcity3.environment.contexts.BuildingContext;
 import repastcity3.environment.contexts.JunctionContext;
 import repastcity3.environment.contexts.RoadContext;
 import repastcity3.exceptions.AgentCreationException;
-import repastcity3.exceptions.EnvironmentError;
 import repastcity3.exceptions.NoIdentifierException;
 import repastcity3.exceptions.ParameterNotFoundException;
-import repastcity3.exceptions.StockCreationException;
 import repastcity3.utilities.Helper;
 import repastcity3.utilities.ioUtility.DataLogger;
 
@@ -241,16 +239,16 @@ public class ContextManager implements ContextBuilder<Object> {
 			mainContext.addSubContext(agentContext);
 			// farm agent create
 			int farmNum = Helper.getParameter(MODEL_PARAMETERS.FARM_NUM.toString(), Integer.class);
-			boolean useArea1=Helper.getParameter(MODEL_PARAMETERS.UseAreaFarm.toString(), Boolean.class);
+			boolean useArea1 = Helper.getParameter(MODEL_PARAMETERS.UseAreaFarm.toString(), Boolean.class);
 			FarmFactory farmFactory = new FarmFactory(agentContext, agentGeography);
 			farmFactory.createAgents(farmNum, useArea1);
 
 			// supermartket agent create
 			int supermarketNum = Helper.getParameter(MODEL_PARAMETERS.SUPERMARKET_NUM.toString(), Integer.class);
-			boolean useArea2=Helper.getParameter(MODEL_PARAMETERS.UseAreaSupermarket.toString(), Boolean.class);
+			boolean useArea2 = Helper.getParameter(MODEL_PARAMETERS.UseAreaSupermarket.toString(), Boolean.class);
 			SupermarketFactory supermarketFactory = new SupermarketFactory(agentContext, agentGeography);
 			supermarketFactory.createAgents(supermarketNum, useArea2);
-
+			Supermarket.initFarmList(agentGeography, AgentControl.getSupermarketAgents());
 			// Consumer agent create
 			int agentNum = Helper.getParameter(MODEL_PARAMETERS.AGENT_NUM.toString(), Integer.class);
 			ConsumerFactory agentFactory = new ConsumerFactory(agentContext, agentGeography);

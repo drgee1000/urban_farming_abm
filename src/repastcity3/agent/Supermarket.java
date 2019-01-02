@@ -12,13 +12,15 @@ import java.util.Random;
 import java.util.Set;
 
 import cern.jet.random.Uniform;
+import repast.simphony.query.space.gis.GeographyWithin;
 import repast.simphony.random.RandomHelper;
+import repast.simphony.space.gis.Geography;
+import repast.simphony.util.collections.IndexedIterable;
 import repastcity3.environment.FixedGeography;
 import repastcity3.environment.SaleLocation;
 import repastcity3.environment.food.Food;
 import repastcity3.environment.food.FoodOrder;
 import repastcity3.environment.food.Waste;
-import repastcity3.main.AgentControl;
 import repastcity3.main.ContextManager;
 import repastcity3.utilities.Helper;
 import repastcity3.utilities.dataUtility.SupermarketType;
@@ -40,7 +42,7 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 	private double stockThreshold;
 	private HashMap<String, Double> sourcingPlan;
 	private Set<String> types;
-
+	private double radius;
 	private static int uniqueID = 0;
 	private int id;
 	private HashMap<String, List<Waste>> waste;
@@ -56,7 +58,7 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 		externalSourcePeriod = st.getExPeriod();
 		stockThreshold = st.getStockThreshold();
 		urbanPriceFactor = st.getPriceFactor();
-
+		radius = st.getRadius();
 		types = new HashSet<String>();
 		types.add("vegetable");
 
@@ -64,9 +66,28 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 		stockCalorieCount = new HashMap<String, Double>();
 		sourcingPlan = new HashMap<String, Double>();
 		this.agents = new ArrayList<IAgent>();
-
 		this.stockThreshold = 200000;
 		initStock();
+
+	}
+
+	public static void initFarmList(Geography<IAgent> context, IndexedIterable<Supermarket> agents) {
+		int length = agents.size();
+		for (int i = 0; i < length; i++) {
+
+			Supermarket s = agents.get(i);
+			System.out.println(s.toString());
+			GeographyWithin gw = new GeographyWithin(context, s.radius * 1000, s);
+			Iterator iter = gw.query().iterator();
+			while (iter.hasNext()) {
+				Object o = iter.next();
+				if (o instanceof Farm) {
+					System.out.println("print within: " + o.toString());
+					s.agents.add((Farm) o);
+				}
+
+			}
+		}
 
 	}
 
@@ -187,6 +208,7 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 			target -= x;
 			f.setAmount(x / f.getDensity());
 			f.setSource("external");
+			f.setPrice(f.getValue() * urbanPriceFactor);
 			f.setProductionTick(tick);
 			addStock(f);
 		}
@@ -194,6 +216,7 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 		f.setAmount(target / f.getDensity());
 		f.setSource("external");
 		f.setProductionTick(tick);
+		f.setPrice(f.getValue() * urbanPriceFactor);
 		addStock(f);
 	}
 
@@ -204,10 +227,10 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 		 * there's no other farm to go
 		 */
 
-		Iterator<Farm> iter = new RandomIterator<Farm>(AgentControl.getFarmAgents().iterator());
+		Iterator<IAgent> iter = new RandomIterator<IAgent>(agents.iterator());
 		while (iter.hasNext()) { // loop through all farms
 			FoodOrder fo = new FoodOrder();
-			Farm f = iter.next();
+			Farm f = (Farm) iter.next();
 			HashMap<String, List<Food>> fStock = f.getStock();
 			for (String type : sourcingPlan.keySet()) { // loop through all kinds of stock of a farm
 				double target = sourcingPlan.get(type);
@@ -227,20 +250,16 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 								food.setAmount(target / fd.getDensity());
 								fo.addOrder(fd, amount);
 							} else { // buy all of that food
-								// food = fd;
 								fo.addOrder(fd, fd.getAmount());
 							}
 							food.setSource(f.toString());
-							food.setPrice(food.getPrice() * urbanPriceFactor);
+							food.setPrice(food.getValue() * urbanPriceFactor);
 							addStock(food);
-							// //System.out.println(this.toString()+" purchase " + food.getName() + "
-							// amount:
-							// " + food.getAmount());
+
 							target = target - food.getDensity() * food.getAmount();
 							if (target < 0.0)
 								target = 0.0;
-							// //System.out.println("target after purchase " + target);
-							// update targets in sourceing plan
+
 							sourcingPlan.put(type, target);
 						} else {
 							break;
@@ -249,9 +268,8 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 				}
 
 			}
-			// //System.out.println("vague purchase fo size: "+fo.getList().size() );
 			f.sell(fo, this.toString());
-			// stop the loop if requirement is met
+			fund -= fo.getIncome();
 			if (planEmpty()) {
 				break;
 			}
@@ -417,6 +435,10 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 			}
 		}
 
+	}
+
+	public double getRadius() {
+		return radius;
 	}
 }
 
