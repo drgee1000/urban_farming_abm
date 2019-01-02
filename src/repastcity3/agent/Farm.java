@@ -37,6 +37,7 @@ public class Farm extends SaleLocation {
 	private double priceFactor;
 	private double totalCost;
 	private double totalEnergyCost;
+	private double totalIncome;
 
 	public Farm() {
 		// double setupCost,double dailyMaintenanceCost, double fund,List<Food> stock
@@ -285,7 +286,7 @@ public class Farm extends SaleLocation {
 
 	public void sell(FoodOrder order, String sID) {
 		HashMap<Food, Double> list = order.getList();
-		double totalIncome = this.fund;
+		double income = this.fund;
 		list.forEach((food, amount) -> {
 			String type = food.getType();
 			double newAmount = food.getAmount() - amount;
@@ -295,19 +296,21 @@ public class Farm extends SaleLocation {
 				stock.get(type).remove(food);
 			}
 			this.fund += amount * food.getPrice(); // here price is "$ per g"
+
 			double stockNum = stockCount.get(type);
 			stockCount.put(type, stockNum - amount);
 			// food.setSource(this.toString());
 			// count -= amount;
 		});
 
-		totalIncome = this.fund - totalIncome;
+		income += this.fund - income;
+		totalIncome += income;
 		synchronized (ContextManager.dLogger) {
 			try {
 				// //System.out.println("====================================");
 				// //System.out.println("recordSale!" + " order size:" +
 				// order.getList().keySet().size());
-				ContextManager.dLogger.recordSale(order, Helper.getCurrentTick(), totalIncome, this.toString(), sID);
+				ContextManager.dLogger.recordSale(order, Helper.getCurrentTick(), income, this.toString(), sID);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -345,6 +348,10 @@ public class Farm extends SaleLocation {
 
 	public void setTotalEnergyCost(double totalEnergyCost) {
 		this.totalEnergyCost = totalEnergyCost;
+	}
+
+	public double getTotalIncome() {
+		return totalIncome;
 	}
 
 }

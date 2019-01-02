@@ -35,11 +35,11 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 	private List<Food> purchasePlan;
 	private int urbanSourcePeriod;
 	private int externalSourcePeriod;
-	// private PriorityQueue<FoodEntry> productionQueue;
 
 	private HashMap<String, Double> stockCalorieCount;
-	// private HashMap<String, Double> stockThreshold;
 	private double stockThreshold;
+	private double totalPurchaseCost;
+	private double totalIncome;
 	private HashMap<String, Double> sourcingPlan;
 	private Set<String> types;
 	private double radius;
@@ -59,6 +59,7 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 		stockThreshold = st.getStockThreshold();
 		urbanPriceFactor = st.getPriceFactor();
 		radius = st.getRadius();
+		totalPurchaseCost = 0;
 		types = new HashSet<String>();
 		types.add("vegetable");
 
@@ -211,6 +212,7 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 			f.setPrice(f.getValue() * urbanPriceFactor);
 			f.setProductionTick(tick);
 			addStock(f);
+			totalPurchaseCost += f.getPrice() * f.getAmount();
 		}
 		f = foodList.get(size - 1);
 		f.setAmount(target / f.getDensity());
@@ -249,9 +251,11 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 								double amount = (double) (Math.round((target / fd.getDensity()) * 100) / 100.0);
 								food.setAmount(target / fd.getDensity());
 								fo.addOrder(fd, amount);
+
 							} else { // buy all of that food
 								fo.addOrder(fd, fd.getAmount());
 							}
+							totalPurchaseCost += fd.getPrice() * fd.getAmount();
 							food.setSource(f.toString());
 							food.setPrice(food.getValue() * urbanPriceFactor);
 							addStock(food);
@@ -269,7 +273,7 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 
 			}
 			f.sell(fo, this.toString());
-			fund -= fo.getIncome();
+
 			if (planEmpty()) {
 				break;
 			}
@@ -376,6 +380,7 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 			this.fund += amount * food.getPrice();
 		});
 		income = this.fund - income;
+		totalIncome += income;
 		// record sales
 		synchronized (ContextManager.dLogger) {
 			try {
@@ -439,6 +444,14 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 
 	public double getRadius() {
 		return radius;
+	}
+
+	public double getTotalCost() {
+		return totalPurchaseCost;
+	}
+
+	public double getTotalIncome() {
+		return totalIncome;
 	}
 }
 

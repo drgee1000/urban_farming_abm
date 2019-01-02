@@ -236,16 +236,21 @@ public class DataLogger {
 		double totalEnergyCost;
 		@Expose()
 		double totalCost;
+		@Expose()
+		double totalIncome;
 
-		public endingRecord(SaleLocation f) {
-			this.id = f.toString();
-			waste = f.getWaste();
-			if (f instanceof Farm) {
-				this.totalCost = ((Farm) f).getTotalCost();
-				this.totalEnergyCost = ((Farm) f).getTotalEnergyCost();
+		public endingRecord(SaleLocation l) {
+			this.id = l.toString();
+			waste = l.getWaste();
+
+			if (l instanceof Farm) {
+				this.totalCost = ((Farm) l).getTotalCost();
+				this.totalEnergyCost = ((Farm) l).getTotalEnergyCost();
+				this.totalIncome = ((Farm) l).getTotalIncome();
 			} else {
-				this.totalCost = 0;
+				this.totalCost = ((Supermarket) l).getTotalCost();
 				this.totalEnergyCost = 0;
+				this.totalIncome = ((Supermarket) l).getTotalIncome();
 			}
 		}
 	}
