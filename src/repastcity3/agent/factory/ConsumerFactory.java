@@ -159,9 +159,24 @@ class ConsumerSimpleFactory {
 		AgentData agentData = agentDataGenerator.getNext();
 		double agentGenderProb = nRand.nextDoubleFromTo(0, 1);
 		Gender gender = agentGenderProb <= agentData.mfRatio ? Gender.MALE : Gender.FEMALE;
-		Consumer a = new Consumer(agentData.catagory, gender, agentData.income, agentData.consumption_rate); // Create a
-																												// new
-																												// agent
+
+		String[] food_preference_tmp = agentData.food_preference.split(" ");
+		Double[] food_preference = new Double[5];
+		int ii = 0;
+		for (String fp : food_preference_tmp) {
+			food_preference[ii] = Double.valueOf(fp);
+			ii++;
+		}
+		String[] price_preference_tmp = agentData.price_preference.split(" ");
+		Double[] price_preference = new Double[5];
+		int jj = 0;
+		for (String pp : price_preference_tmp) {
+			price_preference[jj] = Double.valueOf(pp);
+			jj++;
+		}
+		// System.out.println(price_preference[0]);
+		Consumer a = new Consumer(agentData.catagory, gender, agentData.income, agentData.consumption_rate,
+				food_preference, price_preference); // Create a new agent
 		return a;
 	}
 }
