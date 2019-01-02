@@ -3,12 +3,12 @@
 		<projection type="geography" id="AgentGeography"></projection>
 	</context> -->
 
-	<context id="SupermarketContext">
-		<projection type="geography" id="SupermarketGeography"></projection>
+	<context id="AgentContext">
+		<projection type="geography" id="AgentGeography"></projection>
 	</context>
 
-	<context id="FarmContext">
-		<projection type="geography" id="FarmGeography"></projection>
+	<context id="BuildingContext">
+		<projection type="geography" id="BuildingGeography"></projection>
 	</context>
 
 

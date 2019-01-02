@@ -74,7 +74,7 @@ public class Route implements Cacheable {
 	private Consumer agent;
 	private Coordinate destination;
 	private Coordinate origin;
-	private Residential destinationBuilding;
+	private Building destinationBuilding;
 	private Workplace destiationWorkplace;
 	private School destinationSchool;
 	private Shoppingcenter destinationShoppingcenter;
@@ -155,7 +155,7 @@ public class Route implements Cacheable {
 	 * @param type                The (optional) type of route, used by burglars who
 	 *                            want to search.
 	 */
-	public Route(Consumer agent, Coordinate destination, Residential destinationBuilding) {
+	public Route(Consumer agent, Coordinate destination, Building destinationBuilding) {
 		this.destination = destination;
 		this.agent = agent;
 		this.destinationBuilding = destinationBuilding;
@@ -920,7 +920,7 @@ public class Route implements Cacheable {
 				File serialisedLoc = new File(
 						gisDir + ContextManager.getProperty(GlobalVars.BuildingsRoadsCoordsCache));
 
-				nearestRoadCoordCache = NearestRoadCoordCache.getInstance(ContextManager.residentialProjection,
+				nearestRoadCoordCache = NearestRoadCoordCache.getInstance(ContextManager.buildingGeography,
 						buildingsFile, ContextManager.roadProjection, roadsFile, serialisedLoc, new GeometryFactory());
 			} // if not cached
 		} // synchronized
@@ -1413,7 +1413,7 @@ public class Route implements Cacheable {
 	 * 
 	 * @return the destinationHouse
 	 */
-	public Residential getDestinationBuilding() {
+	public Building getDestinationBuilding() {
 		if (this.destinationBuilding == null) {
 			LOGGER.log(Level.WARNING,
 					"Route: getDestinationBuilding(), warning, no destination building has "
@@ -1498,7 +1498,7 @@ public class Route implements Cacheable {
 	 * @return
 	 * @throws Exception
 	 */
-	private List<Residential> getBuildingsOnRoad(Road road) throws Exception {
+	private List<Building> getBuildingsOnRoad(Road road) throws Exception {
 		if (buildingsOnRoadCache == null) {
 			LOGGER.log(Level.FINER, "Route.getBuildingsOnRoad called for first time, "
 					+ "creating cache of all roads and the buildings which are on them ...");
@@ -1509,7 +1509,7 @@ public class Route implements Cacheable {
 			File buildingsFile = new File(gisDir + GlobalVars.ResidentialShapefile);
 			File roadsFile = new File(gisDir + GlobalVars.RoadShapefile);
 			File serialLoc = new File(gisDir + ContextManager.getProperty(GlobalVars.BuildingsRoadsCache));
-			buildingsOnRoadCache = BuildingsOnRoadCache.getInstance(ContextManager.residentialProjection, buildingsFile,
+			buildingsOnRoadCache = BuildingsOnRoadCache.getInstance(ContextManager.buildingGeography, buildingsFile,
 					ContextManager.roadProjection, roadsFile, serialLoc, new GeometryFactory());
 		} // if not cached
 		return buildingsOnRoadCache.get(road);
@@ -1579,7 +1579,7 @@ public class Route implements Cacheable {
 		// certain distance apart
 		// then using similar method as other distance() function
 		GeodeticCalculator calculator = new GeodeticCalculator(ContextManager.roadProjection.getCRS());
-		Coordinate c1 = ContextManager.residentialContext.getRandomObject().getCoords();
+		Coordinate c1 = ContextManager.buildingContext.getRandomObject().getCoords();
 		calculator.setStartingGeographicPoint(c1.x, c1.y);
 		calculator.setDestinationGeographicPoint(c1.x, c1.y + dist);
 		return String.valueOf(calculator.getOrthodromicDistance());
@@ -1664,7 +1664,7 @@ class BuildingsOnRoadCache implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	// The actual cache, this isn't serialised
-	private static transient Hashtable<Road, ArrayList<Residential>> theCache;
+	private static transient Hashtable<Road, ArrayList<Building>> theCache;
 	// The 'reference' cache, stores the building and road ids and can be
 	// serialised
 	private Hashtable<String, ArrayList<String>> referenceCache;
@@ -1680,7 +1680,7 @@ class BuildingsOnRoadCache implements Serializable {
 	private long createdTime;
 
 	// Private constructor because getInstance() should be used
-	private BuildingsOnRoadCache(Geography<Residential> buildingEnvironment, File buildingsFile,
+	private BuildingsOnRoadCache(Geography<Building> buildingEnvironment, File buildingsFile,
 			Geography<Road> roadEnvironment, File roadsFile, File serialisedLoc, GeometryFactory geomFac)
 			throws Exception {
 		// this.buildingEnvironment = buildingEnvironment;
@@ -1688,7 +1688,7 @@ class BuildingsOnRoadCache implements Serializable {
 		this.buildingsFile = buildingsFile;
 		this.roadsFile = roadsFile;
 		this.serialisedLoc = serialisedLoc;
-		theCache = new Hashtable<Road, ArrayList<Residential>>();
+		theCache = new Hashtable<Road, ArrayList<Building>>();
 		this.referenceCache = new Hashtable<String, ArrayList<String>>();
 
 		LOGGER.log(Level.FINE,
@@ -1708,10 +1708,10 @@ class BuildingsOnRoadCache implements Serializable {
 
 	}
 
-	private void populateCache(Geography<Residential> buildingEnvironment, Geography<Road> roadEnvironment,
+	private void populateCache(Geography<Building> buildingEnvironment, Geography<Road> roadEnvironment,
 			GeometryFactory geomFac) throws Exception {
 		double time = System.nanoTime();
-		for (Residential b : buildingEnvironment.getAllObjects()) {
+		for (Building b : buildingEnvironment.getAllObjects()) {
 			// Find the closest road to this building
 			Geometry buildingPoint = geomFac.createPoint(b.getCoords());
 			double minDistance = Double.MAX_VALUE;
@@ -1731,7 +1731,7 @@ class BuildingsOnRoadCache implements Serializable {
 				theCache.get(closestRoad).add(b);
 				this.referenceCache.get(closestRoad.getIdentifier()).add(b.getIdentifier());
 			} else {
-				ArrayList<Residential> l = new ArrayList<Residential>();
+				ArrayList<Building> l = new ArrayList<Building>();
 				l.add(b);
 				theCache.put(closestRoad, l);
 				ArrayList<String> l2 = new ArrayList<String>();
@@ -1741,13 +1741,13 @@ class BuildingsOnRoadCache implements Serializable {
 		} // for buildings
 		int numRoads = theCache.keySet().size();
 		int numBuildings = 0;
-		for (List<Residential> l : theCache.values())
+		for (List<Building> l : theCache.values())
 			numBuildings += l.size();
 		LOGGER.log(Level.FINER, "Finished caching roads and buildings. Cached " + numRoads + " roads and "
 				+ numBuildings + " buildings in " + 0.000001 * (System.nanoTime() - time) + "ms");
 	}
 
-	public List<Residential> get(Road r) {
+	public List<Building> get(Road r) {
 		return theCache.get(r);
 	}
 
@@ -1786,7 +1786,7 @@ class BuildingsOnRoadCache implements Serializable {
 	 * @return
 	 * @throws Exception
 	 */
-	public synchronized static BuildingsOnRoadCache getInstance(Geography<Residential> buildingEnv, File buildingsFile,
+	public synchronized static BuildingsOnRoadCache getInstance(Geography<Building> buildingEnv, File buildingsFile,
 			Geography<Road> roadEnv, File roadsFile, File serialisedLoc, GeometryFactory geomFac) throws Exception {
 		double time = System.nanoTime();
 		// See if there is a cache object on disk.
@@ -1817,15 +1817,15 @@ class BuildingsOnRoadCache implements Serializable {
 					Hashtable<String, Road> allRoads = new Hashtable<String, Road>();
 					for (Road r : roadEnv.getAllObjects())
 						allRoads.put(r.getIdentifier(), r);
-					Hashtable<String, Residential> allBuildings = new Hashtable<String, Residential>();
-					for (Residential b : buildingEnv.getAllObjects())
+					Hashtable<String, Building> allBuildings = new Hashtable<String, Building>();
+					for (Building b : buildingEnv.getAllObjects())
 						allBuildings.put(b.getIdentifier(), b);
 
 					// Now create the new cache
-					theCache = new Hashtable<Road, ArrayList<Residential>>();
+					theCache = new Hashtable<Road, ArrayList<Building>>();
 
 					for (String roadId : bc.referenceCache.keySet()) {
-						ArrayList<Residential> buildings = new ArrayList<Residential>();
+						ArrayList<Building> buildings = new ArrayList<Building>();
 						for (String buildingId : bc.referenceCache.get(roadId)) {
 							buildings.add(allBuildings.get(buildingId));
 						}
@@ -1883,7 +1883,7 @@ class NearestRoadCoordCache implements Serializable {
 
 	private GeometryFactory geomFac;
 
-	private NearestRoadCoordCache(Geography<Residential> buildingEnvironment, File buildingsFile,
+	private NearestRoadCoordCache(Geography<Building> buildingEnvironment, File buildingsFile,
 			Geography<Road> roadEnvironment, File roadsFile, File serialisedLoc, GeometryFactory geomFac)
 			throws Exception {
 
@@ -1908,12 +1908,12 @@ class NearestRoadCoordCache implements Serializable {
 		this.theCache.clear();
 	}
 
-	private void populateCache(Geography<Residential> buildingEnvironment, Geography<Road> roadEnvironment)
+	private void populateCache(Geography<Building> buildingEnvironment, Geography<Road> roadEnvironment)
 			throws Exception {
 		double time = System.nanoTime();
 		theCache = new Hashtable<Coordinate, Coordinate>();
 		// Iterate over every building and find the nearest road point
-		for (Residential b : buildingEnvironment.getAllObjects()) {
+		for (Building b : buildingEnvironment.getAllObjects()) {
 			List<Coordinate> nearestCoords = new ArrayList<Coordinate>();
 			Route.findNearestObject(b.getCoords(), roadEnvironment, nearestCoords,
 					GlobalVars.GEOGRAPHY_PARAMS.BUFFER_DISTANCE.LARGE);
@@ -2045,7 +2045,7 @@ class NearestRoadCoordCache implements Serializable {
 	 * @return
 	 * @throws Exception
 	 */
-	public synchronized static NearestRoadCoordCache getInstance(Geography<Residential> buildingEnv, File buildingsFile,
+	public synchronized static NearestRoadCoordCache getInstance(Geography<Building> buildingEnv, File buildingsFile,
 			Geography<Road> roadEnv, File roadsFile, File serialisedLoc, GeometryFactory geomFac) throws Exception {
 		double time = System.nanoTime();
 		// See if there is a cache object on disk.

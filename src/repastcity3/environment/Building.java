@@ -38,7 +38,6 @@ public class Building implements FixedGeography {
 	@Override
 	public void setCoords(Coordinate c) {
 		this.coords = c;
-
 	}
 
 	public String getIdentifier() throws NoIdentifierException {

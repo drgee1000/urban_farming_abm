@@ -6,5 +6,7 @@ public enum MODEL_PARAMETERS {
 	/** A string definition of how agents should be created */
 	AGENT_NUM,
 	FARM_NUM,
-	SUPERMARKET_NUM
+	SUPERMARKET_NUM,
+	UseAreaFarm,
+	UseAreaSupermarket,
 }

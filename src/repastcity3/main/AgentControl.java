@@ -1,5 +1,9 @@
 package repastcity3.main;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.Point;
 
@@ -8,10 +12,12 @@ import repast.simphony.context.Context;
 import repast.simphony.context.DefaultContext;
 import repast.simphony.space.gis.Geography;
 import repast.simphony.util.collections.IndexedIterable;
+import repast.simphony.util.collections.ListIndexedIterable;
 import repastcity3.agent.Consumer;
 import repastcity3.agent.Farm;
 import repastcity3.agent.IAgent;
 import repastcity3.agent.Supermarket;
+import repastcity3.environment.Building;
 import repastcity3.environment.Residential;
 
 public class AgentControl {
@@ -26,7 +32,7 @@ public class AgentControl {
 	 * @param angle        The angle at which to travel.
 	 * @see Geography
 	 */
-	public static synchronized void moveAgentByVector(Consumer agent, double distToTravel, double angle) {
+	public static synchronized void moveAgentByVector(IAgent agent, double distToTravel, double angle) {
 		ContextManager.agentGeography.moveByVector(agent, distToTravel, angle);
 	} // We should use this method!!!!!!
 
@@ -38,7 +44,7 @@ public class AgentControl {
 	 * @param agent The agent to move.
 	 * @param point The point to move the agent to
 	 */
-	public static synchronized void moveAgent(Consumer agent, Point point) {
+	public static synchronized void moveAgent(IAgent agent, Point point) {
 		ContextManager.agentGeography.move(agent, point);
 	}
 
@@ -50,19 +56,36 @@ public class AgentControl {
 	 * 
 	 * @param agent The agent to add.
 	 */
-	public static synchronized void addConsumerToContext(Consumer agent) {
+	public static void addConsumerToContext(Consumer agent) {
 		ContextManager.agentContext.add(agent);
 	}
 	
-	public static synchronized void addFarmToContext(Farm farm)
+	public static void addFarmToContext(Farm farm)
 	{
-		ContextManager.farmContext.add(farm);
+		ContextManager.agentContext.add(farm);
 	}
 	
-	public static synchronized void addSupermarketToContext(Supermarket supermarket)
+	public static void addSupermarketToContext(Supermarket supermarket)
 	{
-		ContextManager.supermarketContext.add(supermarket);
+		ContextManager.agentContext.add(supermarket);
 	}
+	
+	public static Residential getRandomResidential()
+	{
+		Iterator<Building> tmpList = ContextManager.buildingContext.getRandomObjects(Residential.class, 1)
+				.iterator();
+		if (tmpList.hasNext()) {
+			Residential b = (Residential) tmpList.next();
+			return b;
+		}else
+		{
+			return null;
+		}
+	}
+	
+	
+	
+	
 
 	/**
 	 * Get all the agents in the agent context. This method is required -- rather
@@ -74,21 +97,36 @@ public class AgentControl {
 	 *         <code>getRandomObjects</code> function in <code>DefaultContext</code>
 	 * @see DefaultContext
 	 */
-	public static synchronized IndexedIterable<Consumer> getConsumerAgents() {
-		return ContextManager.agentContext.getObjects(Consumer.class);
+	public static IndexedIterable<Consumer> getConsumerAgents() {
+		List<Consumer> rawList = new ArrayList<Consumer>();
+		for(IAgent consumer:ContextManager.agentContext.getObjects(Consumer.class))
+		{
+			rawList.add((Consumer)consumer);
+		}
+		IndexedIterable<Consumer> list=new ListIndexedIterable<>(rawList);
+		return list;
 	}
 
-	public static synchronized IndexedIterable<Farm> getFarmAgents() {
-		return ContextManager.farmContext.getObjects(Farm.class);
+	public static IndexedIterable<Farm> getFarmAgents() {
+		List<Farm> rawList = new ArrayList<Farm>();
+		for(IAgent farm:ContextManager.agentContext.getObjects(Farm.class))
+		{
+			rawList.add((Farm)farm);
+		}
+		IndexedIterable<Farm> list=new ListIndexedIterable<>(rawList);
+		return list;
 	}
 
-	public static synchronized IndexedIterable<Supermarket> getSupermarketAgents() {
-		return ContextManager.supermarketContext.getObjects(Supermarket.class);
+	public static IndexedIterable<Supermarket> getSupermarketAgents() {
+		List<Supermarket> rawList = new ArrayList<Supermarket>();
+		for(IAgent supermarket:ContextManager.agentContext.getObjects(Supermarket.class))
+		{
+			rawList.add((Supermarket)supermarket);
+		}
+		IndexedIterable<Supermarket> list=new ListIndexedIterable<>(rawList);
+		return list;
 	}
 
-	public static synchronized IndexedIterable<Residential> getResidentials() {
-		return ContextManager.residentialContext.getObjects(Residential.class);
-	}
 	
 	/**
 	 * Get the geometry of the given agent. This method is required -- rather than
@@ -96,36 +134,10 @@ public class AgentControl {
 	 * threads are used they can interfere with each other and agents end up moving
 	 * incorrectly.
 	 */
-	public static synchronized Geometry getAgentGeometry(IAgent agent) {
+	public static Geometry getAgentGeometry(IAgent agent) {
 		return ContextManager.agentGeography.getGeometry(agent);
 	}
+	
 
-	/**
-	 * Get a pointer to the agent context.
-	 * 
-	 * <p>
-	 * Warning: accessing the context directly is not thread safe so this should be
-	 * used with care. The functions <code>getAllAgents()</code> and
-	 * <code>getAgentGeometry()</code> can be used to query the agent context or
-	 * projection.
-	 * </p>
-	 */
-	public static Context<Consumer> getAgentContext() {
-		return ContextManager.agentContext;
-	}
-
-	/**
-	 * Get a pointer to the agent geography.
-	 * 
-	 * <p>
-	 * Warning: accessing the context directly is not thread safe so this should be
-	 * used with care. The functions <code>getAllAgents()</code> and
-	 * <code>getAgentGeometry()</code> can be used to query the agent context or
-	 * projection.
-	 * </p>
-	 */
-	public static Geography<Consumer> getAgentGeography() {
-		return ContextManager.agentGeography;
-	}
 
 }

@@ -60,7 +60,6 @@ public class Consumer implements People {
 		this.consumer_food_stock = new HashMap<String, List<Food>>();
 		this.avg_satisfaction = 0;
 		this.buy_time = 0;
-		this.residential = ContextManager.residentialContext.getRandomObject();
 		// -------------------
 		this.catagory = catagory;
 		this.preference = preference;
@@ -74,7 +73,6 @@ public class Consumer implements People {
 		this.preference = new Preference();
 		this.consumer_food_stock = new HashMap<String, List<Food>>();
 		Random random = new Random();
-		this.residential = ContextManager.residentialContext.getRandomObject();
 		int c = random.nextInt(100);
 
 		// if (c <= 7) {
@@ -158,7 +156,7 @@ public class Consumer implements People {
 			for (Double key : supermarketTreeMap.keySet()) {
 				Supermarket supermarket = supermarketTreeMap.get(key);
 				
-				this.destination = ContextManager.supermarketProjection.getGeometry(supermarket).getCentroid()
+				this.destination = AgentControl.getAgentGeometry(supermarket).getCentroid()
 						.getCoordinate();
 				GeometryFactory geomFac = new GeometryFactory();
 				AgentControl.moveAgent(this, geomFac.createPoint(this.destination));
@@ -174,7 +172,7 @@ public class Consumer implements People {
 			}
 
 		} else {
-			goRandomPlace(this.type);
+//			goRandomPlace(this.type);
 			setPurpose();
 		}
 		if (this.buy_time != 0) {
@@ -248,40 +246,40 @@ public class Consumer implements People {
 		this.healthThreshold = healthThreshold;
 	}
 
-	public void goRandomPlace(int type) throws Exception {
-		switch (type) {
-		case 1: {
-			School S = ContextManager.schoolContext.getRandomObject();
-			// this.route = new Route(this,
-			// ContextManager.schoolProjection.getGeometry(S).getCentroid().getCoordinate(),
-			// S);
-			// this.origin = AgentControl.getAgentGeometry(this).getCoordinate();
-			this.destination = ContextManager.schoolProjection.getGeometry(S).getCentroid().getCoordinate();
-			GeometryFactory geomFac = new GeometryFactory();
-			AgentControl.moveAgent(this, geomFac.createPoint(this.destination));
-			break;
-		}
-		case 2: {
-			Workplace W = ContextManager.workplaceContext.getRandomObject();
-			// this.route = new Route(this,
-			// ContextManager.workplaceProjection.getGeometry(W).getCentroid().getCoordinate(),
-			// W);
-			// this.origin = AgentControl.getAgentGeometry(this).getCoordinate();
-			this.destination = ContextManager.workplaceProjection.getGeometry(W).getCentroid().getCoordinate();
-			GeometryFactory geomFac = new GeometryFactory();
-			AgentControl.moveAgent(this, geomFac.createPoint(this.destination));
-			break;
-		}
-		case 3: {
-			this.destination = ContextManager.residentialProjection.getGeometry(this.residential).getCentroid()
-					.getCoordinate();
-			GeometryFactory geomFac = new GeometryFactory();
-			AgentControl.moveAgent(this, geomFac.createPoint(this.destination));
-			break;
-		}
-
-		}
-	}
+//	public void goRandomPlace(int type) throws Exception {
+//		switch (type) {
+//		case 1: {
+//			School S = ContextManager.schoolContext.getRandomObject();
+//			// this.route = new Route(this,
+//			// ContextManager.schoolProjection.getGeometry(S).getCentroid().getCoordinate(),
+//			// S);
+//			// this.origin = AgentControl.getAgentGeometry(this).getCoordinate();
+//			this.destination = ContextManager.schoolProjection.getGeometry(S).getCentroid().getCoordinate();
+//			GeometryFactory geomFac = new GeometryFactory();
+//			AgentControl.moveAgent(this, geomFac.createPoint(this.destination));
+//			break;
+//		}
+//		case 2: {
+//			Workplace W = ContextManager.workplaceContext.getRandomObject();
+//			// this.route = new Route(this,
+//			// ContextManager.workplaceProjection.getGeometry(W).getCentroid().getCoordinate(),
+//			// W);
+//			// this.origin = AgentControl.getAgentGeometry(this).getCoordinate();
+//			this.destination = ContextManager.workplaceProjection.getGeometry(W).getCentroid().getCoordinate();
+//			GeometryFactory geomFac = new GeometryFactory();
+//			AgentControl.moveAgent(this, geomFac.createPoint(this.destination));
+//			break;
+//		}
+//		case 3: {
+//			this.destination = ContextManager.residentialProjection.getGeometry(this.residential).getCentroid()
+//					.getCoordinate();
+//			GeometryFactory geomFac = new GeometryFactory();
+//			AgentControl.moveAgent(this, geomFac.createPoint(this.destination));
+//			break;
+//		}
+//
+//		}
+//	}
 
 	public Farm selectFarm() {
 		Random random = new Random();
@@ -302,7 +300,7 @@ public class Consumer implements People {
 				return o2.compareTo(o1);
 			}
 		});
-		Iterator<Supermarket> iterator = ContextManager.supermarketContext.iterator();
+		Iterator<Supermarket> iterator = AgentControl.getSupermarketAgents().iterator();
 		while (iterator.hasNext()) {
 			Supermarket supermarket = iterator.next();
 			double score = getSupermarketScore(supermarket);
@@ -330,17 +328,17 @@ public class Consumer implements People {
 	}
 
 	public Farm findNearestFarm() {
-		Iterator<Farm> iter = ContextManager.farmContext.iterator();
+		Iterator<Farm> iter = AgentControl.getFarmAgents().iterator();
 		double min = Double.POSITIVE_INFINITY;
 		Farm nearestFarm = null;
 		// may not iterate all the farms.
 		int iterTime = 100;
 		while (iter.hasNext()) {
 			Farm farm = iter.next();
-			Route r = new Route(this, ContextManager.farmProjection.getGeometry(farm).getCentroid().getCoordinate(),
+			Route r = new Route(this, AgentControl.getAgentGeometry(farm).getCentroid().getCoordinate(),
 					farm);
 			this.origin = AgentControl.getAgentGeometry(this).getCoordinate();
-			this.destination = ContextManager.farmProjection.getGeometry(farm).getCentroid().getCoordinate();
+			this.destination = AgentControl.getAgentGeometry(farm).getCentroid().getCoordinate();
 			double dis = (origin.x - destination.x) * (origin.x - destination.x)
 					+ (origin.y - destination.y) * (origin.y - destination.y);
 			if (dis < min) {
@@ -358,7 +356,7 @@ public class Consumer implements People {
 	 */
 
 	public double getSupermarketDistanceScore(Supermarket supermarket) {
-		Iterator<Supermarket> iter = ContextManager.supermarketContext.iterator();
+		Iterator<Supermarket> iter = AgentControl.getSupermarketAgents().iterator();
 		double min = 10000000;
 		double max = -10000000;
 		double distance = getDistance(supermarket);
@@ -386,7 +384,7 @@ public class Consumer implements People {
 	}
 
 	public double getSupermarketRatingScore(Supermarket supermarket) {
-		Iterator<Supermarket> iter = ContextManager.supermarketContext.iterator();
+		Iterator<Supermarket> iter = AgentControl.getSupermarketAgents().iterator();
 		double min = Double.POSITIVE_INFINITY;
 		double max = Double.NEGATIVE_INFINITY;
 		double score = supermarket.getScore();
@@ -405,14 +403,14 @@ public class Consumer implements People {
 
 	public double getDistance(Supermarket supermarket) {
 		this.origin = AgentControl.getAgentGeometry(this).getCoordinate();
-		this.destination = ContextManager.supermarketProjection.getGeometry(supermarket).getCentroid().getCoordinate();
+		this.destination = AgentControl.getAgentGeometry(supermarket).getCentroid().getCoordinate();
 		double dis = (origin.x - destination.x) * (origin.x - destination.x)
 				+ (origin.y - destination.y) * (origin.y - destination.y);
 		return dis * 1000;
 	}
 
 	public Supermarket findNearestSupermarket() {
-		Iterator<Supermarket> iter = ContextManager.supermarketContext.iterator();
+		Iterator<Supermarket> iter = AgentControl.getSupermarketAgents().iterator();
 		double min = Double.POSITIVE_INFINITY;
 		Supermarket nearestSupermarket = null;
 		// may not iterate all the farms.
@@ -420,10 +418,10 @@ public class Consumer implements People {
 		while (iter.hasNext()) {
 			Supermarket supermarket = iter.next();
 			Route r = new Route(this,
-					ContextManager.supermarketProjection.getGeometry(supermarket).getCentroid().getCoordinate(),
+					AgentControl.getAgentGeometry(supermarket).getCentroid().getCoordinate(),
 					supermarket);
 			this.origin = AgentControl.getAgentGeometry(this).getCoordinate();
-			this.destination = ContextManager.supermarketProjection.getGeometry(supermarket).getCentroid()
+			this.destination = AgentControl.getAgentGeometry(supermarket).getCentroid()
 					.getCoordinate();
 			double dis = (origin.x - destination.x) * (origin.x - destination.x)
 					+ (origin.y - destination.y) * (origin.y - destination.y);
@@ -436,7 +434,7 @@ public class Consumer implements People {
 	}
 
 	public Farm findPopularFarm() {
-		Iterator<Farm> iter = ContextManager.farmContext.iterator();
+		Iterator<Farm> iter = AgentControl.getFarmAgents().iterator();
 		double max = 0;
 		Farm PopularFarm = null;
 		while (iter.hasNext()) {
@@ -451,7 +449,7 @@ public class Consumer implements People {
 	}
 
 	public Supermarket findPopularSupermarket() {
-		Iterator<Supermarket> iter = ContextManager.supermarketContext.iterator();
+		Iterator<Supermarket> iter = AgentControl.getSupermarketAgents().iterator();
 		double max = 0;
 		Supermarket PopularSupermarket = null;
 		while (iter.hasNext()) {

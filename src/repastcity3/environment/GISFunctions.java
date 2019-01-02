@@ -3,21 +3,32 @@ package repastcity3.environment;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
+
+import org.geotools.data.shapefile.ShapefileDataStore;
+import org.geotools.data.simple.SimpleFeatureIterator;
+import org.opengis.feature.simple.SimpleFeature;
 
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.GeometryFactory;
+import com.vividsolutions.jts.geom.MultiPolygon;
 import com.vividsolutions.jts.geom.Point;
+import com.vividsolutions.jts.geom.Polygon;
 
 import repast.simphony.context.Context;
 import repast.simphony.space.gis.Geography;
 import repast.simphony.space.gis.ShapefileLoader;
 import repast.simphony.space.graph.Network;
+import repastcity3.agent.IAgent;
 import repastcity3.exceptions.NoIdentifierException;
 import repastcity3.utilities.Helper;
 
@@ -169,7 +180,7 @@ public class GISFunctions {
 	 * @see FixedGeography
 	 */
 	public static <T extends FixedGeography> void readShapefile(Class<T> cl, String shapefileLocation,
-			Geography<T> geog, Context<T> context) throws MalformedURLException, FileNotFoundException {
+			Geography<? super T> geog, Context<? super T> context) throws MalformedURLException, FileNotFoundException {
 		File shapefile = null;
 		ShapefileLoader<T> loader = null;
 		shapefile = new File(shapefileLocation);
@@ -177,14 +188,13 @@ public class GISFunctions {
 			throw new FileNotFoundException("Could not find the given shapefile: " + shapefile.getAbsolutePath());
 		}
 		loader = new ShapefileLoader<T>(cl, shapefile.toURI().toURL(), geog, context);
-		while (loader.hasNext()) {
-			loader.next();
-		}
+		loader.load();
 		
-		// for FixedGeography interface
-		for (T obj : context.getObjects(cl)) {
-			obj.setCoords(geog.getGeometry(obj).getCentroid().getCoordinate());
-		}
+//		// for FixedGeography interface
+//		for (Object _obj : context.getObjects(cl)) {
+//			Building obj=(Building)_obj;
+//			obj.setCoords(geog.getGeometry(obj).getCentroid().getCoordinate());
+//		}
 	}
 
 	/**
@@ -208,8 +218,8 @@ public class GISFunctions {
 	 *             if the shapefile does not exist.
 	 * @see FixedGeography
 	 */
-	public static <T> void readAgentShapefile(Class<T> cl, String shapefileLocation, Geography<T> geog,
-			Context<T> context) throws MalformedURLException, FileNotFoundException {
+	public static <T extends IAgent> void readAgentShapefile(Class<T> cl, String shapefileLocation, Geography<? super T> geog,
+			Context<? super T> context) throws MalformedURLException, FileNotFoundException {
 		
 		File shapefile = null;
 		ShapefileLoader<T> loader = null;
@@ -221,6 +231,56 @@ public class GISFunctions {
 		loader.load();
 	}
 	
+	private static List<SimpleFeature> loadFeaturesFromShapefile(String filename){
+		URL url = null;
+		try {
+			url = new File(filename).toURL();
+		} catch (MalformedURLException e1) {
+			e1.printStackTrace();
+		}
+
+		List<SimpleFeature> features = new ArrayList<SimpleFeature>();
+		
+		// Try to load the shapefile
+		SimpleFeatureIterator fiter = null;
+		ShapefileDataStore store = null;
+		store = new ShapefileDataStore(url);
+
+		try {
+			fiter = store.getFeatureSource().getFeatures().features();
+
+			while(fiter.hasNext()){
+				features.add(fiter.next());
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		finally{
+			fiter.close();
+			store.dispose();
+		}
+		
+		return features;
+	}
+	
+	public static Geometry readBoundaryShapefile(String boundaryFilename)
+	{
+		List<SimpleFeature> features = loadFeaturesFromShapefile(boundaryFilename);
+		Geometry boundary = (MultiPolygon)features.iterator().next().getDefaultGeometry();
+		return boundary;
+	}
+	
+	public static List<Geometry> readAreaBoundaryShapefile(String boundaryFilename)
+	{
+		List<Geometry> boundarys=new ArrayList<>();
+		List<SimpleFeature> features = loadFeaturesFromShapefile(boundaryFilename);	
+		for(SimpleFeature sf:features)
+		{
+			Geometry boundary = (MultiPolygon)sf.getDefaultGeometry();
+			boundarys.add(boundary);
+		}
+		return boundarys;
+	}
 
 
 }

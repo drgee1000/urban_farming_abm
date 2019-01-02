@@ -68,7 +68,7 @@ public class Helper {
 	 * @throws ParameterNotFoundException
 	 *             If the parameter could not be found.
 	 */
-	public static <V> V getParameter(String paramName) throws ParameterNotFoundException {
+	public static <V> V getParameter(String paramName,Class<V> clz) throws ParameterNotFoundException {
 		Parameters p = RunEnvironment.getInstance().getParameters();
 		Object val = p.getValue(paramName);
 

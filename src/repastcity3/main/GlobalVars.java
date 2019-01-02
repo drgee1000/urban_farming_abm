@@ -21,6 +21,8 @@ public abstract class GlobalVars {
 	
 	/* These are strings that match entries in the repastcity.properties file.*/
 	public static final String GISDataDirectory = "GISDataDirectory";
+	public static final String AgentDataPath="AgentDataPath";
+	
 	public static final String ConsumerShapefile = "ConsumerShapefile";
 	public static final String BuildingShapefile = "BuildingShapefile";
 	public static final String RoadShapefile = "RoadShapefile";
@@ -35,6 +37,9 @@ public abstract class GlobalVars {
 	public static final String SubstationShapefile = "SubstationShapefile";
 	public static final String SchoolShapefile="SchoolShapefile";
 	public static final String SupermarketShapefile="SupermarketShapefile";
+	public static final String CityBoundaryShapefile="CityBoundaryShapefile";
+	public static final String FarmBoundaryShapefile="FarmBoundaryShapefile";
+	public static final String SupermarketBoundaryShapefile="SupermarketBoundaryShapefile";
 	
 	
 	public static final class GEOGRAPHY_PARAMS {

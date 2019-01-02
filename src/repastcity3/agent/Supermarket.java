@@ -21,6 +21,7 @@ import repastcity3.environment.SaleLocation;
 import repastcity3.environment.food.Food;
 import repastcity3.environment.food.FoodOrder;
 import repastcity3.environment.food.FoodEntry;
+import repastcity3.main.AgentControl;
 import repastcity3.main.ContextManager;
 import repastcity3.utilities.Helper;
 
@@ -194,7 +195,7 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 		 * there's no other farm to go
 		 */
 
-		Iterator<Farm> iter = new RandomIterator<Farm>(ContextManager.farmContext.iterator());
+		Iterator<Farm> iter = new RandomIterator<Farm>(AgentControl.getFarmAgents().iterator());
 		while (iter.hasNext()) { // loop through all farms
 			FoodOrder fo = new FoodOrder();
 			Farm f = iter.next();

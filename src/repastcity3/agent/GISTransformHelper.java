@@ -27,7 +27,7 @@ public class GISTransformHelper {
 	private MathTransform transform;
 	private AttributeType type;
 
-	public GISTransformHelper(Class clazz, URL shapefile) {
+	public <T> GISTransformHelper(Class<T> clazz, URL shapefile) {
 		ShapefileDataStore store = null;
 		try {
 			BeanInfo info = Introspector.getBeanInfo(clazz, Object.class);
