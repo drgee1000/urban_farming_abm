@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -28,6 +29,10 @@ import repastcity3.exceptions.AgentCreationException;
 import repastcity3.main.AgentControl;
 import repastcity3.main.ContextManager;
 import repastcity3.main.GlobalVars;
+import repastcity3.utilities.dataUtility.ConsumerType;
+import repastcity3.utilities.dataUtility.SupermarketType;
+import repastcity3.utilities.ioUtility.DataLoader;
+import repastcity3.utilities.dataUtility.AgentTypeGenerator;
 
 public class ConsumerFactory {
 
@@ -50,14 +55,15 @@ public class ConsumerFactory {
 			String boundaryFileName = ContextManager.getProperty(GlobalVars.GISDataDirectory)
 					+ ContextManager.getProperty(GlobalVars.CityBoundaryShapefile);
 
-			String agentDataPath = ContextManager.getProperty(GlobalVars.AgentDataPath);
+			String consumerTypePath = ContextManager.getProperty(GlobalVars.AgentDataDirectory)
+					+ContextManager.getProperty(GlobalVars.ConsumerTypeFile);
 
 			Geometry boundary = GISFunctions.readBoundaryShapefile(boundaryFileName);
 
 			GeometryFactory fac = new GeometryFactory();
 			// Generate random points in the area to create agents.
 			List<Coordinate> agentCoords = GeometryUtil.generateRandomPointsInPolygon(boundary, num);
-			ConsumerSimpleFactory consumerFac = new ConsumerSimpleFactory(agentDataPath);
+			ConsumerSimpleFactory consumerFac = new ConsumerSimpleFactory(consumerTypePath);
 
 			int agentsCreated = 0;
 			for (Coordinate coord : agentCoords) {
@@ -83,7 +89,6 @@ public class ConsumerFactory {
 	private void createPointAgents() throws AgentCreationException {
 
 		String fileName;
-		String className;
 		Class<Consumer> clazz;
 		fileName = ContextManager.getProperty(GlobalVars.GISDataDirectory)
 				+ ContextManager.getProperty(GlobalVars.ConsumerShapefile);
@@ -124,39 +129,37 @@ public class ConsumerFactory {
 }
 
 class ConsumerSimpleFactory {
-	private AgentDataGenerator agentDataGenerator;
 
 	private Uniform nRand;
+	private ArrayList<ConsumerType> consumerTypes;
+	private double relativeProbSum;
 
-	public ConsumerSimpleFactory(String agentDataPath) throws IOException {
+	public ConsumerSimpleFactory(String consumerTypePath) throws IOException {
 		nRand = RandomHelper.getUniform();
-		agentDataGenerator = getAgentDataGenerator(agentDataPath);
+		consumerTypes=DataLoader.loadConsumerType(consumerTypePath);
+		relativeProbSum=0;
+		for(ConsumerType consumerType:consumerTypes)
+		{
+			relativeProbSum+=consumerType.percentage;
+		}
 	}
 
-	private AgentDataGenerator getAgentDataGenerator(String agentDataPath) throws IOException {
-
-		// read agent config file
-		File file = new File(agentDataPath);
-		FileReader fileReader = new FileReader(file);
-		BufferedReader bReader = new BufferedReader(fileReader);
-		Gson gson = new Gson();
-		String data = bReader.readLine();
-		StringBuffer sb = new StringBuffer();
-		while (data != null) {
-			sb.append(data);
-			data = bReader.readLine();
+	private ConsumerType getRandomType()
+	{
+		double prob = nRand.nextDoubleFromTo(0, this.relativeProbSum);
+		double tmpSum=0;
+		for(ConsumerType consumerType:consumerTypes)
+		{
+			if(prob<consumerType.percentage+tmpSum)
+				return consumerType;
+			else 
+				tmpSum+=consumerType.percentage;
 		}
-		List<AgentData> agentDatas = gson.fromJson(sb.toString(), new TypeToken<List<AgentData>>() {
-		}.getType());
-		int agentTypeSize = agentDatas.size();
-		System.out.println("agentTypeSize: " + agentTypeSize);
-		AgentDataGenerator agentDataGenerator = new AgentDataGenerator(agentDatas);
-		return agentDataGenerator;
+		return null;
 	}
 
 	public Consumer createConsumer() {
-		double agentTypeProb = nRand.nextDoubleFromTo(0, 1);
-		AgentData agentData = agentDataGenerator.getNext();
+		ConsumerType agentData = getRandomType();
 		double agentGenderProb = nRand.nextDoubleFromTo(0, 1);
 		Gender gender = agentGenderProb <= agentData.mfRatio ? Gender.MALE : Gender.FEMALE;
 

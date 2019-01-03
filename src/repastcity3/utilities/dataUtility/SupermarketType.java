@@ -1,15 +1,15 @@
 package repastcity3.utilities.dataUtility;
 
 public class SupermarketType {
-	private double ratio;
+	private double percentage;
 	private int urbanPeriod;
 	private int exPeriod; //in weeks
 	private double sourcingPlan;
 	private double stockThreshold;
 	private double radius;
 	private double priceFactor;
-	public SupermarketType(double ratio, int uP, int eP, double sP, double sT, double r, double pf) {
-		this.ratio = ratio;
+	public SupermarketType(double percentage, int uP, int eP, double sP, double sT, double r, double pf) {
+		this.percentage = percentage;
 		this.urbanPeriod = uP;
 		this.exPeriod = eP;
 		this.sourcingPlan = sP;
@@ -18,8 +18,8 @@ public class SupermarketType {
 		this.priceFactor = pf;
 		
 	}
-	public double getRatio() {
-		return ratio;
+	public double getPercentage() {
+		return percentage;
 	}
 	public int getUrbanPeriod() {
 		return urbanPeriod;

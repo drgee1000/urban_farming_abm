@@ -9,15 +9,21 @@ import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.Point;
 
+import cern.jet.random.Uniform;
 import repast.simphony.context.Context;
 import repast.simphony.gis.util.GeometryUtil;
+import repast.simphony.random.RandomHelper;
 import repast.simphony.space.gis.Geography;
 import repastcity3.agent.Farm;
+import repastcity3.agent.Supermarket;
 import repastcity3.environment.GISFunctions;
 import repastcity3.exceptions.AgentCreationException;
 import repastcity3.main.AgentControl;
 import repastcity3.main.ContextManager;
 import repastcity3.main.GlobalVars;
+import repastcity3.utilities.dataUtility.FarmType;
+import repastcity3.utilities.dataUtility.SupermarketType;
+import repastcity3.utilities.ioUtility.DataLoader;
 
 public class FarmFactory {
 
@@ -107,12 +113,14 @@ public class FarmFactory {
 			agentCoords = GeometryUtil.generateRandomPointsInPolygon(boundary, num);
 		}
 
-
+		String farmTypeFilename=ContextManager.getProperty(GlobalVars.AgentDataDirectory)
+				+ContextManager.getProperty(GlobalVars.FarmTypeFile);
+		FarmSimpleFactory farmFac=new FarmSimpleFactory(farmTypeFilename);
 
 		// Create the agents from the collection of random coords.
 		int numAgents = 0;
 		for (Coordinate coord : agentCoords) {
-			Farm farm = new Farm();
+			Farm farm = farmFac.createFarm();
 			AgentControl.addFarmToContext(farm);
 
 			Point geom = fac.createPoint(coord);
@@ -126,4 +134,46 @@ public class FarmFactory {
 
 
 
+}
+
+
+class FarmSimpleFactory
+{
+	private Uniform nRand;
+	private ArrayList<FarmType> farmTypes;
+	private double relativeProbSum;
+	public FarmSimpleFactory(String farmTypePath)
+	{
+		nRand = RandomHelper.getUniform();		
+		farmTypes=DataLoader.loadFarmType(farmTypePath);		
+		relativeProbSum=0;
+		for(FarmType farmType:farmTypes)
+		{
+			relativeProbSum+=farmType.getPercentage();
+		}
+	}
+	
+	private FarmType getRandomType()
+	{
+		double prob = nRand.nextDoubleFromTo(0, this.relativeProbSum);
+		double tmpSum=0;
+		for(FarmType farmType:farmTypes)
+		{
+			if(prob<farmType.getPercentage()+tmpSum)
+				return farmType;
+			else 
+				tmpSum+=farmType.getPercentage();
+			
+		}
+		return null;
+	}
+	
+	public Farm createFarm()
+	{
+		FarmType ft=getRandomType();
+		Farm farm=new Farm(ft.getTech(),ft.getCapacity(),ft.getPriceFactor(),farmTypes);
+		return farm;
+	}
+	
+	
 }

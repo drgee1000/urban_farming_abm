@@ -1,11 +1,11 @@
-package repastcity3.agent.factory;
+package repastcity3.utilities.dataUtility;
 
 import com.google.gson.annotations.SerializedName;
 
 import repastcity3.agent.Catagory;
 import repastcity3.agent.Income;
 
-public class AgentData {
+public class ConsumerType {
 
 	public Catagory catagory;
 

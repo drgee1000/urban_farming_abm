@@ -1,7 +1,7 @@
 package repastcity3.utilities.dataUtility;
 
-public class ProductionType {
-	private int type;
+public class FarmType {
+	private double percentage;
 	private double density; // kg/sqm
 	private int period; // in weeks
 	private double price;
@@ -9,9 +9,9 @@ public class ProductionType {
 	private double capacity;
 	private double priceFactor;
 
-	public ProductionType(int type, double density, int period, double price, double tech, double capacity,
+	public FarmType(double percentage, double density, int period, double price, double tech, double capacity,
 			double priceFactor) {
-		this.type = type;
+		this.percentage = percentage;
 		this.density = density;
 		this.period = period;
 		this.price = price;
@@ -20,8 +20,8 @@ public class ProductionType {
 		this.priceFactor = priceFactor;
 	}
 
-	public int getType() {
-		return type;
+	public double getPercentage() {
+		return percentage;
 	}
 
 	public double getDensity() {
@@ -49,7 +49,7 @@ public class ProductionType {
 	}
 
 	public String toString() {
-		String s = "type:" + Integer.toString(this.type) + "density:" + Double.toString(density) + "period:"
+		String s = "percentage:" + Double.toString(this.percentage) + "density:" + Double.toString(density) + "period:"
 				+ Integer.toString(this.period) + "price" + Double.toString(this.price);
 		return s;
 

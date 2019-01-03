@@ -17,7 +17,7 @@ import repastcity3.environment.food.FoodOrder;
 import repastcity3.environment.food.Waste;
 import repastcity3.main.ContextManager;
 import repastcity3.utilities.Helper;
-import repastcity3.utilities.dataUtility.ProductionType;
+import repastcity3.utilities.dataUtility.FarmType;
 import repastcity3.utilities.ioUtility.DataLoader;
 import repastcity3.utilities.ioUtility.FoodUtility;
 
@@ -25,7 +25,7 @@ public class Farm extends SaleLocation {
 	// #type of food
 	// amount of all food
 	// private double count;
-	private List<ProductionType> productionTypes;
+	private List<FarmType> productionTypes;
 	private double score;
 	private int score_count;
 	private PriorityQueue<Food> productionQueue;
@@ -37,8 +37,9 @@ public class Farm extends SaleLocation {
 	private double priceFactor;
 	private double totalCost;
 	private double totalEnergyCost;
+	private double totalIncome;
 
-	public Farm() {
+	public Farm(double tech,double capacity,double priceFactor,List<FarmType> productionTypes) {
 		// double setupCost,double dailyMaintenanceCost, double fund,List<Food> stock
 		super(1000, 100, 50000);
 		System.out.println("call constructor");
@@ -52,15 +53,10 @@ public class Farm extends SaleLocation {
 		} else if (type == 2) {
 			area = 2;
 		}
-		productionTypes = DataLoader.loadProductionType();
-		ProductionType pT = productionTypes.get(0);
-		// System.out.println(this.toString()+"init");
-		for (ProductionType pt : productionTypes) {
-			// System.out.println(pt.toString());
-		}
-		this.tech = pT.getTech();
-		this.capacity = pT.getCapacity();
-		this.priceFactor = pT.getPriceFactor();
+		this.productionTypes =productionTypes;
+		this.tech = tech;
+		this.capacity = capacity;
+		this.priceFactor = priceFactor;
 		this.totalCost = 0;
 		this.totalEnergyCost = 0;
 		waste = new HashMap<String, List<Waste>>();
@@ -85,6 +81,7 @@ public class Farm extends SaleLocation {
 		initStock();
 
 	}
+	
 
 	private void enqueProductionPlan(List<Food> plan) {
 		for (Food food : plan) {
@@ -181,7 +178,7 @@ public class Farm extends SaleLocation {
 			Food f = foodList.get(i);
 			t = r.nextInt(productionTypes.size());
 			//// System.out.println("i"+i);
-			ProductionType pt = productionTypes.get(t);
+			FarmType pt = productionTypes.get(t);
 			f.setProductionTick(tick + pt.getPeriod() * 7);
 			f.setAmount(pt.getDensity() * area * 1000);
 			f.setPrice(pt.getPrice());
@@ -285,7 +282,7 @@ public class Farm extends SaleLocation {
 
 	public void sell(FoodOrder order, String sID) {
 		HashMap<Food, Double> list = order.getList();
-		double totalIncome = this.fund;
+		double income = this.fund;
 		list.forEach((food, amount) -> {
 			String type = food.getType();
 			double newAmount = food.getAmount() - amount;
@@ -295,19 +292,21 @@ public class Farm extends SaleLocation {
 				stock.get(type).remove(food);
 			}
 			this.fund += amount * food.getPrice(); // here price is "$ per g"
+
 			double stockNum = stockCount.get(type);
 			stockCount.put(type, stockNum - amount);
 			// food.setSource(this.toString());
 			// count -= amount;
 		});
 
-		totalIncome = this.fund - totalIncome;
+		income += this.fund - income;
+		totalIncome += income;
 		synchronized (ContextManager.dLogger) {
 			try {
 				// //System.out.println("====================================");
 				// //System.out.println("recordSale!" + " order size:" +
 				// order.getList().keySet().size());
-				ContextManager.dLogger.recordSale(order, Helper.getCurrentTick(), totalIncome, this.toString(), sID);
+				ContextManager.dLogger.recordSale(order, Helper.getCurrentTick(), income, this.toString(), sID);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -345,6 +344,10 @@ public class Farm extends SaleLocation {
 
 	public void setTotalEnergyCost(double totalEnergyCost) {
 		this.totalEnergyCost = totalEnergyCost;
+	}
+
+	public double getTotalIncome() {
+		return totalIncome;
 	}
 
 }
