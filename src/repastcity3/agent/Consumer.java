@@ -14,6 +14,9 @@ import java.util.logging.Logger;
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.GeometryFactory;
 
+import repast.simphony.query.space.gis.GeographyWithin;
+import repast.simphony.space.gis.Geography;
+import repast.simphony.util.collections.IndexedIterable;
 import repastcity3.environment.Residential;
 import repastcity3.environment.Route;
 import repastcity3.environment.food.Food;
@@ -63,6 +66,7 @@ public class Consumer implements People {
 	private Double[] food_preference;
 	private Double[] price_preference;
 	
+	private List<Supermarket> supermarkets;
 
 	public Consumer(Catagory catagory, Gender gender, Income income, Double consumption_rate, Double[] food_preference, Double[] price_preference) {
 		this.id = uniqueID++;
@@ -79,6 +83,8 @@ public class Consumer implements People {
 		// -----------
 		this.food_preference = food_preference;
 		this.price_preference = price_preference;
+		// -----------
+		this.supermarkets = new ArrayList<Supermarket>();
 		setPurpose();
 	}
 
@@ -129,7 +135,25 @@ public class Consumer implements People {
 		this.buy_time = 0;
 		setPurpose();
 	}
-
+	
+	public static void initSupermarkets(Geography<IAgent> context, IndexedIterable<Supermarket> agents) {
+		int length = agents.size();
+		for(int i=0; i<length; i++) {
+			Supermarket s = agents.get(i);
+			GeographyWithin gw = new GeographyWithin(context, s.getRadius() * 1000, s);
+			Iterator iter = gw.query().iterator();
+			while(iter.hasNext()) {
+				Object o = iter.next();
+				// System.out.println("enter loop");
+				if (o instanceof Consumer) {
+					// System.out.println("consumer print within: " + o.toString());
+					// System.out.println("add");
+					((Consumer) o).supermarkets.add(s);
+				}
+			}
+			
+		}
+	}
 	public void setHealth(int mealEnergy) {
 		this.healthThreshold = 0.5 * mealEnergy;
 		this.caloryConsumption = mealEnergy / 50;
@@ -320,7 +344,8 @@ public class Consumer implements People {
 				return o2.compareTo(o1);
 			}
 		});
-		Iterator<Supermarket> iterator = AgentControl.getSupermarketAgents().iterator();
+		// Iterator<Supermarket> iterator = AgentControl.getSupermarketAgents().iterator();
+		Iterator<Supermarket> iterator = this.supermarkets.iterator();
 		while (iterator.hasNext()) {
 			Supermarket supermarket = iterator.next();
 			double score = getSupermarketScore(supermarket);
@@ -466,7 +491,8 @@ public class Consumer implements People {
 	}
 
 	public Supermarket findPopularSupermarket() {
-		Iterator<Supermarket> iter = AgentControl.getSupermarketAgents().iterator();
+		// Iterator<Supermarket> iter = AgentControl.getSupermarketAgents().iterator();
+		 Iterator<Supermarket> iter = this.supermarkets.iterator();
 		double max = 0;
 		Supermarket PopularSupermarket = null;
 		while (iter.hasNext()) {
@@ -692,26 +718,41 @@ public class Consumer implements People {
 			switch(food.getType()) {
 				case "grain":
 					grain_sum++;
+					if(food.getPrice() > this.price_preference[0]*food.getValue()){
+						this.satisfaction--;
+					}
 					if (! food.getSource().equals("external"))
 						farm_grain_count++;
 					break;
 				case "vegetable":
 					vegetable_sum++;
+					if(food.getPrice() > this.price_preference[1]*food.getValue()){
+						this.satisfaction--;
+					}
 					if (! food.getSource().equals("external"))
 						farm_vegetable_count++;
 					break;
 				case "meat":
 					meat_sum++;
+					if(food.getPrice() > this.price_preference[2]*food.getValue()){
+						this.satisfaction--;
+					}
 					if (! food.getSource().equals("external"))
 						farm_meat_count++;
 					break;
 				case "dairy":
 					dairy_sum++;
+					if(food.getPrice() > this.price_preference[3]*food.getValue()){
+						this.satisfaction--;
+					}
 					if (! food.getSource().equals("external"))
 						farm_dairy_count++;
 					break;
 				case "fruit":
 					fruit_sum++;
+					if(food.getPrice() > this.price_preference[4]*food.getValue()){
+						this.satisfaction--;
+					}
 					if (! food.getSource().equals("external"))
 						farm_fruit_count++;
 					break;

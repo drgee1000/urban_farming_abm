@@ -21,6 +21,7 @@ import repast.simphony.space.gis.Geography;
 import repast.simphony.space.gis.GeographyParameters;
 import repast.simphony.space.gis.SimpleAdder;
 import repast.simphony.space.graph.Network;
+import repastcity3.agent.Consumer;
 import repastcity3.agent.IAgent;
 import repastcity3.agent.Supermarket;
 import repastcity3.agent.ThreadedAgentScheduler;
@@ -249,10 +250,12 @@ public class ContextManager implements ContextBuilder<Object> {
 			SupermarketFactory supermarketFactory = new SupermarketFactory(agentContext, agentGeography);
 			supermarketFactory.createAgents(supermarketNum, useArea2);
 			Supermarket.initFarmList(agentGeography, AgentControl.getSupermarketAgents());
+			
 			// Consumer agent create
 			int agentNum = Helper.getParameter(MODEL_PARAMETERS.AGENT_NUM.toString(), Integer.class);
 			ConsumerFactory agentFactory = new ConsumerFactory(agentContext, agentGeography);
 			agentFactory.createAgents(agentNum);
+			Consumer.initSupermarkets(agentGeography, AgentControl.getSupermarketAgents());
 
 		} catch (NumberFormatException e) {
 			LOGGER.log(Level.SEVERE, "cannot convert agent_num into an integer.", e);
