@@ -23,8 +23,6 @@ import repastcity3.environment.food.FoodOrder;
 import repastcity3.environment.food.Waste;
 import repastcity3.main.ContextManager;
 import repastcity3.utilities.Helper;
-import repastcity3.utilities.dataUtility.SupermarketType;
-import repastcity3.utilities.ioUtility.DataLoader;
 import repastcity3.utilities.ioUtility.FoodUtility;
 
 public class Supermarket extends SaleLocation implements FixedGeography {
@@ -48,7 +46,8 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 	private HashMap<String, List<Waste>> waste;
 	private double urbanPriceFactor = 1.1; // price = originalPrice * priceFactor
 
-	public Supermarket(int urbanSourcePeriod,int externalSourcePeriod,double stockThreshold,double urbanPriceFactor,double radius) {
+	public Supermarket(int urbanSourcePeriod, int externalSourcePeriod, double stockThreshold, double urbanPriceFactor,
+			double radius) {
 		// setup Cost, daily maintainance cost, fund
 		super(1000, 100, 50000);
 		this.id = uniqueID++;
@@ -271,7 +270,7 @@ public class Supermarket extends SaleLocation implements FixedGeography {
 				}
 
 			}
-			f.sell(fo, this.toString());
+			f.sell(fo, this);
 
 			if (planEmpty()) {
 				break;

@@ -236,6 +236,8 @@ public class DataLogger {
 		double totalCost;
 		@Expose()
 		double totalIncome;
+		@Expose()
+		double totalDiliveryCost;
 
 		public endingRecord(SaleLocation l) {
 			this.id = l.toString();
@@ -245,10 +247,12 @@ public class DataLogger {
 				this.totalCost = ((Farm) l).getTotalCost();
 				this.totalEnergyCost = ((Farm) l).getTotalEnergyCost();
 				this.totalIncome = ((Farm) l).getTotalIncome();
+				this.totalDiliveryCost = ((Farm) l).getDiliveryCost();
 			} else {
 				this.totalCost = ((Supermarket) l).getTotalCost();
-				this.totalEnergyCost = 0;
+				this.totalEnergyCost = -1;
 				this.totalIncome = ((Supermarket) l).getTotalIncome();
+				this.totalDiliveryCost = -1;
 			}
 		}
 	}

@@ -11,20 +11,23 @@ import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Random;
 
+import com.vividsolutions.jts.geom.Coordinate;
+
 import repastcity3.environment.SaleLocation;
 import repastcity3.environment.food.Food;
 import repastcity3.environment.food.FoodOrder;
 import repastcity3.environment.food.Waste;
+import repastcity3.main.AgentControl;
 import repastcity3.main.ContextManager;
 import repastcity3.utilities.Helper;
 import repastcity3.utilities.dataUtility.FarmType;
-import repastcity3.utilities.ioUtility.DataLoader;
 import repastcity3.utilities.ioUtility.FoodUtility;
 
 public class Farm extends SaleLocation {
 	// #type of food
 	// amount of all food
 	// private double count;
+	static final double constDis = 1000;
 	private List<FarmType> productionTypes;
 	private double score;
 	private int score_count;
@@ -38,8 +41,9 @@ public class Farm extends SaleLocation {
 	private double totalCost;
 	private double totalEnergyCost;
 	private double totalIncome;
+	private double totalDiliveryCost;
 
-	public Farm(double tech,double capacity,double priceFactor,List<FarmType> productionTypes) {
+	public Farm(double tech, double capacity, double priceFactor, List<FarmType> productionTypes) {
 		// double setupCost,double dailyMaintenanceCost, double fund,List<Food> stock
 		super(1000, 100, 50000);
 		System.out.println("call constructor");
@@ -53,12 +57,13 @@ public class Farm extends SaleLocation {
 		} else if (type == 2) {
 			area = 2;
 		}
-		this.productionTypes =productionTypes;
+		this.productionTypes = productionTypes;
 		this.tech = tech;
 		this.capacity = capacity;
 		this.priceFactor = priceFactor;
 		this.totalCost = 0;
 		this.totalEnergyCost = 0;
+		this.totalDiliveryCost = 0;
 		waste = new HashMap<String, List<Waste>>();
 
 		stockCount = new HashMap<String, Double>();
@@ -81,7 +86,6 @@ public class Farm extends SaleLocation {
 		initStock();
 
 	}
-	
 
 	private void enqueProductionPlan(List<Food> plan) {
 		for (Food food : plan) {
@@ -280,7 +284,7 @@ public class Farm extends SaleLocation {
 		return stock.keySet().size() > 0;
 	}
 
-	public void sell(FoodOrder order, String sID) {
+	public void sell(FoodOrder order, Supermarket s) {
 		HashMap<Food, Double> list = order.getList();
 		double income = this.fund;
 		list.forEach((food, amount) -> {
@@ -292,21 +296,24 @@ public class Farm extends SaleLocation {
 				stock.get(type).remove(food);
 			}
 			this.fund += amount * food.getPrice(); // here price is "$ per g"
-
+			this.totalDiliveryCost += this.getDistance(s) * amount;
 			double stockNum = stockCount.get(type);
 			stockCount.put(type, stockNum - amount);
+
 			// food.setSource(this.toString());
 			// count -= amount;
 		});
 
 		income += this.fund - income;
 		totalIncome += income;
+
 		synchronized (ContextManager.dLogger) {
 			try {
 				// //System.out.println("====================================");
 				// //System.out.println("recordSale!" + " order size:" +
 				// order.getList().keySet().size());
-				ContextManager.dLogger.recordSale(order, Helper.getCurrentTick(), income, this.toString(), sID);
+				ContextManager.dLogger.recordSale(order, Helper.getCurrentTick(), income, this.toString(),
+						s.toString());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -314,6 +321,18 @@ public class Farm extends SaleLocation {
 
 		// let order be collected by GC
 		order = null;
+	}
+
+	public double getDistance(Supermarket supermarket) {
+		Coordinate origin = AgentControl.getAgentGeometry(this).getCoordinate();
+		Coordinate destination = AgentControl.getAgentGeometry(supermarket).getCentroid().getCoordinate();
+		double dis = (origin.x - destination.x) * (origin.x - destination.x)
+				+ (origin.y - destination.y) * (origin.y - destination.y);
+		return dis * constDis;
+	}
+
+	public double getDiliveryCost() {
+		return this.totalDiliveryCost;
 	}
 
 	private void printStock() {
