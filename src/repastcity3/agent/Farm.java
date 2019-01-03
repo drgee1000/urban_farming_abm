@@ -33,7 +33,7 @@ public class Farm extends SaleLocation {
 	private int score_count;
 	private PriorityQueue<Food> productionQueue;
 	private HashMap<String, Double> stockCount; // count calory of each food category
-	private int area;
+	private double area;
 	private static int uniqueID = 0;
 	private double tech;
 	private double capacity;
@@ -43,20 +43,12 @@ public class Farm extends SaleLocation {
 	private double totalIncome;
 	private double totalDiliveryCost;
 
-	public Farm(double tech, double capacity, double priceFactor, List<FarmType> productionTypes) {
+	public Farm(double tech, double capacity, double priceFactor,double area, List<FarmType> productionTypes) {
 		// double setupCost,double dailyMaintenanceCost, double fund,List<Food> stock
 		super(1000, 100, 50000);
 		System.out.println("call constructor");
 		this.identifier = Integer.toString(uniqueID++);
-		Random r = new Random();
-		int type = r.nextInt(3);
-		if (type == 0) {
-			area = 5000;
-		} else if (type == 1) {
-			area = 1000;
-		} else if (type == 2) {
-			area = 2;
-		}
+		this.area=area;
 		this.productionTypes = productionTypes;
 		this.tech = tech;
 		this.capacity = capacity;

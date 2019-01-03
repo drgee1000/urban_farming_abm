@@ -8,9 +8,10 @@ public class FarmType {
 	private double tech;
 	private double capacity;
 	private double priceFactor;
+	private double area;
 
 	public FarmType(double percentage, double density, int period, double price, double tech, double capacity,
-			double priceFactor) {
+			double priceFactor,double area) {
 		this.percentage = percentage;
 		this.density = density;
 		this.period = period;
@@ -18,6 +19,7 @@ public class FarmType {
 		this.tech = tech;
 		this.capacity = capacity;
 		this.priceFactor = priceFactor;
+		this.area=area;
 	}
 
 	public double getPercentage() {
@@ -53,5 +55,13 @@ public class FarmType {
 				+ Integer.toString(this.period) + "price" + Double.toString(this.price);
 		return s;
 
+	}
+
+	public double getArea() {
+		return area;
+	}
+
+	public void setArea(double area) {
+		this.area = area;
 	}
 }
