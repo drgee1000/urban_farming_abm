@@ -4,11 +4,11 @@
   <styles>
     <entry>
       <string>repastcity3.agent.Consumer</string>
-      <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;sld:UserStyle xmlns=&quot;http://www.opengis.net/sld&quot; xmlns:sld=&quot;http://www.opengis.net/sld&quot; xmlns:gml=&quot;http://www.opengis.net/gml&quot; xmlns:ogc=&quot;http://www.opengis.net/ogc&quot;&gt;&lt;sld:Name&gt;Default Styler&lt;/sld:Name&gt;&lt;sld:Title&gt;repastcity3.agent.Consumer.FeatureType&lt;/sld:Title&gt;&lt;sld:FeatureTypeStyle&gt;&lt;sld:Name&gt;name&lt;/sld:Name&gt;&lt;sld:Title&gt;repastcity3.agent.Consumer.FeatureType&lt;/sld:Title&gt;&lt;sld:FeatureTypeName&gt;repastcity3.agent.Consumer.FeatureType&lt;/sld:FeatureTypeName&gt;&lt;sld:Rule&gt;&lt;sld:Title&gt; &lt;/sld:Title&gt;&lt;sld:PointSymbolizer&gt;&lt;sld:Graphic&gt;&lt;sld:Mark&gt;&lt;sld:WellKnownName&gt;circle&lt;/sld:WellKnownName&gt;&lt;sld:Fill&gt;&lt;sld:CssParameter name=&quot;fill&quot;&gt;#000000&lt;/sld:CssParameter&gt;&lt;/sld:Fill&gt;&lt;sld:Stroke&gt;&lt;sld:CssParameter name=&quot;stroke-opacity&quot;&gt;0.0&lt;/sld:CssParameter&gt;&lt;sld:CssParameter name=&quot;stroke-width&quot;&gt;0.0&lt;/sld:CssParameter&gt;&lt;/sld:Stroke&gt;&lt;/sld:Mark&gt;&lt;sld:Size&gt;3&lt;/sld:Size&gt;&lt;/sld:Graphic&gt;&lt;/sld:PointSymbolizer&gt;&lt;/sld:Rule&gt;&lt;/sld:FeatureTypeStyle&gt;&lt;/sld:UserStyle&gt;</string>
+      <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;sld:UserStyle xmlns=&quot;http://www.opengis.net/sld&quot; xmlns:sld=&quot;http://www.opengis.net/sld&quot; xmlns:gml=&quot;http://www.opengis.net/gml&quot; xmlns:ogc=&quot;http://www.opengis.net/ogc&quot;&gt;&lt;sld:Name&gt;Default Styler&lt;/sld:Name&gt;&lt;sld:Title&gt;repastcity3.agent.Consumer.FeatureType&lt;/sld:Title&gt;&lt;sld:FeatureTypeStyle&gt;&lt;sld:Name&gt;name&lt;/sld:Name&gt;&lt;sld:Title&gt;repastcity3.agent.Consumer.FeatureType&lt;/sld:Title&gt;&lt;sld:FeatureTypeName&gt;repastcity3.agent.Consumer.FeatureType&lt;/sld:FeatureTypeName&gt;&lt;sld:Rule&gt;&lt;sld:Title&gt; &lt;/sld:Title&gt;&lt;sld:PointSymbolizer&gt;&lt;sld:Graphic&gt;&lt;sld:Mark&gt;&lt;sld:WellKnownName&gt;circle&lt;/sld:WellKnownName&gt;&lt;sld:Fill&gt;&lt;sld:CssParameter name=&quot;fill&quot;&gt;#000000&lt;/sld:CssParameter&gt;&lt;/sld:Fill&gt;&lt;sld:Stroke&gt;&lt;sld:CssParameter name=&quot;stroke-opacity&quot;&gt;0.0&lt;/sld:CssParameter&gt;&lt;/sld:Stroke&gt;&lt;/sld:Mark&gt;&lt;sld:Size&gt;3&lt;/sld:Size&gt;&lt;/sld:Graphic&gt;&lt;/sld:PointSymbolizer&gt;&lt;/sld:Rule&gt;&lt;/sld:FeatureTypeStyle&gt;&lt;/sld:UserStyle&gt;</string>
     </entry>
     <entry>
       <string>repastcity3.agent.Supermarket</string>
-      <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;sld:UserStyle xmlns=&quot;http://www.opengis.net/sld&quot; xmlns:sld=&quot;http://www.opengis.net/sld&quot; xmlns:gml=&quot;http://www.opengis.net/gml&quot; xmlns:ogc=&quot;http://www.opengis.net/ogc&quot;&gt;&lt;sld:Name&gt;Default Styler&lt;/sld:Name&gt;&lt;sld:Title&gt;repastcity3.agent.Supermarket.FeatureType&lt;/sld:Title&gt;&lt;sld:FeatureTypeStyle&gt;&lt;sld:Name&gt;name&lt;/sld:Name&gt;&lt;sld:Title&gt;repastcity3.agent.Supermarket.FeatureType&lt;/sld:Title&gt;&lt;sld:FeatureTypeName&gt;repastcity3.agent.Supermarket.FeatureType&lt;/sld:FeatureTypeName&gt;&lt;sld:Rule&gt;&lt;sld:Title&gt; &lt;/sld:Title&gt;&lt;sld:PointSymbolizer&gt;&lt;sld:Graphic&gt;&lt;sld:Mark&gt;&lt;sld:Fill&gt;&lt;sld:CssParameter name=&quot;fill&quot;&gt;#33CCFF&lt;/sld:CssParameter&gt;&lt;/sld:Fill&gt;&lt;sld:Stroke&gt;&lt;sld:CssParameter name=&quot;stroke-opacity&quot;&gt;0.0&lt;/sld:CssParameter&gt;&lt;sld:CssParameter name=&quot;stroke-width&quot;&gt;0.0&lt;/sld:CssParameter&gt;&lt;/sld:Stroke&gt;&lt;/sld:Mark&gt;&lt;sld:Size&gt;10.0&lt;/sld:Size&gt;&lt;/sld:Graphic&gt;&lt;/sld:PointSymbolizer&gt;&lt;/sld:Rule&gt;&lt;/sld:FeatureTypeStyle&gt;&lt;/sld:UserStyle&gt;</string>
+      <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;sld:UserStyle xmlns=&quot;http://www.opengis.net/sld&quot; xmlns:sld=&quot;http://www.opengis.net/sld&quot; xmlns:gml=&quot;http://www.opengis.net/gml&quot; xmlns:ogc=&quot;http://www.opengis.net/ogc&quot;&gt;&lt;sld:Name&gt;Default Styler&lt;/sld:Name&gt;&lt;sld:Title&gt;repastcity3.agent.Supermarket.FeatureType&lt;/sld:Title&gt;&lt;sld:FeatureTypeStyle&gt;&lt;sld:Name&gt;name&lt;/sld:Name&gt;&lt;sld:Title&gt;repastcity3.agent.Supermarket.FeatureType&lt;/sld:Title&gt;&lt;sld:FeatureTypeName&gt;repastcity3.agent.Supermarket.FeatureType&lt;/sld:FeatureTypeName&gt;&lt;sld:Rule&gt;&lt;sld:Title&gt; &lt;/sld:Title&gt;&lt;sld:PointSymbolizer&gt;&lt;sld:Graphic&gt;&lt;sld:Mark&gt;&lt;sld:Fill&gt;&lt;sld:CssParameter name=&quot;fill&quot;&gt;#00CCFF&lt;/sld:CssParameter&gt;&lt;/sld:Fill&gt;&lt;sld:Stroke&gt;&lt;sld:CssParameter name=&quot;stroke-opacity&quot;&gt;0.0&lt;/sld:CssParameter&gt;&lt;sld:CssParameter name=&quot;stroke-width&quot;&gt;0.0&lt;/sld:CssParameter&gt;&lt;/sld:Stroke&gt;&lt;/sld:Mark&gt;&lt;sld:Size&gt;10.0&lt;/sld:Size&gt;&lt;/sld:Graphic&gt;&lt;/sld:PointSymbolizer&gt;&lt;/sld:Rule&gt;&lt;/sld:FeatureTypeStyle&gt;&lt;/sld:UserStyle&gt;</string>
     </entry>
     <entry>
       <string>repastcity3.agent.Farm</string>
@@ -26,25 +26,25 @@
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>-113685156</hashCode>
+    <hashCode>-1807935535</hashCode>
   </schedParams>
   <layoutInterval>0</layoutInterval>
   <layerOrder>
     <entry>
-      <string>repastcity3.agent.Consumer</string>
-      <int>1</int>
-    </entry>
-    <entry>
-      <string>repastcity3.agent.Supermarket</string>
+      <string>.\data\gis_data\shenzhen\detailed_street.shp</string>
       <int>3</int>
     </entry>
     <entry>
-      <string>repastcity3.agent.Farm</string>
+      <string>repastcity3.agent.Consumer</string>
+      <int>0</int>
+    </entry>
+    <entry>
+      <string>repastcity3.agent.Supermarket</string>
       <int>2</int>
     </entry>
     <entry>
-      <string>./data/gis_data/shenzhen/street.shp</string>
-      <int>0</int>
+      <string>repastcity3.agent.Farm</string>
+      <int>1</int>
     </entry>
   </layerOrder>
   <projections>
@@ -68,8 +68,8 @@
       <string>class repast.simphony.visualization.gis.DisplayGIS.SHP_FILE_STYLE_PROP</string>
       <map>
         <entry>
-          <string>./data/gis_data/shenzhen/street.shp</string>
-          <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;sld:UserStyle xmlns=&quot;http://www.opengis.net/sld&quot; xmlns:sld=&quot;http://www.opengis.net/sld&quot; xmlns:gml=&quot;http://www.opengis.net/gml&quot; xmlns:ogc=&quot;http://www.opengis.net/ogc&quot;&gt;&lt;sld:Name&gt;Default Styler&lt;/sld:Name&gt;&lt;sld:FeatureTypeStyle&gt;&lt;sld:Name&gt;name&lt;/sld:Name&gt;&lt;sld:Rule&gt;&lt;sld:LineSymbolizer&gt;&lt;sld:Stroke&gt;&lt;sld:CssParameter name=&quot;stroke&quot;&gt;#FF0000&lt;/sld:CssParameter&gt;&lt;/sld:Stroke&gt;&lt;/sld:LineSymbolizer&gt;&lt;/sld:Rule&gt;&lt;/sld:FeatureTypeStyle&gt;&lt;/sld:UserStyle&gt;</string>
+          <string>.\data\gis_data\shenzhen\detailed_street.shp</string>
+          <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;sld:UserStyle xmlns=&quot;http://www.opengis.net/sld&quot; xmlns:sld=&quot;http://www.opengis.net/sld&quot; xmlns:gml=&quot;http://www.opengis.net/gml&quot; xmlns:ogc=&quot;http://www.opengis.net/ogc&quot;&gt;&lt;sld:Name&gt;Default Styler&lt;/sld:Name&gt;&lt;sld:Title&gt;detailed_street&lt;/sld:Title&gt;&lt;sld:FeatureTypeStyle&gt;&lt;sld:Name&gt;name&lt;/sld:Name&gt;&lt;sld:Title&gt;detailed_street&lt;/sld:Title&gt;&lt;sld:FeatureTypeName&gt;detailed_street&lt;/sld:FeatureTypeName&gt;&lt;sld:Rule&gt;&lt;sld:Title&gt; &lt;/sld:Title&gt;&lt;sld:LineSymbolizer&gt;&lt;sld:Stroke&gt;&lt;sld:CssParameter name=&quot;stroke&quot;&gt;#FF0000&lt;/sld:CssParameter&gt;&lt;sld:CssParameter name=&quot;stroke-opacity&quot;&gt;0.3&lt;/sld:CssParameter&gt;&lt;/sld:Stroke&gt;&lt;/sld:LineSymbolizer&gt;&lt;/sld:Rule&gt;&lt;/sld:FeatureTypeStyle&gt;&lt;/sld:UserStyle&gt;</string>
         </entry>
       </map>
     </entry>
