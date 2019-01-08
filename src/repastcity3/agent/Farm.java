@@ -28,7 +28,6 @@ public class Farm extends SaleLocation {
 	// amount of all food
 	// private double count;
 	static final double constDis = 1000;
-	private List<FarmType> productionTypes;
 	private double score;
 	private int score_count;
 	private PriorityQueue<Food> productionQueue;
@@ -42,14 +41,19 @@ public class Farm extends SaleLocation {
 	private double totalEnergyCost;
 	private double totalIncome;
 	private double totalDiliveryCost;
+	private int farmType;
+	private int period;
+	private double density;
 
-	public Farm(double tech, double capacity, double priceFactor,double area, List<FarmType> productionTypes) {
+	public Farm(int type, int period, double density, double tech, double capacity, double priceFactor,double area) {
 		// double setupCost,double dailyMaintenanceCost, double fund,List<Food> stock
 		super(1000, 100, 50000);
 		System.out.println("call constructor");
 		this.identifier = Integer.toString(uniqueID++);
+		this.period = period;
+		this.density = density;
+		this.farmType = type;
 		this.area=area;
-		this.productionTypes = productionTypes;
 		this.tech = tech;
 		this.capacity = capacity;
 		this.priceFactor = priceFactor;
@@ -83,12 +87,12 @@ public class Farm extends SaleLocation {
 		for (Food food : plan) {
 			food.setProductionTick((int) (food.getProductionTick() * tech) + 1);
 			productionQueue.add(food);
-			System.out.println("food: " + food.getName() + "  amount: " + food.getAmount() + " Ecost: "
-					+ food.getEnergyCost() + " cost: " + food.getProductionCost());
-			System.out.println("tech:" + tech);
+			//System.out.println("food: " + food.getName() + "  amount: " + food.getAmount() + " Ecost: "
+				//	+ food.getEnergyCost() + " cost: " + food.getProductionCost());
+			//System.out.println("tech:" + tech);
 			totalCost += food.getAmount() * food.getProductionCost() * tech;
 			totalEnergyCost += (getTotalEnergyCost() + food.getEnergyCost() * food.getAmount() * tech);
-			System.out.println("total:" + totalCost + "  total E: " + totalEnergyCost);
+			//System.out.println("total:" + totalCost + "  total E: " + totalEnergyCost);
 		}
 	}
 
@@ -172,12 +176,9 @@ public class Farm extends SaleLocation {
 		int len = foodList.size();
 		for (int i = 0; i < len; i++) {
 			Food f = foodList.get(i);
-			t = r.nextInt(productionTypes.size());
-			//// System.out.println("i"+i);
-			FarmType pt = productionTypes.get(t);
-			f.setProductionTick(tick + pt.getPeriod() * 7);
-			f.setAmount(pt.getDensity() * area * 1000);
-			f.setPrice(pt.getPrice());
+			f.setProductionTick(tick + period * 7);
+			f.setAmount(density * area * 1000);
+			f.setPrice(priceFactor*f.getValue());
 			list.add(f);
 		}
 		enqueProductionPlan(list);
@@ -225,19 +226,11 @@ public class Farm extends SaleLocation {
 
 	@Override
 	public void step() {
-		// System.out.println("farm "+this.id+" start");
-		// int tick = Helper.getCurrentTick();
 		checkExpiredStock();
-		// if (tick % 30 == 0) {
-		// refreshProductionQueue();
-		// }
 		dequeProductionQueue();
-		// printStock();
 		if (productionQueue.size() == 0) {
 			refreshProductionQueue();
 		}
-		// System.out.println("farm "+this.id+" end");
-
 	}
 
 	public void updateScore(double newScore) {
@@ -291,9 +284,6 @@ public class Farm extends SaleLocation {
 			this.totalDiliveryCost += this.getDistance(s) * amount;
 			double stockNum = stockCount.get(type);
 			stockCount.put(type, stockNum - amount);
-
-			// food.setSource(this.toString());
-			// count -= amount;
 		});
 
 		income += this.fund - income;
@@ -301,9 +291,6 @@ public class Farm extends SaleLocation {
 
 		synchronized (ContextManager.dLogger) {
 			try {
-				// //System.out.println("====================================");
-				// //System.out.println("recordSale!" + " order size:" +
-				// order.getList().keySet().size());
 				ContextManager.dLogger.recordSale(order, Helper.getCurrentTick(), income, this.toString(),
 						s.toString());
 			} catch (IOException e) {
@@ -359,6 +346,9 @@ public class Farm extends SaleLocation {
 
 	public double getTotalIncome() {
 		return totalIncome;
+	}
+	public int getFarmType() {
+		return farmType;
 	}
 
 }

@@ -1,6 +1,7 @@
 package repastcity3.utilities.dataUtility;
 
 public class FarmType {
+	private int type;
 	private double percentage;
 	private double density; // kg/sqm
 	private int period; // in weeks
@@ -10,8 +11,9 @@ public class FarmType {
 	private double priceFactor;
 	private double area;
 
-	public FarmType(double percentage, double density, int period, double price, double tech, double capacity,
+	public FarmType(int type, double percentage, double density, int period, double price, double tech, double capacity,
 			double priceFactor,double area) {
+		this.type = type;
 		this.percentage = percentage;
 		this.density = density;
 		this.period = period;
@@ -21,7 +23,9 @@ public class FarmType {
 		this.priceFactor = priceFactor;
 		this.area=area;
 	}
-
+	public int getType() {
+		return type;
+	}
 	public double getPercentage() {
 		return percentage;
 	}
