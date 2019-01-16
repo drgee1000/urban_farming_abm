@@ -1,4 +1,4 @@
-percentage,density,period,price,tech,capacity,priceFactor,area
-0.7,5,2,2,2,400,2,2
-0.2,7,1,2,2,400,2,1000
-0.1,7,1,2,2,400,2,5000
+type,percentage,density,period,price,tech,capacity,priceFactor,area
+1,0.7,5,2,2,2,400,2,2
+2,0.2,7,1,2,2,400,2,1000
+3,0.1,7,1,2,2,400,2,5000

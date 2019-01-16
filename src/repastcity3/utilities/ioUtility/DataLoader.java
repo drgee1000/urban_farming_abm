@@ -113,12 +113,11 @@ public class DataLoader {
 			CSVFormat format = CSVFormat.DEFAULT.withFirstRecordAsHeader();
 			Iterable<CSVRecord> records = format.parse(in);
 			for (CSVRecord record : records) {
-				FarmType pt = new FarmType(Double.valueOf(record.get("percentage")),
+				FarmType pt = new FarmType(Integer.valueOf(record.get("type")),Double.valueOf(record.get("percentage")),
 						Double.valueOf(record.get("density")), Integer.valueOf(record.get("period")),
 						Double.valueOf(record.get("price")), Double.valueOf(record.get("tech")),
 						Double.valueOf(record.get("capacity")), Double.valueOf(record.get("priceFactor")),
 						Double.valueOf(record.get("area")));
-
 				typeList.add(pt);
 			}
 

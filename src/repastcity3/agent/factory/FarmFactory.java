@@ -171,7 +171,7 @@ class FarmSimpleFactory
 	public Farm createFarm()
 	{
 		FarmType ft=getRandomType();
-		Farm farm=new Farm(ft.getTech(),ft.getCapacity(),ft.getPriceFactor(),ft.getArea(),farmTypes);
+		Farm farm=new Farm(ft.getType(),ft.getPeriod(),ft.getDensity(),ft.getTech(),ft.getCapacity(),ft.getPriceFactor(),ft.getArea());
 		return farm;
 	}
 	
