@@ -21,6 +21,12 @@ public abstract class GlobalVars {
 	
 	/* These are strings that match entries in the repastcity.properties file.*/
 	public static final String GISDataDirectory = "GISDataDirectory";
+	public static final String AgentDataDirectory="AgentDataDirectory";
+	public static final String ConsumerTypeFile="ConsumerTypeFile";
+	public static final String FarmTypeFile="FarmTypeFile";
+	public static final String SupermarketTypeFile="SupermarketTypeFile";
+	
+	public static final String ConsumerShapefile = "ConsumerShapefile";
 	public static final String BuildingShapefile = "BuildingShapefile";
 	public static final String RoadShapefile = "RoadShapefile";
 	public static final String ResidentialShapefile = "ResidentialShapefile";
@@ -33,7 +39,10 @@ public abstract class GlobalVars {
 	public static final String BuildingsRoadsCache = "BuildingsRoadsCache";
 	public static final String SubstationShapefile = "SubstationShapefile";
 	public static final String SchoolShapefile="SchoolShapefile";
-	
+	public static final String SupermarketShapefile="SupermarketShapefile";
+	public static final String CityBoundaryShapefile="CityBoundaryShapefile";
+	public static final String FarmBoundaryShapefile="FarmBoundaryShapefile";
+	public static final String SupermarketBoundaryShapefile="SupermarketBoundaryShapefile";
 	
 	
 	public static final class GEOGRAPHY_PARAMS {
@@ -107,8 +116,9 @@ public abstract class GlobalVars {
 		public static final String RESTAURANT_CONTEXT = "RestaurantContext";
 		public static final String RESTAURANT_GEOGRAPHY = "RestaurantGeography";
 		
-		public static final String Farm_CONTEXT = "FarmContext";
-		public static final String Farm_GEOGRAPHY = "FarmGeography";
+		public static final String FARM_CONTEXT = "FarmContext";
+		public static final String FARM_GEOGRAPHY = "FarmGeography";
+		public static final String FARM_GRID = "FarmGrid";
 		
 		public static final String SUBSTATION_CONTEXT = "SubstationContext";
 		public static final String SUBSTATION_GEOGRAPHY = "SubstationGeography";
@@ -116,7 +126,9 @@ public abstract class GlobalVars {
 		public static final String SCHOOL_CONTEXT = "SchoolContext";
 		public static final String SCHOOL_GEOGRAPHY = "SchoolGeography";
 		
-		
+		public static final String SUPERMARKET_CONTEXT = "SupermarketContext";
+		public static final String SUPERMARKET_GEOGRAPHY = "SupermarketGeography";
+		public static final String SUPERMARKET_GRID = "SupermarketGrid";
 	
 	}
 	

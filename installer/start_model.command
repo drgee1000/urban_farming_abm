@@ -28,4 +28,4 @@ CP=$CP:$PWD/groovylib/$Groovy_All_Jar
 cd urban_farming_abm
 
 # Start the Model
-java -Xss10M -Xmx400M -cp $CP repast.simphony.runtime.RepastMain  ./urban_farming_abm.rs
+java -XX:+IgnoreUnrecognizedVMOptions --add-modules=ALL-SYSTEM --add-exports=java.base/jdk.internal.ref=ALL-UNNAMED -cp $CP repast.simphony.runtime.RepastMain  ./urban_farming_abm.rs

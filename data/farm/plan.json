@@ -1,0 +1,36 @@
+[
+    {
+        "tick":100,
+        "plan":[
+            {
+                "name":"apple",
+                "amount":23000.00
+            },
+            {
+                "name":"beaf",
+                "amount":22300.00
+            },
+            {
+                "name":"chicken",
+                "amount":33000.00
+            }
+        ]
+    },
+    {
+        "tick":200,
+        "plan":[
+            {
+                "name":"pork",
+                "amount":83000.00
+            },
+            {
+                "name":"fish",
+                "amount":23000.00
+            },
+            {
+                "name":"apple",
+                "amount":23000.00
+            }
+        ]
+    }
+]

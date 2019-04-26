@@ -137,7 +137,4 @@ public class NetworkEdge<T> extends RepastEdge<T> {
 		return "Edge between "+this.getSource()+"->"+this.getTarget()+" accessible by "+this.access.toString()+
 		(this.majorRoad ? " (is major road)" : "");
 	}
-
-
-
 }

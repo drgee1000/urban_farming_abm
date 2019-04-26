@@ -26,6 +26,10 @@ hs_err_pid*
 *.class
 
 # data file
-*.csv
-*.json
+/output/
 model_log.txt
+model_log.txt.lck
+debug.log.1
+velocity.log.1
+*.icloud
+Repast.settings

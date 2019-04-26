@@ -1,94 +1,32 @@
-Sep 03, 2018 9:31:28 PM repastcity3.main.ContextManager readProperties
+Dec 12, 2018 8:20:58 PM repastcity3.main.ContextManager readProperties
 INFO: Initialising properties from file ./repastcity.properties
-Sep 03, 2018 9:31:28 PM repastcity3.main.ContextManager build
+Dec 12, 2018 8:20:58 PM repastcity3.main.ContextManager buildEnv
 INFO: Configuring the environment with data from ./data/gis_data/shenzhen/
-Sep 03, 2018 9:31:33 PM repastcity3.main.ContextManager build
-INFO: Read 6farms from ./data/gis_data/shenzhen/farm.shp
-Sep 03, 2018 9:31:33 PM repastcity3.main.ContextManager build
+Dec 12, 2018 8:21:00 PM repastcity3.main.ContextManager buildEnv
+INFO: Read 6 supermarkets from ./data/gis_data/shenzhen/supermarket.shp
+Dec 12, 2018 8:21:00 PM repastcity3.main.ContextManager buildEnv
 INFO: Read 9 residentials from ./data/gis_data/shenzhen/residential.shp
-Sep 03, 2018 9:31:33 PM repastcity3.main.ContextManager build
+Dec 12, 2018 8:21:00 PM repastcity3.main.ContextManager buildEnv
+INFO: Read 6 schools from ./data/gis_data/shenzhen/school.shp
+Dec 12, 2018 8:21:00 PM repastcity3.main.ContextManager buildEnv
+INFO: Read 9 workplaces from ./data/gis_data/shenzhen/workplace.shp
+Dec 12, 2018 8:21:00 PM repastcity3.main.ContextManager buildRoad
 INFO: Read 86 roads from ./data/gis_data/shenzhen/street.shp
-Sep 03, 2018 9:31:33 PM repastcity3.main.TestEnv testEnvironment
+Dec 12, 2018 8:21:00 PM repastcity3.main.TestEnv testEnvironment
 INFO: Testing the environment
-Sep 03, 2018 9:31:33 PM repastcity3.main.TestEnv testEnvironment
+Dec 12, 2018 8:21:00 PM repastcity3.main.TestEnv testEnvironment
 INFO: The road network has 73 nodes and 86 edges.
-Sep 03, 2018 9:31:33 PM repastcity3.main.ContextManager build
-INFO: Creating agents with the agent definition: 'point:people.shp$repastcity3.agent.Consumer'
-Sep 03, 2018 9:31:33 PM repastcity3.agent.AgentFactory createPointAgents
-INFO: Have created 146 of type repastcity3.agent.Consumer from file ./data/gis_data/shenzhen/people.shp
-Sep 03, 2018 9:31:34 PM repastcity3.main.ContextManager createSchedule
-INFO: The multi-threaded scheduler will be used.
-Sep 03, 2018 9:31:41 PM repastcity3.main.ContextManager recordTicks
+Dec 12, 2018 8:21:00 PM repastcity3.agent.FarmFactory createPointAgents
+INFO: Have created 6 of type repastcity3.agent.Farm from file ./data/gis_data/shenzhen/farm.shp
+Dec 12, 2018 8:21:00 PM repastcity3.main.ContextManager createAgent
+INFO: Creating agents with the agent definition: '1000'
+Dec 12, 2018 8:21:00 PM repastcity3.agent.AgentFactory createRandomAgents
+INFO: Creating 1000 agents using random method.
+Dec 12, 2018 8:21:00 PM repastcity3.main.ContextManager createSchedule
+INFO: The single-threaded scheduler will be used.
+Dec 12, 2018 8:21:04 PM repastcity3.main.ContextManager recordTicks
 INFO: Iterations: 0.0
-Sep 03, 2018 9:31:42 PM repastcity3.main.ContextManager recordTicks
+Dec 12, 2018 8:21:05 PM repastcity3.main.ContextManager recordTicks
 INFO: Iterations: 1.0
-Sep 03, 2018 9:31:42 PM repastcity3.main.ContextManager recordTicks
+Dec 12, 2018 8:21:06 PM repastcity3.main.ContextManager recordTicks
 INFO: Iterations: 2.0
-Sep 03, 2018 9:31:42 PM repastcity3.main.ContextManager recordTicks
-INFO: Iterations: 3.0
-Sep 03, 2018 9:31:42 PM repastcity3.main.ContextManager recordTicks
-INFO: Iterations: 4.0
-Sep 03, 2018 9:31:43 PM repastcity3.main.ContextManager recordTicks
-INFO: Iterations: 5.0
-Sep 03, 2018 9:31:43 PM repastcity3.main.ContextManager recordTicks
-INFO: Iterations: 6.0
-Sep 03, 2018 9:31:43 PM repastcity3.main.ContextManager recordTicks
-INFO: Iterations: 7.0
-Sep 03, 2018 9:31:43 PM repastcity3.main.ContextManager recordTicks
-INFO: Iterations: 8.0
-Sep 03, 2018 9:31:43 PM repastcity3.main.ContextManager recordTicks
-INFO: Iterations: 9.0
-Sep 03, 2018 9:31:43 PM repastcity3.main.ContextManager recordTicks
-INFO: Iterations: 10.0
-Sep 03, 2018 9:31:43 PM repastcity3.main.ContextManager recordTicks
-INFO: Iterations: 11.0
-Sep 03, 2018 9:31:43 PM repastcity3.main.ContextManager recordTicks
-INFO: Iterations: 12.0
-Sep 03, 2018 9:31:43 PM repastcity3.main.ContextManager recordTicks
-INFO: Iterations: 13.0
-Sep 03, 2018 9:31:43 PM repastcity3.main.ContextManager recordTicks
-INFO: Iterations: 14.0
-Sep 03, 2018 9:31:43 PM repastcity3.main.ContextManager recordTicks
-INFO: Iterations: 15.0
-Sep 03, 2018 9:31:43 PM repastcity3.main.ContextManager recordTicks
-INFO: Iterations: 16.0
-Sep 03, 2018 9:31:44 PM repastcity3.main.ContextManager recordTicks
-INFO: Iterations: 17.0
-Sep 03, 2018 9:31:44 PM repastcity3.main.ContextManager recordTicks
-INFO: Iterations: 18.0
-Sep 03, 2018 9:31:44 PM repastcity3.main.ContextManager recordTicks
-INFO: Iterations: 19.0
-Sep 03, 2018 9:31:44 PM repastcity3.main.ContextManager recordTicks
-INFO: Iterations: 20.0
-Sep 03, 2018 9:31:44 PM repastcity3.main.ContextManager recordTicks
-INFO: Iterations: 21.0
-Sep 03, 2018 9:31:49 PM repastcity3.main.ContextManager recordTicks
-INFO: Iterations: 22.0
-Sep 03, 2018 9:31:49 PM repastcity3.main.ContextManager recordTicks
-INFO: Iterations: 23.0
-Sep 03, 2018 9:31:49 PM repastcity3.main.ContextManager recordTicks
-INFO: Iterations: 24.0
-Sep 03, 2018 9:31:50 PM repastcity3.main.ContextManager recordTicks
-INFO: Iterations: 25.0
-Sep 03, 2018 9:31:50 PM repastcity3.main.ContextManager recordTicks
-INFO: Iterations: 26.0
-Sep 03, 2018 9:31:50 PM repastcity3.main.ContextManager recordTicks
-INFO: Iterations: 27.0
-Sep 03, 2018 9:31:50 PM repastcity3.main.ContextManager recordTicks
-INFO: Iterations: 28.0
-Sep 03, 2018 9:31:50 PM repastcity3.main.ContextManager recordTicks
-INFO: Iterations: 29.0
-Sep 03, 2018 9:31:50 PM repastcity3.main.ContextManager recordTicks
-INFO: Iterations: 30.0
-Sep 03, 2018 9:31:51 PM repastcity3.main.ContextManager recordTicks
-INFO: Iterations: 31.0
-Sep 03, 2018 9:31:51 PM repastcity3.main.ContextManager recordTicks
-INFO: Iterations: 32.0
-Sep 03, 2018 9:31:51 PM repastcity3.main.ContextManager recordTicks
-INFO: Iterations: 33.0
-Sep 03, 2018 9:31:51 PM repastcity3.main.ContextManager recordTicks
-INFO: Iterations: 34.0
-Sep 03, 2018 9:31:51 PM repastcity3.main.ContextManager recordTicks
-INFO: Iterations: 35.0
-Sep 03, 2018 9:31:51 PM repastcity3.main.ContextManager recordTicks
-INFO: Iterations: 36.0

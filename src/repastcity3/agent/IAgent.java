@@ -2,7 +2,6 @@ package repastcity3.agent;
 
 import java.util.List;
 
-import repastcity3.environment.Farm;
 import repastcity3.environment.food.Food;
 import repastcity3.environment.Residential;
 

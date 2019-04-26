@@ -6,10 +6,40 @@
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
-				<parameter name="AGENT_DEFINITION" displayName="Agent Definition" type="java.lang.String" 
-						defaultValue="point:people.shp$repastcity3.agent.Consumer" 
+
+		<parameter name="UseAreaFarm" displayName="use area to farm" type="boolean" 
+						defaultValue="true" 
 						isReadOnly="false" 
-						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
+						converter="repast.simphony.parameter.StringConverterFactory$BooleanConverter"
+									
+		/>
+
+				<parameter name="UseAreaSupermarket" displayName="use area to supermarket" type="boolean" 
+						defaultValue="false" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$BooleanConverter"
+									
+		/>
+
+				<parameter name="FARM_NUM" displayName="Farm Num" type="int" 
+						defaultValue="100" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
+									
+		/>
+
+				<parameter name="SUPERMARKET_NUM" displayName="Supermarket Num" type="int" 
+								defaultValue="100" 
+								isReadOnly="false" 
+								converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
+
+				/>
+
+		
+				<parameter name="AGENT_NUM" displayName="Agent Num" type="int" 
+						defaultValue="1000" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
 		</parameters>

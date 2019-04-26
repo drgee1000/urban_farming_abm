@@ -6,7 +6,7 @@ import java.util.logging.Level;
 
 import repast.simphony.context.Context;
 import repast.simphony.space.graph.Network;
-import repastcity3.environment.Farm;
+import repastcity3.agent.Farm;
 import repastcity3.environment.Junction;
 import repastcity3.environment.Residential;
 import repastcity3.environment.Restaurant;
@@ -38,8 +38,8 @@ public class TestEnv {
 				.getSubContext(GlobalVars.CONTEXT_NAMES.RESIDENTIAL_CONTEXT);
 		Context<Road> roc = (Context<Road>) mainContext.getSubContext(GlobalVars.CONTEXT_NAMES.ROAD_CONTEXT);
 		Context<Junction> jc = (Context<Junction>) mainContext.getSubContext(GlobalVars.CONTEXT_NAMES.JUNCTION_CONTEXT);
-		Context<Farm> fm = (Context<Farm>) mainContext.getSubContext(GlobalVars.CONTEXT_NAMES.Farm_CONTEXT);
-		
+		Context<Farm> fm = (Context<Farm>) mainContext.getSubContext(GlobalVars.CONTEXT_NAMES.FARM_CONTEXT);
+		/*
 		for (Farm farm : fm.getObjects(Farm.class)) {
 			for (Food food:farm.getStock()) {
 				if(food.getAmount()<0||food.getPrice()<0||food.getProductionCost()<0||
@@ -49,6 +49,7 @@ public class TestEnv {
 				}
 			}
 		}
+		*/
 		// Geography<Building> bg = (Geography<Building>)
 		// bc.getProjection(GlobalVars.CONTEXT_NAMES.BUILDING_GEOGRAPHY);
 		// Geography<Road> rg = (Geography<Road>)
